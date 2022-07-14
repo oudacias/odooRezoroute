@@ -1,3 +1,4 @@
+from xmlrpc.client import Boolean
 from odoo import fields, models
 
 class Devis(models.Model):
@@ -19,3 +20,5 @@ class Devis(models.Model):
     is_repair_order = fields.Boolean(string="Ordre de reparation")
     repair_order_note = fields.Text(string="Ordre de reparation")
     recover_your_used_parts = fields.Boolean(string="Souhaitez-vous recuperer vos pieces usages")
+    repair_with_re_used_parts = fields.Boolean(string="Souhaitez-vous")
+    is_can_change_pricelist  = fields.Boolean(string="Souhaitez-vous")
