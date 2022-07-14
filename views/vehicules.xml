@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record model="ir.ui.view" id="ps_rezoroute.partner">
+            <field name="name">ps_rezoroute list</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//group[@name='model_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath> -->
+                <xpath expr="//field[@name='model_id']" position="before">
+                    <group>
+                        <group col="4">
+                        <div>
+                            <label for="siv" string="SIV"/>
+                            <field name="siv"/>
+
+                            <label for="manufacturer_id" string="Constructeur"/>
+                            <div><field name="manufacturer_id"/></div>
+
+
+                            <label for="model_id" string="Modele"/>
+                            <div><field name="model_id" domaine="[('manufacturer_id','=',manufacturer_id)]"/></div>
+
+                            <label for="type_id" string="Type"/>
+                            <div><field name="type_id"  domaine="[('model_id','=',model_id),('manufacturer_id','=',manufacturer_id)]"/></div>
+                            
+                            <label for="code_moteur" string="Code Moteur"/>
+                            <div><field name="code_moteur"/></div>
+                            <label for="d_2_1" string="D2.1"/>
+                            <field name="d_2_1"/>
+                            <label for="e" string="E/VIN"/>
+                            <field name="e"/>
+                        </div>
+                    </group>
+                    <group string="Client" class="oe_right">
+                        <!-- <label for="partner_id" string="Client"/> -->
+                        <field name="partner_id" width="500"/>
+
+                        <!-- <label for="last_buy" string="Date dernier achat"/> -->
+                        <field name="last_buy"/>
+
+                        <!-- <label for="last_servicing_date" string="Date derniere revision"/> -->
+                        <field name="last_servicing_date"/>
+
+                         <!-- <label for="odometer" string="Dernier releve kilometrique"/> -->
+                        <field name="odometer"/>
+
+                    </group>
+                    </group>
+                            
+                </xpath>
+            </field>
+        </record>
+    </odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_test" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="website" position="after">
+
+                    <field name="siret"/>
+                    <field name="ape"/>
+                
+                </field>
+                <field name="vat" position="after">
+                
+                    <field name="capital"/>
+                    <field name="partner_invoice_id"/>
+                    <field name="partner_adress_on_invoice_id" context="{'default_type':'contact','default_parent_id':False,'default_is_company':True,'default_customer':False,'default_supplier':False}"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ps_rezoroute.partner">
+            <field name="name">ps_rezoroute list</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Avertissement" name="Avertissement">
+                        <group>
+                            <!-- <h1>Avertissement sur les commandes de vente</h1> -->
+                                <field name="sale_warn"/>
+                            <!-- <h1>Avertissement sur les commandes d'achat</h1> -->
+                                <field name="purchase_warn"/>
+                            <!-- <h1>Avertissement sur les Colisages</h1> -->
+                                <field name="picking_warn"/>
+                            <!-- <h1>Avertissement sur la Facture</h1> -->
+                                <field name="invoice_warn"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

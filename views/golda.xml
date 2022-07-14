@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Updates-->
+
+    <record id="action_view_golda" model="ir.actions.act_window">
+            <field name="name">Golda</field>
+            <field name="res_model">engin.manufacturer.golda</field>
+            <field name="view_mode">tree,form</field>
+        
+        
+        </record>
+
+
+        <record id="view_golda_discount_form" model="ir.ui.view">
+            <field name="name">engin.manufacturer.golda.discount.form</field>
+            <field name="model">engin.manufacturer.golda.discount</field>
+            
+            <field name="arch" type="xml">
+                <form string="Golda Remise">
+                    <group>
+                        <field name="name"></field>
+                        <field name="sequence"></field>
+                    </group>
+                    <group>
+                        <field name="active"></field>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="action_view_golda_discount" model="ir.actions.act_window">
+            <field name="name">Remise Golda</field>
+            <field name="res_model">engin.manufacturer.golda.discount</field>
+            <field name="view_mode">tree,form</field>
+        
+        
+        </record>
+
+        <record id="action_view_golda_category" model="ir.actions.act_window">
+            <field name="name">Categorie Golda</field>
+            <field name="res_model">engin.manufacturer.golda.category</field>
+            <field name="view_mode">tree,form</field>        
+        </record>
+
+    <menuitem id="sale_order_menu_golda"
+        name="Golda"
+        parent="sale.menu_sale_config"
+        sequence="1" action="action_view_golda"/>
+
+    <menuitem id="sub_menu_golda" action="action_view_golda" name="Golda" parent="sale_order_menu_golda"/>
+    <menuitem id="sub_menu_golda_discount" action="action_view_golda_discount" name="Remise Golda" parent="sale_order_menu_golda"/>
+    <menuitem id="sub_menu_golda_category" action="action_view_golda_category" name="Categorie Golda" parent="sale_order_menu_golda"/>
+
+    
+
+
+
+
+
+</odoo>

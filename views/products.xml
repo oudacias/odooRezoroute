@@ -1,0 +1,268 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="ps_rezoroute.list">
+            <field name="name">ps_rezoroute list</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_title']" position="after">
+                    <div class="oe_title">
+                        <!-- <label for="ps_code_article" string="Code de l'article"/>
+                        <div class="d-flex">
+                            <field class="o_text_overflow" name="ps_code_article"/>
+                        </div> -->
+                        <label for="description" string="Description de l'article"/>
+                            <field class="o_text_overflow" name="description"/>
+                        <label for="default_code" string="Reference de l'article"/>
+                        <div class="d-flex">
+                            <field class="o_text_overflow" name="default_code"/>
+                        </div>
+
+                        <label for="image1" string="Image 1 de l'article"/>
+                        <!-- <div class="d-flex"> -->
+                            <field class="o_text_overflow" name="image1"/>
+                        <!-- </div> -->
+                        
+                        <label for="image2" string="Image 2 de l'article"/>
+                        <!-- <div class="d-flex"> -->
+                            <field class="o_text_overflow oe_inline" name="image2"/>
+                        <!-- </div> -->
+
+                        <!-- <label for="categ_id" string="Categorie de l'article"/>
+                        <div class="d-flex">
+                            <field class="o_text_overflow" name="categ_id"/>
+                        </div> -->
+                    </div>
+                </xpath>
+
+                <xpath expr="//div[@name='options']" position="after">
+
+                        <span class="d-inline-block">
+                            <field name="is_reconditionned"/>
+                            <label for="is_reconditionned"/>
+                        </span>
+                        <span class="d-inline-block">
+                            <field name="is_sell_first"/>
+                            <label for="is_sell_first"/>
+                        </span>
+                        <span class="d-inline-block">
+                            <field name="is_special_order"/>
+                            <label for="is_special_order"/>
+                        </span>
+                        <span class="d-inline-block">
+                            <field name="is_outdated"/>
+                            <label for="is_outdated"/>
+                        </span>
+                        <span class="d-inline-block">
+                            <field name="is_manage_in_stock"/>
+                            <label for="is_manage_in_stock"/>
+                        </span>
+
+                </xpath>
+
+
+                <xpath expr="//field[@name='detailed_type']" position="before">
+                    <field name="is_group_reference"/>
+                    <field name="replace"/>
+                </xpath>
+
+                <xpath expr="//field[@name='detailed_type']" position="after">
+                    <field name="nbr_stock_minimum"/>
+                    <field name="nbr_stock_atteindre"/>
+                </xpath>
+
+
+                <xpath expr="//field[@name='nbr_stock_atteindre']" position="after">
+                    <group name="details">
+                        <field name="tecdoc_details"/>
+                    </group>
+                </xpath>
+
+
+                <xpath expr="//field[@name='tecdoc_details']" position="after">
+                    <group name="pneumatique" string="Pneumatique">
+                        <field name="is_tire"/>
+                    </group>
+                </xpath>
+
+
+
+                <xpath expr="//page[@name='general_information']" position="after">
+                    <page string="EAN13" name="ean13">
+                    </page>
+                </xpath>
+
+                <xpath expr="//page[@name='ean13']" position="after">
+                    <page string="Vehicule" name="vehicule">
+                        <group>
+                        
+                        <!-- <label for ="engine_list"/> -->
+                        <field name = "engine_list" widget="many2many">
+                        <tree>
+                            <field name="constructeur"/>
+                            <field name="modele"/>
+                            <field name="display_name"/>
+                        </tree>
+
+
+                        </field>
+                            
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//page[@name='vehicule']" position="after">
+                    <page string="OE" name="OE">
+                        <field name = "manufacturer_ids" widget="one2many">
+                            <tree>
+                                <field name="reference"/>
+                                <field name="marque"/>
+                                <field name="is_oe"/>
+                                <field name="reference_catalogue"/>
+                                <field name="is_tecdoc"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+
+                <xpath expr="//page[@name='sales']" position="inside">
+
+                    <group string="Conditions de vente">
+                        <field name="warranty" />
+                        <field name="sale_delay" />
+                    </group>
+
+                    <group string="Description pour les devis">
+                        <field name="description_sale" />
+                    </group>
+                </xpath>
+                
+                <xpath expr="//group[@name='inventory']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//group[@name='packaging']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+                <xpath expr="//page[@name='inventory']" position="inside">
+
+                    <group string="Stock et variations prevues">
+                                
+                        <label for="qty_available" class="mt-1"/>
+                        <div>
+                            <field name="qty_available"/>
+                        </div>
+                        <field name="outgoing_qty"/>
+                        <field name="real_qty_available"/>
+                        <field name="incoming_qty"/>
+                        <field name="virtual_available"/>
+                    </group>
+                    <group string="Etat">
+                        <label for="state" class="mt-1"/>
+                        <div>
+                            <field name="state"/>
+                        </div>
+                        <field name="product_manager"/>
+                        
+                    </group>
+                    <group string="Emplacement de stockage">
+                        <label for="loc_rack" class="mt-1"/>
+                        <div>
+                            <field name="loc_rack"/>
+                        </div>
+                        <field name="loc_row"/>
+                        <field name="loc_case"/>
+                        
+                    </group>
+                    <group string="Poids">
+                        <label for="volume" class="mt-1"/>
+                        <div>
+                            <field name="volume"/>
+                        </div>
+                        <field name="weight"/>
+                        <field name="weight_net"/>
+                        
+                    </group>
+                </xpath>
+
+                <xpath expr="//page[@name='vehicule']" position="after">
+                    <page string="Product Picture URLs" name="product_picture_urls">
+                        <field name = "full_images_ids" widget="one2many">
+                            <tree>
+                                <field name="image"/>
+                                <field name="sequence"/>
+                                <field name="picture_url"/>
+                                <field name="full_picture_url"/>
+                            </tree>
+                            <form>
+                                <label for="image" class="mt-1" style="width:100%"/>
+                                <field name="image"/>
+                                <div>
+                                <label for="sequence" class="mt-1"/>
+                                <field name="sequence"/>
+                                <label for="picture_url" class="mt-1"/>
+                                <field name="picture_url"/>
+                                <label for="full_picture_url" class="mt-1"/>
+                                <field name="full_picture_url"/>
+                                </div>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//page[@name='product_picture_urls']" position="after">
+
+                    <page string="Approvisionnements" name="approvisionnements">
+                    </page>
+                </xpath>
+                <xpath expr="//page[@name='inventory']" position="after">
+
+                    <page string="Prix" name="prix">
+                        <field name = "product_pricelist_item" widget="one2many">
+                                <tree>
+                                    <field name="sequence"/>
+                                    <field name="version_liste_prix"/>
+                                    <field name="r1"/>
+                                    <field name="price_surcharge"/>
+                                    <field name="r2"/>
+                                    <field name="fixed_price"/>
+                                    <field name="prix_ht"/>
+                                    <field name="prix_ttc"/>
+
+                                </tree>
+                                <form>
+                                    <label for="sequence" class="mt-1"/>
+                                    <field name="sequence"/>
+                                    <label for="r1" class="mt-1"/>
+                                    <field name="r1"/>
+                                    <label for="price_surcharge" class="mt-1"/>
+                                    <field name="price_surcharge"/>
+                                    <label for="r2" class="mt-1"/>
+                                    <field name="r2"/>
+                                    <label for="fixed_price" class="mt-1"/>
+                                    <field name="fixed_price"/>
+                                    <label for="prix_ht" class="mt-1"/>
+                                    <field name="prix_ht"/>
+                                    <label for="prix_ttc" class="mt-1"/>
+                                    <field name="prix_ttc"/>
+                                    
+
+                                </form>
+                            </field>
+                        </page>
+                    </xpath>
+                <xpath expr="//page[@name='prix']" position="after">
+                    <page string="Avertissements" name="avertissements">
+                        <group>
+                            <h1>Avertissement lorsque vous vendez cet article</h1>
+                                <field name="sale_line_warn"/>
+                                <field name="sale_line_warn_msg"/>
+                            <h1>Avertissement lors d'un achat de cet article</h1>
+                                <field name="purchase_line_warn"/>
+                                <field name="purchase_line_warn_msg"/>
+                        </group>
+                    </page>
+                </xpath>  
+            </field>
+        </record>
+    </data>
+</odoo>
