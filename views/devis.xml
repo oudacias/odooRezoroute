@@ -7,7 +7,6 @@
             <field name="arch" type="xml">
                 
                 <xpath expr="//field[@name='partner_id']" position="after">
-
                     <field name="partner_ref" readonly="1"/>
                     <field name="mobile" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                     <field name="phone"  modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
@@ -16,31 +15,22 @@
                     
                     <field name="odometer" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)], 'required' : [('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                     <field name="next_distri_date" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]]}"/>
-                    
                     <field name="next_ct_date" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]]}"/>
-                    <field name="delivery_type_id" attrs="{'invisible': [('is_central_company', '=', False)]}" widget="selection" modifiers="{'invisible': [['is_central_company', '=', false]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
+                    <!-- <field name="delivery_type_id" attrs="{'invisible': [('is_central_company', '=', False)]}" widget="selection" modifiers="{'invisible': [['is_central_company', '=', false]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/> -->
                     <field name="is_central_company" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    <field name="inter_company_purchase_order_id" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    <field name="project_id" context="{'partner_id':partner_invoice_id, 'manager_id': user_id, 'default_pricelist_id':pricelist_id, 'default_name':name, 'default_type': 'contract'}" domain="[('type','in',['view','normal','contract'])]" invisible="1" modifiers="{'invisible': true, 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
-                <group>
+                    
                     <field name="date_order" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': true}"/>
-                    <field name="client_order_ref" attrs="{'required': [('is_client_order_ref_required', '=', True)]}" modifiers="{'required': [['is_client_order_ref_required', '=', true]]}"/>
-                    <field name="percent_shipping" widget="progressbar" attrs="{'invisible':[('state','in',('draft','sent'))]}" modifiers="{'invisible': [['state', 'in', ['draft', 'sent']]], 'readonly': true}"/>
-                    <field name="percent_invoiced" on_change="" domain="[]" context="{}" options="" widget="progressbar" attrs="{'invisible':[('state','=','draft')]}" modifiers="{'invisible': [['state', '=', 'draft']], 'readonly': true}"/>
-                    <field name="percent_open_balance" widget="progressbar" attrs="{'invisible':[('percent_invoiced','=',False)]}" modifiers="{'invisible': [['percent_invoiced', '=', false]], 'readonly': true}"/>
-                    <field name="warehouse_id" on_change="onchange_warehouse_id(warehouse_id)" options="{'no_create': True}" modifiers="{'readonly': [['state', 'not in', ['waiting_replenishment', 'draft', 'repair_order', 'making', 'to_prepare', 'purchase_finished', 'customer_validated', 'sent', 'prepared']]], 'required': true}"/>
-                    <separator colspan="2"/>
+                    <field name="client_order_ref" />
+                     <field name="user_repair_id" domain="[('company_id','=',company_id)]" widget="selection" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
+                    <field name="repair_order_note" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
+
                     <field name="categ_ids" widget="many2many_tags" modifiers="{'readonly': [['state', 'not in', ['waiting_replenishment', 'draft', 'repair_order', 'making', 'to_prepare', 'purchase_finished', 'customer_validated', 'sent', 'prepared']]]}"/>
                     <field name="is_repair_order" attrs="{'invisible': [('is_central_company', '=', True)]}" on_change="1" modifiers="{'invisible': [['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
-                    <field name="user_repair_id" domain="[('company_id','=',company_id),('is_user_repair', '=', True)]" widget="selection" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
-                    <field name="repair_order_note" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
                     <field name="recover_your_used_parts" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'sent']]]}"/>
                     <field name="repair_with_re_used_parts" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'sent']]]}"/>
-                    <field domain="[('type','=','sale')]" name="pricelist_id" on_change="onchange_pricelist_id(pricelist_id,order_line)" attrs="{'readonly' : [('is_can_change_pricelist', '=', False)]}" modifiers="{'readonly': [['is_can_change_pricelist', '=', false]], 'required': true}"/>
-                    <field name="is_can_change_pricelist" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    <field name="currency_id" invisible="1" modifiers="{'invisible': true, 'readonly': true, 'required': true}"/>
-                </group>
+                    <field  name="pricelist_id" on_change="onchange_pricelist_id(pricelist_id,order_line)" modifiers="{'required': true}" />
                 </xpath>
+
             </field>
         </record>
     </odoo>
