@@ -6,6 +6,17 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
+                <!-- <xpath expr="//form//sheet" postion="before"> -->
+                <xpath expr="//div[@name='button_box']" postion="inside">
+                    <header>
+                        <button name="creer_devis" string="Créer un devis" 
+                            type="object" class="oe_highlight"/>
+
+                        <button name="creer_ordre_reparation" string="Créer un ordre de réparation" 
+                            type="object" class="oe_highlight"/>
+
+                    </header>
+                </xpath>
                 <field name="website" position="after">
 
                     <field name="siret"/>

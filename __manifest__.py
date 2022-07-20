@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','sale','account','fleet','stock'],
+    'depends': ['base','pos_sale','sale','account','fleet','stock'],
 
     # always loaded
     'data': [
@@ -32,6 +32,8 @@
         'views/clients.xml',
         'views/vehicules.xml',
         'views/devis.xml',
+        'views/type_paiement.xml',
+        # 'views/forfaits.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
