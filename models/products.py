@@ -7,6 +7,8 @@ class ProductTemplateExtra(models.Model):
     image1 = fields.Image(String="Image 1")
     image2 = fields.Image(String="Image 2")
 
+    manufacturer_id = fields.Many2one('engine.manufacturer',string="Constructeur")
+
     ps_code_article = fields.Char('Code Article')
     is_reconditionned = fields.Boolean('Reconditionne')
     is_sell_first = fields.Boolean("Vendre d'abord")
@@ -20,6 +22,9 @@ class ProductTemplateExtra(models.Model):
     nbr_stock_minimum = fields.Float("Nbr de stock minimum (Qte reappro)")
     nbr_stock_atteindre = fields.Float("Nbr de stock a atteindre (Qte reappro)")
     replace = fields.Many2one("ps.product.remplace", string="Remplace par")
+    lst_price = fields.Float(string="Prix public")
+
+
 
     is_tire = fields.Boolean("Pneumatique")
     tecdoc_details = fields.Html(string="Details")
@@ -152,3 +157,10 @@ class ProductPriceListExtra(models.Model):
     prix_net = fields.Float(string="Prix Net")
     prix_ht = fields.Float(string="Prix HT")
     prix_ttc = fields.Float(string="Prix TTC")
+
+
+
+class ReferenceIntern(models.Model):
+    _name = "refernce.intern"
+    model_name = fields.Char()
+    reference_id = fields.Integer()

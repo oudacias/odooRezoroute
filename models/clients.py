@@ -16,6 +16,7 @@ class PartnerExtra(models.Model):
  
 
 
+
     
     def creer_devis(self):
         self.ensure_one()

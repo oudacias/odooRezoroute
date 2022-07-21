@@ -33,7 +33,8 @@
         'views/vehicules.xml',
         'views/devis.xml',
         'views/type_paiement.xml',
-        # 'views/forfaits.xml'
+        'views/forfaits.xml',
+        'views/ligne_commande.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

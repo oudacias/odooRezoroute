@@ -11,6 +11,10 @@
                         <div class="d-flex">
                             <field class="o_text_overflow" name="ps_code_article"/>
                         </div> -->
+                        <label for="manufacturer_id" string="Constructeur"/>
+                            <div class="d-flex">
+                                <field class="o_text_overflow" name="manufacturer_id"/>
+                            </div>
                         <label for="description" string="Description de l'article"/>
                             <field class="o_text_overflow" name="description"/>
                         <label for="default_code" string="Reference de l'article"/>
@@ -62,18 +66,28 @@
 
 
                 <xpath expr="//field[@name='detailed_type']" position="before">
-                    <field name="is_group_reference"/>
-                    <field name="replace"/>
+                        <label for="is_group_reference" />
+                        <field name="is_group_reference"/>
+                        <label for="replace" />
+                        <field name="replace"/>
+                   
                 </xpath>
 
                 <xpath expr="//field[@name='detailed_type']" position="after">
-                    <field name="nbr_stock_minimum"/>
-                    <field name="nbr_stock_atteindre"/>
+                    <label for="nbr_stock_minimum"/>
+                        <field name="nbr_stock_minimum"/>
+                    <label for="nbr_stock_atteindre"/>
+                        <field name="nbr_stock_atteindre"/>
+                    
+                    <label for="lst_price"/>
+                        <field name="lst_price"/>
+                    
                 </xpath>
 
 
                 <xpath expr="//field[@name='nbr_stock_atteindre']" position="after">
                     <group name="details">
+                    <label for="tecdoc_details"/>
                         <field name="tecdoc_details"/>
                     </group>
                 </xpath>

@@ -1,5 +1,5 @@
 from xmlrpc.client import Boolean
-from odoo import fields, models
+from odoo import fields, models,api
 
 class Devis(models.Model):
 
@@ -61,6 +61,9 @@ class Devis(models.Model):
         ,help="If you deliver all products at once, the delivery order will be scheduled based on the greatest ")
     
 
+    manufacturer_id = fields.Many2one('engine.manufacturer','Constructeur')
+
+    carrier_id = fields.Many2one('delivery.carrier',string="Methode de livraison")
 
 
 
@@ -89,3 +92,38 @@ class PosPaiement(models.Model):
     journal_in_id = fields.Many2one('account.journal',string="Journal (Entrée de caisse))")
     journal_out_id = fields.Many2one('account.journal',string="Journal (Sortie de caisse))")
     journal_ecart_id = fields.Many2one('account.journal',string="Journal (Ecart de caisse))")
+
+
+class SaleLine(models.Model):
+
+    _inherit = 'sale.order.line'
+
+    manufacturer_id = fields.Many2one('engine.manufacturer','Marque')
+    real_qty_available = fields.Float(string="Qte Dispo")
+    price_unit_public = fields.Float(string="P.U. Public")
+
+
+    @api.onchange('product_id')
+    def additional_info(self):
+        if(self.product_id):
+            for rec in self:
+            
+                product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
+                rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
+                rec.real_qty_available = product.product_tmpl_id.real_qty_available
+                rec.price_unit_public = product.product_tmpl_id.lst_price
+
+                
+class DeliveryCarrier(models.Model):
+    _name = "delivery.carrier"
+
+    name = fields.Char(string="Methode de livraison")
+    image_medium = fields.Image()
+    active = fields.Boolean(string="actif")
+    partner_id = fields.Many2one('res.partner',string="Transporteur")
+    product_id = fields.Many2one('product.product',string="Article de livraison")
+    sequence = fields.Integer(string="Sequence")
+    is_relay = fields.Boolean(string="Point de relais")
+    normal_price = fields.Float(string="Prix normal")
+    free_if_more_than = fields.Boolean(string="Gratuit si le montant total de la commande est superieur a")
+    use_detailed_pricelist = fields.Boolean(string="Tarification avancee en fonction de la destination")

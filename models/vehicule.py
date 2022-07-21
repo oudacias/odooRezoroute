@@ -52,6 +52,8 @@ class EngineManufacturer(models.Model):
     use_product_price = fields.Selection([('customer','Prix public'),('supplier','Prix fournisseur')],'Prix Golda prefere')
     supplier_code= fields.Char(string="Supplier Code")
 
+    picture_url = fields.Image('Image')
+
 
 class EngineType(models.Model):
     _name="engine.type"
