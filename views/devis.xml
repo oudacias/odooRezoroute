@@ -5,7 +5,7 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//div[@name='button_box']" postion="inside">
+                <xpath eexpr="//button[@name='%(sale.view_order_form)d']"  postion="after">
                     <header>
                         <button name="repair_order" string="Démarrer OR" 
                             type="object" class="oe_highlight"/>
