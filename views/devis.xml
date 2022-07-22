@@ -7,10 +7,10 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[@name='button_box']" postion="inside">
                     <header>
-                        <!-- <button string="Créer un devis" 
+                        <button name="repair_order" string="Démarrer OR" 
                             type="object" class="oe_highlight"/>
 
-                        <button string="Créer un ordre de réparation" 
+                        <!--<button string="Créer un ordre de réparation" 
                             type="object" class="oe_highlight"/> -->
 
                     </header>

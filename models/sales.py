@@ -12,3 +12,7 @@ class SaleOrderExtra(models.Model):
         ('cancel', 'Cancelled'),
         ('repair_order','Réparation en cours'),
         ], string='Status', readonly=True, copy=False, index=True, tracking=3, default='draft')
+
+    def repair_order(self, cr, uid, ids, context=None):
+        self.write(cr, uid, ids, {'state': 'repair_order'}, context=context)
+        return True
