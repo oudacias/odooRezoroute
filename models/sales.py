@@ -1,8 +1,8 @@
 from odoo import fields, models,api
 
-class PartnerExtra(models.Model):
+class SaleOrderExtra(models.Model):
 
-    _inherit = 'res.partner'
+    _inherit = 'sale.order'
 
     state = fields.Selection([
         ('draft', 'Quotation'),

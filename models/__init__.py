@@ -9,3 +9,4 @@ from . import clients
 from . import vehicule
 from . import devis
 from . import forfaits
+from . import sales
