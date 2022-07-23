@@ -47,3 +47,14 @@ class SaleOrderExtra(models.Model):
 
     def action_button_confirm_repair_order(self):
         self.write({'state':'progress'})
+
+
+    def action_order_deposit(self):
+        return {
+            'view_mode': 'form',
+            'res_model': 'order.deposit.wizard',
+            'target' : 'new',
+            'views' : [(False, 'form')],
+            'type': 'ir.actions.act_window',
+            # 'context' : {'default_partner_id' : self.id }
+        }

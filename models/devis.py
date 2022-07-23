@@ -143,13 +143,3 @@ class OrderDeposit(models.Model):
     customer_check_name = fields.Char(string = "Titulaire du chèque")
 
 
-
-    def action_order_deposit(self):
-        return {
-            'view_mode': 'form',
-            'res_model': 'order.deposit.wizard',
-            'target' : 'new',
-            'views' : [(False, 'form')],
-            'type': 'ir.actions.act_window',
-            # 'context' : {'default_partner_id' : self.id }
-        }
