@@ -11,7 +11,7 @@ class SaleOrderExtra(models.Model):
     hide_action_invoice = fields.Boolean(store=False)
 
     account_payment_type_id = fields.Many2one('pos.payment.method',string="Type de paiement")
-
+    amount_residual = fields.Float()
 
     state = fields.Selection([
         ('draft', 'Quotation'),

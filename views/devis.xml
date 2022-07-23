@@ -79,6 +79,7 @@
                 <xpath expr="//group[@name='sale_info']" position="inside">
                     <field name="hide_action_picking" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     <field name="account_payment_type_id" domain="['|',('company_id','=',False),('company_id','=',company_id)]" modifiers="{}"/>
+                    <field name="amount_residual" widget="monetary" options="{'currency_field': 'currency_id'}" modifiers="{'readonly': true}"/>
 
                     <field name="payment_term_id"/>
                     <field name="fiscal_position_id"/>
