@@ -29,3 +29,10 @@ class UserPos(models.Model):
 
     _inherit = 'res.users'
     pos_id = fields.Many2one('pos.config',string="Nom du POS")
+
+    @api.onchange('pos_id')
+    def test_pos(self):
+        if(self.product_id):
+            for rec in self:
+                obj =  rec.env['res.users'].search([('pos_id','=',rec.pos_id.id)])  
+                print(obj)
