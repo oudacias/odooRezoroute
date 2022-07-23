@@ -10,6 +10,9 @@ class SaleOrderExtra(models.Model):
     hide_action_processed = fields.Boolean(store=False)
     hide_action_invoice = fields.Boolean(store=False)
 
+    account_payment_type_id = fields.Many2one('pos.payment.method',string="Type de paiement")
+
+
     state = fields.Selection([
         ('draft', 'Quotation'),
         ('repair_order','Réparation en cours'),
