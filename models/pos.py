@@ -2,7 +2,7 @@ from odoo import fields, models,api
 
 class PosSession(models.Model):
 
-    _inherit = 'pos.order'
+    _inherit = 'pos.session'
 
 
 

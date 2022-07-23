@@ -2,9 +2,9 @@
     <odoo>
         <record model="ir.ui.view" id="ps_rezoroute.POS">
             <field name="name">ps_rezoroute POS</field>
-            <field name="model">pos.order</field>
-            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
-            
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+
             <field name="arch" type="xml">                
                 <xpath expr="//header"  postion="inside">
                     <button name="auto_close_pos_session" string="Fermer Session" />
