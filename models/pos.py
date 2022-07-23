@@ -37,5 +37,5 @@ class PosConfig(models.Model):
             for rec in self:
                 obj =  rec.env['pos.config'].search_count([('user_id','=',rec.user_id.id)])  
                 if(obj > 0):
-                    rec.user_id = ""
+                    rec.user_id.id = rec.user_id_old
                     raise ValidationError("Utilisateur déjà affecté à une autre caisse")
