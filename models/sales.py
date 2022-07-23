@@ -13,6 +13,10 @@ class SaleOrderExtra(models.Model):
         ('repair_order','Réparation en cours'),
         ], string='Status', readonly=True, copy=False, index=True, tracking=3, default='draft')
 
-    def repair_order(self, cr, uid, ids, context=None):
-        self.write(cr, uid, ids, {'state': 'repair_order'}, context=context)
-        return True
+
+
+    
+    def repair_order(self,vals):
+        vals['state'] = 'repair_order'
+        return super(SaleOrderExtra,self).write(vals)
+        

@@ -5,15 +5,15 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath eexpr="//button[@name='%(sale.view_order_form)d']"  postion="after">
-                    <header>
+                <xpath expr="//header"  postion="inside">
+                    <!-- <header> -->
                         <button name="repair_order" string="Démarrer OR" 
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight" attrs="{'invisible':[('is_repair_order','=',False)]}" modifiers="{'invisible':[['is_repair_order','=',false]], 'readonly':[['state','not in',[customer_validated','repair_order','purchase_finished','waiting_replenishment','draft','making','prepared','sent']]]}"/>
 
                         <!--<button string="Créer un ordre de réparation" 
                             type="object" class="oe_highlight"/> -->
 
-                    </header>
+                    <!-- </header> -->
                 </xpath>
                 <xpath expr="//field[@name='validity_date']" position="attributes">
                     <attribute name="invisible">1</attribute>
