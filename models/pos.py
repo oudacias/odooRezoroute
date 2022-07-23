@@ -12,6 +12,6 @@ class PosSession(models.Model):
 
         """ Method called by scheduled actions to close currently open sessions """
 
-        return self.search([('state', '=', 'opened')]).action_pos_session_closing_control()
+        return self.search([('state', '=', 'opening_control')]).action_pos_session_closing_control()
 
         
