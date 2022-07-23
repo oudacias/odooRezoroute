@@ -34,8 +34,8 @@
         'views/devis.xml',
         'views/type_paiement.xml',
         'views/forfaits.xml',
-        'views/ligne_commande.xml'
-        'views/pos_view.xml'
+        'views/ligne_commande.xml',
+        'views/pos_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
