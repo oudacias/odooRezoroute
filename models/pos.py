@@ -1,5 +1,6 @@
 import string
 from odoo import fields, models,api
+from odoo.exceptions import ValidationError
 
 class PosSession(models.Model):
 
@@ -34,6 +35,6 @@ class PosConfig(models.Model):
     def test_pos(self):
         if(self.user_id):
             for rec in self:
-                print("LLLL")
                 obj =  rec.env['pos.config'].search_count([('user_id','=',rec.user_id.id)])  
-                print(obj)
+                if(obj > 0):
+                    raise ValidationError("Utilisateur déjà affecté à une autre caisse")
