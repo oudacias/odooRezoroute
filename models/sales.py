@@ -9,6 +9,7 @@ class SaleOrderExtra(models.Model):
     hide_action_tecrmi = fields.Boolean(store=False)
     hide_action_processed = fields.Boolean(store=False)
     hide_action_invoice = fields.Boolean(store=False)
+    hide_confirm = fields.Boolean(store=False)
 
     account_payment_type_id = fields.Many2one('pos.payment.method',string="Type de paiement")
     amount_residual = fields.Float()
