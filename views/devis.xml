@@ -22,7 +22,14 @@
                     <!-- <field name="picking_ids" invisible="1" on_change="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
                     <!-- <button name="action_view_delivery" string="Voir le bon de livraison" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_picking','=',True)]}" modifiers="{'invisible': [['hide_action_picking', '=', true]]}"/> -->
                     <button name="445" string="Créer facture" type="action" class="oe_highlight" attrs="{'invisible':[('hide_action_invoice','=',True)]}" modifiers="{'invisible': [['hide_action_invoice', '=', true]]}" readonly="0"/>
-		
+                    <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0">
+                        <button name="action_fix_payment" type="object" string="Corriger le/les paiement(s)" attrs="{'invisible':[('percent_open_balance','&lt;=',0)]}" modifiers="{'invisible': [['percent_open_balance', '&lt;=', 0]]}"/>
+                        <button name="action_processed" string="Facturer / Régler" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_processed','=',True)]}" modifiers="{'invisible': [['hide_action_processed', '=', true]]}"/>
+                        <button name="action_paid_from_order" string="Enregistrer le règlement" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_invoiced','=',False), ('percent_open_balance','=',100.00)]}" modifiers="{'invisible': ['|', ['percent_invoiced', '=', false], ['percent_open_balance', '=', 100.0]]}"/>
+                        <field name="hide_action_makde_picking" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                        <button name="action_make_picking" string="Valider BL" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_shipping','!=',False),('hide_action_makde_picking','=',True)]}" modifiers="{'invisible': ['|', ['percent_shipping', '!=', false], ['hide_action_makde_picking', '=', true]]}"/>
+                        <button name="action_make_picking" string="Continuer à livrer" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_shipping','=',False),'&amp;',('percent_shipping','!=',False),('hide_action_makde_picking','=',True)]}" modifiers="{'invisible': ['|', ['percent_shipping', '=', false], '&amp;', ['percent_shipping', '!=', false], ['hide_action_makde_picking', '=', true]]}"/>
+                    </button>
                        
                 </xpath>
                 <xpath expr="//field[@name='validity_date']" position="attributes">
@@ -41,6 +48,7 @@
                     <attribute name="invisible">1</attribute>
                 </xpath> -->
                 <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     <field name="partner_ref" readonly="1"/>
                     <field name="mobile" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                     <field name="phone"  modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
@@ -93,6 +101,8 @@
                     <field name="payment_method_ids"/>
                     <!-- <field name="order_policy"/> -->
                     <field name="is_customer_account"/>
+                    <field name="hide_action_processed" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                    <field name="hide_action_invoice" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     <field name="customer_invoice_type"/>
                 </xpath>
 
