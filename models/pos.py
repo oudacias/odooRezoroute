@@ -5,6 +5,11 @@ class PosSession(models.Model):
     _inherit = 'pos.session'
 
 
+    def open_sessions(self):
+        self.env['pos.session'].create({})
+
+
+
 
     def auto_close_pos_session(self):
 
