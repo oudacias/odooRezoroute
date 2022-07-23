@@ -28,13 +28,12 @@ class PosSession(models.Model):
 class PosConfig(models.Model):
 
     _inherit = 'pos.config'
-    user_id = fields.Many2one('res.users',string="Nom du POS")
+    user_id = fields.Many2one('res.users',string="Affecter Utilisateur")
 
     @api.onchange('user_id')
     def test_pos(self):
         if(self.user_id):
             for rec in self:
                 print("LLLL")
-                print(rec.partner_id.id)
                 obj =  rec.env['pos.config'].search_count([('user_id','=',rec.user_id.id)])  
                 print(obj)
