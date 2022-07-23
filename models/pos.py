@@ -35,6 +35,6 @@ class UserPos(models.Model):
         if(self.pos_id):
             for rec in self:
                 print("LLLL")
-                print(rec.id)
+                print(rec.partner_id.id)
                 obj =  rec.env['res.users'].search_count([('pos_id','=',rec.pos_id.id),('id','=',rec.user_id.id)])  
                 print(obj)
