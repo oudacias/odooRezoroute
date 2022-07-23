@@ -4,7 +4,11 @@ class SaleOrderExtra(models.Model):
 
     _inherit = 'sale.order'
 
-    hide_action_picking = fields.Boolean()
+    hide_action_picking = fields.Boolean(store=False)
+    hide_action_makde_picking = fields.Boolean(store=False)
+    hide_action_tecrmi = fields.Boolean(store=False)
+    hide_action_processed = fields.Boolean(store=False)
+    hide_action_invoice = fields.Boolean(store=False)
 
     state = fields.Selection([
         ('draft', 'Quotation'),
