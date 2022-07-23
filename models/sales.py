@@ -4,6 +4,8 @@ class SaleOrderExtra(models.Model):
 
     _inherit = 'sale.order'
 
+    hide_action_picking = fields.Boolean()
+
     state = fields.Selection([
         ('draft', 'Quotation'),
         ('repair_order','Réparation en cours'),
