@@ -32,7 +32,7 @@ class UserPos(models.Model):
 
     @api.onchange('pos_id')
     def test_pos(self):
-        if(self.product_id):
+        if(self.pos_id):
             for rec in self:
                 obj =  rec.env['res.users'].search([('pos_id','=',rec.pos_id.id)])  
                 print(obj)
