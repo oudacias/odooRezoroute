@@ -16,6 +16,8 @@
                     
                     <button name="action_button_confirm_repair_order" string="Confirmer la vente" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', true]]}"/>
                     <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight" attrs="{'invisible': ['|',('hide_confirm', '=', True),('is_repair_order', '=', False)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', false]]}"/>
+
+                    
                     <!-- <button name="action_print_picking_from_sale" string="Imprimer la livraison" type="object" class="oe_highlight" invisible="1" modifiers="{'invisible': true}"/>
                     <button name="action_print_invoice_from_sale" string="Imprimer la facture" type="object" class="oe_highlight" attrs="{'invisible': [('invoice_exists', '=', False)]}" modifiers="{'invisible': [['invoice_exists', '=', false]]}"/>
                     <button name="action_send_invoice_from_sale" string="Envoyer la facture" type="object" class="oe_highlight" id="action_send_invoice_from_sale_never" attrs="{'invisible': ['|',('invoice_exists', '=', False),('date_invoice_sent', '!=', False)]}" modifiers="{'invisible': ['|', ['invoice_exists', '=', false], ['date_invoice_sent', '!=', false]]}"/>
@@ -52,6 +54,8 @@
                 <xpath expr="//field[@name='partner_id']" position="after">
                 <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                 <field name="hide_confirm" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                <field name="hide_repair_order" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                
                     <field name="partner_ref" readonly="1"/>
                     <field name="mobile" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                     <field name="phone"  modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
