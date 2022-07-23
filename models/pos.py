@@ -34,5 +34,7 @@ class UserPos(models.Model):
     def test_pos(self):
         if(self.pos_id):
             for rec in self:
-                obj =  rec.env['res.users'].search_count([('pos_id','=',rec.pos_id.id),('id','=',rec.id)])  
+                print("LLLL")
+                print(rec.user_id.id)
+                obj =  rec.env['res.users'].search_count([('pos_id','=',rec.pos_id.id),('id','=',rec.user_id.id)])  
                 print(obj)
