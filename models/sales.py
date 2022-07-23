@@ -39,7 +39,7 @@ class SaleOrderExtra(models.Model):
         return super(SaleOrderExtra,self).write(vals)
         
 
-
+    @api.model
     def sale_order_to_prepare(self,vals):
         vals['state'] = 'repair_order'
         return super(SaleOrderExtra,self).write(vals)
