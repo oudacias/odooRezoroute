@@ -27,4 +27,4 @@ class PosSession(models.Model):
 class UserPos(models.Model):
 
     _inherit = 'res.users'
-    pos_id = fields.Many2one('res.config')
+    pos_id = fields.Many2one('pos.config')
