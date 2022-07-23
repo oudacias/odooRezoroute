@@ -38,12 +38,12 @@ class SaleOrderExtra(models.Model):
 
 
     
-    def repair_order(self):
+    def sale_order_to_prepare(self):
         self.write({'state':'to_prepare'})
         
         
 
-    def sale_order_to_prepare(self):
+    def sale_order_to_repair_order(self):
         self.write({'state':'repair_order'})
 
     def sale_order_making(self):
