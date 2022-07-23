@@ -9,9 +9,11 @@
                     <button name="repair_order" string="Démarrer OR" 
                         type="object" class="oe_highlight" attrs="{'invisible':[('is_repair_order','=',False)]}" modifiers="{'invisible':[['is_repair_order','=',false]], 'readonly':[['state','not in',[customer_validated','repair_order','purchase_finished','waiting_replenishment','draft','making','prepared','sent']]]}"/>
                     <button name="sale_order_to_prepare" string="A préparer" type="object" id="sale_order_to_prepare" attrs="{'invisible': ['|',('state', 'not in', ('draft','sent','waiting_replenishment','purchase_finished','customer_validated')),('is_repair_order', '=', True)]}" class="oe_highlight" modifiers="{'invisible': ['|', ['state', 'not in', ['draft', 'sent', 'waiting_replenishment', 'purchase_finished', 'customer_validated']], ['is_repair_order', '=', true]]}"/>
-                    <!-- <button name="sale_order_making" string="En préparation" type="object" id="sale_order_making" attrs="{'invisible': [('state', 'not in', ('to_prepare'))]}" class="oe_highlight" modifiers="{'invisible': [['state', 'not in', 'to_prepare']]}"/> -->
+                    <button name="sale_order_making" string="En préparation" type="object" id="sale_order_making" attrs="{'invisible': [('state', 'not in', ('to_prepare'))]}" class="oe_highlight" modifiers="{'invisible': [['state', 'not in', 'to_prepare']]}"/>
                     <!-- <button name="sale_order_to_prepare" string="A préparer" type="object" id="sale_order_to_prepare_prepared" attrs="{'invisible': [('state', 'not in', ('prepared'))]}" modifiers="{'invisible': [['state', 'not in', 'prepared']]}"/>
+                    -->
                     <button name="action_order_deposit" string="Acompte" type="object" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" context="{'default_partner_id':partner_id, 'default_account_payment_type_id':account_payment_type_id, 'default_amount':amount_residual or amount_total}" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}"/>
+                    
                     <button name="action_button_confirm_repair_order" string="Confirmer la vente" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', true]]}"/>
                     <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight" attrs="{'invisible': ['|',('hide_confirm', '=', True),('is_repair_order', '=', False)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', false]]}"/> -->
                     <!-- <button name="action_print_picking_from_sale" string="Imprimer la livraison" type="object" class="oe_highlight" invisible="1" modifiers="{'invisible': true}"/>
@@ -109,6 +111,12 @@
                 
 
             </field>
+        </record>
+
+         <record model="ir.actions.act_window" id="ps_rezoroute.order_deposit_wizard">
+            <field name="name">ps_rezoroute window</field>
+            <field name="res_model">order.deposit.wizard</field>
+            <field name="view_mode">form</field>
         </record>
 
 

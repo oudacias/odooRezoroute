@@ -127,3 +127,29 @@ class DeliveryCarrier(models.Model):
     normal_price = fields.Float(string="Prix normal")
     free_if_more_than = fields.Boolean(string="Gratuit si le montant total de la commande est superieur a")
     use_detailed_pricelist = fields.Boolean(string="Tarification avancee en fonction de la destination")
+
+
+
+class OrderDeposit(models.Model):
+    _name = "order.deposit.wizard"
+
+    journal_id = fields.Many2one('account.journal', string = "Journal")
+    account_payment_id = fields.Many2one('pos.payment.method',string="Type de paiement")
+    amount = fields.Float(string = "Montant payé")
+    date = fields.Date(string = "Date")
+    date_maturity = fields.Date(string = "Date d'échéance")
+    ref_payment = fields.Char(string = "Ref. du règlement")
+    memo = fields.Char(string = "Mémo")
+    customer_check_name = fields.Char(string = "Titulaire du chèque")
+
+
+
+    def action_order_deposit(self):
+        return {
+            'view_mode': 'form',
+            'res_model': 'order.deposit.wizard',
+            'target' : 'new',
+            'views' : [(False, 'form')],
+            'type': 'ir.actions.act_window',
+            # 'context' : {'default_partner_id' : self.id }
+        }

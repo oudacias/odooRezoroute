@@ -34,10 +34,16 @@ class SaleOrderExtra(models.Model):
 
 
     
-    def repair_order(self,vals):
-        vals['state'] = 'repair_order'
-        return super(SaleOrderExtra,self).write(vals)
+    def repair_order(self):
+        self.write({'state':'to_prepare'})
+        
         
 
     def sale_order_to_prepare(self):
         self.write({'state':'repair_order'})
+
+    def sale_order_making(self):
+        self.write({'state':'making'})
+
+    def action_button_confirm_repair_order(self):
+        self.write({'state':'progress'})
