@@ -3,16 +3,14 @@
         <record model="ir.ui.view" id="ps_rezoroute.UserPos">
             <field name="name">ps_rezoroute POS USER</field>
             <field name="model">res.users</field>
-            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
             <field name="type">form</field>
 
             <field name="arch" type="xml">                
-                 <xpath expr="//notebook" position="inside">
-                    <page string="API Details">
-                    <group col="4">
-                        <field name="pos_id"/>
-                        </group>
-                    </page>
+                 <xpath expr="//field[@name='name']" position="after">
+                    
+                        <field name="user_id"/>
+                        
                 </xpath>
             </field>
         </record>
