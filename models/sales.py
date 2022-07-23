@@ -37,6 +37,16 @@ class SaleOrderExtra(models.Model):
         ], string='Status', readonly=True, copy=False, index=True, tracking=3, default='draft')
 
 
+    @api.onchange('partner_id')
+    def additional_info(self):
+        if(self.partner_id):
+            for rec in self:
+                partner = rec.env['res.partner'].search([('id','=',rec.partner_id.id)])
+
+                rec.mobile = partner.mobile
+
+
+
 
     
     def sale_order_to_prepare(self):
