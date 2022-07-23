@@ -33,13 +33,12 @@ class SaleOrderExtra(models.Model):
 
 
 
-    
-    def repair_order(self,vals):
-        vals['state'] = 'repair_order'
-        return super(SaleOrderExtra,self).write(vals)
-        
 
-    @api.model
-    def sale_order_to_prepare(self,vals):
-        vals['state'] = 'repair_order'
-        return super(SaleOrderExtra,self).write(vals)
+    # @api.model
+    # def sale_order_to_prepare(self,vals):
+    #     vals['state'] = 'repair_order'
+        
+    #     return super(SaleOrderExtra,self).write(vals)
+
+    def sale_order_to_prepare(self):
+        self.write({'state':'repair_order'})
