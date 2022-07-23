@@ -1,3 +1,4 @@
+import string
 from odoo import fields, models,api
 
 class PosSession(models.Model):
@@ -27,4 +28,4 @@ class PosSession(models.Model):
 class UserPos(models.Model):
 
     _inherit = 'res.users'
-    pos_id = fields.Many2one('pos.config')
+    pos_id = fields.Many2one('pos.config',string="Nom du POS")
