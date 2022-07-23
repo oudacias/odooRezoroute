@@ -7,7 +7,7 @@
 
             <field name="arch" type="xml">                
                 <xpath expr="//header"  postion="inside">
-                    <button name="auto_close_pos_session" string="Fermer Session" />
+                    <button name="auto_close_pos_session" string="Fermer Session" type="object" />
                 </xpath>
             </field>
         </record>
