@@ -36,6 +36,7 @@
         'views/forfaits.xml',
         'views/ligne_commande.xml',
         'views/pos_view.xml',
+        'views/pos_user_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -8,7 +8,7 @@ class PosSession(models.Model):
     def open_sessions(self):
         self.env['pos.session'].create({'user_id': self.env.uid,
                 'config_id': 1})
-                
+
 
 
 
@@ -21,4 +21,10 @@ class PosSession(models.Model):
 
         return self.search([('state', '=', 'opening_control')]).action_pos_session_closing_control()
 
-        
+
+
+
+class UserPos(models.Model):
+
+    _inherit = 'res.users'
+    pos_id = fields.Many2one('res.config')
