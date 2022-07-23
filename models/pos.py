@@ -6,7 +6,8 @@ class PosSession(models.Model):
 
 
     def open_sessions(self):
-        self.env['pos.session'].create({})
+        self.env['pos.session'].create({'user_id': self.env.uid,
+                'config_id': 1})
 
 
 
