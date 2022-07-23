@@ -30,11 +30,11 @@ class UserPos(models.Model):
     _inherit = 'res.users'
     pos_id = fields.Many2one('pos.config',string="Nom du POS")
 
-    @api.onchange('pos_id')
+    @api.onchange('pos_id','id')
     def test_pos(self):
         if(self.pos_id):
             for rec in self:
                 print("LLLL")
-                print(rec.env.user.id)
+                print(rec.id)
                 obj =  rec.env['res.users'].search_count([('pos_id','=',rec.pos_id.id),('id','=',rec.user_id.id)])  
                 print(obj)
