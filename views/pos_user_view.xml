@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="base.view_users_form"/>
 
             <field name="arch" type="xml">                
-                <xpath expr="//field[@name='sel_groups_64_65']"  postion="after">
+                <xpath expr="//page[@name='preferences']"  postion="after">
                     <field name="pos_id"/>
                 </xpath>
             </field>
