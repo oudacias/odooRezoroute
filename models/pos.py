@@ -6,9 +6,12 @@ class PosSession(models.Model):
 
 
 
-    @api.model
     def auto_close_pos_session(self):
+
+        print("HELLO: Auto close session")
 
         """ Method called by scheduled actions to close currently open sessions """
 
         return self.search([('state', '=', 'opened')]).action_pos_session_closing_control()
+
+        
