@@ -76,13 +76,3 @@ class SaleOrderExtra(models.Model):
             # 'context' : {'default_partner_id' : self.id }
         }
 
-    def write(self,vals):
-
-        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
-
-        vals['session_id'] = session.id.id
-
-
-        q= super(SaleOrderExtra, self).write(vals) 
-        return q
-    
