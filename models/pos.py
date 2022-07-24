@@ -6,24 +6,35 @@ class PosSession(models.Model):
 
     _inherit = 'pos.session'
 
+    bon_achat = fields.Integer(compute='_compute_bon_achat')
+    bon_promo = fields.Integer(compute='_compute_promo')
+    cb = fields.Integer(compute='_compute_cb')
+    cheque = fields.Integer(compute='_compute_cheque')
+    cheque_flotte = fields.Integer(compute='_compute_cheque_flotte')
+    espece = fields.Integer(compute='_compute_espece')
+    pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
+    tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
+
+
 
     def open_sessions(self):
         self.env['pos.session'].create({'user_id': self.env.uid,
                 'config_id': 1})
-
-
-
-
 
     def auto_close_pos_session(self):
 
         print("HELLO: Auto close session    "  +self.id)
 
         """ Method called by scheduled actions to close currently open sessions """
-
-
-
         return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
+
+    def _compute_espece(self):
+        payment_method_id = self.env['account.payment.method'].search([('name', '=', 'Manual'),('type', '=', 'inbound')]).ids
+        payment_ids = self.env['account.payment'].search([('payment_method_line_id', '=', payment_method_id)])
+        
+        for payment in payment_ids:
+            self.espece += payment.amount
+
 
 
 
