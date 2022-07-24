@@ -5,7 +5,15 @@
             <field name="model">pos.session</field>
             <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
 
-            <field name="arch" type="xml">                
+            <field name="arch" type="xml">   
+                <xpath expr="//button[@name='action_view_order']"  postion="after">
+                    <button name="action_view_order"
+                            class="oe_stat_button"
+                            icon="fa-shopping-basket"
+                            type="object">
+                            <field name="facture_count" widget="statinfo" string="Factures"/>
+                        </button>
+                </xpath>             
                 <xpath expr="//header"  postion="inside">
                     <button name="auto_close_pos_session" string="Fermer Session" type="object" />
                     <!-- <button name="open_sessions" string="Ouvrir Session" type="object" /> -->
