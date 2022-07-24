@@ -159,11 +159,16 @@
             </field>
         </record>
 
+        <menuitem id="sale_order_menu_or"
+            name="Ordre de réparation"
+            parent="sale_menu_root"
+            sequence="2"/>
+
 
         <menuitem id="menu_sale_quotations"
                 name="OR"
                 action="action_quotations_or"
-                parent="sale.sale_order_menu"
+                parent="ps_rezoroute.sale_order_menu_or"
                 sequence="1" groups="sales_team.group_sale_salesman"/>
 
 
