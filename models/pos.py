@@ -40,3 +40,7 @@ class PosConfig(models.Model):
                 if(len(obj) > 0):
                     rec.user_id = rec.user_id.id
                     raise ValidationError("Utilisateur déjà affecté à une autre caisse")
+
+
+    def open_session_cb(self):
+        print("TEST TEST PASS")
