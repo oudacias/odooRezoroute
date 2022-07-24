@@ -9,14 +9,14 @@
                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
                     <button name="action_view_facture"
                             class="oe_stat_button"
-                            icon="fa-dollar"
+                            icon="fa-money"
                             type="object">
                             <field name="facture_count" widget="statinfo" string="Factures"/>
                         </button>
 
                     <button name="action_view_stock"
                             class="oe_stat_button"
-                            icon="fa-shopping-basket"
+                            icon="fa-truck"
                             type="object">
                             <field name="stock_count" widget="statinfo" string="Stock"/>
                         </button>
