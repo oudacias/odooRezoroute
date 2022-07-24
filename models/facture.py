@@ -78,13 +78,9 @@ class PosData(models.Model):
         devis = self.env['account.move'].search([('session_id', 'in', self.ids)])  
         print("Hello World")
         print(devis)
-        reglement = self.env['account.payment'].search([('move_id', 'in', devis.ids)])
+        reglement = self.env['account.payment'].search_count([('move_id', 'in', devis.ids)])
 
-
-
-
-        for session in self:
-            session.reglement_count = 10
+        self.reglement_count = reglement
 
 
     def action_view_facture(self):
