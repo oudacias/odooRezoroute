@@ -7,9 +7,9 @@
             <field name="type">form</field>
 
             <field name="arch" type="xml">   
-                <field name="name" position="attributes">
+                <!-- <field name="name" position="attributes">
                     <attribute name="domain">[('user_id', '=', uid)]</attribute>
-                </field> 
+                </field>  -->
 
                 <xpath expr="//div[hasclass('oe_title')]" position="inside">
                         <label for="name"/>

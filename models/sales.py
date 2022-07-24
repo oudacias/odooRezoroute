@@ -15,6 +15,8 @@ class SaleOrderExtra(models.Model):
     account_payment_type_id = fields.Many2one('pos.payment.method',string="Type de paiement")
     amount_residual = fields.Float()
 
+    session_id = fields.Many2one('pos.session',string="Session id")
+
     state = fields.Selection([
         ('draft', 'Quotation'),
         ('repair_order','Réparation en cours'),
@@ -73,3 +75,14 @@ class SaleOrderExtra(models.Model):
             'type': 'ir.actions.act_window',
             # 'context' : {'default_partner_id' : self.id }
         }
+
+    def write(self,vals):
+
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+
+        vals['session_id'] = session.id.id
+
+
+        q= super(SaleOrderExtra, self).write(vals) 
+        return q
+    
