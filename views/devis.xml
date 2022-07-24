@@ -133,8 +133,8 @@
             <field name="name">Quotations OR</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
-            <!-- <field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation_or"/>
-            <field name="context">{'search_default_my_quotation': 1, 'state' : 'repair_order'}</field> -->
+            <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or"/>
+            <!-- <field name="context">{'search_default_my_quotation': 1, 'state' : 'repair_order'}</field> -->
             <field name="view_mode">tree</field>
             
             
@@ -149,7 +149,7 @@
                 <xpath expr="//filter[@name='my_sale_orders_filter']" position="replace">
                     <field name="campaign_id"/>
                     <separator/>
-                    <filter string="My Quotations" name="my_quotation" domain="[('user_id', '=', uid)]"/>
+                    <filter string="My Quotations" name="my_quotation" domain="[('user_id','=',uid),('state','=','repair_order')]"/>
                     <separator/>
                     <filter string="Quotations" name="draft" domain="[('state','in',('repair_order'))]"/>
                     <filter string="Sales Orders" name="sales" domain="[('state','in',('repair_order'))]"/>
