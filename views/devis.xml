@@ -144,7 +144,7 @@
             <field name="name">Quotations OR Terminés</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
-            <!-- <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or_end"/> -->
+            <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or_end"/>
             <!-- <field name="context">{'search_default_my_quotation': 1, 'state' : 'repair_order'}</field> -->
             <field name="view_mode">tree</field>
             
@@ -181,7 +181,7 @@
         </record>
 
         <record id="sale_order_view_search_inherit_quotation_or_end" model="ir.ui.view">
-            <field name="name">sale.order.search.inherit.quotation.or.end</field>
+            <field name="name">sale.order.search.inherit.quotation.or</field>
             <field name="model">sale.order</field>
             <field name="mode">primary</field>
             <field name="inherit_id" ref="sale.view_sales_order_filter"/>
@@ -189,15 +189,17 @@
                 <xpath expr="//filter[@name='my_sale_orders_filter']" position="replace">
                     <field name="campaign_id"/>
                     <separator/>
-                    <filter string="My Quotations" name="my_quotation" domain="[('user_id','=',uid),('state','=','progress')]"/>
+                    <filter string="My Quotations" name="my_quotation" domain="[('user_id','=',uid),('state','=','repair_order')]"/>
                     <separator/>
-                    <filter string="Quotations" name="draft" domain="[('state','in',('progress'))]"/>
-                    <filter string="Sales Orders" name="sales" domain="[('state','in',('progress'))]"/>
+                    <filter string="Quotations" name="draft" domain="[('state','in',('repair_order'))]"/>
+                    <filter string="Sales Orders" name="sales" domain="[('state','in',('repair_order'))]"/>
                     <separator/>
                     <filter string="Create Date" name="filter_create_date" date="create_date"/>
                 </xpath>
             </field>
         </record>
+
+       
 
         <!-- <record id="sale_order_view_search_inherit_quotation_or_devis" model="ir.ui.view">
             <field name="name">sale.order.search.inherit.quotation.or.devis</field>
