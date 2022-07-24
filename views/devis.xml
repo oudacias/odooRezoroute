@@ -140,8 +140,8 @@
             
         </record>
 
-        <record id="action_quotations_or_end" model="ir.actions.act_window">
-            <field name="name">Quotations OR Terminés</field>
+      <record id="action_quotations_or_end" model="ir.actions.act_window">
+            <field name="name">OR en cours</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
             <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or"/>
@@ -150,7 +150,6 @@
             
             
         </record>
-
         <!-- <record id="action_quotations_or_devis" model="ir.actions.act_window">
             <field name="name">Devis OR </field>
             <field name="type">ir.actions.act_window</field>
