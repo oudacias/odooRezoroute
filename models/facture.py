@@ -33,7 +33,7 @@ class StockPickingExtra(models.Model):
 
         vals['session_id'] = session.id
 
-        q= super(AcoountMoveExtra, self).create(vals) 
+        q= super(StockPickingExtra, self).create(vals) 
         return q
 
 
