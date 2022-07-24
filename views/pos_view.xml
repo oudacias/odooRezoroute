@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
 
             <field name="arch" type="xml">   
-                <xpath expr="//button[@name='action_view_order']"  postion="after">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
                     <button name="action_view_order"
                             class="oe_stat_button"
                             icon="fa-shopping-basket"
