@@ -151,16 +151,15 @@
             
         </record>
 
-        <record id="action_quotations_or_devis" model="ir.actions.act_window">
+        <!-- <record id="action_quotations_or_devis" model="ir.actions.act_window">
             <field name="name">Devis OR </field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
             <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or_devis"/>
-            <!-- <field name="context">{'search_default_my_quotation': 1, 'state' : 'repair_order'}</field> -->
             <field name="view_mode">tree</field>
             
             
-        </record>
+        </record> -->
 
         <record id="sale_order_view_search_inherit_quotation_or" model="ir.ui.view">
             <field name="name">sale.order.search.inherit.quotation.or</field>
@@ -200,7 +199,7 @@
             </field>
         </record>
 
-        <record id="sale_order_view_search_inherit_quotation_or_devis" model="ir.ui.view">
+        <!-- <record id="sale_order_view_search_inherit_quotation_or_devis" model="ir.ui.view">
             <field name="name">sale.order.search.inherit.quotation.or.devis</field>
             <field name="model">sale.order</field>
             <field name="mode">primary</field>
@@ -217,7 +216,7 @@
                     <filter string="Create Date" name="filter_create_date" date="create_date"/>
                 </xpath>
             </field>
-        </record>
+        </record> -->
 
         <menuitem id="sale_order_menu_or"
             name="Ordre de réparation"
@@ -231,11 +230,11 @@
                 parent="ps_rezoroute.sale_order_menu_or"
                 sequence="1" groups="sales_team.group_sale_salesman"/>
 
-        <menuitem id="menu_sale_quotations_devis"
+        <!-- <menuitem id="menu_sale_quotations_devis"
                 name="Devis OR"
                 action="action_quotations_or_devis"
                 parent="ps_rezoroute.sale_order_menu_or_devis"
-                sequence="2" groups="sales_team.group_sale_salesman"/>
+                sequence="2" groups="sales_team.group_sale_salesman"/> -->
 
 
         <menuitem id="menu_sale_quotations_end"
