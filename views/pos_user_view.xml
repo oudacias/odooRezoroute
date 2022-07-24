@@ -33,7 +33,7 @@
         </record>
 
  -->
-
+<!-- 
         <record model="ir.ui.view" id="ps_rezoroute.ContextPos">
             <field name="name">ps_rezoroute POS USER Context</field>
             <field name="inherit_id" ref="your_module.external_evaluator_form"/>
@@ -43,5 +43,5 @@
                     <attribute name="domain">[('user_id', '=', uid)]</attribute>
                 </field>
             </field>
-    </record>
+    </record> -->
     </odoo>
