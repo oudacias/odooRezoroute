@@ -29,7 +29,7 @@ class PosSession(models.Model):
         return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
 
     def _compute_espece(self):
-        payment_method_id = self.env['account.payment.method'].search([('name', '=', 'Manual'),('type', '=', 'inbound')]).ids
+        payment_method_id = self.env['account.payment.method'].search([('name', '=', 'Manual'),('payment_type', '=', 'inbound')]).ids
         payment_ids = self.env['account.payment'].search([('payment_method_line_id', '=', payment_method_id)])
         
         for payment in payment_ids:
