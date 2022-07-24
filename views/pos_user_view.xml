@@ -6,8 +6,12 @@
             <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
             <field name="type">form</field>
 
-            <field name="arch" type="xml">                
-                 <xpath expr="//div[hasclass('oe_title')]" position="inside">
+            <field name="arch" type="xml">   
+                <field name="user_id" position="attributes">
+                    <attribute name="domain">[('user_id', '=', uid)]</attribute>
+                </field> 
+
+                <xpath expr="//div[hasclass('oe_title')]" position="inside">
                         <label for="name"/>
                         <field name="user_id"/>
                         
@@ -30,7 +34,7 @@
 
  -->
 
-        <!-- <record model="ir.ui.view" id="ps_rezoroute.ContextPos">
+        <record model="ir.ui.view" id="ps_rezoroute.ContextPos">
             <field name="name">ps_rezoroute POS USER Context</field>
             <field name="inherit_id" ref="your_module.external_evaluator_form"/>
             <field name="model">external.evaluator</field>
@@ -39,5 +43,5 @@
                     <attribute name="domain">[('user_id', '=', uid)]</attribute>
                 </field>
             </field>
-    </record> -->
+    </record>
     </odoo>

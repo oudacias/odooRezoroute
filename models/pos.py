@@ -23,7 +23,7 @@ class PosSession(models.Model):
 
 
 
-        return self.search([('state', '=', 'opening_control'),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
+        return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
 
 
 
