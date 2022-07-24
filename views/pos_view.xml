@@ -9,7 +9,7 @@
                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
                     <button name="action_view_facture"
                             class="oe_stat_button"
-                            icon="fa-shopping-basket"
+                            icon="fa-dollar"
                             type="object">
                             <field name="facture_count" widget="statinfo" string="Factures"/>
                         </button>
