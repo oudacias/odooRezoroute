@@ -7,16 +7,16 @@ class AcoountMoveExtra(models.Model):
     session_id = fields.Many2one('pos.session',string="Session id")
 
 
-
+    @api.model
     def create(self,vals):
 
         print("Creating new account")
 
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
 
-        print(str(session.id.id))
+        print(str(session.id))
 
-        vals['session_id'] = session.id.id
+        vals['session_id'] = session.id
 
 
         q= super(AcoountMoveExtra, self).create(vals) 
