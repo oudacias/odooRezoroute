@@ -36,6 +36,21 @@ class StockPickingExtra(models.Model):
         q= super(StockPickingExtra, self).create(vals) 
         return q
 
+class RegelementExtra(models.Model):
+
+    _inherit = 'account.payment'
+    session_id = fields.Many2one('pos.session',string="Session id")
+
+    @api.model
+    def create(self,vals):
+
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+
+        vals['session_id'] = session.id
+
+        q= super(RegelementExtra, self).create(vals) 
+        return q
+
 
 class PosData(models.Model):
 
@@ -68,19 +83,11 @@ class PosData(models.Model):
 
     def _compute_reglement_count(self):
 
-        # orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
-        # reglement = self.env['account.payment'].search([('move_id', 'in', orders_data.id)])
-        # print("HELLO ORDER")
-        # print(str(orders_data))
-        # sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
+        orders_data = self.env['account.payment'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
+        sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
+        for session in self:
+            session.reglement_count = sessions_data.get(session.id, 0)
 
-
-        devis = self.env['account.move'].search([('session_id', 'in', self.ids)])  
-        print("Hello World")
-        print(devis)
-        reglement = self.env['account.payment'].search_count([('move_id', 'in', devis.ids)])
-
-        self.reglement_count = reglement
 
 
     def action_view_facture(self):
@@ -113,6 +120,19 @@ class PosData(models.Model):
         return {
             # 'name': _('Factures'),
             'res_model': 'sale.order',
+            'view_mode': 'tree,form',
+            # 'views': [
+            #     (self.env.ref('point_of_sale.view_pos_order_tree_no_session_id').id, 'tree'),
+            #     (self.env.ref('point_of_sale.view_pos_pos_form').id, 'form'),
+            #     ],
+            'type': 'ir.actions.act_window',
+            'domain': [('session_id', 'in', self.ids)],
+        }
+    
+    def action_view_reglement(self):
+        return {
+            # 'name': _('Factures'),
+            'res_model': 'account.payment',
             'view_mode': 'tree,form',
             # 'views': [
             #     (self.env.ref('point_of_sale.view_pos_order_tree_no_session_id').id, 'tree'),
