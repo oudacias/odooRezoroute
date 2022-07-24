@@ -21,11 +21,28 @@ class AcoountMoveExtra(models.Model):
         return q
 
 
+class StockPickingExtra(models.Model):
+
+    _inherit = 'stock.picking'
+    session_id = fields.Many2one('pos.session',string="Session id")
+
+    @api.model
+    def create(self,vals):
+
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+
+        vals['session_id'] = session.id
+
+        q= super(AcoountMoveExtra, self).create(vals) 
+        return q
+
+
 class PosData(models.Model):
 
     _inherit = 'pos.session'
 
     facture_count = fields.Integer(compute='_compute_facture_count')
+    stock_count = fields.Integer(compute='_compute_stock_count')
 
 
     def _compute_facture_count(self):
@@ -35,15 +52,35 @@ class PosData(models.Model):
             session.facture_count = sessions_data.get(session.id, 0)
 
 
+    def _compute_stock_count(self):
+        orders_data = self.env['stock.picking'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
+        sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
+        for session in self:
+            session.facture_count = sessions_data.get(session.id, 0)
+
+
     def action_view_facture(self):
         return {
-            'name': _('Factures'),
+            # 'name': _('Factures'),
             'res_model': 'account.move',
             'view_mode': 'tree,form',
-            'views': [
-                (self.env.ref('point_of_sale.view_pos_order_tree_no_session_id').id, 'tree'),
-                (self.env.ref('point_of_sale.view_pos_pos_form').id, 'form'),
-                ],
+            # 'views': [
+            #     (self.env.ref('point_of_sale.view_pos_order_tree_no_session_id').id, 'tree'),
+            #     (self.env.ref('point_of_sale.view_pos_pos_form').id, 'form'),
+            #     ],
+            'type': 'ir.actions.act_window',
+            'domain': [('session_id', 'in', self.ids)],
+        }
+    
+    def action_view_stock(self):
+        return {
+            # 'name': _('Factures'),
+            'res_model': 'stock.picking',
+            'view_mode': 'tree,form',
+            # 'views': [
+            #     (self.env.ref('point_of_sale.view_pos_order_tree_no_session_id').id, 'tree'),
+            #     (self.env.ref('point_of_sale.view_pos_pos_form').id, 'form'),
+            #     ],
             'type': 'ir.actions.act_window',
             'domain': [('session_id', 'in', self.ids)],
         }

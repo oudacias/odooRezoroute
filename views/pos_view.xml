@@ -13,6 +13,13 @@
                             type="object">
                             <field name="facture_count" widget="statinfo" string="Factures"/>
                         </button>
+
+                    <button name="action_view_stock"
+                            class="oe_stat_button"
+                            icon="fa-shopping-basket"
+                            type="object">
+                            <field name="stock_count" widget="statinfo" string="Stock"/>
+                        </button>
                 </xpath>             
                 <xpath expr="//header"  postion="inside">
                     <button name="auto_close_pos_session" string="Fermer Session" type="object" />
