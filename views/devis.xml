@@ -182,8 +182,8 @@
                     <separator/>
                     <filter string="My Quotations" name="my_quotation" domain="[('user_id','=',uid),('state','=','progress')]"/>
                     <separator/>
-                    <filter string="Quotations" name="draft" domain="[('state','in',('progress'))]"/>
-                    <filter string="Sales Orders" name="sales" domain="[('state','in',('progress'))]"/>
+                    <!-- <filter string="Quotations" name="draft" domain="[('state','in',('progress'))]"/>
+                    <filter string="Sales Orders" name="sales" domain="[('state','in',('progress'))]"/> -->
                     <separator/>
                     <filter string="Create Date" name="filter_create_date" date="create_date"/>
                 </xpath>

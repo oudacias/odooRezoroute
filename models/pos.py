@@ -6,14 +6,14 @@ class PosSession(models.Model):
 
     _inherit = 'pos.session'
 
-    bon_achat = fields.Integer(compute='_compute_bon_achat')
-    bon_promo = fields.Integer(compute='_compute_promo')
-    cb = fields.Integer(compute='_compute_cb')
-    cheque = fields.Integer(compute='_compute_cheque')
-    cheque_flotte = fields.Integer(compute='_compute_cheque_flotte')
+    # bon_achat = fields.Integer(compute='_compute_bon_achat')
+    # bon_promo = fields.Integer(compute='_compute_promo')
+    # cb = fields.Integer(compute='_compute_cb')
+    # cheque = fields.Integer(compute='_compute_cheque')
+    # cheque_flotte = fields.Integer(compute='_compute_cheque_flotte')
     espece = fields.Integer(compute='_compute_espece')
-    pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
-    tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
+    # pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
+    # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
 
 
 
