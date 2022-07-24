@@ -33,4 +33,18 @@ class PosData(models.Model):
         sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
         for session in self:
             session.facture_count = sessions_data.get(session.id, 0)
+
+
+    def action_view_facture(self):
+        return {
+            'name': _('Factures'),
+            'res_model': 'account.move',
+            'view_mode': 'tree,form',
+            'views': [
+                (self.env.ref('point_of_sale.view_pos_order_tree_no_session_id').id, 'tree'),
+                (self.env.ref('point_of_sale.view_pos_pos_form').id, 'form'),
+                ],
+            'type': 'ir.actions.act_window',
+            'domain': [('session_id', 'in', self.ids)],
+        }
     
