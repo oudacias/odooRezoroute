@@ -43,4 +43,16 @@ class PosConfig(models.Model):
 
 
     def open_session_cb(self):
-        print("TEST TEST PASS")
+        self.ensure_one()
+        if not self.current_session_id:
+            self._check_pricelists()
+            self._check_company_journal()
+            self._check_company_invoice_journal()
+            self._check_company_payment()
+            self._check_currencies()
+            self._check_profit_loss_cash_journal()
+            self._check_payment_method_ids()
+            self.env['pos.session'].create({
+                'user_id': self.env.uid,
+                'config_id': self.id
+            })
