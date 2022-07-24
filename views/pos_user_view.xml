@@ -7,7 +7,7 @@
             <field name="type">form</field>
 
             <field name="arch" type="xml">   
-                <field name="user_id" position="attributes">
+                <field name="name" position="attributes">
                     <attribute name="domain">[('user_id', '=', uid)]</attribute>
                 </field> 
 
