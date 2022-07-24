@@ -151,7 +151,7 @@
             
         </record>
 
-        <record id="action_quotations_or_end" model="ir.actions.act_window">
+        <record id="action_quotations_or_devis" model="ir.actions.act_window">
             <field name="name">Devis OR </field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
