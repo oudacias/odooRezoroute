@@ -14,7 +14,7 @@ class AcoountMoveExtra(models.Model):
 
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
 
-        print(str(session))
+        print(str(session.id.id))
 
         vals['session_id'] = session.id.id
 
