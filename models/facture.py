@@ -78,7 +78,7 @@ class PosData(models.Model):
         devis = self.env['account.move'].search([('session_id', 'in', self.ids)])  
         print("Hello World")
         print(devis)
-        reglement = self.env['account.payment'].search([('move_id', 'in', devis.id)])
+        reglement = self.env['account.payment'].search([('move_id', 'in', devis.ids)])
 
 
 
