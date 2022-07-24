@@ -31,9 +31,13 @@ class PosSession(models.Model):
     def _compute_espece(self):
         payment_method_id = self.env['account.payment.method'].search([('name', '=', 'Manual'),('payment_type', '=', 'inbound')]).ids
         payment_ids = self.env['account.payment'].search([('payment_method_line_id', '=', payment_method_id)])
+        total = 0
         
         for payment in payment_ids:
-            self.espece += payment.amount
+
+            total += payment.amount
+            
+        self.espece = total 
 
 
 
