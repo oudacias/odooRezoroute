@@ -20,6 +20,13 @@
                             type="object">
                             <field name="stock_count" widget="statinfo" string="Stock"/>
                         </button>
+
+                    <button name="action_view_sale"
+                            class="oe_stat_button"
+                            icon="fa-file"
+                            type="object">
+                            <field name="sale_count" widget="statinfo" string="Devis"/>
+                        </button>
                 </xpath>             
                 <xpath expr="//header"  postion="inside">
                     <button name="auto_close_pos_session" string="Fermer Session" type="object" />

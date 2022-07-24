@@ -39,6 +39,17 @@ class SaleOrderExtra(models.Model):
         ], string='Status', readonly=True, copy=False, index=True, tracking=3, default='draft')
 
 
+    @api.model
+    def create(self,vals):
+
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+
+        vals['session_id'] = session.id
+
+        q= super(SaleOrderExtra, self).create(vals) 
+        return q
+
+
     @api.onchange('partner_id')
     def additional_info(self):
         if(self.partner_id):
