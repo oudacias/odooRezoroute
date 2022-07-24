@@ -68,13 +68,23 @@ class PosData(models.Model):
 
     def _compute_reglement_count(self):
 
-        orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
-        reglement = self.env['account.payment'].search([('move_id', 'in', orders_data.id)])
-        print("HELLO ORDER")
-        print(str(orders_data))
-        sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
+        # orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
+        # reglement = self.env['account.payment'].search([('move_id', 'in', orders_data.id)])
+        # print("HELLO ORDER")
+        # print(str(orders_data))
+        # sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
+
+
+        devis = self.env['account.move'].search([('session_id', 'in', self.ids)])  
+        print("Hello World")
+        print(devis)
+        reglement = self.env['account.payment'].search([('move_id', 'in', devis.id)])
+
+
+
+
         for session in self:
-            session.reglement_count = sessions_data.get(session.id, 0)
+            session.reglement_count = 10
 
 
     def action_view_facture(self):
