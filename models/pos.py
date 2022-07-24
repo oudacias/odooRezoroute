@@ -36,8 +36,7 @@ class PosConfig(models.Model):
         if(self.user_id):
             for rec in self:
                 obj =  rec.env['pos.config'].search([('user_id','=',rec.user_id.id)])  
-                print("LEN")
-                print(len(obj))
-                # if(obj > 0):
-                #     rec.user_id.id = rec.user_id_old
-                #     raise ValidationError("Utilisateur déjà affecté à une autre caisse")
+                
+                if(len(obj) > 0):
+                    rec.user_id = rec.user_id.id
+                    raise ValidationError("Utilisateur déjà affecté à une autre caisse")
