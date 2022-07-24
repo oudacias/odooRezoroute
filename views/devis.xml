@@ -129,35 +129,17 @@
             <field name="view_mode">form</field>
         </record>
 
-        <!-- <record id="action_quotations_or" model="ir.actions.act_window">
+        <record id="action_quotations_or" model="ir.actions.act_window">
             <field name="name">OR en cours</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
             <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or"/>
-            <field name="view_mode">tree</field>
-            
-            
-        </record> -->
-
-      <record id="action_quotations_or_end" model="ir.actions.act_window">
-            <field name="name">OR en cours</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">sale.order</field>
-            <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or"/>
-            <!-- <field name="context">{'search_default_my_quotation': 1, 'state' : 'repair_order'}</field> -->
             <field name="view_mode">tree</field>
             
             
         </record>
-        <!-- <record id="action_quotations_or_devis" model="ir.actions.act_window">
-            <field name="name">Devis OR </field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">sale.order</field>
-            <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or_devis"/>
-            <field name="view_mode">tree</field>
-            
-            
-        </record> -->
+
+      
 
         <record id="sale_order_view_search_inherit_quotation_or" model="ir.ui.view">
             <field name="name">sale.order.search.inherit.quotation.or</field>
@@ -178,45 +160,7 @@
             </field>
         </record>
 
-        <!-- <record id="sale_order_view_search_inherit_quotation_or_end" model="ir.ui.view">
-            <field name="name">sale.order.search.inherit.quotation.or</field>
-            <field name="model">sale.order</field>
-            <field name="mode">primary</field>
-            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
-            <field name="arch" type="xml">
-                <xpath expr="//filter[@name='my_sale_orders_filter']" position="replace">
-                    <field name="campaign_id"/>
-                    <separator/>
-                    <filter string="My Quotations" name="my_quotation" domain="[('user_id','=',uid),('state','=','repair_order')]"/>
-                    <separator/>
-                    <filter string="Quotations" name="draft" domain="[('state','in',('repair_order'))]"/>
-                    <filter string="Sales Orders" name="sales" domain="[('state','in',('repair_order'))]"/>
-                    <separator/>
-                    <filter string="Create Date" name="filter_create_date" date="create_date"/>
-                </xpath>
-            </field>
-        </record> -->
-
        
-
-        <!-- <record id="sale_order_view_search_inherit_quotation_or_devis" model="ir.ui.view">
-            <field name="name">sale.order.search.inherit.quotation.or.devis</field>
-            <field name="model">sale.order</field>
-            <field name="mode">primary</field>
-            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
-            <field name="arch" type="xml">
-                <xpath expr="//filter[@name='my_sale_orders_filter']" position="replace">
-                    <field name="campaign_id"/>
-                    <separator/>
-                    <filter string="My Quotations" name="my_quotation" domain="[('user_id','=',uid),('repair_order_note','=',true)]"/>
-                    <separator/>
-                    <filter string="Quotations" name="draft" domain="[('repair_order_note','=',true))]"/>
-                    <filter string="Sales Orders" name="sales" domain="[('repair_order_note','=',true))]"/>
-                    <separator/>
-                    <filter string="Create Date" name="filter_create_date" date="create_date"/>
-                </xpath>
-            </field>
-        </record> -->
 
         <menuitem id="sale_order_menu_or"
             name="Ordre de réparation"
@@ -224,24 +168,11 @@
             sequence="2"/>
 
 
-        <!-- <menuitem id="menu_sale_quotations"
+        <menuitem id="menu_sale_quotations"
                 name="OR en cours"
                 action="action_quotations_or"
                 parent="ps_rezoroute.sale_order_menu_or"
-                sequence="1" groups="sales_team.group_sale_salesman"/> -->
-
-        <!-- <menuitem id="menu_sale_quotations_devis"
-                name="Devis OR"
-                action="action_quotations_or_devis"
-                parent="ps_rezoroute.sale_order_menu_or_devis"
-                sequence="2" groups="sales_team.group_sale_salesman"/> -->
-
-
-        <menuitem id="menu_sale_quotations_end"
-                name="OR terminés"
-                action="action_quotations_or_end"
-                parent="ps_rezoroute.sale_order_menu_or"
-                sequence="3" groups="sales_team.group_sale_salesman"/>
+                sequence="1" groups="sales_team.group_sale_salesman"/>
 
 
     </odoo>
