@@ -56,7 +56,7 @@ class PosData(models.Model):
         orders_data = self.env['stock.picking'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
         sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
         for session in self:
-            session.facture_count = sessions_data.get(session.id, 0)
+            session.stock_count = sessions_data.get(session.id, 0)
 
 
     def action_view_facture(self):
