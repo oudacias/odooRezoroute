@@ -44,7 +44,7 @@ class PosData(models.Model):
     facture_count = fields.Integer(compute='_compute_facture_count')
     stock_count = fields.Integer(compute='_compute_stock_count')
     sale_count = fields.Integer(compute='_compute_sale_count')  
-
+    reglement_count = fields.Integer(compute='_compute_reglement_count')
 
     def _compute_facture_count(self):
         orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
@@ -64,6 +64,16 @@ class PosData(models.Model):
         sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
         for session in self:
             session.sale_count = sessions_data.get(session.id, 0)
+
+
+    def _compute_reglement_count(self):
+
+        orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
+        print("HELLO ORDER")
+        print(str(orders_data))
+        sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
+        for session in self:
+            session.reglement_count = sessions_data.get(session.id, 0)
 
 
     def action_view_facture(self):
