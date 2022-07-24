@@ -38,6 +38,14 @@
                     <button name="auto_close_pos_session" string="Fermer Session" type="object" />
                     <!-- <button name="open_sessions" string="Ouvrir Session" type="object" /> -->
                 </xpath>
+
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page string="Résumé">
+                            <field name="espece"/>
+                        </page>
+                    </notebook>
+                </xpath>
             </field>
         </record>
     </odoo>
