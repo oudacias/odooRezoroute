@@ -16,7 +16,7 @@
         </record>
 
 
-        <record model="ir.ui.view" id="ps_rezoroute.UserPosSession">
+        <!-- <record model="ir.ui.view" id="ps_rezoroute.UserPosSession">
             <field name="name">ps_rezoroute POS Session</field>
             <field name="model">pos.config</field>
             <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
@@ -28,7 +28,7 @@
             </field>
         </record>
 
-
+ -->
 
         <!-- <record model="ir.ui.view" id="ps_rezoroute.ContextPos">
             <field name="name">ps_rezoroute POS USER Context</field>
