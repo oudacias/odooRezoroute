@@ -130,7 +130,16 @@ class SaleOrderExtra(models.Model):
                                                             # 'tax_ids': [(6, 0, tax.ids)],
                                                         })
 
-        account = self.env['account.move'].search(['id','=',account_move.id])
-        account.write({'state': 'posted'})                                                
+        
+        account_move.write({'state': 'posted'}) 
+
+        return {
+            'view_mode': 'form',
+            'res_model': 'account.payment',
+            'target' : 'new',
+            'views' : [(False, 'form')],
+            'type': 'ir.actions.act_window',
+            'context' : {'move_id' : account_move.id }
+        }                                               
        
 
