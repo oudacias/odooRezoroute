@@ -99,13 +99,15 @@ class PosConfig(models.Model):
 
     def _total_compute(self):
 
-        # payment_ids = self.env['account.payment'].search([('session_id', '=', self.id)])
+        payment_ids = self.env['account.payment'].search([('session_id', '=', self.id)])
 
         # total = 0
         
-        # for payment in payment_ids:
+        for payment in payment_ids:
 
-        #     total += payment.amount
+            total += payment.amount
+
+        print("total_compute   " + str(total))
         
         self.total_compute = 0
 
