@@ -51,4 +51,17 @@
                 </xpath>
             </field>
         </record>
+
+
+         <record model="ir.ui.view" id="ps_rezoroute.POSkanban">
+            <field name="name">ps_rezoroute POS kanban</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_kanban"/>
+
+            <field name="arch" type="xml">   
+                <xpath expr="//field[@name='amount_total]" position="replace">
+                    <field name="total_compute"/>
+                </xpath>
+            </field>
+        </record>
     </odoo>

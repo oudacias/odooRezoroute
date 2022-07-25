@@ -15,6 +15,8 @@ class PosSession(models.Model):
     # pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
 
+    total_compute = fields.Integer(compute='_total_compute')
+
 
 
     def open_sessions(self):
@@ -56,6 +58,10 @@ class PosSession(models.Model):
             total += payment.amount
 
         self.cheque = total 
+
+    def _compute_cheque(self):
+        
+        self.total_compute = self.cheque + self.espece 
 
 
 
