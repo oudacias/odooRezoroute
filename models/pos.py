@@ -15,8 +15,7 @@ class PosSession(models.Model):
     # pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
 
-    total_compute = fields.Integer(compute='_total_compute')
-
+    
 
 
     def open_sessions(self):
@@ -59,11 +58,7 @@ class PosSession(models.Model):
 
         self.cheque = total 
 
-    def _compute_cheque(self):
-        
-        self.total_compute = self.cheque + self.espece 
-
-
+    
 
 
 
@@ -71,6 +66,9 @@ class PosConfig(models.Model):
 
     _inherit = 'pos.config'
     user_id = fields.Many2one('res.users',string="Affecter Utilisateur")
+
+    total_compute = fields.Integer(compute='_total_compute')
+
 
     @api.onchange('user_id')
     def test_pos(self):
@@ -97,3 +95,17 @@ class PosConfig(models.Model):
                 'user_id': self.env.uid,
                 'config_id': self.id
             })
+
+
+    def _compute_cheque(self):
+
+        payment_ids = self.env['account.payment'].search([('session_id', '=', self.id)])
+
+        total = 0
+        
+        for payment in payment_ids:
+
+            total += payment.amount
+        
+        self.total_compute = total
+
