@@ -61,6 +61,8 @@ class SaleOrderExtra(models.Model):
 
     @api.onchange('is_repair_order')
     def hide_repair_order(self):
+        print("Status      @@@@@@@   "  +str(self.state))
+
         if(self.is_repair_order and self.state == 'repair_order'):
             self.hide_confirm = True
 
