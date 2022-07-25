@@ -102,7 +102,13 @@ class PosConfig(models.Model):
         for rec in self:
 
             total = 0
-            payment_ids = self.env['account.payment'].search([('session_id', '=', rec.id)])
+
+
+            session_ids = self.env['pos.session'].search([('config_id', '=', rec.id)]).ids       
+
+            payment_ids = self.env['account.payment'].search([('session_id', 'in', session_ids)])
+
+
 
         # 
         
