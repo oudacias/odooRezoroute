@@ -14,6 +14,7 @@ class PosSession(models.Model):
     espece = fields.Integer(compute='_compute_espece')
     # pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
+    total_compute = fields.Integer(compute='_total_compute')
 
     
 
@@ -57,6 +58,20 @@ class PosSession(models.Model):
             total += payment.amount
 
         self.cheque = total 
+
+    def _total_compute(self):
+
+        for rec in self:
+
+            total = 0
+
+            payment_ids = self.env['account.payment'].search([('session_id', 'in', self.id)])
+
+            for payment in payment_ids:
+
+                total += payment.amount
+            
+            rec.total_compute = total
 
     
 
@@ -103,19 +118,12 @@ class PosConfig(models.Model):
 
             total = 0
 
-
             session_ids = self.env['pos.session'].search([('config_id', '=', rec.id)]).ids       
-
             payment_ids = self.env['account.payment'].search([('session_id', 'in', session_ids)])
 
-
-
-        # 
-        
             for payment in payment_ids:
 
                 total += payment.amount
-
             
             rec.total_compute = total
 

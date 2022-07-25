@@ -39,6 +39,10 @@
                     <!-- <button name="open_sessions" string="Ouvrir Session" type="object" /> -->
                 </xpath>
 
+                <xpath expr="//field[@name='stop_at']" position="after">                        
+                    <field name="total_compute"/>
+                </xpath>
+
                 <xpath expr="//sheet" position="inside">
                     <notebook>
                         <page string="Résumé">
