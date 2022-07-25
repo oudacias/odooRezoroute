@@ -23,7 +23,7 @@ class PosSession(models.Model):
 
     def auto_close_pos_session(self):
 
-        print("HELLO: Auto close session    "  +self.id)
+        print("HELLO: Auto close session    "  +str(self.id))
 
         """ Method called by scheduled actions to close currently open sessions """
         return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
@@ -44,7 +44,7 @@ class PosSession(models.Model):
 
 
     def _compute_cheque(self):
-        payment_method_id = self.env['account.payment.method'].search([('code', '=', 'check_printing'),('payment_type', '=', 'inbound')]).ids
+        payment_method_id = self.env['account.payment.method'].search([('code', '=', 'check_printing')]).ids
 
         print("Payment Method ID: " + str(payment_method_id))
 
