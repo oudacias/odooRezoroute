@@ -126,7 +126,7 @@ class SaleOrderExtra(models.Model):
                             # "ref_article":rec.product_id.default_code
                         }))
 
-        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
 
        
         a=self.env['account.move'].create({
@@ -134,6 +134,7 @@ class SaleOrderExtra(models.Model):
                     'partner_id':self.partner_id.id, 
                     'invoice_date':date.today(),
                     # 'condition_paiment':1, 
+
                     # 'date_limite_paiment':line.abonnement_id.date_paiment,
                     'move_type':"out_invoice",
                     'session_id': session.id,
