@@ -130,7 +130,7 @@ class SaleOrderExtra(models.Model):
                                                             # 'tax_ids': [(6, 0, tax.ids)],
                                                         })
 
-        partner = self.env['raccount.move'].search(['id','=',ccount_move.id], limit=1)
-        partner.write({'sate': 'posted'})                                                
+        account = self.env['account.move'].search(['id','=',account_move.id])
+        account.write({'sate': 'posted'})                                                
        
 
