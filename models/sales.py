@@ -107,49 +107,76 @@ class SaleOrderExtra(models.Model):
         }
 
     def create_payment_move(self):
-        account_move = self.env['account.move'].sudo().create({
-                                            'partner_id': self.partner_id.id,
-                                            'move_type': 'out_invoice',
-                                            'invoice_date': date.today(),
-                                            'journal_id': 1, 
-                                            'state': 'draft'
-                                        })
+        # account_move = self.env['account.move'].sudo().create({
+        #                                     'partner_id': self.partner_id.id,
+        #                                     'move_type': 'out_invoice',
+        #                                     'invoice_date': date.today(),
+        #                                     'journal_id': 1, 
+        #                                     'state': 'draft'
+        #                                 })
+
+        data = []
+        
         for rec in self.order_line:
-          
+            data.append((0,0,{  
+                            "price_unit":rec.price_unit,
+                            # "product_uom_id":rec.product_id.id,
+                            "quantity":rec.product_uom_qty,
+                            "name":rec.produit_id.name,"product_id":rec.produit_id.id,
+                            "ref_article":rec.produit_id.code_article}))
 
-            self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
-                                                            'partner_id': self.partner_id.id,
-                                                            # 'name': products.name,
-                                                            # 'product_id': rec.product_id.id,
-                                                            'move_id': account_move.id,
-                                                            'account_id': 6,
-                                                            'journal_id': 1,
-                                                            'quantity':  rec.product_uom_qty,
-                                                            'price_unit':  - rec.price_unit,
-                                                            # 'product_uom_id': uoms.id,
-                                                            'date': date.today(),
-                                                            'debit' : rec.price_unit,
-                                                            # 'tax_ids': [(6, 0, tax.ids)],
-                                                        })
+            # self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
+            #     'partner_id': self.partner_id.id,
+            #     # 'name': products.name,
+            #     # 'product_id': rec.product_id.id,
+            #     'move_id': account_move.id,
+            #     'account_id': 6,
+            #     'journal_id': 1,
+            #     'quantity':  rec.product_uom_qty,
+            #     'price_unit':  - rec.price_unit,
+            #     # 'product_uom_id': uoms.id,
+            #     'date': date.today(),
+            #     'debit' : rec.price_unit,
+            #     # 'tax_ids': [(6, 0, tax.ids)],
+            # })
 
-            self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
-                                                            'partner_id': self.partner_id.id,
-                                                            # 'name': products.name,
-                                                            'product_id': rec.product_id.id,
-                                                            'move_id': account_move.id,
-                                                            'account_id': 21,
-                                                            'journal_id': 1,
-                                                            'quantity':  rec.product_uom_qty,
-                                                            'price_unit':  rec.price_unit,
+            # self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
+            #     'partner_id': self.partner_id.id,
+            #     # 'name': products.name,
+            #     'product_id': rec.product_id.id,
+            #     'move_id': account_move.id,
+            #     'account_id': 21,
+            #     'journal_id': 1,
+            #     'quantity':  rec.product_uom_qty,
+            #     'price_unit':  rec.price_unit,
 
-                                                            # 'product_uom_id': uoms.id,
-                                                            'date': date.today(),
-                                                            'credit' : rec.price_unit,
-                                                            'balance': - rec.price_unit
-                                                            # 'tax_ids': [(6, 0, tax.ids)],
-                                                        })
+            #     # 'product_uom_id': uoms.id,
+            #     'date': date.today(),
+            #     'credit' : rec.price_unit,
+            #     'balance': - rec.price_unit
+            #     # 'tax_ids': [(6, 0, tax.ids)],
+            # })
 
         
+        a=self.env['account.move'].create({
+                    'invoice_date_due':date.today(),
+                    'partner_id':self.partner_id.id, 
+                    'invoice_date':date.today(),
+                    'condition_paiment':1, 
+                    # 'date_limite_paiment':line.abonnement_id.date_paiment,
+                    'move_type':"out_invoice",
+                    # 'echeance_id':line.id, 
+                    # 'taux':line.abonnement_id.devis_id.taux,
+                    # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
+                    # 'montant_vendeur':line.abonnement_id.devis_id.amount_total,
+                    "invoice_line_ids":data
+                })
+
+
+
+
+
+
         # account_move.write({'state': 'posted'}) 
 
         # return {
