@@ -112,6 +112,7 @@ class SaleOrderExtra(models.Model):
                                             'move_type': 'out_invoice',
                                             'invoice_date': date.today(),
                                             'journal_id': 1, 
+                                            'state': 'draft'
                                         })
         for rec in self.order_line:
           
