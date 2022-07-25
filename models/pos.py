@@ -65,7 +65,7 @@ class PosSession(models.Model):
 
             total = 0
 
-            payment_ids = self.env['account.payment'].search([('session_id', 'in', self.id)])
+            payment_ids = self.env['account.payment'].search([('session_id', '=', self.id)])
 
             for payment in payment_ids:
 
