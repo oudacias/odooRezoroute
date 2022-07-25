@@ -109,7 +109,7 @@ class SaleOrderExtra(models.Model):
     def create_payment_move(self):
         account_move = self.env['account.move'].sudo().create({
                                             'partner_id': self.partner_id.id,
-                                            'type': 'out_invoice',
+                                            'move_type': 'out_invoice',
                                             'invoice_date': date.today(),
                                             'journal_id': 1, 
                                         })
