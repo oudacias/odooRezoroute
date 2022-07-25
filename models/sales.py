@@ -119,7 +119,7 @@ class SaleOrderExtra(models.Model):
             self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
                                                             'partner_id': self.partner_id.id,
                                                             # 'name': products.name,
-                                                            'product_id': rec.product_id.id,
+                                                            # 'product_id': rec.product_id.id,
                                                             'move_id': account_move.id,
                                                             'account_id': 6,
                                                             'journal_id': 1,
