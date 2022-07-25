@@ -1,3 +1,4 @@
+from sre_parse import State
 from odoo import fields, models,api
 
 class SaleOrderExtra(models.Model):
@@ -58,6 +59,11 @@ class SaleOrderExtra(models.Model):
 
                 rec.mobile = partner.mobile
 
+    @api.onchange('is_repair_order')
+    def hide_repair_order(self):
+        if(self.is_repair_order and self.state == 'repair_order'):
+            self.hide_confirm = True
+
 
 
 
@@ -68,7 +74,9 @@ class SaleOrderExtra(models.Model):
         
 
     def sale_order_to_repair_order(self):
-        self.write({'state':'repair_order'})
+        self.write({'state':'repair_order'
+                    
+                        })
 
     def sale_order_making(self):
         self.write({'state':'making'})
