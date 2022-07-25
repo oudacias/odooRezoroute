@@ -122,8 +122,9 @@ class SaleOrderExtra(models.Model):
                             "price_unit":rec.price_unit,
                             # "product_uom_id":rec.product_id.id,
                             "quantity":rec.product_uom_qty,
-                            "name":rec.produit_id.name,"product_id":rec.produit_id.id,
-                            "ref_article":rec.produit_id.code_article}))
+                            "name":rec.product_id.name,"product_id":rec.product_id.id,
+                            # "ref_article":rec.product_id.default_code
+                        }))
 
             # self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
             #     'partner_id': self.partner_id.id,
@@ -162,7 +163,7 @@ class SaleOrderExtra(models.Model):
                     'invoice_date_due':date.today(),
                     'partner_id':self.partner_id.id, 
                     'invoice_date':date.today(),
-                    'condition_paiment':1, 
+                    # 'condition_paiment':1, 
                     # 'date_limite_paiment':line.abonnement_id.date_paiment,
                     'move_type':"out_invoice",
                     # 'echeance_id':line.id, 
