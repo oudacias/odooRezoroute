@@ -97,7 +97,7 @@ class PosConfig(models.Model):
             })
 
 
-    def _compute_cheque(self):
+    def _total_compute(self):
 
         payment_ids = self.env['account.payment'].search([('session_id', '=', self.id)])
 
