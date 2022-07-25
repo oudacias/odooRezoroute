@@ -9,7 +9,7 @@ class PosSession(models.Model):
     # bon_achat = fields.Integer(compute='_compute_bon_achat')
     # bon_promo = fields.Integer(compute='_compute_promo')
     # cb = fields.Integer(compute='_compute_cb')
-    # cheque = fields.Integer(compute='_compute_cheque')
+    cheque = fields.Integer(compute='_compute_cheque')
     # cheque_flotte = fields.Integer(compute='_compute_cheque_flotte')
     espece = fields.Integer(compute='_compute_espece')
     # pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
@@ -29,11 +29,11 @@ class PosSession(models.Model):
         return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
 
     def _compute_espece(self):
-        payment_method_id = self.env['account.payment.method'].search([('code', '=', 'Manual'),('payment_type', '=', 'inbound')]).ids
+        payment_method_id = self.env['account.payment.method'].search([('code', '=', 'manual'),('payment_type', '=', 'inbound')]).ids
 
         print("Payment Method ID: " + str(payment_method_id))
 
-        payment_ids = self.env['account.payment'].search([('payment_method_line_id', '=', payment_method_id)])
+        payment_ids = self.env['account.payment'].search([('payment_method_line_id', '=', payment_method_id),('session_id', '=', self.id)])
         total = 0
         
         for payment in payment_ids:
@@ -41,6 +41,21 @@ class PosSession(models.Model):
             total += payment.amount
 
         self.espece = total 
+
+
+    def _compute_cheque(self):
+        payment_method_id = self.env['account.payment.method'].search([('code', '=', 'check_printing'),('payment_type', '=', 'inbound')]).ids
+
+        print("Payment Method ID: " + str(payment_method_id))
+
+        payment_ids = self.env['account.payment'].search([('payment_method_line_id', '=', payment_method_id),('session_id', '=', self.id)])
+        total = 0
+        
+        for payment in payment_ids:
+
+            total += payment.amount
+
+        self.cheque = total 
 
 
 

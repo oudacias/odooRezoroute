@@ -42,7 +42,10 @@
                 <xpath expr="//sheet" position="inside">
                     <notebook>
                         <page string="Résumé">
-                            <field name="espece"/>
+                            <group>
+                                <field name="espece"/>
+                                <field name="cheque"/>
+                            </group>
                         </page>
                     </notebook>
                 </xpath>
