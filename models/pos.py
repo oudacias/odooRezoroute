@@ -111,5 +111,5 @@ class PosConfig(models.Model):
                 total += payment.amount
 
             
-            rec.total_compute = 0
+            rec.total_compute = total
 
