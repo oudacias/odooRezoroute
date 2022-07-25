@@ -126,39 +126,9 @@ class SaleOrderExtra(models.Model):
                             # "ref_article":rec.product_id.default_code
                         }))
 
-            # self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
-            #     'partner_id': self.partner_id.id,
-            #     # 'name': products.name,
-            #     # 'product_id': rec.product_id.id,
-            #     'move_id': account_move.id,
-            #     'account_id': 6,
-            #     'journal_id': 1,
-            #     'quantity':  rec.product_uom_qty,
-            #     'price_unit':  - rec.price_unit,
-            #     # 'product_uom_id': uoms.id,
-            #     'date': date.today(),
-            #     'debit' : rec.price_unit,
-            #     # 'tax_ids': [(6, 0, tax.ids)],
-            # })
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
 
-            # self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
-            #     'partner_id': self.partner_id.id,
-            #     # 'name': products.name,
-            #     'product_id': rec.product_id.id,
-            #     'move_id': account_move.id,
-            #     'account_id': 21,
-            #     'journal_id': 1,
-            #     'quantity':  rec.product_uom_qty,
-            #     'price_unit':  rec.price_unit,
-
-            #     # 'product_uom_id': uoms.id,
-            #     'date': date.today(),
-            #     'credit' : rec.price_unit,
-            #     'balance': - rec.price_unit
-            #     # 'tax_ids': [(6, 0, tax.ids)],
-            # })
-
-        
+       
         a=self.env['account.move'].create({
                     'invoice_date_due':date.today(),
                     'partner_id':self.partner_id.id, 
@@ -166,6 +136,7 @@ class SaleOrderExtra(models.Model):
                     # 'condition_paiment':1, 
                     # 'date_limite_paiment':line.abonnement_id.date_paiment,
                     'move_type':"out_invoice",
+                    'session_id': session.id,
                     # 'echeance_id':line.id, 
                     # 'taux':line.abonnement_id.devis_id.taux,
                     # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
