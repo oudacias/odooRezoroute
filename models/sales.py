@@ -1,4 +1,6 @@
 from sre_parse import State
+from datetime import date
+
 from odoo import fields, models,api
 
 class SaleOrderExtra(models.Model):
@@ -103,4 +105,25 @@ class SaleOrderExtra(models.Model):
             'type': 'ir.actions.act_window',
             # 'context' : {'default_partner_id' : self.id }
         }
+
+    def create_payment_move(self):
+        account_move = self.env['account.move'].sudo().create({
+                                            'partner_id': self.partner_id.id,
+                                            'type': 'out_invoice',
+                                            'invoice_date': date.today(),
+                                            'journal_id': 1, 
+                                        })
+        # self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
+        #                                                     'partner_id': self.partner_id.id,
+        #                                                     # 'name': products.name,
+        #                                                     'product_id': 1,
+        #                                                     'move_id': account_move.id,
+        #                                                     'account_id': 37,
+        #                                                     'journal_id': 1,
+        #                                                     'quantity':  qty,
+        #                                                     'price_unit':  price,
+        #                                                     'product_uom_id': uoms.id,
+        #                                                     'date': date.today(),
+        #                                                     'tax_ids': [(6, 0, tax.ids)],
+        #                                                 })
 
