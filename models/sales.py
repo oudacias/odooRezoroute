@@ -113,9 +113,11 @@ class SaleOrderExtra(models.Model):
         #                                     'invoice_date': date.today(),
         #                                     'journal_id': 1, 
         #                                 })
-        for rec in self.product_id:
+        for rec in self.order_line:
             print("TEST FACTURE @@@@@")
-            print(rec.id)
+            print(rec.product_id)
+            print(rec.product_uom_qty)
+            print(rec.price_unit)
 
         # self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
         #                                                     'partner_id': self.partner_id.id,
