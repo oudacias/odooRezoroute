@@ -121,17 +121,34 @@ class SaleOrderExtra(models.Model):
                                                             # 'name': products.name,
                                                             'product_id': rec.product_id.id,
                                                             'move_id': account_move.id,
-                                                            'account_id': 37,
+                                                            'account_id': 21,
                                                             'journal_id': 1,
                                                             'quantity':  rec.product_uom_qty,
                                                             'price_unit':  rec.price_unit,
                                                             # 'product_uom_id': uoms.id,
                                                             'date': date.today(),
+                                                            'debit' : rec.price_unit,
+                                                            # 'tax_ids': [(6, 0, tax.ids)],
+                                                        })
+
+            self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
+                                                            'partner_id': self.partner_id.id,
+                                                            # 'name': products.name,
+                                                            'product_id': rec.product_id.id,
+                                                            'move_id': account_move.id,
+                                                            'account_id': 37,
+                                                            'journal_id': 6,
+                                                            'quantity':  rec.product_uom_qty,
+                                                            'price_unit':  rec.price_unit,
+
+                                                            # 'product_uom_id': uoms.id,
+                                                            'date': date.today(),
+                                                            'credit' : rec.price_unit,
                                                             # 'tax_ids': [(6, 0, tax.ids)],
                                                         })
 
         
-        account_move.write({'state': 'posted'}) 
+        # account_move.write({'state': 'posted'}) 
 
         return {
             'view_mode': 'form',
@@ -139,7 +156,7 @@ class SaleOrderExtra(models.Model):
             'target' : 'new',
             'views' : [(False, 'form')],
             'type': 'ir.actions.act_window',
-            'context' : {'move_id' : account_move.id }
+            'context' : {'default_move_id' : account_move.id }
         }                                               
        
 
