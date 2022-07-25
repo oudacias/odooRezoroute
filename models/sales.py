@@ -107,23 +107,27 @@ class SaleOrderExtra(models.Model):
         }
 
     def create_payment_move(self):
-        account_move = self.env['account.move'].sudo().create({
-                                            'partner_id': self.partner_id.id,
-                                            'move_type': 'out_invoice',
-                                            'invoice_date': date.today(),
-                                            'journal_id': 1, 
-                                        })
-        self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
-                                                            'partner_id': self.partner_id.id,
-                                                            # 'name': products.name,
-                                                            'product_id': 1,
-                                                            'move_id': account_move.id,
-                                                            'account_id': 37,
-                                                            'journal_id': 1,
-                                                            'quantity':  1,
-                                                            'price_unit':  10,
-                                                            # 'product_uom_id': uoms.id,
-                                                            'date': date.today(),
-                                                            # 'tax_ids': [(6, 0, tax.ids)],
-                                                        })
+        # account_move = self.env['account.move'].sudo().create({
+        #                                     'partner_id': self.partner_id.id,
+        #                                     'move_type': 'out_invoice',
+        #                                     'invoice_date': date.today(),
+        #                                     'journal_id': 1, 
+        #                                 })
+        for rec in self.product_id:
+            print("TEST FACTURE @@@@@")
+            print(rec.id)
+
+        # self.env['account.move.line'].sudo().with_context(check_move_validity=False).create({
+        #                                                     'partner_id': self.partner_id.id,
+        #                                                     # 'name': products.name,
+        #                                                     'product_id': 1,
+        #                                                     'move_id': account_move.id,
+        #                                                     'account_id': 37,
+        #                                                     'journal_id': 1,
+        #                                                     'quantity':  1,
+        #                                                     'price_unit':  10,
+        #                                                     # 'product_uom_id': uoms.id,
+        #                                                     'date': date.today(),
+        #                                                     # 'tax_ids': [(6, 0, tax.ids)],
+        #                                                 })
 
