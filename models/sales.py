@@ -131,6 +131,6 @@ class SaleOrderExtra(models.Model):
                                                         })
 
         account = self.env['account.move'].search(['id','=',account_move.id])
-        account.write({'sate': 'posted'})                                                
+        account.update({'sate': 'posted'})                                                
        
 
