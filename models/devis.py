@@ -110,7 +110,7 @@ class SaleLine(models.Model):
             for rec in self:
             
                 product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
-                category = rec.env['product.category'].search([('id','=',rec.product_tmpl_id.categ_id)])
+                category = rec.env['product.category'].search([('id','=',product.product_tmpl_id.categ_id)])
                 rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
                 rec.real_qty_available = product.product_tmpl_id.real_qty_available
                 rec.price_unit_public = product.product_tmpl_id.lst_price
