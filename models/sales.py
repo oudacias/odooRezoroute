@@ -163,14 +163,23 @@ class SaleOrderExtra(models.Model):
 
             a.write({'session_id':  str(session.id)}) 
 
+            # return {
+            #     'view_mode': 'form',
+            #     'res_model': 'account.payment',
+            #     'target' : 'new',
+            #     'views' : [(False, 'form')],
+            #     'type': 'ir.actions.act_window',
+            #     'context' : {'default_invoice_ids' : a.id }
+            # }  
+
             return {
+                'view_type': 'form',
                 'view_mode': 'form',
-                'res_model': 'account.payment',
-                'target' : 'new',
-                'views' : [(False, 'form')],
+                'view_id': res_id,
+                'res_model': 'account.voucher',
                 'type': 'ir.actions.act_window',
-                'context' : {'default_invoice_ids' : a.id }
-            }       
+                'target': 'current',
+            }     
         else:
 
             raise ValidationError("Aucune caisse n'est ouverte")
