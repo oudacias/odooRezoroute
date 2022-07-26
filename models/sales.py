@@ -164,14 +164,24 @@ class SaleOrderExtra(models.Model):
             a.write({'session_id':  str(session.id)}) 
 
             return {
-                'view_mode': 'form',
                 'res_model': 'account.payment.register',
-                'target' : 'new',
-                'views' : [(False, 'form')],
+                'view_mode': 'form',
+                'context': {
+                    'active_model': 'account.move',
+                    'active_ids': a.id,
+                },
+                'target': 'new',
                 'type': 'ir.actions.act_window',
-                'context' : {'default_move_id' : a.id,'default_partner_id' : self.partner_id.id }
-                # 'context' : {'default_partner_id' : self.partner_id.id }
             }  
+            # return {
+            #     'view_mode': 'form',
+            #     'res_model': 'account.payment.register',
+            #     'target' : 'new',
+            #     'views' : [(False, 'form')],
+            #     'type': 'ir.actions.act_window',
+            #     'context' : {'default_move_id' : a.id,'default_partner_id' : self.partner_id.id }
+            #     # 'context' : {'default_partner_id' : self.partner_id.id }
+            # }  
 
             
         else:
