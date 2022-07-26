@@ -118,7 +118,7 @@ class SaleOrderExtra(models.Model):
         # #                                     'state': 'draft'
         # #                                 })
 
-        # session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
 
         if(len(session) == 1):
 
