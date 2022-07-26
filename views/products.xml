@@ -280,7 +280,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="ps_rezoroute.category.form">
+        <record model="ir.ui.view" id="ps_rezoroute.category_form">
             <field name="name">ps_rezoroute Categorie d'Article</field>
             <field name="model">product.category</field>
             <field name="inherit_id" ref="product.product_category_form_view"/>
