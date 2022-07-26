@@ -111,11 +111,12 @@ class SaleLine(models.Model):
             
                 product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
                 category = rec.env['product.category'].search([('id','=',product.product_tmpl_id.categ_id.id)])
+                print("SEUIL product_ids    available"     +str(category))
+
                 rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
                 rec.real_qty_available = product.product_tmpl_id.real_qty_available
                 rec.price_unit_public = product.product_tmpl_id.lst_price
                 rec.discout = product.product_tmpl_id.seuil
-                print("SEUIL product_ids    available"     +str(category.seuil))
                 
 class DeliveryCarrier(models.Model):
     _name = "delivery.carrier"
