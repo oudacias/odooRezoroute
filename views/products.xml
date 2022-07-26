@@ -9,19 +9,19 @@
                     
                         <group>
                         <!-- <label for="ps_code_article" string="Code de l'article"/>
-                        <div class="d-flex">
+                        <div class="d-flex">-->
                             <field class="o_text_overflow" name="ps_code_article"/>
-                        </div> -->
-                        <label for="manufacturer_id" string="Constructeur"/>
-                            <div class="d-flex">
+                        <!--</div> -->
+                        <!-- <label for="manufacturer_id" string="Constructeur"/>
+                            <div class="d-flex"> -->
                                 <field class="o_text_overflow" name="manufacturer_id"/>
-                            </div>
-                        <label for="description" string="Description de l'article"/>
+                            <!-- </div> -->
+                        <!-- <label for="description" string="Description de l'article"/> -->
                             <field class="o_text_overflow" name="description"/>
-                        <label for="default_code" string="Reference de l'article"/>
-                        <div class="d-flex">
+                        <!-- <label for="default_code" string="Reference de l'article"/>
+                        <div class="d-flex"> -->
                             <field class="o_text_overflow" name="default_code"/>
-                        </div>
+                        <!-- </div> -->
 
                         <!-- <label for="image1" string="Image 1 de l'article"/> -->
                         <!-- <div class="d-flex"> -->
