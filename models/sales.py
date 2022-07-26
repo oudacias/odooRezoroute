@@ -154,7 +154,7 @@ class SaleOrderExtra(models.Model):
 
 
 
-        # a.write({'session_id': '1'}) 
+        a.write({'session_id':  str(session.id)}) 
 
         # return {
         #     'view_mode': 'form',
