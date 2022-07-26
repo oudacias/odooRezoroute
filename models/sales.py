@@ -1,5 +1,7 @@
 from sre_parse import State
 from datetime import date
+from odoo.exceptions import ValidationError
+
 
 from odoo import fields, models,api
 
@@ -107,6 +109,7 @@ class SaleOrderExtra(models.Model):
         }
 
     def create_payment_move(self):
+        self.ensure_one()
         # account_move = self.env['account.move'].sudo().create({
         #                                     'partner_id': self.partner_id.id,
         #                                     'move_type': 'out_invoice',
@@ -115,54 +118,62 @@ class SaleOrderExtra(models.Model):
         #                                     'state': 'draft'
         #                                 })
 
-        data = []
-        
-        for rec in self.order_line:
-            data.append((0,0,{  
-                            "price_unit":rec.price_unit,
-                            # "product_uom_id":rec.product_id.id,
-                            "quantity":rec.product_uom_qty,
-                            "name":rec.product_id.name,"product_id":rec.product_id.id,
-                            # "ref_article":rec.product_id.default_code
-                        }))
-
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
 
-        print(self.env.uid)
+        if(len(session) == 1):
 
-        print("Session Saved: @@@££££££" + str(session.id))
+            data = []
+            
+            for rec in self.order_line:
+                data.append((0,0,{  
+                                "price_unit":rec.price_unit,
+                                # "product_uom_id":rec.product_id.id,
+                                "quantity":rec.product_uom_qty,
+                                "name":rec.product_id.name,"product_id":rec.product_id.id,
+                                # "ref_article":rec.product_id.default_code
+                            }))
 
-       
-        a=self.env['account.move'].create({
-                    'invoice_date_due':date.today(),
-                    'partner_id':self.partner_id.id, 
-                    'invoice_date':date.today(),
-                    # 'condition_paiment':1, 
+        
 
-                    # 'date_limite_paiment':line.abonnement_id.date_paiment,
-                    'move_type':"out_invoice",
-                    'session_id': '1',
-                    # 'echeance_id':line.id, 
-                    # 'taux':line.abonnement_id.devis_id.taux,
-                    # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
-                    # 'montant_vendeur':line.abonnement_id.devis_id.amount_total,
-                    "invoice_line_ids":data
-                })
+            print(self.env.uid)
+
+            print("Session Saved: @@@££££££" + str(session.id))
+
+        
+            a=self.env['account.move'].create({
+                        'invoice_date_due':date.today(),
+                        'partner_id':self.partner_id.id, 
+                        'invoice_date':date.today(),
+                        # 'condition_paiment':1, 
+
+                        # 'date_limite_paiment':line.abonnement_id.date_paiment,
+                        'move_type':"out_invoice",
+                        'session_id': '1',
+                        # 'echeance_id':line.id, 
+                        # 'taux':line.abonnement_id.devis_id.taux,
+                        # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
+                        # 'montant_vendeur':line.abonnement_id.devis_id.amount_total,
+                        "invoice_line_ids":data
+                    })
 
 
 
 
 
 
-        a.write({'session_id':  str(session.id)}) 
+            a.write({'session_id':  str(session.id)}) 
 
-        # return {
-        #     'view_mode': 'form',
-        #     'res_model': 'account.payment',
-        #     'target' : 'new',
-        #     'views' : [(False, 'form')],
-        #     'type': 'ir.actions.act_window',
-        #     'context' : {'default_move_id' : account_move.id }
-        # }                                               
+            return {
+                'view_mode': 'form',
+                'res_model': 'account.payment',
+                'target' : 'new',
+                'views' : [(False, 'form')],
+                'type': 'ir.actions.act_window',
+                'context' : {'default_move_id' : a.id }
+            }       
+        else:
+
+            raise ValidationError("Aucune caisse n'est ouverte")
+                      
        
 
