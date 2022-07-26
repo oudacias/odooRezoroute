@@ -169,7 +169,7 @@ class SaleOrderExtra(models.Model):
                 'target' : 'new',
                 'views' : [(False, 'form')],
                 'type': 'ir.actions.act_window',
-                'context' : {'default_invoice_ids' : a.id,'default_partner_id' : self.partner_id.id }
+                'context' : {'default_move_id' : a.id,'default_partner_id' : self.partner_id.id }
                 # 'context' : {'default_partner_id' : self.partner_id.id }
             }  
 
