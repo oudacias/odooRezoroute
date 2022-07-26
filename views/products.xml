@@ -32,10 +32,10 @@
                             <field class="o_text_overflow oe_inline" name="image2"/>
                         <!-- </div> -->
 
-                        <!-- <label for="categ_id" string="Categorie de l'article"/>
+                        <label for="categ_id" string="Categorie de l'article"/>
                         <div class="d-flex">
                             <field class="o_text_overflow" name="categ_id"/>
-                        </div> -->
+                        </div>
                     </div>
                 </xpath>
 
