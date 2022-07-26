@@ -169,7 +169,7 @@ class SaleOrderExtra(models.Model):
                 'target' : 'new',
                 'views' : [(False, 'form')],
                 'type': 'ir.actions.act_window',
-                'context' : {'default_move_id' : a.id }
+                # 'context' : {'default_move_id' : a.id }
             }       
         else:
 
