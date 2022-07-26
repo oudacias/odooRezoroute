@@ -128,6 +128,8 @@ class SaleOrderExtra(models.Model):
 
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
 
+        print("Session Saved: @@@££££££" + str(session.id))
+
        
         a=self.env['account.move'].create({
                     'invoice_date_due':date.today(),
