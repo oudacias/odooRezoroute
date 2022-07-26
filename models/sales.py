@@ -175,7 +175,7 @@ class SaleOrderExtra(models.Model):
             return {
                 'view_type': 'form',
                 'view_mode': 'form',
-                'view_id': res_id,
+                # 'view_id': res_id,
                 'res_model': 'account.voucher',
                 'type': 'ir.actions.act_window',
                 'target': 'current',
