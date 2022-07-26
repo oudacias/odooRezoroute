@@ -110,76 +110,70 @@ class SaleOrderExtra(models.Model):
 
     def create_payment_move(self):
         self.ensure_one()
-        # account_move = self.env['account.move'].sudo().create({
-        #                                     'partner_id': self.partner_id.id,
-        #                                     'move_type': 'out_invoice',
-        #                                     'invoice_date': date.today(),
-        #                                     'journal_id': 1, 
-        #                                     'state': 'draft'
-        #                                 })
+        # # account_move = self.env['account.move'].sudo().create({
+        # #                                     'partner_id': self.partner_id.id,
+        # #                                     'move_type': 'out_invoice',
+        # #                                     'invoice_date': date.today(),
+        # #                                     'journal_id': 1, 
+        # #                                     'state': 'draft'
+        # #                                 })
 
-        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
+        # session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
 
         if(len(session) == 1):
 
-            data = []
+        #     data = []
             
-            for rec in self.order_line:
-                data.append((0,0,{  
-                                "price_unit":rec.price_unit,
-                                # "product_uom_id":rec.product_id.id,
-                                "quantity":rec.product_uom_qty,
-                                "name":rec.product_id.name,"product_id":rec.product_id.id,
-                                # "ref_article":rec.product_id.default_code
-                            }))
+        #     for rec in self.order_line:
+        #         data.append((0,0,{  
+        #                         "price_unit":rec.price_unit,
+        #                         # "product_uom_id":rec.product_id.id,
+        #                         "quantity":rec.product_uom_qty,
+        #                         "name":rec.product_id.name,"product_id":rec.product_id.id,
+        #                         # "ref_article":rec.product_id.default_code
+        #                     }))
 
         
 
-            print(self.env.uid)
+        #     print(self.env.uid)
 
-            print("Session Saved: @@@££££££" + str(session.id))
+        #     print("Session Saved: @@@££££££" + str(session.id))
 
         
-            a=self.env['account.move'].create({
-                        'invoice_date_due':date.today(),
-                        'partner_id':self.partner_id.id, 
-                        'invoice_date':date.today(),
-                        # 'condition_paiment':1, 
+        #     a=self.env['account.move'].create({
+        #                 'invoice_date_due':date.today(),
+        #                 'partner_id':self.partner_id.id, 
+        #                 'invoice_date':date.today(),
+        #                 # 'condition_paiment':1, 
 
-                        # 'date_limite_paiment':line.abonnement_id.date_paiment,
-                        'move_type':"out_invoice",
-                        'session_id': '1',
-                        # 'echeance_id':line.id, 
-                        # 'taux':line.abonnement_id.devis_id.taux,
-                        # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
-                        # 'montant_vendeur':line.abonnement_id.devis_id.amount_total,
-                        "invoice_line_ids":data
-                    })
-
-
+        #                 # 'date_limite_paiment':line.abonnement_id.date_paiment,
+        #                 'move_type':"out_invoice",
+        #                 'session_id': '1',
+        #                 # 'echeance_id':line.id, 
+        #                 # 'taux':line.abonnement_id.devis_id.taux,
+        #                 # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
+        #                 # 'montant_vendeur':line.abonnement_id.devis_id.amount_total,
+        #                 "invoice_line_ids":data
+        #             })
 
 
 
 
-            a.write({'session_id':  str(session.id)}) 
 
-            # return {
-            #     'view_mode': 'form',
-            #     'res_model': 'account.payment',
-            #     'target' : 'new',
-            #     'views' : [(False, 'form')],
-            #     'type': 'ir.actions.act_window',
-            #     'context' : {'default_invoice_ids' : a.id }
-            # }  
+
+            # a.write({'session_id':  str(session.id)}) 
 
             return {
-                'view_type': 'form',
                 'view_mode': 'form',
-                # 'view_id': res_id,
-                'res_model': 'account.voucher',
+                'res_model': 'account.payment',
+                'target' : 'new',
+                'views' : [(False, 'form')],
                 'type': 'ir.actions.act_window',
-                'target': 'current',
-            }     
+                # 'context' : {'default_invoice_ids' : a.id,'default_partner_id' : self.partner_id }
+                'context' : {'default_partner_id' : self.partner_id }
+            }  
+
+            
         else:
 
             raise ValidationError("Aucune caisse n'est ouverte")
