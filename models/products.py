@@ -164,3 +164,10 @@ class ReferenceIntern(models.Model):
     _name = "refernce.intern"
     model_name = fields.Char()
     reference_id = fields.Integer()
+
+
+class ProductTemplateExtra(models.Model):
+
+    _inherit = 'product.category'
+
+    seuil = fields.Float(string="Seuil de remise")
