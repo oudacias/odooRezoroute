@@ -141,7 +141,7 @@ class SaleOrderExtra(models.Model):
 
                     # 'date_limite_paiment':line.abonnement_id.date_paiment,
                     'move_type':"out_invoice",
-                    # 'session_id': 1,
+                    'session_id': '1',
                     # 'echeance_id':line.id, 
                     # 'taux':line.abonnement_id.devis_id.taux,
                     # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
@@ -154,7 +154,7 @@ class SaleOrderExtra(models.Model):
 
 
 
-        a.write({'session_id': '1'}) 
+        # a.write({'session_id': '1'}) 
 
         # return {
         #     'view_mode': 'form',
