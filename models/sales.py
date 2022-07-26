@@ -128,6 +128,8 @@ class SaleOrderExtra(models.Model):
 
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
 
+        print(self.env.uid)
+
         print("Session Saved: @@@££££££" + str(session.id))
 
        
