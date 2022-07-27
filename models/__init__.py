@@ -12,3 +12,4 @@ from . import forfaits
 from . import sales
 from . import pos
 from . import facture
+from . import purchase
