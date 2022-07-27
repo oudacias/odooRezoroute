@@ -2,7 +2,7 @@ from odoo import fields, models,api
 
 
 class purchase_custom(models.Model):
-    _inherit = 'purhcase.order'
+    _inherit = 'purchase.order'
 
 
     # def button_confirm(self):
