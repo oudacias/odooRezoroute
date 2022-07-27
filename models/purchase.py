@@ -14,12 +14,16 @@ class purchase_custom(models.Model):
             print('Purchase line_ids   '+ str(line.id))
             stock_move = self.env['stock.move'].search([('purchase_line_id','=',line.id)])
             print('Stock Move   '+ str(stock_move.id))
+            stock_move.write({'location_dest_id':9})
 
             stock_move_line = self.env['stock.move.line'].search([('move_id','=',stock_move.id)])
             for line in stock_move_line:
                 print('Stock Move  Line  '+ str(line.id))
+                line.write({'location_dest_id':9})
 
                 picking_id = self.env['stock.move.line'].search([('move_id','=',stock_move.id)])
+                
+                picking_id.write({'location_dest_id':9})
 
                 print('Picking line_ids   '+ str(picking_id.id))
 
