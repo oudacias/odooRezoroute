@@ -1,6 +1,8 @@
 from nis import cat
 from xmlrpc.client import Boolean
 from odoo import fields, models,api
+from odoo.exceptions import ValidationError
+
 
 class Devis(models.Model):
 
@@ -115,7 +117,7 @@ class SaleLine(models.Model):
                 rec.real_qty_available = product.product_tmpl_id.real_qty_available
                 rec.price_unit_public = product.product_tmpl_id.lst_price
                 rec.discount = product.product_tmpl_id.categ_id.seuil
-                
+
 
     @api.onchange('discount')
     def check_discount(self):
@@ -123,7 +125,7 @@ class SaleLine(models.Model):
             for rec in self:
                 product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
                 if(rec.discount > product.product_tmpl_id.categ_id.seuil):
-                    raise Exception('Vous avez dépassé le seuil de la remise')
+                    raise ValidationError('Vous avez dépassé le seuil de la remise')
 
                 
 class DeliveryCarrier(models.Model):
