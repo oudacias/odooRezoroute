@@ -83,26 +83,26 @@ class ProductTemplateExtra(models.Model):
 
     engine_list = fields.Many2many("ps.product.engine","product_engine_rel","engine_id","template_id",string="",default_order="name asc")
 
-    @api.model
-    def create(self, values):
-        reference = ""
-        if(len(values['detailed_type'].split()) == 1):
+    # @api.model
+    # def create(self, values):
+    #     reference = ""
+    #     if(len(values['detailed_type'].split()) == 1):
             
-            reference += values['detailed_type'][0:1]
-        else:
-            reference += values['detailed_type'].split()[0][0] + values['detailed_type'].split()[1][0]
+    #         reference += values['detailed_type'][0:1]
+    #     else:
+    #         reference += values['detailed_type'].split()[0][0] + values['detailed_type'].split()[1][0]
         
 
-        category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
-        # category = self.env('product.category').search([('id','=',values['categ_id'])])
-        # category = self.env('product.template').browse(1)
+    #     category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
+    #     # category = self.env('product.category').search([('id','=',values['categ_id'])])
+    #     # category = self.env('product.template').browse(1)
 
-        reference +="." + category_pr.name[0:1]
+    #     reference +="." + category_pr.name[0:1]
 
-        values['reference_code'] = reference
+    #     values['reference_code'] = reference
         
-        q= super(ProductTemplateExtra, self).create(values) 
-        return q
+    #     q= super(ProductTemplateExtra, self).create(values) 
+    #     return q
         
 
 
