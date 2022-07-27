@@ -7,8 +7,6 @@ class purchase_custom(models.Model):
 
     def button_confirm(self):
         res = super(purchase_custom, self).button_confirm()
-        print("@@@@self Order: " + str(self.id))
-        purchase_line = self.env['purchase.order.line'].search([('order_id','=',self.id)])
 
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
         picking_id.write({'location_dest_id':9})

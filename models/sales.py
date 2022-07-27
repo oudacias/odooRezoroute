@@ -90,6 +90,7 @@ class SaleOrderExtra(models.Model):
     def sale_order_to_repair_order(self):
         self.hide_confirm = True
         self.write({'state':'repair_order','hide_confirm' : True})
+        self.env['sale.order'].action_confirm()
 
     def sale_order_making(self):
         self.write({'state':'making'})
@@ -110,14 +111,6 @@ class SaleOrderExtra(models.Model):
 
     def create_payment_move(self):
         self.ensure_one()
-        # # account_move = self.env['account.move'].sudo().create({
-        # #                                     'partner_id': self.partner_id.id,
-        # #                                     'move_type': 'out_invoice',
-        # #                                     'invoice_date': date.today(),
-        # #                                     'journal_id': 1, 
-        # #                                     'state': 'draft'
-        # #                                 })
-
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
 
         if(len(session) == 1):
