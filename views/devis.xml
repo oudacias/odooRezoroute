@@ -12,7 +12,7 @@
                     <button name="sale_order_making" string="En préparation" type="object" id="sale_order_making" attrs="{'invisible': [('state', 'not in', ('to_prepare'))]}" class="oe_highlight" modifiers="{'invisible': [['state', 'not in', 'to_prepare']]}"/>
                     <!-- <button name="sale_order_to_prepare" string="A préparer" type="object" id="sale_order_to_prepare_prepared" attrs="{'invisible': [('state', 'not in', ('prepared'))]}" modifiers="{'invisible': [['state', 'not in', 'prepared']]}"/>
                     -->
-                    <button name="action_order_deposit" string="Acompte" type="object" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" context="{'default_partner_id':partner_id, 'default_account_payment_type_id':account_payment_type_id, 'default_amount':amount_residual or amount_total}" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}"/>
+                    <!-- <button name="action_order_deposit" string="Acompte" type="object" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" context="{'default_partner_id':partner_id, 'default_account_payment_type_id':account_payment_type_id, 'default_amount':amount_residual or amount_total}" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}"/> -->
                     
                     <!-- <button name="action_confirm_" string="Confirmer la vente" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', true]]}"/> -->
                     <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight" attrs="{'invisible': ['|',('hide_confirm', '=', False),('is_repair_order', '=', False)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', false], ['is_repair_order', '=', false]]}"/>
@@ -25,7 +25,7 @@
                     <button name="action_view_invoice" string="Afficher la facture" type="object" class="oe_highlight" attrs="{'invisible': [('invoice_exists', '=', False)]}" modifiers="{'invisible': [['invoice_exists', '=', false]]}"/> -->
                     <!-- <field name="picking_ids" invisible="1" on_change="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
                     <!-- <button name="action_view_delivery" string="Voir le bon de livraison" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_picking','=',True)]}" modifiers="{'invisible': [['hide_action_picking', '=', true]]}"/> -->
-                    <button name="create_payment_move" string="Créer facture" type="object" class="oe_highlight" attrs="{'invisible':[('state','=','sale')]}" modifiers="{'invisible': [['state','=','sale']]}" readonly="0"/>
+                    <button name="create_payment_move" string="Créer facture" type="object" class="oe_highlight"  attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}" modifiers="{'invisible': [['state','=','sale']]}" readonly="0"/>
                     <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0">
                         <!-- <button name="action_fix_payment" type="object" string="Corriger le/les paiement(s)" attrs="{'invisible':[('percent_open_balance','&lt;=',0)]}" modifiers="{'invisible': [['percent_open_balance', '&lt;=', 0]]}"/>
                         <button name="action_processed" string="Facturer / Régler" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_processed','=',True)]}" modifiers="{'invisible': [['hide_action_processed', '=', true]]}"/>
@@ -39,6 +39,11 @@
                 <xpath expr="//field[@name='validity_date']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+
+                <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
                 <xpath expr="//field[@name='payment_term_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
