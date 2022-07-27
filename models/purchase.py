@@ -8,17 +8,17 @@ class purchase_custom(models.Model):
     def button_confirm(self):
         # res = super(purchase_custom, self).button_confirm()
         print("@@@@self Order: " + str(self.id))
-        purchase_line = self.env['purchase.order.line'].search('order_id','=',self.id)
+        purchase_line = self.env['purchase.order.line'].search([('order_id','=',self.id)])
         print('Purchase line_ids   '+ str(purchase_line.id))
         for line in purchase_line:
-            stock_move = self.env['stock.move'].search('purchase_line_id','=',line.id)
+            stock_move = self.env['stock.move'].search([('purchase_line_id','=',line.id)])
             print('Stock Move   '+ str(stock_move.id))
 
-            stock_move_line = self.env['stock.move.line'].search('move_id','=',stock_move.id)
+            stock_move_line = self.env['stock.move.line'].search([('move_id','=',stock_move.id)])
             for line in stock_move_line:
                 print('Stock Move  Line  '+ str(line.id))
 
-                picking_id = self.env['stock.move.line'].search('move_id','=',stock_move.id)
+                picking_id = self.env['stock.move.line'].search([('move_id','=',stock_move.id)])
 
                 print('Picking line_ids   '+ str(picking_id.id))
 
