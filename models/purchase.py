@@ -7,6 +7,7 @@ class purchase_custom(models.Model):
 
     def button_confirm(self):
         # res = super(purchase_custom, self).button_confirm()
+        print("@@@@self Order: " + str(self.id))
         purchase_line = self.env['purchase.order.line'].search('order_id','=',self.id)
         print('Purchase line_ids   '+ str(purchase_line.id))
         for line in purchase_line:
