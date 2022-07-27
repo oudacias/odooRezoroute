@@ -116,7 +116,7 @@ class SaleLine(models.Model):
                 rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
                 rec.real_qty_available = product.product_tmpl_id.real_qty_available
                 rec.price_unit_public = product.product_tmpl_id.lst_price
-                rec.discount = product.product_tmpl_id.categ_id.seuil
+                # rec.discount = product.product_tmpl_id.categ_id.seuil
 
 
     @api.onchange('discount')
@@ -125,7 +125,9 @@ class SaleLine(models.Model):
             for rec in self:
                 product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
                 if(rec.discount > product.product_tmpl_id.categ_id.seuil):
+                    rec.discount = 0
                     raise ValidationError('Vous avez dépassé le seuil de la remise')
+                    
 
                 
 class DeliveryCarrier(models.Model):
