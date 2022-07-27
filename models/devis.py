@@ -123,9 +123,9 @@ class SaleLine(models.Model):
     def check_discount(self):
         if(self.discount):
             for rec in self:
-                rec.discount = 0
                 if(rec.discount > self.product_id.product_tmpl_id.categ_id.seuil and self.product_id.product_tmpl_id.categ_id.seuil > 0):                    
-                    raise Warning('Vous avez dépassé le seuil de la remise   ' )
+                    rec.discount = 0
+                    raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
                     
 
                 
