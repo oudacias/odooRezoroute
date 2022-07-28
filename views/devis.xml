@@ -42,8 +42,8 @@
                     <field name="payment_method_ids"/>
                     <!-- <field name="order_policy"/> -->
                     <field name="is_customer_account"/>
-                    <field name="hide_action_processed" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    <field name="hide_action_invoice" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                    <!-- <field name="hide_action_processed" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                    <field name="hide_action_invoice" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
                     <field name="customer_invoice_type"/>
                 </xpath>
 
