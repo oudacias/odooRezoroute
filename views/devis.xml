@@ -28,14 +28,14 @@
                 </xpath> -->
                
                 <xpath expr="//field[@name='partner_id']" position="after">
-                    <!-- <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                    <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     <field name="hide_confirm" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
 
                     <field name="partner_ref" readonly="1"/>
                     <field name="mobile" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
-                    <field name="phone"  modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/> -->
+                    <field name="phone"  modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
 
-                    <field name="engin_id" options="{'always_reload': True}" domain="[('partner_id','=',partner_id)]" context="{'default_partner_id':'partner_id'}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>/>
+                    <field name="engin_id" options="{'always_reload': True}" domain="[('partner_id','=',partner_id)]" context="{'default_partner_id':'partner_id'}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                 </xpath>
                 <xpath expr="//field[@name='engin_id']" position="after">
                     <field name="odometer" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)], 'required' : [('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
