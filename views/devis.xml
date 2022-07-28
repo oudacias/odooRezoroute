@@ -6,16 +6,16 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">                
                 <xpath expr="//header"  postion="inside">
-		            <!-- <button name="sale_order_to_repair_order" string="Démarrer OR" type="object" attrs="{'invisible': ['|',('hide_confirm', '=', True),('is_repair_order', '=', False)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', false]]}"/>
+		            <button name="sale_order_to_repair_order" string="Démarrer OR" type="object" attrs="{'invisible': ['|',('hide_confirm', '=', True),('is_repair_order', '=', False)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', false]]}"/>
 
                     <button name="sale_order_to_prepare" string="A préparer" type="object" id="sale_order_to_prepare" attrs="{'invisible': ['|',('state', 'not in', ('draft','sent','waiting_replenishment','purchase_finished','customer_validated')),('is_repair_order', '=', True)]}" class="oe_highlight" modifiers="{'invisible': ['|', ['state', 'not in', ['draft', 'sent', 'waiting_replenishment', 'purchase_finished', 'customer_validated']], ['is_repair_order', '=', true]]}"/>
-                    <button name="sale_order_making" string="En préparation" type="object" id="sale_order_making" attrs="{'invisible': [('state', 'not in', ('to_prepare'))]}" class="oe_highlight" modifiers="{'invisible': [['state', 'not in', 'to_prepare']]}"/> -->
+                    <button name="sale_order_making" string="En préparation" type="object" id="sale_order_making" attrs="{'invisible': [('state', 'not in', ('to_prepare'))]}" class="oe_highlight" modifiers="{'invisible': [['state', 'not in', 'to_prepare']]}"/>
                     <!-- <button name="sale_order_to_prepare" string="A préparer" type="object" id="sale_order_to_prepare_prepared" attrs="{'invisible': [('state', 'not in', ('prepared'))]}" modifiers="{'invisible': [['state', 'not in', 'prepared']]}"/>
                     -->
                     <!-- <button name="action_order_deposit" string="Acompte" type="object" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" context="{'default_partner_id':partner_id, 'default_account_payment_type_id':account_payment_type_id, 'default_amount':amount_residual or amount_total}" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}"/> -->
                     
                     <!-- <button name="action_confirm_" string="Confirmer la vente" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', true]]}"/> -->
-                    <!-- <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight" attrs="{'invisible': ['|',('hide_confirm', '=', False),('is_repair_order', '=', False)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', false], ['is_repair_order', '=', false]]}"/> -->
+                    <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight" attrs="{'invisible': ['|',('hide_confirm', '=', False),('is_repair_order', '=', False)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', false], ['is_repair_order', '=', false]]}"/>
 
                     
                     <!-- <button name="action_print_picking_from_sale" string="Imprimer la livraison" type="object" class="oe_highlight" invisible="1" modifiers="{'invisible': true}"/>
@@ -25,94 +25,18 @@
                     <button name="action_view_invoice" string="Afficher la facture" type="object" class="oe_highlight" attrs="{'invisible': [('invoice_exists', '=', False)]}" modifiers="{'invisible': [['invoice_exists', '=', false]]}"/> -->
                     <!-- <field name="picking_ids" invisible="1" on_change="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
                     <!-- <button name="action_view_delivery" string="Voir le bon de livraison" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_picking','=',True)]}" modifiers="{'invisible': [['hide_action_picking', '=', true]]}"/> -->
-                    <!-- <button name="create_payment_move" string="Créer facture" type="object" class="oe_highlight"  attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}" modifiers="{'invisible': [['state','=','sale']]}" readonly="0"/>
-                    <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0"> -->
+                    <button name="create_payment_move" string="Créer facture" type="object" class="oe_highlight"  attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}" modifiers="{'invisible': [['state','=','sale']]}" readonly="0"/>
+                    <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0">
                         <!-- <button name="action_fix_payment" type="object" string="Corriger le/les paiement(s)" attrs="{'invisible':[('percent_open_balance','&lt;=',0)]}" modifiers="{'invisible': [['percent_open_balance', '&lt;=', 0]]}"/> -->
                         <!-- <button name="action_processed" string="Facturer / Régler" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_processed','=',True)]}" modifiers="{'invisible': [['hide_action_processed', '=', true]]}"/> -->
                         <!-- <button name="action_paid_from_order" string="Enregistrer le règlement" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_invoiced','=',False), ('percent_open_balance','=',100.00)]}" modifiers="{'invisible': ['|', ['percent_invoiced', '=', false], ['percent_open_balance', '=', 100.0]]}"/> --> -->
                         <!-- <field name="hide_action_makde_picking" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
                         <!-- <button name="action_make_picking" string="Valider BL" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_shipping','!=',False),('hide_action_makde_picking','=',True)]}" modifiers="{'invisible': ['|', ['percent_shipping', '!=', false], ['hide_action_makde_picking', '=', true]]}"/>
                         <button name="action_make_picking" string="Continuer à livrer" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_shipping','=',False),'&amp;',('percent_shipping','!=',False),('hide_action_makde_picking','=',True)]}" modifiers="{'invisible': ['|', ['percent_shipping', '=', false], '&amp;', ['percent_shipping', '!=', false], ['hide_action_makde_picking', '=', true]]}"/> -->
-                    <!-- </button> -->
+                    </button>
                        
                 </xpath>
-                <xpath expr="//field[@name='validity_date']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-
-                <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-
-                <xpath expr="//field[@name='payment_term_id']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='team_id']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <xpath expr="//field[@name='require_signature']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
-                <!-- <xpath expr="//group[@name='Tracking]" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath> -->
-                <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                <field name="hide_confirm" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                <!-- <field name="hide_repair_order" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
-
-                    <field name="partner_ref" readonly="1"/>
-                    <field name="mobile" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
-                    <field name="phone"  modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
-
-                    <field name="engin_id" options="{'always_reload': True}" domain="[('partner_id','=',partner_id)]" context="{'default_partner_id':'partner_id'}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>/>
-                </xpath>
-                <xpath expr="//field[@name='engin_id']" position="after">
-                    <field name="odometer" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)], 'required' : [('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
-                    <field name="next_distri_date" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]]}"/>
-                    <field name="next_ct_date" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]]}"/>
-                </xpath>
-                <xpath expr="//field[@name='date_order']" position="after">
-                    <field name="is_central_company" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    
-                    <field name="client_order_ref" />
-                    <field name="warehouse_id" />
-                    <field name="user_repair_id" domain="[('company_id','=',company_id)]" widget="selection" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
-                    <field name="repair_order_note" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
-
-                    <field name="categ_ids" widget="many2many_tags" modifiers="{'readonly': [['state', 'not in', ['waiting_replenishment', 'draft', 'repair_order', 'making', 'to_prepare', 'purchase_finished', 'customer_validated', 'sent', 'prepared']]]}"/>
-                    <field name="is_repair_order" attrs="{'invisible': [('is_central_company', '=', True)]}" on_change="1" modifiers="{'invisible': [['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
-                    <field name="recover_your_used_parts" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'sent']]]}"/>
-                    <field name="repair_with_re_used_parts" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'sent']]]}"/>
-                </xpath>
-
-                <xpath expr="//group[@name='sale_info']" position="inside">
-                    <field name="hide_action_picking" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    <field name="account_payment_type_id" domain="['|',('company_id','=',False),('company_id','=',company_id)]" modifiers="{}"/>
-                    <field name="amount_residual" widget="monetary" options="{'currency_field': 'currency_id'}" modifiers="{'readonly': true}"/>
-                    <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}" modifiers="{'readonly': true}"/>
-
-
-                    <field name="payment_term_id"/>
-                    <field name="fiscal_position_id"/>
-                    <field name="company_id" readonly="1"/>
-                    <field name="is_outstanding_sale"/>
                 
-                        <field name="signer_url"/>
-                        <field name="signer_name"/>
-                        <field name="signer_date"/>
-                   
-                </xpath>
-                <xpath expr="//group[@name='sales_person']" position="inside">
-                    <field name="is_quotation_sent"/>
-                    <field name="date_quotation_sent"/>
-                    <field name="is_invoice_sent"/>
-                    <field name="date_invoice_sent"/>
-                    <!-- <field name="new_campaign_id"/> -->
-                    <!-- <field name="new_source_id"/> -->
-                    <field name="start_datetime"/>
-                    <field name="end_datetime"/>
-                </xpath>
                 <xpath expr="//group[@name='sale_shipping']" position="inside">
                     <field name="picking_policy"/>
                     <field name="payment_method_ids"/>
