@@ -7,15 +7,26 @@
             <field name="arch" type="xml">                
                 
                 
+                <xpath expr="//group[@name='sales_person']" position="inside">
+                    <field name="is_quotation_sent"/>
+                    <field name="date_quotation_sent"/>
+                    <field name="is_invoice_sent"/>
+                    <field name="date_invoice_sent"/>
+                    <!-- <field name="new_campaign_id"/> -->
+                    <!-- <field name="new_source_id"/> -->
+                    <field name="start_datetime"/>
+                    <field name="end_datetime"/>
+                </xpath>
                 <xpath expr="//group[@name='sale_shipping']" position="inside">
                     <field name="picking_policy"/>
                     <field name="payment_method_ids"/>
                     <!-- <field name="order_policy"/> -->
                     <field name="is_customer_account"/>
-                    <!-- <field name="hide_action_processed" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    <field name="hide_action_invoice" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
+                    <field name="hide_action_processed" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                    <field name="hide_action_invoice" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     <field name="customer_invoice_type"/>
                 </xpath>
+
 
                 
 
