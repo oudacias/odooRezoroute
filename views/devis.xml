@@ -4,7 +4,38 @@
             <field name="name">ps_rezoroute list</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="arch" type="xml">                
+            <field name="arch" type="xml">    
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="is_central_company" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                    
+                    <field name="client_order_ref" />
+                    <field name="warehouse_id" />
+                    <field name="user_repair_id" domain="[('company_id','=',company_id)]" widget="selection" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
+                    <field name="repair_order_note" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
+
+                    <field name="categ_ids" widget="many2many_tags" modifiers="{'readonly': [['state', 'not in', ['waiting_replenishment', 'draft', 'repair_order', 'making', 'to_prepare', 'purchase_finished', 'customer_validated', 'sent', 'prepared']]]}"/>
+                    <field name="is_repair_order" attrs="{'invisible': [('is_central_company', '=', True)]}" on_change="1" modifiers="{'invisible': [['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
+                    <field name="recover_your_used_parts" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'sent']]]}"/>
+                    <field name="repair_with_re_used_parts" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'sent']]]}"/>
+                </xpath>
+
+                <xpath expr="//group[@name='sale_info']" position="inside">
+                    <field name="hide_action_picking" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+                    <field name="account_payment_type_id" domain="['|',('company_id','=',False),('company_id','=',company_id)]" modifiers="{}"/>
+                    <field name="amount_residual" widget="monetary" options="{'currency_field': 'currency_id'}" modifiers="{'readonly': true}"/>
+                    <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}" modifiers="{'readonly': true}"/>
+
+
+                    <field name="payment_term_id"/>
+                    <field name="fiscal_position_id"/>
+                    <field name="company_id" readonly="1"/>
+                    <field name="is_outstanding_sale"/>
+                
+                        <field name="signer_url"/>
+                        <field name="signer_name"/>
+                        <field name="signer_date"/>
+                   
+                </xpath>            
                 
                 
                 <xpath expr="//group[@name='sales_person']" position="inside">
