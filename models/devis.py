@@ -25,7 +25,7 @@ class Devis(models.Model):
 
     is_repair_order = fields.Boolean(string="Ordre de reparation")
     user_repair_id = fields.Many2one('res.users',string="Mécanicien")
-    repair_order_note = fields.Text(string="Ordre de reparation")
+    repair_order_note = fields.Text(string="Note de reparation")
     recover_your_used_parts = fields.Boolean(string="Souhaitez-vous recupérer vos pieces usages")
     repair_with_re_used_parts = fields.Boolean(string="Souhaitez-vous une réparation avec des pieces de réemploi")
     is_can_change_pricelist  = fields.Boolean()
