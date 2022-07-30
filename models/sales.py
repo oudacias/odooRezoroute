@@ -144,7 +144,8 @@ class SaleOrderExtra(models.Model):
 
     def action_button_confirm_repair_order(self):
         self.write({'state':'progress'})
-        self.env['sale.order'].action_confirm()
+        return super(SaleOrderExtra, self).action_confirm()
+        # self.env['sale.order'].action_confirm()
 
 
     def action_order_deposit(self):
