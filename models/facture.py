@@ -32,16 +32,20 @@ class StockPickingExtra(models.Model):
     def create(self,vals):
 
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        vals['session_id'] = session.id
 
-        print("LEN Sessions ID: @@@@@" + str(len(session))    + str(self.env.user))
-        if(len(session) == 1):
+        q= super(StockPickingExtra, self).create(vals) 
+        return q
 
-            vals['session_id'] = session.id
+        # print("LEN Sessions ID: @@@@@" + str(len(session))    + str(self.env.user))
+        # if(len(session) == 1):
 
-            q= super(StockPickingExtra, self).create(vals) 
-            return q
-        else:
-            raise ValidationError('Vous devez ouvrir une nouvelle session 1')
+        #     vals['session_id'] = session.id
+
+        #     q= super(StockPickingExtra, self).create(vals) 
+        #     return q
+        # else:
+        #     raise ValidationError('Vous devez ouvrir une nouvelle session 1')
 
 
     def button_validate(self):
