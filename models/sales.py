@@ -120,11 +120,7 @@ class SaleOrderExtra(models.Model):
 
         # Change stock location -- END
 
-
-
-
-
-
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
         return True
 
