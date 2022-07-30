@@ -66,14 +66,13 @@ class SaleOrderExtra(models.Model):
 
     @api.depends('is_repair_order')
     def hide_repair_order(self):
-        print("Status      @@@@@@@   "  +str(self.state))
-
+        
         if(self.is_repair_order and self.state == 'repair_order'):
             self.hide_confirm = True           
 
     @api.onchange('is_repair_order')
     def hide_repair_order(self):
-        print("Status      @@@@@@@   "  +str(self.state))
+        
 
         if(self.is_repair_order and self.state == 'repair_order'):
             self.hide_confirm = True
@@ -125,13 +124,6 @@ class SaleOrderExtra(models.Model):
                                 "name":rec.product_id.name,"product_id":rec.product_id.id,
                                 # "ref_article":rec.product_id.default_code
                             }))
-
-        
-
-            print(self.env.uid)
-
-            print("Session Saved: @@@££££££" + str(session.id))
-
         
             a=self.env['account.move'].create({
                         'invoice_date_due':date.today(),
