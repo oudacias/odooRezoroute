@@ -1,4 +1,6 @@
 from odoo import fields, models,api
+from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
 
 class AcoountMoveExtra(models.Model):
 
@@ -30,11 +32,17 @@ class StockPickingExtra(models.Model):
     def create(self,vals):
 
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        if(len(session) == 1):
 
-        vals['session_id'] = session.id
+            vals['session_id'] = session.id
 
-        q= super(StockPickingExtra, self).create(vals) 
-        return q
+            q= super(StockPickingExtra, self).create(vals) 
+            return q
+        else:
+            raise ValidationError('Vous devez ouvrir une nouvelle session')
+    def button_validate(self):
+        print("HELLO VALIDATION_ERROR   - Validation Error  - ")
+        self.env['stock.picking'].button_validate()
 
 class RegelementExtra(models.Model):
 

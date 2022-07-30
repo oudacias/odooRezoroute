@@ -1,8 +1,10 @@
+from requests import session
 from odoo import fields, models,api
 
 
 class purchase_custom(models.Model):
     _inherit = 'purchase.order'
+    session_id = fields.Many2one('pos.session',string="Session id")
 
 
     def button_confirm(self):

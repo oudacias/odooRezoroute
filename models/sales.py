@@ -50,11 +50,14 @@ class SaleOrderExtra(models.Model):
     def create(self,vals):
 
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        if(len(session) == 1):
 
-        vals['session_id'] = session.id
+            vals['session_id'] = session.id
 
-        q= super(SaleOrderExtra, self).create(vals) 
-        return q
+            q= super(SaleOrderExtra, self).create(vals) 
+            return q
+        else:
+            raise ValidationError('Vous devez ouvrir une nouvelle session')
 
 
     @api.onchange('partner_id')
@@ -159,7 +162,7 @@ class SaleOrderExtra(models.Model):
 
     def create_payment_move(self):
         self.ensure_one()
-        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opened')])  
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
 
         if(len(session) == 1):
 
