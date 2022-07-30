@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">    
                 <xpath expr="//header"  postion="inside">
-		            <button name="sale_order_to_repair_order" string="Démarrer OR" type="object" attrs="{'invisible': [('state','!=','draft'),('is_repair_order', '=', False)]}"/>
+		            <button name="sale_order_to_repair_order" string="Démarrer OR" type="object" attrs="{'invisible': ['|',('state','!=','draft'),('is_repair_order', '=', False)]}"/>
 
                     <button name="sale_order_to_prepare" string="A préparer" type="object" id="sale_order_to_prepare" attrs="{'invisible': ['|',('state', 'not in', ('draft','sent','waiting_replenishment','purchase_finished','customer_validated')),('is_repair_order', '=', True)]}" class="oe_highlight" modifiers="{'invisible': ['|', ['state', 'not in', ['draft', 'sent', 'waiting_replenishment', 'purchase_finished', 'customer_validated']], ['is_repair_order', '=', true]]}"/>
                     <button name="sale_order_making" string="En préparation" type="object" id="sale_order_making" attrs="{'invisible': [('state', 'not in', ('to_prepare'))]}" class="oe_highlight" modifiers="{'invisible': [['state', 'not in', 'to_prepare']]}"/>
