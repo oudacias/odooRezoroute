@@ -12,11 +12,13 @@
                 </field>  -->
 
                 <xpath expr="//div[hasclass('oe_title')]" position="inside">
-                        <label for="user_id"/>
+                    <group>
+                        <!-- <label for="user_id"/> -->
                         <field name="user_id"/>
 
-                        <label for="location_id"/>
+                        <!-- <label for="location_id"/> -->
                         <field name="location_id"/>
+                    </group>
                         
                 </xpath>
             </field>
