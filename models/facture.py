@@ -42,7 +42,7 @@ class StockPickingExtra(models.Model):
             raise ValidationError('Vous devez ouvrir une nouvelle session')
     def button_validate(self):
         print("HELLO VALIDATION_ERROR   - Validation Error  - ")
-        self.env['stock.picking'].button_validate()
+        return super(StockPickingExtra, self)._action_cancel()
 
 class RegelementExtra(models.Model):
 
