@@ -81,6 +81,7 @@ class PosConfig(models.Model):
 
     _inherit = 'pos.config'
     user_id = fields.Many2one('res.users',string="Affecter Utilisateur")
+    location_id = fields.Many2one('stock.location',string="Affecter Emplacement")
 
     total_compute = fields.Integer(compute='_total_compute')
 
