@@ -39,7 +39,7 @@ class StockPickingExtra(models.Model):
             q= super(StockPickingExtra, self).create(vals) 
             return q
         else:
-            raise ValidationError('Vous devez ouvrir une nouvelle session')
+            raise ValidationError('Vous devez ouvrir une nouvelle session 1')
 
 
     def button_validate(self):
@@ -48,7 +48,7 @@ class StockPickingExtra(models.Model):
         if(len(session) == 1):
             return super(StockPickingExtra, self).button_validate()
         else:
-            raise ValidationError('Vous devez ouvrir une nouvelle session')
+            raise ValidationError('Vous devez ouvrir une nouvelle session 3')
         
 
 class RegelementExtra(models.Model):
