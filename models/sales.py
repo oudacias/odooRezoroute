@@ -1,5 +1,7 @@
+from functools import partial
 from sre_parse import State
 from datetime import date
+import string
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
 
@@ -143,9 +145,15 @@ class SaleOrderExtra(models.Model):
         self.write({'state':'making'})
 
     def action_button_confirm_repair_order(self):
-        self.write({'state':'progress'})
-        return super(SaleOrderExtra, self).action_confirm()
-        # self.env['sale.order'].action_confirm()
+        # self.write({'state':'progress'})
+        # return super(SaleOrderExtra, self).action_confirm()
+        return {
+                'res_model': 'order.repair.confirm',
+                'view_mode': 'form',
+                'target': 'new',
+                'type': 'ir.actions.act_window',
+                'views' : [(False, 'form')],
+            }  
 
 
     def action_order_deposit(self):
@@ -224,6 +232,20 @@ class SaleOrderExtra(models.Model):
         else:
 
             raise ValidationError("Aucune caisse n'est ouverte")
-                      
-       
+
+
+class ConfirmRepairOrder(models.Model):
+    name = "order.repair.confirm"
+    
+    client_id = fields.Many2one('res.partner',string="Client")
+    engin_id = fields.Many2one('fleet.vehicle',string="Véhicule")
+    
+    odometer = fields.Float(string="Kilométrage")
+    next_distri_date = fields.Date(strign="Prochaine Distri.")
+    next_ct_date = fields.Date(strign="Prochaine C.T.")
+
+
+    user_repair_id = fields.Many2one('res.users',string="Mécanicien")
+    repair_order_note = fields.Text(string="Note de réparation")
+
 
