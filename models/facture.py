@@ -32,6 +32,8 @@ class StockPickingExtra(models.Model):
     def create(self,vals):
 
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+
+        print("LEN Sessions ID: @@@@@" + str(len(session)))
         if(len(session) == 1):
 
             vals['session_id'] = session.id
