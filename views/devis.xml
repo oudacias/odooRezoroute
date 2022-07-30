@@ -182,7 +182,7 @@
             </field>
         </record>
 
-        <record id="menu_sale_quotations_end" model="ir.actions.act_window">
+        <record id="action_quotations_or_end" model="ir.actions.act_window">
             <field name="name">Quotations OR</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
