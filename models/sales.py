@@ -234,7 +234,7 @@ class SaleOrderExtra(models.Model):
             raise ValidationError("Aucune caisse n'est ouverte")
 
 
-class ConfirmRepairOrder(models.Model):
+class ConfirmRepair(models.Model):
     name = "order.repair.confirm"
     
     client_id = fields.Many2one('res.partner',string="Client")
