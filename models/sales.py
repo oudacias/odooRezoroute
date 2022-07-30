@@ -57,7 +57,7 @@ class SaleOrderExtra(models.Model):
             q= super(SaleOrderExtra, self).create(vals) 
             return q
         else:
-            raise ValidationError('Vous devez ouvrir une nouvelle session')
+            raise ValidationError('Vous devez ouvrir une nouvelle session !!!!')
 
 
     @api.onchange('partner_id')
