@@ -41,8 +41,12 @@ class StockPickingExtra(models.Model):
         else:
             raise ValidationError('Vous devez ouvrir une nouvelle session')
     def button_validate(self):
-        print("HELLO VALIDATION_ERROR   - Validation Error  - ")
-        return super(StockPickingExtra, self).button_validate()
+        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        if(len(session) == 1):
+            return super(StockPickingExtra, self).button_validate()
+        else:
+            raise ValidationError('Vous devez ouvrir une nouvelle session')
+        
 
 class RegelementExtra(models.Model):
 
