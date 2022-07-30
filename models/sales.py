@@ -104,7 +104,7 @@ class SaleOrderExtra(models.Model):
 
 
         # Change stock location
-        picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
+        picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
         picking_id.write({'location_id':9})
 
         stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
