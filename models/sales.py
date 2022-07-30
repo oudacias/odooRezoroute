@@ -85,7 +85,7 @@ class SaleOrderExtra(models.Model):
 
     def action_confirm(self):
 
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@")
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
         if self._get_forbidden_state_confirm() & set(self.mapped('state')):
             raise UserError(_(
                 'It is not allowed to confirm an order in the following states: %s'
