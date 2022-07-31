@@ -183,5 +183,6 @@ class ProductExtra(models.Model):
     def _get_qty_location(self):
         qty = 0
         location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        qty = self.env["stock.quant"].search[('product_id','=',self.id),('location','=',location.location_id.id)]
-        return qty.quantity
+        for rec in self:
+            self.qty_location = self.env["stock.quant"].search[('product_id','=',rec.id),('location','=',location.location_id.id)]
+        
