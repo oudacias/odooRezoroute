@@ -105,16 +105,16 @@ class SaleLine(models.Model):
     real_qty_available = fields.Float(string="Qté Dispo")
     price_unit_public = fields.Float(string="P.U. Public")
 
-    qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
+    qty_location = fields.Float(string="Quantité Disponible")
 
 
 
-    def _get_qty_location(self):
+    # def _get_qty_location(self):
         
-        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        for rec in self:
+    #     location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+    #     for rec in self:
             
-            rec.qty_location = rec.product_id.qty_location
+    #         rec.qty_location = rec.product_id.qty_location
 
 
 
@@ -133,7 +133,7 @@ class SaleLine(models.Model):
                     rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
                     rec.real_qty_available = product.product_tmpl_id.real_qty_available
                     rec.price_unit_public = product.product_tmpl_id.lst_price
-                    # rec.discount = product.product_tmpl_id.categ_id.seuil
+                    rec.qty_location = product.qty_location
                     
 
 
