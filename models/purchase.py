@@ -10,6 +10,12 @@ class purchase_custom(models.Model):
     def button_confirm(self):
         res = super(purchase_custom, self).button_confirm()
 
+        product = self.env['product.product'].browse(20)
+        # available_qty = product.with_context({'warehouse' : WAREHOUSE_ID}).qty_available
+        available_qty = product.with_context({'location' : 9}).qty_available
+
+        print('Available qty: %s' % available_qty)
+
         location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
 
         print('@@@@@@@@  Location: %s' % location_dest_id.location_id)
