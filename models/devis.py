@@ -128,16 +128,18 @@ class SaleLine(models.Model):
     def additional_info(self):
         if(self.product_id):
             for rec in self:
-                if(rec.qty_location >= 1):
+                if(rec.qty_location <= 0):
+                    raise ValidationError('Quantité non disponible')
             
+                    
+                else:
                     product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
 
                     rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
                     rec.real_qty_available = product.product_tmpl_id.real_qty_available
                     rec.price_unit_public = product.product_tmpl_id.lst_price
                     # rec.discount = product.product_tmpl_id.categ_id.seuil
-                else:
-                    raise ValidationError('Quantité non disponible')
+                    
 
 
     @api.onchange('discount')
