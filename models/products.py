@@ -190,6 +190,7 @@ class ProductExtra(models.Model):
                 print("@@@@@@@@################################################################################")
                 print(str(rec.id))
                 print(str(location.location_id.id))
+                print(str(stock_quant.quantity))
             for line_qty in stock_quant:
                 qty += line_qty.quantity
             print(qty)
