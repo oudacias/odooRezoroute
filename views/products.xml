@@ -292,5 +292,18 @@
                 </xpath>
             </field>
         </record>
+        <record id="product_search_form_view1" model="ir.ui.view">
+            <field name="name">product.product.search</field>
+            <field name="model">product.product</field>
+            <field name="mode">primary</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="company_id" string="Company"/>
+                </field>
+                
+            </field>
+        </record>
+
     </data>
 </odoo>

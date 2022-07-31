@@ -10,7 +10,7 @@ class purchase_custom(models.Model):
     def button_confirm(self):
         res = super(purchase_custom, self).button_confirm()
 
-        stock_obj= self.env['stock.picking'].search([('product_id','=',20)])
+        stock_obj= self.env['stock.picking'].search([('product_id','=',18),('location_id','=',20)])
         qty =0
         if stock_obj:            
             for record in stock_obj:
