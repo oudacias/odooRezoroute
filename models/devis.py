@@ -114,13 +114,7 @@ class SaleLine(models.Model):
         location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         for rec in self:
             
-            stock_quant = self.env["stock.quant"].search([('product_id','=',rec.product_id.id),('location_id','=',location.location_id.id)])
-            qty = 0
-            for line_qty in stock_quant:
-
-                qty += line_qty.quantity
-            
-            rec.qty_location = qty
+            rec.qty_location = rec.product_id.qty_location
 
 
 
