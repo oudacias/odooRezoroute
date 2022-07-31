@@ -10,11 +10,16 @@ class purchase_custom(models.Model):
     def button_confirm(self):
         res = super(purchase_custom, self).button_confirm()
 
-        product = self.env['product.product'].browse(20)
-        # available_qty = product.with_context({'warehouse' : WAREHOUSE_ID}).qty_available
-        available_qty = product.qty_available
+        stock_obj= self.env['stock.picking'].search([('product_id','=',20)])
+        qty =0
+        if stock_obj:            
+            for record in stock_obj:
+                for line in record.move_lines:
+                    
+                    if line.state =='done' and line.product_id.id:
+                           qty += line.quantity
 
-        print('Available qty: %s' % available_qty)
+        print('Available qty: %s' % qty)
 
         location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
 
