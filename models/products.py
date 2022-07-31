@@ -181,25 +181,17 @@ class ProductExtra(models.Model):
 
 
     def _get_qty_location(self):
-        # qty = 0
-        # location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        # for rec in self:
-        #     # print('@@@@@@@@################')
-        #     # print(str(rec.id))
-        #     # print(str(location.location_id.id))
-        #     stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
-        #     if(len(stock_quant) > 1):
-        #         stock_quant = self.env["stock.production.lot"].search([('id','=',stock_quant.lot_id.id)])
-        #         rec.qty_location
+        qty = 0
+        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        for rec in self:
+            # print('@@@@@@@@################')
+            # print(str(rec.id))
+            # print(str(location.location_id.id))
+            stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
+            
+            stock_quant = sum(self.env["stock.production.lot"].search([('id','=',stock_quant.lot_id.id)]).quantity)
+            rec.qty_location = stock_quant
 
         
 
-        for rec in self:
-            
-
-            print('@@@@@@@@################')
-            print(rec.lot_id)                                                                             
-                # print(recommended_location)                                                                             
-            
-            rec.qty_location = 0
         
