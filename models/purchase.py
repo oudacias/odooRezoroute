@@ -12,7 +12,7 @@ class purchase_custom(models.Model):
 
         product = self.env['product.product'].browse(20)
         # available_qty = product.with_context({'warehouse' : WAREHOUSE_ID}).qty_available
-        available_qty = product.with_context({'location' : 9}).qty_available
+        available_qty = product.qty_available
 
         print('Available qty: %s' % available_qty)
 
