@@ -184,13 +184,14 @@ class ProductExtra(models.Model):
         qty = 0
         location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         for rec in self:
-            # print('@@@@@@@@################')
-            # print(str(rec.id))
-            # print(str(location.location_id.id))
-            stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)]).quantity
+            
+            stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
+            if(rec.id == 36):
+                print("@@@@@@@@################################################################################")
+                print(str(rec.id))
+                print(str(location.location_id.id))
             for line_qty in stock_quant:
-                qty += line_qty
-            print("@@@@@@@@################################################################################")
+                qty += line_qty.quantity
             print(qty)
 
             
