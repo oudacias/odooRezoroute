@@ -189,16 +189,9 @@ class ProductExtra(models.Model):
             qty = 0
             for line_qty in stock_quant:
 
-                if(rec.id == 19):
-                    print("@@@@@@@@################################################################################")
-                    print(str(rec.id))
-                    print(str(location.location_id.id))
-                    print(str(line_qty.quantity))
                 qty += line_qty.quantity
-            print(qty)
-
             
-            rec.qty_location = 10
+            rec.qty_location = qty
 
         
 
