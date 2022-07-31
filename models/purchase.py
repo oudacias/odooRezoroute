@@ -12,6 +12,8 @@ class purchase_custom(models.Model):
 
         location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
 
+        print('@@@@@@@@  Location: %s' % location_dest_id)
+
 
 
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
