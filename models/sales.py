@@ -106,8 +106,6 @@ class SaleOrderExtra(models.Model):
         if self.env.user.has_group('sale.group_auto_done_setting'):
             self.action_done()
 
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@ CENTER")
-
 
         # Change stock location
         location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
