@@ -292,18 +292,15 @@
                 </xpath>
             </field>
         </record>
-        <record id="product_search_form_view1" model="ir.ui.view">
-            <field name="name">product.product.search</field>
+        <record id="view_stock_product_tree1" model="ir.ui.view">
+            <field name="name">product.stock.tree.inherit1</field>
             <field name="model">product.product</field>
-            <field name="mode">primary</field>
-            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
             <field name="arch" type="xml">
-                <field name="name" position="replace">
-                    <field name="company_id" string="Company"/>
+                <field name="price" position="after">
+                    <field name="company_id" attrs="{'invisible':[('type', '!=', 'product')]}" optional="show" decoration-danger="virtual_available &lt; 0" decoration-warning="virtual_available == 0" decoration-bf="1"/>
                 </field>
-                
             </field>
         </record>
-
     </data>
 </odoo>
