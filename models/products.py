@@ -195,17 +195,11 @@ class ProductExtra(models.Model):
         
 
         for rec in self:
-            if rec.tracking == 'serial':
-            # if self.production_id:
-                message, recommended_location = self.env['stock.quant']._check_serial_number(self.product_id,
-                                                                                             self.lot_id,
-                                                                                             self.company_id,
-                                                                                             self.location_id,
-                                                                                             self.production_id.location_dest_id)
+            
 
-                print('@@@@@@@@################')
-                print(rec.lot_id)                                                                             
-                print(recommended_location)                                                                             
+            print('@@@@@@@@################')
+            print(rec.lot_id)                                                                             
+                # print(recommended_location)                                                                             
             
             rec.qty_location = 0
         
