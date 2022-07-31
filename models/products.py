@@ -184,5 +184,5 @@ class ProductExtra(models.Model):
         qty = 0
         location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         for rec in self:
-            rec.qty_location = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
+            rec.qty_location = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)]).quantity
         
