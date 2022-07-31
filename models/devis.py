@@ -105,7 +105,7 @@ class SaleLine(models.Model):
     real_qty_available = fields.Float(string="Qté Dispo")
     price_unit_public = fields.Float(string="P.U. Public")
 
-    qty_location = fields.Float(string="Quantité Disponible")
+    qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
 
 
 
