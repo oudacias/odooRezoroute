@@ -181,11 +181,31 @@ class ProductExtra(models.Model):
 
 
     def _get_qty_location(self):
-        qty = 0
-        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        # qty = 0
+        # location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        # for rec in self:
+        #     # print('@@@@@@@@################')
+        #     # print(str(rec.id))
+        #     # print(str(location.location_id.id))
+        #     stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
+        #     if(len(stock_quant) > 1):
+        #         stock_quant = self.env["stock.production.lot"].search([('id','=',stock_quant.lot_id.id)])
+        #         rec.qty_location
+
+        
+
         for rec in self:
-            print('@@@@@@@@################')
-            print(str(rec.id))
-            print(str(location.location_id.id))
-            rec.qty_location = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)]).quantity
+            if rec.tracking == 'serial':
+            # if self.production_id:
+                message, recommended_location = self.env['stock.quant']._check_serial_number(self.product_id,
+                                                                                             self.lot_id,
+                                                                                             self.company_id,
+                                                                                             self.location_id,
+                                                                                             self.production_id.location_dest_id)
+
+                print('@@@@@@@@################')
+                print(rec.lot_id)                                                                             
+                print(recommended_location)                                                                             
+            
+            rec.qty_location = 0
         
