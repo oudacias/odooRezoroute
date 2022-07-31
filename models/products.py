@@ -171,3 +171,17 @@ class ProductTemplateExtra(models.Model):
     _inherit = 'product.category'
 
     seuil = fields.Float(string="Seuil de remise")
+
+
+class ProductExtra(models.Model):
+    _inherit = "product.product"
+
+    qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
+
+
+
+    def _get_qty_location(self):
+        qty = 0
+        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        qty = self.env["stock.quant"].search[('product_id','=',self.id),('location','=',location.location_id.id)]
+        return qty.quantity
