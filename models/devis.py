@@ -105,6 +105,24 @@ class SaleLine(models.Model):
     real_qty_available = fields.Float(string="Qté Dispo")
     price_unit_public = fields.Float(string="P.U. Public")
 
+    qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
+
+
+
+    def _get_qty_location(self):
+        
+        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        for rec in self:
+            
+            stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
+            qty = 0
+            for line_qty in stock_quant:
+
+                qty += line_qty.quantity
+            
+            rec.qty_location = qty
+
+
 
     @api.onchange('product_id')
     def additional_info(self):
