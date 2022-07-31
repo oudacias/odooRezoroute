@@ -192,7 +192,7 @@ class ProductExtra(models.Model):
                 qty += line.quantity
 
             
-            rec.qty_location = qty
+            rec.qty_location = 10
 
         
 
