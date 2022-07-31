@@ -114,7 +114,7 @@ class SaleLine(models.Model):
         location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         for rec in self:
             
-            stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
+            stock_quant = self.env["stock.quant"].search([('product_id','=',rec.product_id.id),('location_id','=',location.location_id.id)])
             qty = 0
             for line_qty in stock_quant:
 
@@ -129,7 +129,7 @@ class SaleLine(models.Model):
         if(self.product_id):
             for rec in self:
                 if(rec.qty_location <= 0):
-                    print("ProductTemplateExtra ACTIONS: %s" % self.qty_location)
+                    print("ProductTemplateExtra ACTIONS: %s" % self.product_id.qty_location)
                     raise ValidationError('Quantité non disponible')
             
                     
