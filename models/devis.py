@@ -129,7 +129,7 @@ class SaleLine(models.Model):
         if(self.product_id):
             for rec in self:
                 if(rec.qty_location <= 0):
-                    print("ProductTemplateExtra ACTIONS: %s" % rec.qty_location)
+                    print("ProductTemplateExtra ACTIONS: %s" % self.qty_location)
                     raise ValidationError('Quantité non disponible')
             
                     
