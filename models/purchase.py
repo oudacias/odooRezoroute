@@ -12,7 +12,7 @@ class purchase_custom(models.Model):
 
         location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
 
-        print('@@@@@@@@  Location: %s' % location_dest_id)
+        print('@@@@@@@@  Location: %s' % location_dest_id.location_id)
 
 
 
