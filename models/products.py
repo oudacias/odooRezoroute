@@ -190,6 +190,8 @@ class ProductExtra(models.Model):
             stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
             for line in stock_quant:
                 qty += line.quantity
+            print("@@@@@@@@################################################################################")
+            print(qty)
 
             
             rec.qty_location = 10
