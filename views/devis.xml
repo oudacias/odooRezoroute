@@ -28,7 +28,7 @@
                     <!-- <button name="action_view_delivery" string="Voir le bon de livraison" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_picking','=',True)]}" modifiers="{'invisible': [['hide_action_picking', '=', true]]}"/> -->
                     
                     <button name="create_payment_move" string="Create Invoice 22"
-                        type="action" class="btn-primary" data-hotkey="q"
+                        type="object" class="btn-primary" data-hotkey="q"
                         attrs="{'invisible': [('invoice_status', '!=', 'to invoice')]}"/>
                     <!-- <button name="create_payment_move" string="Créer facture" type="object" class="oe_highlight"  attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}" modifiers="{'invisible': [['state','=','sale']]}" readonly="0"/> -->
                     <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0">
