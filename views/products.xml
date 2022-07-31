@@ -298,7 +298,7 @@
             <field name="mode">primary</field>
             <field name="inherit_id" ref="product.product_template_search_view"/>
             <field name="arch" type="xml">
-                <field name="name" position="after">
+                <field name="name" position="replace">
                     <field name="company_id" string="Company"/>
                 </field>
                 
