@@ -40,7 +40,7 @@
         'data/cronvalidate.xml',
         'report/report_xcaisse.xml',
         'report/report_posreport.xml',
-        'view/purchase.xml',
+        'views/purchase.xml',
         
     ],
     # only loaded in demonstration mode
