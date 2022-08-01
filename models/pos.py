@@ -49,7 +49,7 @@ class PosSession(models.Model):
 
     def auto_close_pos_session(self):
         
-        self.write({'state':'closing_control'})
+        self.write({'state':'closed'})
         print("HELLO: Auto close session    "  +str(self.id))
 
         """ Method called by scheduled actions to close currently open sessions """
