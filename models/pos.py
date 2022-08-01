@@ -38,7 +38,7 @@ class PosSession(models.Model):
             'view_mode': 'form',
             'res_model': 'pos.session',
             'view_id': self.env.ref('ps_rezoroute.pos_fond_wizard_form').id,
-            # 'target' : 'inline',
+            'target' : 'current',
             'type': 'ir.actions.act_window',
             # 'active_ids': a.id,
             'context' : {'default_id' : 8 }
