@@ -85,7 +85,7 @@
             <field name="name">ps_rezoroute window</field>
             <field name="model">pos.session</field>
             <field name="arch" type="xml">
-                <form string="Fond de Caisse">
+                <form string="Fond de Caisse" create="false" edit="false">
                     <group string="Veuillez saisir votre fond de caisse">
                         <field name="fond_caisse" />
                     </group>
