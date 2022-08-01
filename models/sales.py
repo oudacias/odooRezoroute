@@ -234,6 +234,7 @@ class SaleOrderExtra(models.Model):
 
 
             print("Product prices   ids " +str(stock_picking))
+            stock_picking.move_lines._set_quantities_to_reservation()
 
             for picking in stock_picking:
                 if not picking.move_lines and not picking.move_line_ids:
