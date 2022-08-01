@@ -184,6 +184,9 @@ class SaleOrderExtra(models.Model):
         self.ensure_one()
         session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
 
+
+        print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable")
+
         if(len(session) == 1):
 
             data = []
