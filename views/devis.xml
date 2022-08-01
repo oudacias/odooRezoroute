@@ -47,7 +47,7 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//field[@name='sale_order_template_id']" position="replace">
-                    <<button name="create_payment_move" string="Créer facture 11"
+                    <button name="create_payment_move" string="Créer facture 11"
                         attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}" type="object" class="btn-primary" data-hotkey="q"
                         />
                 </xpath>
