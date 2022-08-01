@@ -72,8 +72,8 @@ class SaleOrderExtra(models.Model):
         if(self.partner_id):
             for rec in self:
                 partner = rec.env['res.partner'].search([('id','=',rec.partner_id.id)])
-
                 rec.mobile = partner.mobile
+                
 
 
     @api.depends('is_repair_order')
