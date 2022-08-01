@@ -188,7 +188,7 @@ class SaleOrderExtra(models.Model):
         print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable")
 
         if(len(session) == 1):
-
+            print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 2")
             data = []
             
             for rec in self.order_line:
