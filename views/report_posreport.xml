@@ -13,6 +13,8 @@
 
             <field name="print_report_name">Caisse</field>
 
+            <field name="binding_type">report</field>
+
             <field name="binding_model_id" ref="model_pos_session"/>
 
         </record>
