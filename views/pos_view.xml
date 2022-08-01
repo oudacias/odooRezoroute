@@ -38,8 +38,8 @@
                         </button>
                 </xpath>             
                 <xpath expr="//header"  postion="inside">
-                    <button name="check_cash_funds" string="Valider Session" type="object" attrs="{'invisible': [ '|', '&amp;',('state', '!=', 'Validée'), ('rescue', '=', False),
-                                '&amp;',('state', '=', 'Validée'), ('rescue', '=', True)]}" />
+                    <button name="check_cash_funds" string="Valider Session" type="object" attrs="{'invisible': [ '|', '&amp;',('state', '!=', 'opening_control'), ('rescue', '=', False),
+                                '&amp;',('state', '=', 'opening_control'), ('rescue', '=', True)]}" />
 
                     <button name="auto_close_pos_session" string="Cloturer Session" type="object" attrs="{'invisible': [ '|', '&amp;',('state', '!=', 'closing_control'), ('rescue', '=', False),
                                 '&amp;',('state', '=', 'closed'), ('rescue', '=', True)]}" />
