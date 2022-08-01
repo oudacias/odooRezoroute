@@ -229,6 +229,9 @@ class SaleOrderExtra(models.Model):
             pickings_without_lots = stock_picking.browse()
             products_without_lots = stock_picking.env['product.product']  
 
+
+            print("Product prices   ids " +str(stock_picking))
+
             for picking in stock_picking:
                 if not picking.move_lines and not picking.move_line_ids:
                     pickings_without_moves |= picking
