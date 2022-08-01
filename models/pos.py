@@ -23,7 +23,6 @@ class PosSession(models.Model):
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
     total_compute = fields.Integer(compute='_total_compute')
 
-    fond_caisse = fields.Float('Fond de Caisse')
 
     
 
@@ -36,20 +35,15 @@ class PosSession(models.Model):
         print("Checking cash_control    ids for cash_control    inline  data    in"  + str(self.id))
         return {
             'view_mode': 'form',
-            'res_model': 'pos.session',
+            'res_model': 'pos.session.cloture',
             'view_id': self.env.ref('ps_rezoroute.pos_fond_wizard_form').id,
             'target' : 'current',
             'type': 'ir.actions.act_window',
             # 'active_ids': a.id,
-            'context' : {'default_id' : 8 }
+            'context' : {'default_pos_session_id' : 8 }
         }
 
-    def check_cash_funds_after(self):
-        print("Checking cash funds after transaction    before"  +str(self.total_compute))
-        if(self.fond_caisse == self.total_compute):
-            return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
-        else:
-            raise ValidationError("Le montant de fond de caisse est différent de la somme calculée")
+    
 
 
 
@@ -157,4 +151,20 @@ class PosConfig(models.Model):
                 total += payment.amount
             
             rec.total_compute = total
+
+
+class PosSession(models.Model):
+
+    _name = 'pos.session.cloture'
+
+    pos_session_id = fields.Many2one('pos.session')
+    fond_caisse = fields.Float('Fond de Caisse')
+
+    def check_cash_funds_after(self):
+        print("Checking cash funds after transaction    before" )
+        # if(self.fond_caisse == self.total_compute):
+        #     return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
+        # else:
+        #     raise ValidationError("Le montant de fond de caisse est différent de la somme calculée")
+
 

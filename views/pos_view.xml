@@ -78,16 +78,16 @@
 
         <record model="ir.actions.act_window" id="ps_rezoroute.pos_fond_wizard">
             <field name="name">ps_rezoroute pos valider</field>
-            <field name="res_model">pos.session</field>
+            <field name="res_model">pos.session.cloture</field>
             <field name="view_mode">form</field>
         </record>
         <record id="pos_fond_wizard_form" model="ir.ui.view">
             <field name="name">ps_rezoroute window</field>
-            <field name="model">pos.session</field>
+            <field name="model">pos.session.cloture</field>
             <field name="arch" type="xml">
                 <form string="Fond de Caisse" create="false" edit="false">
                     <group string="Veuillez saisir votre fond de caisse">
-                        <field name="id" />
+                        <field name="pos_session_id" />
                         <field name="fond_caisse" />
                     </group>
                     <footer>
