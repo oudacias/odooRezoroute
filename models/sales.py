@@ -149,6 +149,8 @@ class SaleOrderExtra(models.Model):
     def action_button_confirm_repair_order(self):
         # self.write({'state':'progress'})
         # return super(SaleOrderExtra, self).action_confirm()
+
+        print("Engine actions should    be implemented  before  this actions    are implemented." + str(self.engin_id.id))  
         return {
                 'res_model': 'order.repair.confirm',
                 'view_mode': 'form',
