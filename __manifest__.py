@@ -39,7 +39,7 @@
         'views/pos_user_view.xml',
         'data/cronvalidate.xml',
         'views/report_posreport.xml',
-        'views/xcaisse.xml',
+        'views/report_xcaisse.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
