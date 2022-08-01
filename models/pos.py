@@ -37,7 +37,6 @@ class PosSession(models.Model):
             'res_model': 'pos.session',
             'view_id': 'pos_fond_wizard',
             'target' : 'new',
-            'views' : [(False, 'form')],
             'type': 'ir.actions.act_window',
             'context' : {'default_id' : self.id }
         }
