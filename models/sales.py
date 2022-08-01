@@ -26,6 +26,9 @@ class SaleOrderExtra(models.Model):
 
     session_id = fields.Many2one('pos.session',string="Session id")
 
+    
+    
+
     state = fields.Selection([
         ('draft', 'Quotation'),
         ('repair_order','Réparation en cours'),
@@ -152,6 +155,7 @@ class SaleOrderExtra(models.Model):
                 'target': 'new',
                 'type': 'ir.actions.act_window',
                 'views' : [(False, 'form')],
+                'context' : {'default_partner_id' : self.partner_id.id }
             }  
 
 
@@ -236,6 +240,8 @@ class SaleOrderExtra(models.Model):
 class ConfirmRepairOrder(models.Model):
 
     _name = "order.repair.confirm"
+
+    sale_order_id = fields.Many2one('sale.order')
     
     client_id = fields.Many2one('res.partner',string="Client")
     engin_id = fields.Many2one('fleet.vehicle',string="Véhicule")
