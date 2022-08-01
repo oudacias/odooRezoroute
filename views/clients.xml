@@ -29,12 +29,11 @@
                     <field name="partner_invoice_id"/>
                     <field name="partner_adress_on_invoice_id" context="{'default_type':'contact','default_parent_id':False,'default_is_company':True,'default_customer':False,'default_supplier':False}"/>
                 </field>
-                <field name="website" position="after">
+                <field name="category_id" position="after">
 
                     <field name="is_cheque_flotte"/>
-                    <field name="is_cheque_flotte"/>
-                    <field name="pourcentage_remise"/>
-                    <field name="pourcentage_remise"/>
+                    
+                    <field name="pourcentage_remise" attrs="{'invisible': [('is_cheque_flotte', '=', False))]}"/>
                 
                 </field>
 
