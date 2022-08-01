@@ -159,8 +159,18 @@
             <field name="model">order.repair.confirm</field>
             <field name="arch" type="xml">
                 <form string="Confirmation de l'ordre de réparation">
-                   
-                    <field name="next_ct_date" readonly="1"/>
+                    <group string="Ordre de réparation">
+                        <field name="client_id" readonly="1"/>
+                        <field name="engin_id" readonly="1"/>
+                        <field name="odometer"/>
+                        <field name="next_distri_date"/>
+                        <field name="next_ct_date"/>
+                    </group>
+                    <group string="Informations de réparation">
+                        <field name="user_repair_id" readonly="1"/>
+                        <field name="repair_order_note"/>
+                        
+                    </group>
                 </form>
             </field>
         </record>
