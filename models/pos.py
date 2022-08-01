@@ -48,11 +48,12 @@ class PosSession(models.Model):
 
 
     def auto_close_pos_session(self):
-
+        
+        self.write({'state':'closing_control'})
         print("HELLO: Auto close session    "  +str(self.id))
 
         """ Method called by scheduled actions to close currently open sessions """
-        return self.search([('id', '=', self.id)]).action_pos_session_closing_control()
+        # return self.search([('id', '=', self.id)]).action_pos_session_closing_control()
 
     def _compute_espece(self):
         payment_method_id = self.env['account.payment.method'].search([('code', '=', 'manual'),('payment_type', '=', 'inbound')]).ids
