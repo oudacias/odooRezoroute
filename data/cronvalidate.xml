@@ -10,9 +10,9 @@
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
-            <!-- <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 23:59:00')" />
+            <field name="nextcall" eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 23:59:00')" />
             <field name="priority">1000</field>
-            -->
+           
         </record>
     </data>
 </odoo>
