@@ -41,7 +41,7 @@ class PosSession(models.Model):
             'target' : 'inline',
             'type': 'ir.actions.act_window',
             # 'active_ids': a.id,
-            'context' : {'self.default_id' : 8 }
+            'context' : {'default_id' : 8 }
         }
 
     def check_cash_funds_after(self):
