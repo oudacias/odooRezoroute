@@ -159,7 +159,7 @@ class SaleOrderExtra(models.Model):
                 'views' : [(False, 'form')],
                 'context' : {   
                                 'default_client_id' : self.partner_id.id,
-                                'default_engine_id' : 1,
+                                'default_engin_order_id' : 1,
                                 'default_odometer': self.odometer,
                                 'default_next_distri_date' : self.next_distri_date,
                                 'default_next_ct_date' : self.next_ct_date,
@@ -253,7 +253,7 @@ class ConfirmRepairOrder(models.Model):
     sale_order_id = fields.Many2one('sale.order')
     
     client_id = fields.Many2one('res.partner',string="Client")
-    engin_id = fields.Many2one('fleet.vehicle',string="Véhicule")
+    engin_order_id = fields.Many2one('fleet.vehicle',string="Véhicule")
     
     odometer = fields.Float(string="Kilométrage")
     next_distri_date = fields.Date(strign="Prochaine Distri.")

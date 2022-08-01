@@ -161,7 +161,7 @@
                 <form string="Confirmation de l'ordre de réparation">
                     <group string="Ordre de réparation">
                         <field name="client_id" readonly="1"/>
-                        <field name="engin_id"/>
+                        <field name="engin_order_id" readonly="1"/>
                         <field name="odometer"/>
                         <field name="next_distri_date"/>
                         <field name="next_ct_date"/>
