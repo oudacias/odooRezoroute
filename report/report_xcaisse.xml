@@ -3,8 +3,9 @@
 
        <template id="report_xcaisse">
             <t t-call="web.html_container">
+                    <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo"/>
                     <t t-foreach="docs" t-as="o">
-                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo"/>
+                        
                     </t>
                 </t>
         </template>
