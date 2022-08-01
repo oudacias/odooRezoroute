@@ -40,7 +40,8 @@ class PosSession(models.Model):
             'view_id': self.env.ref('ps_rezoroute.pos_fond_wizard_form').id,
             'target' : 'inline',
             'type': 'ir.actions.act_window',
-            'context' : {'default_id' : self.id }
+            # 'active_ids': a.id,
+            'context' : {'active_ids' : self.id }
         }
 
     def check_cash_funds_after(self):
