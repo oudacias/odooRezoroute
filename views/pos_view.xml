@@ -89,6 +89,9 @@
                     <group string="Veuillez saisir votre fond de caisse">
                         <field name="fond_caisse" />
                     </group>
+                    <footer>
+                        <button name="check_cash_funds_after" string="Cloturer Session" type="object" class="oe_highlight"/>
+                    </footer>
                 </form>
             </field>
         </record>
