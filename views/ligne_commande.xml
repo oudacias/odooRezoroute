@@ -15,6 +15,7 @@
                 </xpath>
                 <xpath expr="//field[@name='order_line']//tree/field[@name='product_uom_qty']" position="after"> 
                     <field name="price_unit_public" readonly="1"/> 
+                    <field name="type_remise" invisible="1"/> 
                     <field name="discount" attrs="{'readonly': [('type_remise', '!=', False)]}"/> 
                 </xpath>
                 <xpath expr="//field[@name='order_line']//tree/field[@name='price_unit']" position="after"> 
