@@ -4,6 +4,8 @@ from datetime import date
 import string
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
+from odoo.tools.float_utils import float_compare, float_is_zero, float_round
+
 
 
 
@@ -203,7 +205,7 @@ class SaleOrderExtra(models.Model):
 
                         # 'date_limite_paiment':line.abonnement_id.date_paiment,
                         'move_type':"out_invoice",
-                        'session_id': '1',
+                        'session_id': session.id,
 
                         # 'echeance_id':line.id, 
                         # 'taux':line.abonnement_id.devis_id.taux,
@@ -219,6 +221,42 @@ class SaleOrderExtra(models.Model):
 
             a.write({'session_id':  str(session.id)}) 
             a.write({'state':  'posted'}) 
+
+            stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
+
+            pickings_without_moves = stock_picking.browse()
+            pickings_without_quantities = stock_picking.browse()
+            pickings_without_lots = stock_picking.browse()
+            products_without_lots = stock_picking.env['product.product']  
+
+            for picking in stock_picking:
+                if not picking.move_lines and not picking.move_line_ids:
+                    pickings_without_moves |= picking
+
+                picking.message_subscribe([self.env.user.partner_id.id])
+                picking_type = picking.picking_type_id
+                precision_digits = self.env['decimal.precision'].precision_get('Product Unit of Measure')
+                no_quantities_done = all(float_is_zero(move_line.qty_done, precision_digits=precision_digits) for move_line in picking.move_line_ids.filtered(lambda m: m.state not in ('done', 'cancel')))
+                no_reserved_quantities = all(float_is_zero(move_line.product_qty, precision_rounding=move_line.product_uom_id.rounding) for move_line in picking.move_line_ids)
+                if no_reserved_quantities and no_quantities_done:
+                    pickings_without_quantities |= picking
+
+                if picking_type.use_create_lots or picking_type.use_existing_lots:
+                    lines_to_check = picking.move_line_ids
+                    if not no_quantities_done:
+                        lines_to_check = lines_to_check.filtered(lambda line: float_compare(line.qty_done, 0, precision_rounding=line.product_uom_id.rounding))
+                    for line in lines_to_check:
+                        product = line.product_id
+                        if product and product.tracking != 'none':
+                            if not line.lot_name and not line.lot_id:
+                                pickings_without_lots |= picking
+                                products_without_lots |= product                    
+
+
+
+
+
+
 
             return {
                 'res_model': 'account.payment.register',
