@@ -87,6 +87,7 @@
             <field name="arch" type="xml">
                 <form string="Fond de Caisse" create="false" edit="false">
                     <group string="Veuillez saisir votre fond de caisse">
+                        <field name="id" />
                         <field name="fond_caisse" />
                     </group>
                     <footer>
