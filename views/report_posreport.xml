@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-        <record id="action_report_fleet_id" model="ir.actions.report">
+        <record id="report_xcaisse" model="ir.actions.report">
             <field name="name">X caisse</field>
 
             <field name="model">pos.session</field>
