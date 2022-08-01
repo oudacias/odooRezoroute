@@ -37,10 +37,10 @@ class PosSession(models.Model):
             'view_mode': 'form',
             'res_model': 'pos.session.cloture',
             'view_id': self.env.ref('ps_rezoroute.pos_fond_wizard_form').id,
-            'target' : 'current',
+            'target' : 'inline',
             'type': 'ir.actions.act_window',
             # 'active_ids': a.id,
-            'context' : {'default_pos_session_id' : 8 }
+            'context' : {'default_pos_session_id' : self.id }
         }
 
     
