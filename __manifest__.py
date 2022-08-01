@@ -39,8 +39,8 @@
         'views/pos_user_view.xml',
         'data/cronvalidate.xml',
         'views/report_xcaisse.xml',
-        'views/report_posreport.xml',
-        'views/purchase.xml',
+        'report/report_posreport.xml',
+        'report/purchase.xml',
         
     ],
     # only loaded in demonstration mode
