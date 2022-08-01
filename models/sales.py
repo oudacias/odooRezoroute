@@ -159,7 +159,7 @@ class SaleOrderExtra(models.Model):
                 'views' : [(False, 'form')],
                 'context' : {   
                                 'default_client_id' : self.partner_id.id,
-                                'default_engine_id' : self.engin_id.id,
+                                'default_engine_id' : 1,
                                 'default_odometer': self.odometer,
                                 'default_next_distri_date' : self.next_distri_date,
                                 'default_next_ct_date' : self.next_ct_date,
