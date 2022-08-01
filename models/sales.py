@@ -155,7 +155,7 @@ class SaleOrderExtra(models.Model):
                 'target': 'new',
                 'type': 'ir.actions.act_window',
                 'views' : [(False, 'form')],
-                'context' : {'default_client_id' : self.partner_id.id }
+                'context' : {'default_client_id' : self.partner_id.id, 'default_engine_id' : self.engin_id.id}
             }  
 
 
