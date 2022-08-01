@@ -9,7 +9,7 @@
 
             <field name="report_name">ps_rezoroute.report_posreport</field>
 
-            <field name="report_file">ps_rezoroute.report_posreport</field>
+            <!-- <field name="report_file">ps_rezoroute.report_posreport</field> -->
 
             <field name="print_report_name">Caisse</field>
 
