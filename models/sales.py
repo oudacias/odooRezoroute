@@ -161,7 +161,7 @@ class SaleOrderExtra(models.Model):
                                 'default_odometer': self.odometer,
                                 'default_next_distri_date' : self.next_distri_date,
                                 'default_next_ct_date' : self.next_ct_date,
-                                'default_user_repair_id' : self.user_repair_id
+                                'default_user_repair_id' : self.user_repair_id.id
                             }
                 }  
 
