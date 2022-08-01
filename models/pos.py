@@ -35,7 +35,7 @@ class PosSession(models.Model):
         return {
             'view_mode': 'form',
             'res_model': 'pos.session',
-            'view_id': 'pos_fond_wizard_form',
+            'view_id': self.env.ref('ps_rezoroute.pos_fond_wizard_form').id,,
             'target' : 'new',
             'type': 'ir.actions.act_window',
             'context' : {'default_id' : self.id }
