@@ -106,7 +106,7 @@ class SaleLine(models.Model):
     price_unit_public = fields.Float(string="P.U. Public")
 
     qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
-    remise_type = fields.selection(related='order_id.partner_id.is_cheque_flotte')
+    remise_type = fields.Boolean(related='order_id.partner_id.is_cheque_flotte')
 
 
 
