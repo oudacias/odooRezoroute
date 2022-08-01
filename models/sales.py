@@ -235,29 +235,9 @@ class SaleOrderExtra(models.Model):
 
             print("Product prices   ids " +str(stock_picking))
             stock_picking.move_lines._set_quantities_to_reservation()
+            stock_picking.button_validate()
 
-            for picking in stock_picking:
-                if not picking.move_lines and not picking.move_line_ids:
-                    pickings_without_moves |= picking
-
-                picking.message_subscribe([self.env.user.partner_id.id])
-                picking_type = picking.picking_type_id
-                precision_digits = self.env['decimal.precision'].precision_get('Product Unit of Measure')
-                no_quantities_done = all(float_is_zero(move_line.qty_done, precision_digits=precision_digits) for move_line in picking.move_line_ids.filtered(lambda m: m.state not in ('done', 'cancel')))
-                no_reserved_quantities = all(float_is_zero(move_line.product_qty, precision_rounding=move_line.product_uom_id.rounding) for move_line in picking.move_line_ids)
-                if no_reserved_quantities and no_quantities_done:
-                    pickings_without_quantities |= picking
-
-                if picking_type.use_create_lots or picking_type.use_existing_lots:
-                    lines_to_check = picking.move_line_ids
-                    if not no_quantities_done:
-                        lines_to_check = lines_to_check.filtered(lambda line: float_compare(line.qty_done, 0, precision_rounding=line.product_uom_id.rounding))
-                    for line in lines_to_check:
-                        product = line.product_id
-                        if product and product.tracking != 'none':
-                            if not line.lot_name and not line.lot_id:
-                                pickings_without_lots |= picking
-                                products_without_lots |= product                    
+                           
 
 
 
