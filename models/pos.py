@@ -164,7 +164,7 @@ class PosSession(models.Model):
         print("Checking cash funds after transaction    before" )
         if(self.fond_caisse == self.pos_session_id.total_compute):
 
-            self.search([('pos_session_id', '=', self.pos_session_id.id)]).action_pos_session_closing_control()
+            self.pos_session_id.search([('pos_session_id', '=', self.pos_session_id.id)]).action_pos_session_closing_control()
             self.pos_session_id.write({'state':'closing_control'})
 
             
