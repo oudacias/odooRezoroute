@@ -52,7 +52,7 @@ class PosSession(models.Model):
         print("HELLO: Auto close session    "  +str(self.id))
 
         """ Method called by scheduled actions to close currently open sessions """
-        return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
+        return self.search([('id', '=', self.id)]).action_pos_session_closing_control()
 
     def _compute_espece(self):
         payment_method_id = self.env['account.payment.method'].search([('code', '=', 'manual'),('payment_type', '=', 'inbound')]).ids
@@ -164,7 +164,7 @@ class PosSession(models.Model):
         print("Checking cash funds after transaction    before" )
         if(self.fond_caisse == self.pos_session_id.total_compute):
 
-            self.pos_session_id.search([('id', '=', self.pos_session_id.id)]).action_pos_session_closing_control()
+            # self.pos_session_id.search([('id', '=', self.pos_session_id.id)]).action_pos_session_closing_control()
             self.pos_session_id.write({'state':'closing_control'})
 
             
