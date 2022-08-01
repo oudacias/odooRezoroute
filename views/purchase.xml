@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record model="ir.ui.view" id="ps_rezoroute.POS">
+            <field name="name">ps_rezoroute POS</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+
+            <field name="arch" type="xml">   
+                <xpath expr="//field[@name='ref']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </odoo>
