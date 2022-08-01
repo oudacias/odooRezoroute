@@ -1,18 +1,20 @@
 <odoo>
-<record id="action_report_fleet_id" model="ir.actions.report">
-    <field name="name">X caisse</field>
+<data>
+    <record id="action_report_fleet_id" model="ir.actions.report">
+        <field name="name">X caisse</field>
 
-    <field name="model">pos.session</field>
+        <field name="model">pos.session</field>
 
-    <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-pdf</field>
 
-    <field name="report_name">ps_rezoroute.report_posreport</field>
+        <field name="report_name">ps_rezoroute.report_posreport</field>
 
-    <field name="report_file">ps_rezoroute.report_posreport</field>
+        <field name="report_file">ps_rezoroute.report_posreport</field>
 
-    <field name="print_report_name">Caisse</field>
+        <field name="print_report_name">Caisse</field>
 
-    <field name="binding_model_id" ref="model_pos_session"/>
+        <field name="binding_model_id" ref="model_pos_session"/>
 
     </record>
+</data>
 </odoo>
