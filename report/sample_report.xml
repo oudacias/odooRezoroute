@@ -1,0 +1,18 @@
+<odoo>
+<record id="action_report_fleet_id" model="ir.actions.report">
+    <field name="name">Fleet ID</field>
+
+    <field name="model">pos.session</field>
+
+    <field name="report_type">qweb-pdf</field>
+
+    <field name="report_name">fleet..report_fleet_id</field>
+
+    <field name="report_file">fleet.report_fleet_id</field>
+
+    <field name="print_report_name">Vehicle</field>
+
+    <field name="binding_model_id" ref="model_pos_session"/>
+
+    </record>
+</odoo>

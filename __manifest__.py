@@ -38,6 +38,7 @@
         'views/pos_view.xml',
         'views/pos_user_view.xml',
         'data/cronvalidate.xml',
+        'report/sample_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
