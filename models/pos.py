@@ -162,9 +162,9 @@ class PosSession(models.Model):
 
     def check_cash_funds_after(self):
         print("Checking cash funds after transaction    before" )
-        # if(self.fond_caisse == self.total_compute):
-        #     return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
-        # else:
-        #     raise ValidationError("Le montant de fond de caisse est différent de la somme calculée")
+        if(self.fond_caisse == self.pos_session_id.total_compute):
+            return self.search([('id', '=', self.id),('user_id', '=', self.env.uid)]).action_pos_session_closing_control()
+        else:
+            raise ValidationError("Le montant de fond de caisse est différent de la somme calculée")
 
 
