@@ -143,7 +143,7 @@ class SaleOrderExtra(models.Model):
     def sale_order_to_repair_order(self):
         self.hide_confirm = True
         self.write({'state':'repair_order','hide_confirm' : True})
-        super(SaleOrderExtra, self).action_confirm()
+        
 
     def sale_order_making(self):
         self.write({'state':'making'})
@@ -153,6 +153,7 @@ class SaleOrderExtra(models.Model):
         
 
         print("Engine actions should    be implemented  before  this actions    are implemented." + str(self.engin_id.id))  
+        super(SaleOrderExtra, self).action_confirm()
         return {
                 'res_model': 'order.repair.confirm',
                 'view_mode': 'form',
