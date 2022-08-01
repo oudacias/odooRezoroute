@@ -13,6 +13,9 @@ class PartnerExtra(models.Model):
     partner_invoice_id = fields.Many2one('res.partner','Adresse de facturation')
     partner_adress_on_invoice_id = fields.Many2one('res.partner','Adresse a imprimer sur les factures')
 
+    is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
+    pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
+
  
 
 
