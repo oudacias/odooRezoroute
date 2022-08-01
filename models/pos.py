@@ -33,6 +33,7 @@ class PosSession(models.Model):
                 'config_id': 1})
 
     def check_cash_funds(self):
+        print("Checking cash_control    ids for cash_control    inline  data    in"  + str(self.id))
         return {
             'view_mode': 'form',
             'res_model': 'pos.session',
