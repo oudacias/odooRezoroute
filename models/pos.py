@@ -5,7 +5,13 @@ from odoo.exceptions import ValidationError
 class PosSession(models.Model):
 
     _inherit = 'pos.session'
-
+    POS_SESSION_STATE = [
+        ('opening_control', 'Opening Control'),  # method action_pos_session_open
+        ('opened', 'In Progress'),               # method action_pos_session_closing_control
+        ('closing_control', 'Closing Control'),  # method action_pos_session_close
+        ('valider_session', 'Validée'),
+        ('closed', 'Closed & Posted'),
+    ]
     # bon_achat = fields.Integer(compute='_compute_bon_achat')
     # bon_promo = fields.Integer(compute='_compute_promo')
     # cb = fields.Integer(compute='_compute_cb')
@@ -16,12 +22,25 @@ class PosSession(models.Model):
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
     total_compute = fields.Integer(compute='_total_compute')
 
+    fond_caisse = fields.Float('Fond de Caisse')
+
     
 
 
     def open_sessions(self):
         self.env['pos.session'].create({'user_id': self.env.uid,
                 'config_id': 1})
+
+    def check_cash_funds(self):
+        return {
+            'view_mode': 'form',
+            'res_model': 'pos.session',
+            'view_id': 'pos_fond_wizard',
+            'target' : 'new',
+            'views' : [(False, 'form')],
+            'type': 'ir.actions.act_window',
+            'context' : {'default_id' : self.id }
+        }
 
     def auto_close_pos_session(self):
 

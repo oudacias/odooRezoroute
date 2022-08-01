@@ -38,7 +38,11 @@
                         </button>
                 </xpath>             
                 <xpath expr="//header"  postion="inside">
-                    <button name="auto_close_pos_session" string="Valider Session" type="object" />
+                    <button name="check_cash_funds" string="Valider Session" type="object" attrs="{'invisible': [ '|', '&amp;',('state', '!=', 'Validée'), ('rescue', '=', False),
+                                '&amp;',('state', '=', 'Validée'), ('rescue', '=', True)]}" />
+
+                    <button name="validate_closing_control" string="Cloturer Session" type="object" attrs="{'invisible': [ '|', '&amp;',('state', '!=', 'closing_control'), ('rescue', '=', False),
+                                '&amp;',('state', '=', 'closed'), ('rescue', '=', True)]}" />
                     <!-- <button name="open_sessions" string="Ouvrir Session" type="object" /> -->
                 </xpath>
 
@@ -69,6 +73,23 @@
                 <xpath expr="//field[@name='last_session_closing_cash']" position="replace">
                     <field name="total_compute"/>
                 </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="ps_rezoroute.pos_fond_wizard">
+            <field name="name">ps_rezoroute pos valider</field>
+            <field name="res_model">pos.session</field>
+            <field name="view_mode">form</field>
+        </record>
+        <record id="pos_fond_wizard_form" model="ir.ui.view">
+            <field name="name">ps_rezoroute window</field>
+            <field name="model">pos.session</field>
+            <field name="arch" type="xml">
+                <form string="Fond de Caisse">
+                    <group string="Veuillez saisir votre fond de caisse">
+                        <field name="fond_caisse" />
+                    </group>
+                </form>
             </field>
         </record>
     </odoo>
