@@ -113,12 +113,13 @@ class SaleOrderExtra(models.Model):
 
 
         # Change stock location
-        location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-
-        picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
+        # location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        location_id = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1) 
+        picking_id = self.env['self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)picking'].search([('sale_id','=',self.id)])
+        
         picking_id.write({'location_id':location_id.location_id.id})
 
-        stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
+        stock_move = self.env['self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)move'].search([('picking_id','=',picking_id.id)])
         stock_move.write({'location_id':location_id.location_id.id})
 
         
@@ -226,7 +227,7 @@ class SaleOrderExtra(models.Model):
             a.write({'session_id':  str(session.id)}) 
             a.write({'state':  'posted'}) 
 
-            stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
+            stock_picking = self.env['self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)picking'].search([('sale_id','=',self.id)])
 
             pickings_without_moves = stock_picking.browse()
             pickings_without_quantities = stock_picking.browse()
