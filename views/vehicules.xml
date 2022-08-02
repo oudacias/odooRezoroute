@@ -9,15 +9,15 @@
                     <group col="2">
                     <group>
                         <!-- <field name="siv"/> -->
-                        <field name="manufacturer_id"/>
-                        <field name="model_id" domaine="[('manufacturer_id','=',manufacturer_id)]"/>
-                        <field name="type_id"  domaine="[('model_id','=',model_id),('manufacturer_id','=',manufacturer_id)]"/>
+                        <field name="manufacturer_id" required="1"/>
+                        <!-- <field name="model_id" domaine="[('manufacturer_id','=',manufacturer_id)]"/> -->
+                        <field name="type_id"  domaine="[('model_id','=',model_id),('manufacturer_id','=',manufacturer_id)]" required="1"/>
                         <field name="code_moteur"/>
                         <field name="d_2_1"/>
                         <field name="e"/>   
                     </group>  
                     <group string="Client">               
-                        <field name="partner_id" width="500"/>
+                        <field name="partner_id" width="500" required="1"/>
                         <field name="last_buy"/>
                         <field name="last_servicing_date"/>
                         <field name="odometer"/>  
