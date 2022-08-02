@@ -67,10 +67,12 @@
 
 
                 <xpath expr="//field[@name='detailed_type']" position="before">
-                        <label for="is_group_reference" />
+                    <group>
+                        <!-- <label for="is_group_reference" /> -->
                         <field name="is_group_reference"/>
-                        <label for="replace" />
+                        <!-- <label for="replace" /> -->
                         <field name="replace"/>
+                    </group>
                    
                 </xpath>
 
