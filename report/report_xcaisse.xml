@@ -19,7 +19,6 @@
                                   <th style="text-align: left;">
                                     <span   > N° Facture </span>
                                   </th>
-                                </tr>
                                 <th style="text-align: left;">
                                     <span   > N° Client </span>
                                 </th>
@@ -35,7 +34,6 @@
                                 <th style="text-align: left;">
                                     <span   > Echéance  </span>
                                 </th>
-                                </tr>
                                 <th style="text-align: left;">
                                     <span   > Montant (MAD)  </span>
                                 </th>
