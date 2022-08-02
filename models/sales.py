@@ -114,7 +114,7 @@ class SaleOrderExtra(models.Model):
 
         # Change stock location
         # location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        location_id = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1) 
+        location_id = self.env['pos.config'].search([('state','=','opening_control')],order="id desc", limit =1) 
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
         
         picking_id.write({'location_id':location_id.location_id.id})
