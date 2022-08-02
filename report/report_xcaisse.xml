@@ -14,14 +14,54 @@
                         <table class="table table-condensed" style="border-bottom: 0px solid white !important;width: 3in;">
                                 <tr>
                                   <th style="text-align: left;">
-                                    <span   > test </span>
+                                    <span   > Date </span>
                                   </th>
+                                  <th style="text-align: left;">
+                                    <span   > N° Facture </span>
+                                  </th>
+                                </tr>
+                                <th style="text-align: left;">
+                                    <span   > N° Client </span>
+                                </th>
+                                <th style="text-align: left;">
+                                    <span   > Nom du Client </span>
+                                </th>
+                                <th style="text-align: left;">
+                                    <span   > N° de règlement </span>
+                                </th>
+                                <th style="text-align: left;">
+                                    <span   > Type de règlement  </span>
+                                </th>
+                                <th style="text-align: left;">
+                                    <span   > Echéance  </span>
+                                </th>
+                                </tr>
+                                <th style="text-align: left;">
+                                    <span   > Montant (MAD)  </span>
+                                </th>
                                 </tr>
                                 <t t-foreach="o.reglement_id" t-as="reg">
                                     <tr  >
-                                        <td>
-                                            <span>LN/SN:</span>
+                                        <td> 
+                                            <span t-field="reg.date"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="reg.ref"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="reg.partner_id.name"/>
+                                        </td>
+                                        <td> 
                                             <span t-field="reg.name"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="reg.journal_id.name"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="reg.date"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="reg.amount"/>
                                         </td>
                                     </tr>
                                 </t>
