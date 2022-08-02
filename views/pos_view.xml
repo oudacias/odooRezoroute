@@ -79,8 +79,9 @@
             <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
 
             <field name="arch" type="xml">  
-                <filter string="Services" name="services" domain="[('user_id','=',uid)"/> 
+                
                 <xpath expr="//field[@name='last_session_closing_cash']" position="replace">
+                <filter string="Services" name="services" domain="[('user_id','=',uid)"/> 
                     <field name="total_compute"/>
                 </xpath>
             </field>
