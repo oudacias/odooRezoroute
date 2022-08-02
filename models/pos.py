@@ -33,6 +33,14 @@ class PosSession(models.Model):
 
     def check_cash_funds(self):
         print("Checking cash_control    ids for cash_control    inline  data    in"  + str(self.id))
+        self.write({'state':'valider_session'})
+        
+
+    
+
+
+
+    def auto_close_pos_session(self):
         return {
             'view_mode': 'form',
             'res_model': 'pos.session.cloture',
@@ -43,14 +51,8 @@ class PosSession(models.Model):
             'context' : {'default_pos_session_id' : self.id }
         }
 
-    
-
-
-
-    def auto_close_pos_session(self):
-        
-        self.write({'state':'closed'})
-        print("HELLO: Auto close session    "  +str(self.id))
+        # self.write({'state':'closed'})
+        # print("HELLO: Auto close session    "  +str(self.id))
 
         """ Method called by scheduled actions to close currently open sessions """
         # return self.search([('id', '=', self.id)]).action_pos_session_closing_control()
@@ -159,11 +161,11 @@ class PosSession(models.Model):
     _name = 'pos.session.cloture'
 
     pos_session_id = fields.Many2one('pos.session')
-    fond_caisse = fields.Float('Fond de Caisse')
+    fond_caisse = fields.Float('Fond de Caisse Espèces')
 
     def check_cash_funds_after(self):
         print("Checking cash funds after transaction    before" )
-        if(self.fond_caisse == self.pos_session_id.total_compute):
+        if(self.fond_caisse == self.pos_session_id.espece):
 
             # self.pos_session_id.search([('id', '=', self.pos_session_id.id)]).action_pos_session_closing_control()
             self.pos_session_id.write({'state':'closing_control'})
