@@ -4,12 +4,12 @@
        <template id="report_xcaisse">
             <t t-call="web.html_container">
             
-                    <div class="header">
+                    <!-- <div class="header">
                         <div class="row">
                             
                             
                         </div>
-                    </div>
+                    </div> -->
                     <t t-foreach="docs" t-as="o">
                         <table class="table table-condensed" style="border-bottom: 0px solid white !important;width: 3in;">
                                 <tr>
@@ -26,10 +26,10 @@
                                     <span   > Nom du Client </span>
                                 </th>
                                 <th style="text-align: left;">
-                                    <span   > Num de règlement </span>
+                                    <span   > Num de reglement </span>
                                 </th>
                                 <th style="text-align: left;">
-                                    <span   > Type de règlement  </span>
+                                    <span   > Type de reglement  </span>
                                 </th>
                                 <th style="text-align: left;">
                                     <span   > Echéance  </span>
@@ -60,6 +60,10 @@
                                         </td>
                                         <td> 
                                             <span t-field="reg.amount"/>
+                                            <t t-set="test_variable" t-value="test_variable+reg.amount"/> 
+                                        </td>
+                                         <td> 
+                                            <span t-field="test_variable"/>
                                         </td>
                                     </tr>
                                 </t>
