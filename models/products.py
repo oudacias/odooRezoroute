@@ -113,6 +113,8 @@ class ProductTemplateExtra(models.Model):
 
         # reference +="." + category_pr.name[0:1]
 
+        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(reference_new))
+
         values['reference_code'] = reference_new
         
 
