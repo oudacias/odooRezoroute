@@ -62,11 +62,10 @@
                                             <span t-field="reg.amount"/>
                                             <t t-set="test_variable" t-value="test_variable+reg.amount"/> 
                                         </td>
-                                         <td> 
-                                            <span t-field="test_variable"/>
-                                        </td>
+                                         
                                     </tr>
                                 </t>
+                                <h1>RESULT=<t t-esc="test_variable"/></h1>
                                 
                             </table>
                         
