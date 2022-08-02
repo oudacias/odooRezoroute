@@ -86,35 +86,38 @@ class ProductTemplateExtra(models.Model):
     @api.model
     def create(self, values):
 
-        # reference_new = ""
-        # type_new = ""
+        reference_new = ""
+        type_new = ""
 
-        # category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
+        maxi_rec = self.env['sequence.product'].search([])
+        maxi = maxi_rec.mapped('max')
 
-        # print("@@@@@@@@ Detailed type information   " +str(values['detailed_type']))
-        # type_pr = values['detailed_type'].split()
+        print("@@@@@@@@@@@@@Max Sequence: " + str(maxi))
 
-        # if(len(type_pr) == 1):
-        #     type_new = values['detailed_type'][0:2].upper()
-        # else:
-        #     for type in type_pr:
-        #         type = type.lstrip().upper()
-        #         type_new += type[0:2]
+        category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
+        type_pr = values['detailed_type'].split()
+
+        if(len(type_pr) == 1):
+            type_new = values['detailed_type'][0:2].upper()
+        else:
+            for type in type_pr:
+                type = type.lstrip().upper()
+                type_new += type[0:2]
 
 
 
-        # reference = category_pr.complete_name.split('/')
+        reference = category_pr.complete_name.split('/')
         
 
-        # for ref in reference:
-        #     ref = ref.lstrip().upper()
-        #     reference_new += ref[0:2] + "."
+        for ref in reference:
+            ref = ref.lstrip().upper()
+            reference_new += ref[0:2] + "."
         
-        # reference_new = reference_new[:-1]
+        reference_new = reference_new[:-1]
 
-        # print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(type_new) + str(reference_new))
+        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(type_new) + str(reference_new))
 
-        # values['reference_code'] = str(type_new) +"."+ str(reference_new)
+        values['reference_code'] = str(type_new) +"."+ str(reference_new)
         
 
 
@@ -210,6 +213,13 @@ class ProductExtra(models.Model):
                 qty += line_qty.quantity
             
             rec.qty_location = qty
+
+
+class SequenceArticle(models.Model):
+
+    _inherit = 'sequence.product'
+
+    sequence_id = fields.Integer()
 
         
 
