@@ -38,6 +38,7 @@
                                     <span   > Montant (MAD)  </span>
                                 </th>
                                 </tr>
+                                <t t-set="test_variable" t-value="0"/>
                                 <t t-foreach="o.reglement_id" t-as="reg">
                                     <tr  >
                                         <td> 
