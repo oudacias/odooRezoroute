@@ -35,7 +35,7 @@
 
                         <!-- <label for="categ_id" string="Categorie de l'article"/> -->
                         
-                            <field name="categ_id"/>
+                            <!-- <field name="categ_id"/> -->
                         </group>
                    
                 </xpath>

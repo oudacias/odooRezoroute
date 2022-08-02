@@ -85,22 +85,39 @@ class ProductTemplateExtra(models.Model):
 
     @api.model
     def create(self, values):
-        reference = ""
-        if(len(values['detailed_type'].split()) == 1):
-            
-            reference += values['detailed_type'][0:1]
-        else:
-            reference += values['detailed_type'].split()[0][0] + values['detailed_type'].split()[1][0]
-        
 
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
+
+        reference = category_pr.complete_name.split('/')
+
+        reference_new = ""
+
+        for ref in reference:
+            reference_new += ref[0:1]
+            
+
+
+
+
+       
+        # if(len(values['detailed_type'].split()) == 1):
+            
+        #     reference += values['detailed_type'][0:1]
+        # else:
+        #     reference += values['detailed_type'].split()[0][0] + values['detailed_type'].split()[1][0]
+        
+
+        # category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
         # category = self.env('product.category').search([('id','=',values['categ_id'])])
         # category = self.env('product.template').browse(1)
 
-        reference +="." + category_pr.name[0:1]
+        # reference +="." + category_pr.name[0:1]
 
-        values['reference_code'] = reference
+        values['reference_code'] = reference_new
         
+
+
+
         q= super(ProductTemplateExtra, self).create(values) 
         return q
         
