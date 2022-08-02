@@ -12,7 +12,10 @@ class AcoountMoveExtra(models.Model):
 
         print("Creating new account")
 
-        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        # session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
+        # session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
+
+        session =  self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)  
 
         print(str(session.id))
 
@@ -31,7 +34,7 @@ class StockPickingExtra(models.Model):
     @api.model
     def create(self,vals):
 
-        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
         vals['session_id'] = session.id
 
         q= super(StockPickingExtra, self).create(vals) 
@@ -49,7 +52,7 @@ class StockPickingExtra(models.Model):
 
 
     def button_validate(self):
-        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
         
         if(len(session) == 1):
             return super(StockPickingExtra, self).button_validate()
@@ -65,7 +68,7 @@ class RegelementExtra(models.Model):
     @api.model
     def create(self,vals):
 
-        session = self.env['pos.session'].search([('user_id','=',self.env.uid),('state','=','opening_control')])  
+        session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
 
         vals['session_id'] = session.id
 
