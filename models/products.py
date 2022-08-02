@@ -116,7 +116,7 @@ class ProductTemplateExtraa(models.Model):
         values['reference_code'] = str(type_new) +"."+ str(reference_new)
         
 
-        maxi_rec.create({'sequence_id': last_sequence})
+        # maxi_rec.create({'sequence_id': last_sequence})
 
         q= super(ProductTemplateExtraa, self).create(values) 
         return q
