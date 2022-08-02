@@ -90,11 +90,14 @@ class ProductTemplateExtra(models.Model):
         type_new = ""
 
         maxi_rec = self.env['sequence.product'].search([])
-        maxi_rec1 = self.env['product.product'].search([])
+
+        if(len(maxi_rec) == 0):
+            last_sequence = 1
+        else:
+            last_sequence = max(maxi_rec) + 1
         
 
-        print("@@@@@@@@@@@@@Max Sequence: " + str(max(maxi_rec)))
-        print("@@@@@@@@@@@@@Max Sequence: " + str(max(maxi_rec1)))
+        print("@@@@@@@@@@@@@Max Sequence: " + str(last_sequence))
 
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
         type_pr = values['detailed_type'].split()
