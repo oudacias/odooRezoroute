@@ -153,13 +153,13 @@ class SaleOrderExtra(models.Model):
         
 
         print("Engine actions should    be implemented  before  this actions    are implemented." + str(self.engin_id.id))  
-        super(SaleOrderExtra, self).action_confirm()
+        
         return {
                 'res_model': 'order.repair.confirm',
                 'view_mode': 'form',
                 'target': 'new',
                 'type': 'ir.actions.act_window',
-                'views' : [(False, 'form')],
+                # 'views' : [(False, 'form')],
                 'context' : {   
                                 'default_client_id' : self.partner_id.id,
                                 'default_engin_order_id' : 1,
@@ -288,5 +288,8 @@ class ConfirmRepairOrder(models.Model):
 
     user_repair_id = fields.Many2one('res.users',string="Mécanicien")
     repair_order_note = fields.Text(string="Note de réparation")
+
+    def confirm_order(self):
+        super(SaleOrderExtra, self).action_confirm()
 
 
