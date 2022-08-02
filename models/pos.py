@@ -33,7 +33,7 @@ class PosSession(models.Model):
 
     def check_cash_funds(self):
         print("Checking cash_control    ids for cash_control    inline  data    in"  + str(self.id))
-        self.write({'state':'valider_session'})
+        self.write({'state':'closing_control'})
         
 
     
@@ -59,7 +59,7 @@ class PosSession(models.Model):
 
     def _compute_espece(self):
         payment_method_id = self.env['account.payment.method'].search([('code', '=', 'manual'),('payment_type', '=', 'inbound')]).ids
-        
+
 
         print("Payment Method ID: " + str(payment_method_id))
 
@@ -169,7 +169,7 @@ class PosSession(models.Model):
         if(self.fond_caisse == self.pos_session_id.espece):
 
             # self.pos_session_id.search([('id', '=', self.pos_session_id.id)]).action_pos_session_closing_control()
-            self.pos_session_id.write({'state':'closing_control'})
+            self.pos_session_id.write({'state':'closed'})
 
             
         else:
