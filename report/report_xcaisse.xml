@@ -6,10 +6,12 @@
             
                     <div class="header">
                         <div class="row">
-                            <img class="img" src="/ps_rezoroute/static/src/img/aiutgo.jpeg" style="height:45%;width:100%;" />
+                            <img t-att-src ="/ps_rezoroute/static/src/img/aiutgo.jpeg" style="height:45%;width:100%;" />
                         </div>
                     </div>
+                    
                     <t t-foreach="docs" t-as="o">
+                        <span></span>
                         <table class="table table-condensed" style="border-bottom: 0px solid white !important;width: 3in;">
                                 <tr>
                                   <th style="text-align: left;">
