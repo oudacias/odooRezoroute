@@ -82,6 +82,8 @@ class PosData(models.Model):
     sale_count = fields.Integer(compute='_compute_sale_count')  
     reglement_count = fields.Integer(compute='_compute_reglement_count')
 
+    reglement_id = fields.One2many('account.payment','session_id')
+
     def _compute_facture_count(self):
         orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids),('state', '=', 'posted')], ['session_id'], ['session_id'])
         sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}

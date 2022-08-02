@@ -3,6 +3,7 @@
 
        <template id="report_xcaisse">
             <t t-call="web.html_container">
+            
                     <div class="header">
                         <div class="row">
                             
@@ -10,8 +11,26 @@
                         </div>
                     </div>
                     <t t-foreach="docs" t-as="o">
+                        <table class="table table-condensed" style="border-bottom: 0px solid white !important;width: 3in;">
+                                <tr>
+                                  <th style="text-align: left;">
+                                    <span   > test </span>
+                                  </th>
+                                </tr>
+                                <t t-foreach="o.reglement_id" t-as="reg">
+                                    <tr  >
+                                        <td>
+                                            <span>LN/SN:</span>
+                                            <span t-field="reg.name"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                
+                            </table>
+                        
                         
                     </t>
                 </t>
         </template>
+
     </odoo>
