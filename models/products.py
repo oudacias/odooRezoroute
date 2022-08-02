@@ -217,7 +217,7 @@ class ProductExtra(models.Model):
 
 class SequenceArticle(models.Model):
 
-    _inherit = 'sequence.product'
+    _name = 'sequence.product'
 
     sequence_id = fields.Integer()
 
