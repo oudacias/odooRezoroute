@@ -1,6 +1,6 @@
 from odoo import fields, models, api
 
-class ProductTemplateExtra(models.Model):
+class ProductTemplateExtraa(models.Model):
 
     _inherit = 'product.template'
 
@@ -95,10 +95,6 @@ class ProductTemplateExtra(models.Model):
             last_sequence = 1
         else:
             last_sequence = max(maxi_rec) + 1
-        
-
-        print("@@@@@@@@@@@@@Max Sequence: " + str(last_sequence))
-
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
         type_pr = values['detailed_type'].split()
 
@@ -108,12 +104,7 @@ class ProductTemplateExtra(models.Model):
             for type in type_pr:
                 type = type.lstrip().upper()
                 type_new += type[0:2]
-
-
-
         reference = category_pr.complete_name.split('/')
-        
-
         for ref in reference:
             ref = ref.lstrip().upper()
             reference_new += ref[0:2] + "."
@@ -127,7 +118,7 @@ class ProductTemplateExtra(models.Model):
 
         maxi_rec.create({'sequence_id': last_sequence})
 
-        q= super(ProductTemplateExtra, self).create(values) 
+        q= super(ProductTemplateExtraa, self).create(values) 
         return q
         
 
