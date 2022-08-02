@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<!-- <data noupdate="0">
+<data noupdate="0">
 
     <record id="group_gestionnaire" model="res.groups">
         <field name="name">Gestionnaire</field>
         <field name="comment">Office Technology Permission Group.</field>
-        <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> 
+        <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
-    <record model="ir.module.category" id="module_category_ng_office_technology">
+    <!-- <record model="ir.module.category" id="module_category_ng_office_technology">
             <field name="name">Office Technology</field>
             <field name="description">The Office technology Applilcation</field>
             <field name="sequence">20</field>
     </record> -->
-<!-- </data>  -->
+</data>
 </odoo>
