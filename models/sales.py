@@ -157,7 +157,7 @@ class SaleOrderExtra(models.Model):
         return {
                 'res_model': 'order.repair.confirm',
                 'view_mode': 'form',
-                'target': 'new',
+                'target': 'inline',
                 'type': 'ir.actions.act_window',
                 # 'views' : [(False, 'form')],
                 'context' : {   
