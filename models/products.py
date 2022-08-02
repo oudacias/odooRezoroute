@@ -86,52 +86,35 @@ class ProductTemplateExtra(models.Model):
     @api.model
     def create(self, values):
 
-        reference_new = ""
-        type_new = ""
-
-        category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
-
-        print("@@@@@@@@ Detailed type information   " +str(values['detailed_type']))
-        type_pr = values['detailed_type'].split()
-
-        if(len(type_pr) == 1):
-            type_new = values['detailed_type'][0:2].upper()
-        else:
-            for type in type_pr:
-                type = type.lstrip().upper()
-                type_new += type[0:2]
-
-
-
-        reference = category_pr.complete_name.split('/')
-        
-
-        for ref in reference:
-            ref = ref.lstrip().upper()
-            reference_new += ref[0:2] + "."
-        
-        reference_new = reference_new[:-1]
-
-
-
-
-       
-        # if(len(values['detailed_type'].split()) == 1):
-            
-        #     reference += values['detailed_type'][0:1]
-        # else:
-        #     reference += values['detailed_type'].split()[0][0] + values['detailed_type'].split()[1][0]
-        
+        # reference_new = ""
+        # type_new = ""
 
         # category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
-        # category = self.env('product.category').search([('id','=',values['categ_id'])])
-        # category = self.env('product.template').browse(1)
 
-        # reference +="." + category_pr.name[0:1]
+        # print("@@@@@@@@ Detailed type information   " +str(values['detailed_type']))
+        # type_pr = values['detailed_type'].split()
 
-        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(type_new) + str(reference_new))
+        # if(len(type_pr) == 1):
+        #     type_new = values['detailed_type'][0:2].upper()
+        # else:
+        #     for type in type_pr:
+        #         type = type.lstrip().upper()
+        #         type_new += type[0:2]
 
-        values['reference_code'] = str(type_new) + str(reference_new)
+
+
+        # reference = category_pr.complete_name.split('/')
+        
+
+        # for ref in reference:
+        #     ref = ref.lstrip().upper()
+        #     reference_new += ref[0:2] + "."
+        
+        # reference_new = reference_new[:-1]
+
+        # print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(type_new) + str(reference_new))
+
+        # values['reference_code'] = str(type_new) +"."+ str(reference_new)
         
 
 
