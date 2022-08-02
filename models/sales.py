@@ -291,6 +291,16 @@ class ConfirmRepairOrder(models.Model):
     repair_order_note = fields.Text(string="Note de réparation")
 
     def confirm_order(self):
-        super(SaleOrderExtra, self).action_confirm()
+
+        rec =  self.env['sale.order'].search([],order="id desc", limit =1)  
+        for h in rec:
+            h.write({'state':'sale'})
+
+        # rec = self.env['sale.order'].search([('id','=',self.id)], limit=1)
+
+        # sale_id = self.env['sale'].search([('id','=',self.id)], limit=1)
+
+        # sale_id.write({'state':'progress'})
+        # super(SaleOrderExtra, self).action_confirm()
 
 
