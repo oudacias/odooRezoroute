@@ -73,7 +73,7 @@ class ProductTemplateExtra(models.Model):
     golda_price_init = fields.Float(string="Golda price init")
     price_rate_upselling = fields.Float(string="Coeff applique avant coeff liste de prix")
     
-    replace = fields.Many2one("res.company", string="Remplace par")
+    replace = fields.Many2one("product.template", string="Remplace par")
     
     product_pricelist_item = fields.One2many("product.pricelist.item","product_tmpl_id","Pricelist Items")
     _sql_constraints = [('ps_code_article_unique', ' unique (ps_code_article)','Ce code article existe deja !')]
