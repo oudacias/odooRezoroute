@@ -156,7 +156,7 @@ class SaleOrderExtra(models.Model):
         print("Engine actions should    be implemented  before  this actions    are implemented." + str(self.engin_id.id))  
         
         return {
-                'res_model': 'sale.order',
+                'res_model': 'order.repair.confirm',
                 'view_mode': 'form',
                 'target': 'new',
                 'type': 'ir.actions.act_window',
@@ -275,9 +275,9 @@ class SaleOrderExtra(models.Model):
 
 class ConfirmRepairOrder(models.Model):
 
-    _inherit = "sale.order"
+    _name = "order.repair.confirm"
 
-    # sale_order_id = fields.Many2one('sale.order')
+    sale_order_id = fields.Many2one('sale.order')
     
     client_id = fields.Many2one('res.partner',string="Client")
     engin_order_id = fields.Many2one('fleet.vehicle',string="Véhicule")
@@ -293,14 +293,14 @@ class ConfirmRepairOrder(models.Model):
     def confirm_order(self):
 
         rec =  self.env['sale.order'].search([],order="id desc", limit =1)  
-        # for h in rec:
-        #     h.write({'state':'sale'})
+        for h in rec:
+            h.write({'state':'sale'})
 
         # rec = self.env['sale.order'].search([('id','=',self.id)], limit=1)
 
         # sale_id = self.env['sale'].search([('id','=',self.id)], limit=1)
 
         # sale_id.write({'state':'progress'})
-        super(SaleOrderExtra, self).action_confirm()
+        # super(SaleOrderExtra, self).action_confirm()
 
 
