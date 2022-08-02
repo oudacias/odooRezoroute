@@ -88,7 +88,11 @@ class ProductTemplateExtra(models.Model):
 
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
 
+        print("@@@ Category: %s" % category_pr)
+
         reference = category_pr.complete_name.split('/')
+
+        print("@@@ Category after split:"   +str(reference))
 
         reference_new = ""
 
