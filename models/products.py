@@ -97,7 +97,7 @@ class ProductTemplateExtra(models.Model):
         reference_new = ""
 
         for ref in reference:
-            print("@@@ Inside loop category"     +str(ref[0:2]))
+            ref = ref.lstrip()
             reference_new += ref[0:2]
             
 
