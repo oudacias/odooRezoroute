@@ -90,6 +90,8 @@ class ProductTemplateExtra(models.Model):
         type_new = ""
 
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
+
+        print("@@@@@@@@ Detailed type information   " +str(values['detailed_type']))
         type_pr = values['detailed_type'].split()
 
         if(len(type_pr) == 1):
