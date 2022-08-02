@@ -79,6 +79,9 @@
             <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
 
             <field name="arch" type="xml">  
+                
+                <xpath expr="//field[@name='last_session_closing_cash']" position="replace">
+                
                     <field name="total_compute"/>
                 </xpath>
             </field>
