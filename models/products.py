@@ -86,20 +86,29 @@ class ProductTemplateExtra(models.Model):
     @api.model
     def create(self, values):
 
-        category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
+        reference_new = ""
+        type_new = ""
 
-        print("@@@ Category: %s" % category_pr)
+        category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
+        type_pr = values['detailed_type'].split()
+
+        if(len(type_pr) == 1):
+            type_new = values['detailed_type'][0:2].upper()
+        else:
+            for type in type_pr:
+                type = type.lstrip().upper()
+                type_new += type[0:2]
+
+
 
         reference = category_pr.complete_name.split('/')
-
-        print("@@@ Category after split:"   +str(reference))
-
-        reference_new = ""
+        
 
         for ref in reference:
-            ref = ref.lstrip()
-            reference_new += ref[0:2]
-            
+            ref = ref.lstrip().upper()
+            reference_new += ref[0:2] + "."
+        
+        reference_new = reference_new[:-1]
 
 
 
@@ -118,9 +127,9 @@ class ProductTemplateExtra(models.Model):
 
         # reference +="." + category_pr.name[0:1]
 
-        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(reference_new))
+        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(type_new) + str(reference_new))
 
-        values['reference_code'] = reference_new
+        values['reference_code'] = str(type_new) + str(reference_new)
         
 
 
