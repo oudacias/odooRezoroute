@@ -17,16 +17,16 @@
                                     <span   > Date </span>
                                   </th>
                                   <th style="text-align: left;">
-                                    <span   > N° Facture </span>
+                                    <span   > Num Facture </span>
                                   </th>
-                                <th style="text-align: left;">
+                                <!-- <th style="text-align: left;">
                                     <span   > N° Client </span>
-                                </th>
+                                </th> -->
                                 <th style="text-align: left;">
                                     <span   > Nom du Client </span>
                                 </th>
                                 <th style="text-align: left;">
-                                    <span   > N° de règlement </span>
+                                    <span   > Num de règlement </span>
                                 </th>
                                 <th style="text-align: left;">
                                     <span   > Type de règlement  </span>
