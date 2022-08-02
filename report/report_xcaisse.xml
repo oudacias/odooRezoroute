@@ -64,7 +64,9 @@
                                         </td>
                                          
                                     </tr>
-                                    <tr>
+                                    
+                                </t>
+                                <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -73,7 +75,6 @@
                                     <td><h5>Total</h5></td>
                                     <td><h5><t t-esc="test_variable"/></h5></td>
                                     </tr>
-                                </t>
                                 
                             </table>
                         
