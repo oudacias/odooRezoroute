@@ -59,6 +59,7 @@ class PosSession(models.Model):
 
     def _compute_espece(self):
         payment_method_id = self.env['account.payment.method'].search([('code', '=', 'manual'),('payment_type', '=', 'inbound')]).ids
+        
 
         print("Payment Method ID: " + str(payment_method_id))
 

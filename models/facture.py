@@ -83,7 +83,7 @@ class PosData(models.Model):
     reglement_count = fields.Integer(compute='_compute_reglement_count')
 
     def _compute_facture_count(self):
-        orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids)], ['session_id'], ['session_id'])
+        orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids),('state', '=', 'posted')], ['session_id'], ['session_id'])
         sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
         for session in self:
             session.facture_count = sessions_data.get(session.id, 0)
