@@ -8,11 +8,11 @@
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
 
-    <record model="ir.rule" id="show_my_pos_user_rule">
+    <!-- <record model="ir.rule" id="show_my_pos_user_rule">
         <field name="name">My POS</field>
         <field name="model_id" ref="model_pos_session"></field>
         <field name="domain_force">[('user_id','=','user.id')]</field>
-    </record>
+    </record> -->
     <!-- <record model="ir.rule" id="show_my_pos_config_user_rule">
         <field name="name">My POS </field>
         <field name="model_id" ref="model_pos_config"></field>
