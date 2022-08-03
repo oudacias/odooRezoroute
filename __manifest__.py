@@ -42,6 +42,7 @@
         'report/report_xcaisse.xml',
         'report/report_posreport.xml',
         'views/purchase.xml',
+        'views/payment.xml',
         
     ],
     # only loaded in demonstration mode
