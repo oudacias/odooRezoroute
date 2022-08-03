@@ -326,7 +326,7 @@ class ConfirmRepairOrder(models.Model):
 
 
 
-class PaymentRegister(models.Model):
+class PaymentRegister(models.TransientModel):
 
     _inherit = 'account.payment.register'
 
