@@ -28,7 +28,7 @@ class SaleOrderExtra(models.Model):
 
     session_id = fields.Many2one('pos.session',string="Session id")
 
-    repair_order_id = fields.One2many('repair.order.confirm','sale_order_id')
+    repair_order_id = fields.One2many('order.repair.confirm','sale_order_id')
 
     
     
