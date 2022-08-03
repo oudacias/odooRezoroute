@@ -277,6 +277,15 @@ class SaleOrderExtra(models.Model):
                     'type': 'ir.actions.act_window',
                 }  
             else:
+
+                stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
+
+
+
+                print("Product prices   ids " +str(stock_picking))
+                stock_picking.move_lines._set_quantities_to_reservation()
+                stock_picking.button_validate()
+                
                 active_ids = self._context.get('active_ids')
                 a = self.env['account.move'].browse(active_ids)
 
