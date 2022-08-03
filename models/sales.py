@@ -210,7 +210,11 @@ class SaleOrderExtra(models.Model):
                                 # "product_uom_id":rec.product_id.id,
                                 "quantity":rec.product_uom_qty,
                                 "name":rec.product_id.name,"product_id":rec.product_id.id,
-                                "sale_line_ids":rec.id,
+
+
+                                "sale_line_ids": [(6, 0, [rec.id])],
+
+
                                 'group_tax_id': rec.tax_id.ids,
                                 'price_subtotal': rec.price_subtotal,
                                 'price_total': rec.price_total,
