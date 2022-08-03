@@ -332,6 +332,7 @@ class PaymentRegister(models.TransientModel):
 
     @api.onchange('journal_id')
     def on_journal_change(self):
+        print("Changing journal_id to " + str(self.journal_id))
         if(self.journal_id):
             if(self.journal_id.name == 'Espèces'):
                 self.is_cash = True
