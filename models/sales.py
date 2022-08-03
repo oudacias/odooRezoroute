@@ -339,6 +339,9 @@ class PaymentRegister(models.TransientModel):
                 print("Changing journal_id to " + str(self.journal_id.name ))
                 self.is_cash = True
             else:
+
+                
+                print("Changing journal_id to 2" + str(self.journal_id.name ))
                 self.is_cash = False
 
     @api.onchange('cash_amount')
