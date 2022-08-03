@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-        <record model="ir.ui.view" id="ps_rezoroute.payment.register">
+        <record model="ir.ui.view" id="ps_rezoroute.payment_register">
             <field name="name">ps_rezoroute Payment Register</field>
             <field name="model">account.payment.register</field>
             <field name="inherit_id" ref="account.view_account_payment_register_form"/>
