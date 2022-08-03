@@ -162,7 +162,7 @@ class SaleOrderExtra(models.Model):
                 'view_mode': 'form',
                 'target': 'new',
                 'type': 'ir.actions.act_window',
-                # 'views' : [(False, 'form')],
+                'views' : [(False, 'form')],
                 'context' : {   
                                 'default_client_id' : self.partner_id.id,
                                 'default_engin_order_id' : 1,
