@@ -278,22 +278,22 @@ class SaleOrderExtra(models.Model):
                 }  
             else:
                 active_ids = self._context.get('active_ids')
-                hhh = self.env['account.move'].browse(active_ids)
+                a = self.env['account.move'].browse(active_ids)
 
                 print("@@@@ Active invoice_line_ids  were    updated to" + str(hhh))
 
                 # a=self.env.search([('account.move','=',)])
 
-                # return {
-                #     'res_model': 'account.payment.register',
-                #     'view_mode': 'form',
-                #     'context': {
-                #         'active_model': 'account.move',
-                #         'active_ids': a.id,
-                #     },
-                #     'target': 'new',
-                #     'type': 'ir.actions.act_window',
-                # }
+                return {
+                    'res_model': 'account.payment.register',
+                    'view_mode': 'form',
+                    'context': {
+                        'active_model': 'account.move',
+                        'active_ids': a.id,
+                    },
+                    'target': 'new',
+                    'type': 'ir.actions.act_window',
+                }
             
 
             
