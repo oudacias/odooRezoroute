@@ -10,11 +10,11 @@
                     <attribute name="readonly">1</attribute>
                 </xpath> 
                 <xpath expr="//field[@name='amount']" position="after">
-                    <group>
+                    <!-- <group> -->
                         <field name="is_cash"/>
-                        <field name="cash_amount" attr="{'invisible': [('is_cash', '!=', False)]}"/>
+                        <field name="cash_amount" attr="{'invisible': [('is_cash', '=', False)]}"/>
                         <field name="cash_amount_residual" readonly="1" attr="{'invisible': [('is_cash', '=', False)]}"/>
-                    </group>
+                    <!-- </group> -->
 
                 </xpath>
             </field>
