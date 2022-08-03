@@ -210,7 +210,11 @@ class SaleOrderExtra(models.Model):
                                 # "product_uom_id":rec.product_id.id,
                                 "quantity":rec.product_uom_qty,
                                 "name":rec.product_id.name,"product_id":rec.product_id.id,
-                                # "ref_article":rec.product_id.default_code
+                                "ref_article":rec.product_id.default_code,
+                                'tax_id': rec.tax_id.ids,
+                                'price_subtotal': rec.price_subtotal,
+                                'price_total': rec.price_total,
+                                'currency_id': rec.currency_id.id,
                             }))
         
             a=self.env['account.move'].create({
