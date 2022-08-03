@@ -35,6 +35,7 @@ class SaleOrderExtra(models.Model):
     paid_check = fields.Boolean(compute="_paid_check")
 
     def _paid_check(self):
+        print("@@@@@ Sale Order Status: " + str(self.invoice_ids.payment_state))
         if(self.invoice_ids.payment_state == 'Payé'):
             self.paid_check = True
         else:
