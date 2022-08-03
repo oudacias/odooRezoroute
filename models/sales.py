@@ -328,6 +328,13 @@ class PaymentRegister(models.TransientModel):
 
     cash_amount = fields.Float(string="Montant payé")
     cash_amount_residual = fields.Float(string="Monnaie rendu")
+    is_cash = fields.Boolean(string="iscash")
+
+    @api.onchage('journal_id')
+    def on_journal_change(self):
+        if(self.journal_id):
+            if(self.journal_id.name == 'Espèces'):
+                self.is_cash = True
 
     @api.onchange('cash_amount')
     def on_cash_amount(self):
