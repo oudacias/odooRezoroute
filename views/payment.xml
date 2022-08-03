@@ -10,8 +10,10 @@
                     <attribute name="readonly">1</attribute>
                 </xpath> 
                 <xpath expr="//field[@name='amount']" position="after">
-                    <field name="cash_amount" attr="{'invisible': [('payment_type', '!=', 'Espèces')]}"/>
-                    <field name="cash_amount_residual" readonly="1" attr="{'invisible': [('payment_type', '!=', 'Espèces')]}"/>
+                    <group>
+                        <field name="cash_amount" attr="{'invisible': [('payment_type', '!=', 'Espèces')]}"/>
+                        <field name="cash_amount_residual" readonly="1" attr="{'invisible': [('payment_type', '!=', 'Espèces')]}"/>
+                    </group>
 
                 </xpath>
             </field>
