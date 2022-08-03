@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record model="ir.ui.view" id="ps_rezoroute.payment.register">
+            <field name="name">ps_rezoroute Payment Register</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+
+            <field name="arch" type="xml"> 
+                <xpath expr="//field[@name='amount']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xapth> 
+                <xpath expr="//field[@name='amount']" position="after">
+                    <field name="cash_amount" attr="{'invisible': [('payment_type', '!=', 'Espèces')]}"/>
+                    <field name="cash_amount_residual" readonly="1" attr="{'invisible': [('payment_type', '!=', 'Espèces')]}"/>
+
+                </xapth>
+            </field>
+        </record>
+    </odoo>

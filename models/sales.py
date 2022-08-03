@@ -248,10 +248,6 @@ class SaleOrderExtra(models.Model):
 
             stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
 
-            pickings_without_moves = stock_picking.browse()
-            pickings_without_quantities = stock_picking.browse()
-            pickings_without_lots = stock_picking.browse()
-            products_without_lots = stock_picking.env['product.product']  
 
 
             print("Product prices   ids " +str(stock_picking))
@@ -331,4 +327,9 @@ class PaymentRegister(models.TransientModel):
     _inherit = 'account.payment.register'
 
     cash_amount = fields.Float(string="Montant payé")
-    cash_amount = fields.Float(string="Monnaie rendu")
+    cash_amount_residual = fields.Float(string="Monnaie rendu")
+
+    @api.onchange('cash_amount')
+    def on_cash_amount(self):
+        if(self.cash_amount):
+            self.cash_amount_residual = self.amount - self.cash_amount
