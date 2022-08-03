@@ -32,7 +32,7 @@ class SaleOrderExtra(models.Model):
 
     invoice_compute = fields.Integer(compute="_compute_invoice_count")
 
-    paid_check = fields.Booelan(compute="_paid_check")
+    paid_check = fields.Boolean(compute="_paid_check")
 
     def _paid_check(self):
         if(self.invoice_ids.payment_state == 'Payé'):
