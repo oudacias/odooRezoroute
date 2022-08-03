@@ -163,7 +163,7 @@
             <field name="arch" type="xml">
                 <form string="Confirmation de l'ordre de réparation">
                     <group string="Ordre de réparation">
-                        <!-- <field name="sale_order_id" readonly="1"/> -->
+                        <field name="sale_order_id" readonly="1"/>
                         <field name="client_id" readonly="1"/>
                         <field name="engin_order_id" readonly="1"/>
                         <field name="odometer"/>
