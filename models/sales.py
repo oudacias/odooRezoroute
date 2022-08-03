@@ -203,84 +203,89 @@ class SaleOrderExtra(models.Model):
         if(len(session) == 1):
             print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 2")
             data = []
+
+            if(self.invoiced == False):
             
-            for rec in self.order_line:
-                data.append((0,0,{  
-                                "price_unit":rec.price_unit,
-                                # "product_uom_id":rec.product_id.id,
-                                "quantity":rec.product_uom_qty,
-                                "name":rec.product_id.name,"product_id":rec.product_id.id,
+                for rec in self.order_line:
+                    data.append((0,0,{  
+                                    "price_unit":rec.price_unit,
+                                    # "product_uom_id":rec.product_id.id,
+                                    "quantity":rec.product_uom_qty,
+                                    "name":rec.product_id.name,"product_id":rec.product_id.id,
 
 
-                                "sale_line_ids": [(6, 0, [rec.id])],
+                                    "sale_line_ids": [(6, 0, [rec.id])],
 
 
-                                'group_tax_id':  [(6, 0, rec.tax_id.ids)],
-                                'price_subtotal': rec.price_subtotal,
-                                'price_total': rec.price_total,
-                                'currency_id': rec.currency_id.id,
-                            }))
-        
-            a=self.env['account.move'].create({
-                        'invoice_date_due':date.today(),
-                        'partner_id':self.partner_id.id, 
-                        'invoice_date':date.today(),
-                        # 'condition_paiment':1, 
+                                    'group_tax_id':  [(6, 0, rec.tax_id.ids)],
+                                    'price_subtotal': rec.price_subtotal,
+                                    'price_total': rec.price_total,
+                                    'currency_id': rec.currency_id.id,
+                                }))
+            
+                a=self.env['account.move'].create({
+                            'invoice_date_due':date.today(),
+                            'partner_id':self.partner_id.id, 
+                            'invoice_date':date.today(),
+                            # 'condition_paiment':1, 
 
-                        # 'date_limite_paiment':line.abonnement_id.date_paiment,
-                        'move_type':"out_invoice",
-                        'session_id': session.id,
+                            # 'date_limite_paiment':line.abonnement_id.date_paiment,
+                            'move_type':"out_invoice",
+                            'session_id': session.id,
 
-                        # 'echeance_id':line.id, 
-                        # 'taux':line.abonnement_id.devis_id.taux,
-                        # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
-                        # 'montant_vendeur':line.abonnement_id.devis_id.amount_total,
-                        "invoice_line_ids":data
-                    })
-
-
-
-
-
-
-            a.write({'session_id':  str(session.id)}) 
-            a.write({'state':  'posted'}) 
-
-            stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
-
-
-
-            print("Product prices   ids " +str(stock_picking))
-            stock_picking.move_lines._set_quantities_to_reservation()
-            stock_picking.button_validate()
-
-                           
+                            # 'echeance_id':line.id, 
+                            # 'taux':line.abonnement_id.devis_id.taux,
+                            # 'montant':line.abonnement_id.devis_id.amount_total*line.abonnement_id.devis_id.taux,
+                            # 'montant_vendeur':line.abonnement_id.devis_id.amount_total,
+                            "invoice_line_ids":data
+                        })
 
 
 
 
 
 
+                a.write({'session_id':  str(session.id)}) 
+                a.write({'state':  'posted'}) 
 
-            return {
-                'res_model': 'account.payment.register',
-                'view_mode': 'form',
-                'context': {
-                    'active_model': 'account.move',
-                    'active_ids': a.id,
-                },
-                'target': 'new',
-                'type': 'ir.actions.act_window',
-            }  
-            # return {
-            #     'view_mode': 'form',
-            #     'res_model': 'account.payment.register',
-            #     'target' : 'new',
-            #     'views' : [(False, 'form')],
-            #     'type': 'ir.actions.act_window',
-            #     'context' : {'default_move_id' : a.id,'default_partner_id' : self.partner_id.id }
-            #     # 'context' : {'default_partner_id' : self.partner_id.id }
-            # }  
+                stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
+
+
+
+                print("Product prices   ids " +str(stock_picking))
+                stock_picking.move_lines._set_quantities_to_reservation()
+                stock_picking.button_validate()
+
+
+                return {
+                    'res_model': 'account.payment.register',
+                    'view_mode': 'form',
+                    'context': {
+                        'active_model': 'account.move',
+                        'active_ids': a.id,
+                    },
+                    'target': 'new',
+                    'type': 'ir.actions.act_window',
+                }  
+            else:
+                active_ids = self._context.get('active_ids')
+                hhh = self.env['account.invoice'].browse(active_ids)
+
+                print("@@@@ Active invoice_line_ids  were    updated to" + str(hhh))
+
+                # a=self.env.search([('account.move','=',)])
+
+                # return {
+                #     'res_model': 'account.payment.register',
+                #     'view_mode': 'form',
+                #     'context': {
+                #         'active_model': 'account.move',
+                #         'active_ids': a.id,
+                #     },
+                #     'target': 'new',
+                #     'type': 'ir.actions.act_window',
+                # }
+            
 
             
         else:
