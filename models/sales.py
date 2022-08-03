@@ -28,7 +28,7 @@ class SaleOrderExtra(models.Model):
 
     session_id = fields.Many2one('pos.session',string="Session id")
 
-    repair_order_id = fields.One2many('order.repair.confirm','sale_order_id')
+    repair_order_id = fields.One2many('order.repair.confirm','sale_order_id',string="Numéro de devis")
 
     
     
@@ -296,8 +296,8 @@ class ConfirmRepairOrder(models.Model):
     def confirm_order(self):
 
         rec =  self.env['sale.order'].search([],order="id desc", limit =1)  
-        for h in rec:
-            h.write({'state':'sale'})
+        # for h in rec:
+        #     h.write({'state':'sale'})
 
         # rec = self.env['sale.order'].search([('id','=',self.id)], limit=1)
 
@@ -305,5 +305,6 @@ class ConfirmRepairOrder(models.Model):
 
         # sale_id.write({'state':'progress'})
         # super(SaleOrderExtra, self).action_confirm()
+        self.sale_order_id.action_confirm()
 
 
