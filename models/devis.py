@@ -143,11 +143,12 @@ class SaleLine(models.Model):
 
     @api.onchange('discount')
     def check_discount(self):
-        if(self.discount):
-            for rec in self:
-                if(rec.discount > self.product_id.product_tmpl_id.categ_id.seuil and self.product_id.product_tmpl_id.categ_id.seuil > 0):                    
-                    self.discount = 0
-                    raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
+        if(self.product_id):
+            if(self.discount):
+                for rec in self:
+                    if(rec.discount > self.product_id.product_tmpl_id.categ_id.seuil and self.product_id.product_tmpl_id.categ_id.seuil > 0):                    
+                        self.discount = 0
+                        raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
                     
 
                 

@@ -324,3 +324,11 @@ class ConfirmRepairOrder(models.Model):
         self.sale_order_id.action_confirm()
 
 
+
+
+class PaymentRegister(models.Model):
+
+    _inherit = 'account.payment.register'
+
+    cash_amount = fields.Float(string="Montant payé")
+    cash_amount = fields.Float(string="Monnaie rendu")
