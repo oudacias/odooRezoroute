@@ -215,7 +215,7 @@ class SaleOrderExtra(models.Model):
                                 "sale_line_ids": [(6, 0, [rec.id])],
 
 
-                                # 'group_tax_id': rec.tax_id.ids,
+                                'group_tax_id':  [(6, 0, rec.tax_id.ids)],
                                 'price_subtotal': rec.price_subtotal,
                                 'price_total': rec.price_total,
                                 'currency_id': rec.currency_id.id,

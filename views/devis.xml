@@ -42,18 +42,6 @@
                        
                 </xpath>
 
-                <xpath expr="//button[@name='preview_sale_order']" position="after">
-                    <button name="action_view_invoice"
-                            type="object"
-                            class="oe_stat_button"
-                            icon="fa-pencil-square-o"
-                            >
-                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
-                        </button>
-                </xpath>
-
-
-
 
 
                 <xpath expr="//field[@name='validity_date']" position="attributes">
