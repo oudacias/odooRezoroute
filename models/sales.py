@@ -278,7 +278,7 @@ class SaleOrderExtra(models.Model):
                 }  
             else:
                 active_ids = self._context.get('active_ids')
-                hhh = self.env['account.invoice'].browse(active_ids)
+                hhh = self.env['account.move'].browse(active_ids)
 
                 print("@@@@ Active invoice_line_ids  were    updated to" + str(hhh))
 
