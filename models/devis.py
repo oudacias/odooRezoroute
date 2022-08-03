@@ -110,6 +110,8 @@ class SaleLine(models.Model):
 
 
 
+
+
     def _get_qty_location(self):
         
         # location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)

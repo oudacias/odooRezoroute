@@ -43,7 +43,7 @@ class SaleOrderExtra(models.Model):
 
 
     def _compute_invoice_count(self):
-        print("")
+        print("HEllo Hello Hello @@@@@@@@@ ########")
         # orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids),('state', '=', 'posted')], ['session_id'], ['session_id'])
         # sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
         # for session in self:
