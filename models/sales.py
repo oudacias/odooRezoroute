@@ -32,6 +32,15 @@ class SaleOrderExtra(models.Model):
 
     invoice_compute = fields.Integer(compute="_compute_invoice_count")
 
+    paid_check = fields.Booelan(compute="_paid_check")
+
+    def _paid_check(self):
+        if(self.invoice_ids.payment_state == 'Payé'):
+            self.paid_check = True
+        else:
+            self.paid_check = False
+
+
     def _compute_invoice_count(self):
         print("")
         # orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids),('state', '=', 'posted')], ['session_id'], ['session_id'])
@@ -211,9 +220,9 @@ class SaleOrderExtra(models.Model):
                                     "price_unit":rec.price_unit,
                                     # "product_uom_id":rec.product_id.id,
                                     "quantity":rec.product_uom_qty,
-                                    "name":rec.product_id.name,"product_id":rec.product_id.id,
-
-
+                                    "name":rec.product_id.name,
+                                    "product_id":rec.product_id.id,
+                                    
                                     "sale_line_ids": [(6, 0, [rec.id])],
 
 
