@@ -28,6 +28,8 @@ class SaleOrderExtra(models.Model):
 
     session_id = fields.Many2one('pos.session',string="Session id")
 
+    repair_order_id = fields.One2many('repair.order.id','sale_order_id')
+
     
     
 
@@ -167,7 +169,8 @@ class SaleOrderExtra(models.Model):
                                 'default_odometer': self.odometer,
                                 'default_next_distri_date' : self.next_distri_date,
                                 'default_next_ct_date' : self.next_ct_date,
-                                'default_user_repair_id' : self.user_repair_id.id
+                                'default_user_repair_id' : self.user_repair_id.id,
+                                'default_sale_order_id' : self.id,
                             }
                 }  
 
