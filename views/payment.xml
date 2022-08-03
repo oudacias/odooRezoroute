@@ -11,9 +11,9 @@
                 </xpath> 
                 <xpath expr="//field[@name='amount']" position="after">
                     <!-- <group> -->
-                        <field name="is_cash"/>
-                        <field name="cash_amount" attr="{'invisible': [('is_cash', '=', False)]}"/>
-                        <field name="cash_amount_residual" readonly="1" attr="{'invisible': [('is_cash', '=', False)]}"/>
+                        <field name="is_cash"  force_save="1"/>
+                        <field name="cash_amount" attr="{'invisible': [('is_cash', '=', False)]}"  force_save="1"/>
+                        <field name="cash_amount_residual" readonly="1" attr="{'invisible': [('is_cash', '=', False)]}"  force_save="1"/>
                     <!-- </group> -->
 
                 </xpath>
