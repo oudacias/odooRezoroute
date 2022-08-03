@@ -213,7 +213,7 @@ class SaleOrderExtra(models.Model):
             print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 2")
             data = []
 
-            if(self.invoiced == False):
+            if(self.paid_check == False):
             
                 for rec in self.order_line:
                     data.append((0,0,{  
