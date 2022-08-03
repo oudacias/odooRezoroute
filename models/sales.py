@@ -211,7 +211,7 @@ class SaleOrderExtra(models.Model):
                                 "quantity":rec.product_uom_qty,
                                 "name":rec.product_id.name,"product_id":rec.product_id.id,
                                 "sale_line_ids":rec.id,
-                                'tax_id': rec.tax_id.ids,
+                                'group_tax_id': rec.tax_id.ids,
                                 'price_subtotal': rec.price_subtotal,
                                 'price_total': rec.price_total,
                                 'currency_id': rec.currency_id.id,
