@@ -3,6 +3,16 @@ from urllib.parse import uses_relative
 from odoo import fields, models,api
 from odoo.exceptions import ValidationError
 
+class payments_model(models.Model):
+    _name ="payements"
+
+    payment_id = fields.Many2one('account.payment')
+    pos_session_id = fields.Many2one('pos.session')
+
+    total_payment = fields.Float( )
+
+    
+
 class PosSession(models.Model):
 
     _inherit = 'pos.session'
@@ -25,7 +35,8 @@ class PosSession(models.Model):
 
     method_id = fields.Text(string="Méthode de Paiement", compute='_get_method_name')
     payment_id = fields.One2many('account.payment','session_id')
-
+    payment_ids = fields.One2many('payements','pos_session_id')
+    total_payment = fields.Float(compute="total" )
 
     def _get_method_name(self):
         self.method_id = self.payment_id.payment_method_line_id
@@ -33,7 +44,19 @@ class PosSession(models.Model):
             print("Payment Method ID: 2" + str(rec.journal_id.name))
         print("@@@@@ Methode  de method_id   2 : " + str(self.method_id.name))
 
+    def total(self):
+        data=[]
+        for a in self.env('account.payment').search([]) : 
+            total = 0
+            for ligne in  self.pos_session_id.payment_id:
+                if ligne.id==a.id:
+                    total +=ligne.amount 
 
+            
+            data.append((0,0 ,{'payment_id':a.id,'total_payment':total})) 
+            print (data)
+            self.total_payment = total
+            total=0
     
 
 
