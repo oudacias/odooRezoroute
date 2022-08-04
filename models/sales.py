@@ -304,7 +304,7 @@ class SaleOrderExtra(models.Model):
                     'view_mode': 'form',
                     'context': {
                         'active_model': 'account.move',
-                        # 'active_ids': a.id,
+                        'active_ids': a.id,
                     },
                     'target': 'new',
                     'type': 'ir.actions.act_window',
