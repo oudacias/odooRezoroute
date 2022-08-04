@@ -69,7 +69,7 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
 
 
-    @api.onchange('engine_id')
+    @api.onchange('engin_id')
     def get_extra_data(self):
         print("@@@@@@@@@@@ ############ HERE HERE HERE"    + str(self.engine_id))
         self.odometer = self.engine_id.odometer
