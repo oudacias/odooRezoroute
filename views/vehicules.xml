@@ -19,6 +19,7 @@
                         <field name="next_ct_date"/>   
                         <field name="detail"/>   
                         <field name="nb_porte"/>   
+                        <field name="engine_maintenance_variant"/>   
                     </group>  
                     <group string="Client">               
                         <field name="partner_id" width="500" required="1"/>
