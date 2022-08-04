@@ -9,7 +9,7 @@
                 <xpath expr="//field[@name='amount']" position="attributes">
                     <attribute name="readonly">1</attribute>
                 </xpath> 
-                <xpath expr="//field[@name='amount']" position="after">
+                <xpath expr="//field[@name='amount']" position="partner_bank_id">
                     <!-- <group> -->
                         <field name="is_cash"  force_save="1"/>
                         <field name="cash_amount" attr="{'invisible': [('is_cash', '=', True)]}"  force_save="1"/>
