@@ -270,9 +270,7 @@ class SaleOrderExtra(models.Model):
                 stock_picking.move_lines._set_quantities_to_reservation()
                 stock_picking.button_validate()
 
-                print('@@@@ Actice ids @@@@@@    @@ @@ @@ @@ @@ @@ @@ @@ @@ @@ @@ @@   ' +str(a.id))
-
-
+                
                 return {
                     'res_model': 'account.payment.register',
                     'view_mode': 'form',
@@ -285,24 +283,9 @@ class SaleOrderExtra(models.Model):
                 }  
             elif(self.invoice_ids.payment_state == 'not_paid'):
 
-                # stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
-
-
-
 
                 print("Product prices   ids TEST TEST TEST" +str(self.invoice_ids.id))
-                # stock_picking.move_lines._set_quantities_to_reservation()
-                # stock_picking.button_validate()
-                
-                # active_ids = self._context.get('active_ids')
-
-                # a = self.env['account.move'].browse(active_ids)
-
-                # # a.write({'state':  'draft'}) 
-
-
-                # # a=self.env.search([('account.move','=',)])
-
+               
                 return {
                     # 'name': _('Register Payment'),
                     'res_model': 'account.payment.register',
@@ -372,11 +355,13 @@ class PaymentRegister(models.TransientModel):
             if(self.journal_id.name == 'Espèces'):
                 print("Changing journal_id to " + str(self.journal_id.name ))
                 self.is_cash = True
+                print("Changing journal_id to " + str(self.is_cash ))
             else:
 
                 
                 print("Changing journal_id to 2" + str(self.journal_id.name ))
                 self.is_cash = False
+                print("Changing journal_id to 2" + str(self.is_cash ))
 
     @api.onchange('cash_amount')
     def on_cash_amount(self):
