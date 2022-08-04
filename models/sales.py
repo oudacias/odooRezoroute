@@ -301,10 +301,10 @@ class SaleOrderExtra(models.Model):
                 return {
                     'res_model': 'account.payment.register',
                     'view_mode': 'form',
-                    # 'context': {
-                    #     'active_model': 'account.move',
-                    #     'active_ids': a.id,
-                    # },
+                    'context': {
+                        'active_model': 'account.move',
+                        # 'active_ids': a.id,
+                    },
                     'target': 'new',
                     'type': 'ir.actions.act_window',
                 }
