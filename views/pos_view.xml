@@ -60,6 +60,7 @@
                     <notebook>
                         <page string="Résumé">
                             <group>
+                                <field name="payment_id"/>
                                 <field name="espece"/>
                                 <field name="cheque"/>
                             </group>
