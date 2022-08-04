@@ -183,12 +183,12 @@ class PosSession(models.Model):
 
 
 
-class PosSessionPaiement(models.Model):
+# class PosSessionPaiement(models.Model):
 
-    name = 'pos.session.paiement'
+#     name = 'pos.session.paiement'
 
-    method_id = fields.Many2one('account.payment.method')
-    payment_id = fields.Many2one('account.payment')
+#     method_id = fields.Many2one('account.payment.method')
+#     payment_id = fields.Many2one('account.payment')
 
 
 
