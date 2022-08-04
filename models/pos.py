@@ -35,7 +35,7 @@ class PosSession(models.Model):
 
     method_id = fields.Text(string="Méthode de Paiement", compute='_get_method_name')
     payment_id = fields.One2many('account.payment','session_id')
-    payment_ids = fields.One2many('payements','pos_session_id',compute="total" )
+    payment_ids = fields.One2many('payements','pos_session_id')
     total_payment = fields.Float()
 
     def _get_method_name(self):
@@ -43,13 +43,7 @@ class PosSession(models.Model):
         for rec in self.payment_id:
             print("Payment Method ID: 2" + str(rec.journal_id.name))
         print("@@@@@ Methode  de method_id   2 : " + str(self.method_id.name))
-
-    @api.model
-    def default_get(self, default_fields):
-        self.total()
-        # You can write your modified lines of code here
-        rec = super(PosSession, self).default_get(default_fields)
-        return rec
+    @api.onchange('payment_ids','write_date')
     def total(self):
         print("@@@ Checking Total Payment Amount")
         data=[]
@@ -64,7 +58,7 @@ class PosSession(models.Model):
             print (data)
             self.total_payment = total
             total=0
-        return {'payment_ids':data}
+        self.write({'payment_ids':data})
 
 
     def open_sessions(self):
