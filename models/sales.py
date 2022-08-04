@@ -270,6 +270,8 @@ class SaleOrderExtra(models.Model):
                 stock_picking.move_lines._set_quantities_to_reservation()
                 stock_picking.button_validate()
 
+                print('@@@@ Actice ids @@@@@@    @@ @@ @@ @@ @@ @@ @@ @@ @@ @@ @@ @@   ' +str(a.id))
+
 
                 return {
                     'res_model': 'account.payment.register',
@@ -292,6 +294,7 @@ class SaleOrderExtra(models.Model):
                 # stock_picking.button_validate()
                 
                 active_ids = self._context.get('active_ids')
+
                 a = self.env['account.move'].browse(active_ids)
 
                 # a.write({'state':  'draft'}) 
@@ -299,10 +302,8 @@ class SaleOrderExtra(models.Model):
 
                 # a=self.env.search([('account.move','=',)])
 
-                print("@@@@@@#####  test_pos actions form    before  move    actions form    for account move  " +str(active_ids))
-
                 return {
-                    'name': _('Register Payment'),
+                    # 'name': _('Register Payment'),
                     'res_model': 'account.payment.register',
                     'view_mode': 'form',
                     'context': {
