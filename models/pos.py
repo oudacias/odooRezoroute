@@ -57,7 +57,7 @@ class PosSession(models.Model):
             print (data)
             self.total_payment = total
             total=0
-    
+        return {'payment_ids':data}
 
 
     def open_sessions(self):
