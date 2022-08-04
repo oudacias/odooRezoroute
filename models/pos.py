@@ -117,7 +117,7 @@ class PosSession(models.Model):
 
             
             data.append((0,0 ,{'payment_id':a.id,'total_payment':total})) 
-            print (data)
+            print (str(data))
             self.total_payment = total
             total=0
         self.write({'payment_ids':data})
