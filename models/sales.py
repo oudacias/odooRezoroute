@@ -297,7 +297,7 @@ class SaleOrderExtra(models.Model):
 
                 # a=self.env.search([('account.move','=',)])
 
-                print("@@@@@@#####  test_pos actions form    before  move    actions form    for account move")
+                print("@@@@@@#####  test_pos actions form    before  move    actions form    for account move  " +str(a))
 
                 return {
                     'res_model': 'account.payment.register',
