@@ -213,7 +213,7 @@ class SaleOrderExtra(models.Model):
             print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 2")
             data = []
 
-            if(self.paid_check == False):
+            if(self.invoice_ids.payment_state != 'paid'):
 
                 print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 3")
 
