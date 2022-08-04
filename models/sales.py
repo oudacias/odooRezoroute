@@ -303,17 +303,17 @@ class SaleOrderExtra(models.Model):
 
                 # # a=self.env.search([('account.move','=',)])
 
-                # return {
-                #     # 'name': _('Register Payment'),
-                #     'res_model': 'account.payment.register',
-                #     'view_mode': 'form',
-                #     'context': {
-                #         'active_model': 'account.move',
-                #         'active_ids': self.ids,
-                #     },
-                #     'target': 'new',
-                #     'type': 'ir.actions.act_window',
-                # }
+                return {
+                    # 'name': _('Register Payment'),
+                    'res_model': 'account.payment.register',
+                    'view_mode': 'form',
+                    'context': {
+                        'active_model': 'account.move',
+                        'active_ids': self.invoice_ids.id,
+                    },
+                    'target': 'new',
+                    'type': 'ir.actions.act_window',
+                }
                     
 
             
