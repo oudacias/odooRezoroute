@@ -76,7 +76,7 @@
                     <field name="hide_confirm" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
 
                     <field name="partner_ref" readonly="1"/>
-                    <field name="paid_check" readonly="1"/>
+                    <field name="paid_check" invisible="1"/>
                     <field name="mobile" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                     <field name="phone"  modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
 
