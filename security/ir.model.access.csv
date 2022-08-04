@@ -6,4 +6,4 @@ pos_close_session,pos.session.cloture,model_pos_session_cloture,group_gestionnai
 pos_session,pos.session,model_pos_session,group_gestionnaire,1,1,1,1
 pos_product_manufacturer,ps.product.manufacturer,model_ps_product_manufacturer,group_gestionnaire,1,1,1,1
 pos_product_fullimage,ps.product.fullimage,model_ps_product_fullimage,group_gestionnaire,1,1,1,1
-pos_purchase_order,purchase.order,model_purchase_order,group_gestionnaire,1,0,1,1
+pos_purchase_order,purchase.order,model_purchase_order,group_gestionnaire,0,0,1,1
