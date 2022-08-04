@@ -175,7 +175,7 @@ class PosSession(models.Model):
 
             self.pos_session_id.search([('id', '=', self.pos_session_id.id)]).action_pos_session_closing_control()
             # self.pos_session_id.write({'state':'closed'})
-            
+
 
 
             
