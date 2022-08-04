@@ -50,7 +50,7 @@
                 <xpath expr="//field[@name='validity_date']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                <xpath expr="//field[@name='sale_order_template_id']" position="replace">
+                <xpath expr="//field[@name='sale_order_template_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
 
@@ -82,11 +82,11 @@
 
                     <field name="engin_id" options="{'always_reload': True}" domain="[('partner_id','=',partner_id)]" context="{'default_partner_id':'partner_id'}" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                 </xpath>
-                <!-- <xpath expr="//field[@name='engin_id']" position="after">
+                <xpath expr="//field[@name='engin_id']" position="after">
                     <field name="odometer" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)], 'required' : [('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                     <field name="next_distri_date" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]]}"/>
                     <field name="next_ct_date" attrs="{'invisible': ['|', ('engin_id', '=', False),('is_central_company', '=', True)]}" modifiers="{'invisible': ['|', ['engin_id', '=', false], ['is_central_company', '=', true]]}"/>
-                </xpath> -->
+                </xpath>
                 <xpath expr="//field[@name='date_order']" position="after">
                     <field name="is_central_company" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     
