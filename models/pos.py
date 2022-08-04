@@ -29,7 +29,7 @@ class PosSession(models.Model):
 
     def _get_method_name(self):
         self.method_id = self.payment_id.payment_method_line_id
-        print("@@@@@ Methode  de method_id    : " + str(self.method_id))
+        print("@@@@@ Methode  de method_id    : " + str(self.method_id.name))
 
 
     
