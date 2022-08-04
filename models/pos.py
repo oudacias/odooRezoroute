@@ -116,11 +116,14 @@ class PosSession(models.Model):
                 if ligne.journal_id.id==a.journal_id.id:
                     total +=ligne.amount 
 
-            data.append((0,0 ,{'payment_id':a.id,'total_payment':total})) 
-            
-            self.total_payment = total
-            total=0
-        print (str(data))
+            data.append(({'payment_id':a.journal_id.id,'total_payment':total})) 
+        res = {}
+        for v,b in data.item():
+            res[b]=[v] if b not in res.keys() else res[b]+ v
+        self.total_payment = total
+        total=0
+        print (str(res))
+
         self.write({'payment_ids':data})
 
 
