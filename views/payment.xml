@@ -13,7 +13,7 @@
                     <!-- <group> -->
                         <field name="is_cash"  force_save="1"/>
                         <field name="cash_amount" attr="{'invisible': [('is_cash', '=', True)]}"  force_save="1"/>
-                        <field name="cash_amount_residual" readonly="1" attrs="{'invisible': [('is_cash', '=', True)]}">
+                        <field name="cash_amount_residual" readonly="1" attrs="{'invisible': [('is_cash', '=', True)]}"/>
 
                     <!-- </group> -->
 
