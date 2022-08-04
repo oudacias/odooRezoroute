@@ -7,9 +7,9 @@
             <field name="type">form</field>
 
             <field name="arch" type="xml">   
-                <!-- <field name="name" position="attributes">
-                    <attribute name="domain">[('user_id', '=', uid)]</attribute>
-                </field>  -->
+                <xpath expr="//button[@name='action_pos_session_closing_control']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
 
                 <xpath expr="//div[hasclass('oe_title')]" position="inside">
                     <group>
