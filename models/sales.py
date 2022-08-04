@@ -35,9 +35,18 @@ class SaleOrderExtra(models.Model):
     paid_check = fields.Boolean(compute="_paid_check")
 
     def _paid_check(self):
+
+        print("Creating invoice_ids account_payment_type_id         "  +str(len(self.invoice_ids)))
+        print("Creating invoice_ids account_payment_type_id  2       "  +str(self.invoice_ids.payment_state))
+
         if(len(self.invoice_ids) == 0):
+
             self.paid_check = True
+
+        
+
         elif(self.invoice_ids.payment_state == 'not_paid'):
+
             self.paid_check = False
 
 
