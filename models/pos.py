@@ -109,17 +109,18 @@ class PosSession(models.Model):
 
 
         data=[]
-        for a in self.env['account.payment'].search([('session_id', '=', self.id)]) : 
+        
+        for ligne in  self.payment_id:
             total = 0
-            for ligne in  self.payment_id:
+            for a in self.env['account.payment'].search([('session_id', '=', self.id)]) : 
                 if ligne.journal_id.id==a.journal_id.id:
                     total +=ligne.amount 
 
-            
             data.append((0,0 ,{'payment_id':a.id,'total_payment':total})) 
-            print (str(data))
+            
             self.total_payment = total
             total=0
+        print (str(data))
         self.write({'payment_ids':data})
 
 
