@@ -66,6 +66,7 @@
         <field name="implied_ids" eval="[(4, ref('purchase.purchase_bill_union_comp_rule'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.purchase_order_report_comp_rule'))]"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.base.user_root'))]"/>
 
     </record>
     
