@@ -62,8 +62,9 @@
                             <group>
                                 <field name="payment_id">
                                     <tree>
-                                        <field name="amount_company_currency_signed"/>
-                                        <field name="journal_id" readonly="1"/>
+                                        <field name="journal_id" string="Type de Paiement" readonly="1"/>
+                                        <field name="amount_company_currency_signed" string="Montant"/>
+                                        
                                     </tree>
                                 </field>
                                 <field name="espece"/>
