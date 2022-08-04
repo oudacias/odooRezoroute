@@ -188,6 +188,7 @@ class ProductTemplateExtra(models.Model):
     _inherit = 'product.category'
 
     seuil = fields.Float(string="Seuil de remise")
+    marge = fields.Float(string="Marge")
 
 
 class ProductExtra(models.Model):

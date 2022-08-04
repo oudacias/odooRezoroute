@@ -54,5 +54,11 @@
         <!-- <field name="comment">Office Technology Permission Group.</field> -->
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
+
+    <record id="group_siege" model="res.groups">
+        <field name="name">Siège Group</field>
+        <!-- <field name="comment">Office Technology Permission Group.</field> -->
+        <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
+    </record>
 </data>
 </odoo>

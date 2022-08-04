@@ -290,6 +290,7 @@
                 <xpath expr="//group[@name='first']" position="after">
                     <group  col="2">
                         <field name="seuil"/>
+                        <field name="marge"/>
                     </group>
                 </xpath>
             </field>
