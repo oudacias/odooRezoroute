@@ -3,7 +3,7 @@
 <data noupdate="0">
 
     <record id="group_gestionnaire" model="res.groups">
-        <field name="name">Gestionnaire</field>
+        <field name="name">group_gestionnaire</field>
         <!-- <field name="comment">Office Technology Permission Group.</field> -->
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
