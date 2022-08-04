@@ -245,6 +245,7 @@ class SaleOrderExtra(models.Model):
                             # 'date_limite_paiment':line.abonnement_id.date_paiment,
                             'move_type':"out_invoice",
                             'session_id': session.id,
+                            'payment_reference': self.name,
 
                             # 'echeance_id':line.id, 
                             # 'taux':line.abonnement_id.devis_id.taux,
