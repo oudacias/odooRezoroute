@@ -61,7 +61,7 @@
                         <page string="Résumé">
                             <group>
                                 <field name="payment_id">
-                                    <tree><field name="name"/></tree>
+                                    <!-- <tree><field name="name"/></tree> -->
                                 </field>
                                 <field name="espece"/>
                                 <field name="cheque"/>
