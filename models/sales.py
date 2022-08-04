@@ -289,7 +289,8 @@ class SaleOrderExtra(models.Model):
 
 
 
-                # print("Product prices   ids " +str(stock_picking))
+
+                print("Product prices   ids TEST TEST TEST" +str(self.invoice_ids.id))
                 # stock_picking.move_lines._set_quantities_to_reservation()
                 # stock_picking.button_validate()
                 
