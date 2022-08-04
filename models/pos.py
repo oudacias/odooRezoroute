@@ -35,8 +35,8 @@ class PosSession(models.Model):
 
     method_id = fields.Text(string="Méthode de Paiement", compute='_get_method_name')
     payment_id = fields.One2many('account.payment','session_id')
-    payment_ids = fields.One2many('payements','pos_session_id')
-    total_payment = fields.Float(compute="total" )
+    payment_ids = fields.One2many('payements','pos_session_id',compute="total" )
+    total_payment = fields.Float()
 
     def _get_method_name(self):
         self.method_id = self.payment_id.payment_method_line_id
@@ -45,6 +45,7 @@ class PosSession(models.Model):
         print("@@@@@ Methode  de method_id   2 : " + str(self.method_id.name))
 
     def total(self):
+        print("@@@ Checking Total Payment Amount")
         data=[]
         for a in self.env('account.payment').search([]) : 
             total = 0
