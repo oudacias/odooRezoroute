@@ -24,11 +24,13 @@ class PosSession(models.Model):
     total_compute = fields.Integer(compute='_total_compute')
 
     method_id = fields.Text(string="Méthode de Paiement", compute='_get_method_name')
-    payment_id = fields.One2many('account.payment','session_id')
+    payment_id = fields.Many2many('account.payment','pos_id','payment_type_id')
 
 
     def _get_method_name(self):
         self.method_id = self.payment_id.payment_method_line_id
+        for rec in self.payment_id:
+            print("Payment Method ID: 2" + str(rec.journal_id.name))
         print("@@@@@ Methode  de method_id   2 : " + str(self.method_id.name))
 
 
@@ -64,8 +66,7 @@ class PosSession(models.Model):
 
 
         print("Payment Method ID: " + str(payment_method_id))
-        for rec in self.payment_id:
-            print("Payment Method ID: 2" + str(rec.journal_id.name))
+        
 
         payment_ids = self.env['account.payment'].search([('payment_method_line_id', '=', payment_method_id),('session_id', '=', self.id)])
         total = 0
@@ -182,12 +183,12 @@ class PosSession(models.Model):
 
 
 
-# class PosSessionPaiement(models.Model):
+class PosSessionPaiement(models.Model):
 
-#     name = 'pos.session.paiement'
+    name = 'pos.session.paiement'
 
-#     method_id = fields.Many2one('account.payment.method')
-#     payment_id = fields.Many2one('account.payment')
+    method_id = fields.Many2one('account.payment.method')
+    payment_id = fields.Many2one('account.payment')
 
 
 
