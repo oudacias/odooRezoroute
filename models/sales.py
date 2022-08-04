@@ -214,6 +214,9 @@ class SaleOrderExtra(models.Model):
             data = []
 
             if(self.paid_check == False):
+
+                print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 3")
+
             
                 for rec in self.order_line:
                     data.append((0,0,{  
