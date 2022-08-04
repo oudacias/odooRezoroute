@@ -24,7 +24,7 @@ class PosSession(models.Model):
     total_compute = fields.Integer(compute='_total_compute')
 
     method_id = fields.Text(string="Méthode de Paiement", compute='_get_method_name')
-    payment_id = fields.Many2one('account.payment')
+    payment_id = fields.One2many('account.payment','session_id')
 
 
     def _get_method_name(self):
