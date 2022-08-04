@@ -212,9 +212,10 @@ class SaleOrderExtra(models.Model):
         if(len(session) == 1):
             print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 2")
             print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 4    "  +str(self.invoiced))
+            print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 4    "  +str(self.invoiced))
             data = []
 
-            if(self.invoice_ids.payment_state == 'paid'):
+            if(len(self.invoice_ids) == 0):
 
                 print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 3")
 
@@ -280,7 +281,7 @@ class SaleOrderExtra(models.Model):
                     'target': 'new',
                     'type': 'ir.actions.act_window',
                 }  
-            else:
+            elif(self.invoice_ids.payment_state == 'not_paid'):
 
                 # stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
 
