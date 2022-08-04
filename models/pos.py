@@ -49,22 +49,22 @@ class PosSession(models.Model):
 
 
 
-    @api.onchange('payment_ids','write_date')
-    def total(self):
-        print("@@@ Checking Total Payment Amount")
-        data=[]
-        for a in self.env('account.payment').search([]) : 
-            total = 0
-            for ligne in  self.pos_session_id.payment_id:
-                if ligne.id==a.id:
-                    total +=ligne.amount 
+    # @api.onchange('payment_ids','write_date')
+    # def total(self):
+    #     print("@@@ Checking Total Payment Amount")
+    #     data=[]
+    #     for a in self.env('account.payment').search([]) : 
+    #         total = 0
+    #         for ligne in  self.pos_session_id.payment_id:
+    #             if ligne.id==a.id:
+    #                 total +=ligne.amount 
 
             
-            data.append((0,0 ,{'payment_id':a.id,'total_payment':total})) 
-            print (data)
-            self.total_payment = total
-            total=0
-        self.write({'payment_ids':data})
+    #         data.append((0,0 ,{'payment_id':a.id,'total_payment':total})) 
+    #         print (data)
+    #         self.total_payment = total
+    #         total=0
+    #     self.write({'payment_ids':data})
 
 
     def open_sessions(self):
