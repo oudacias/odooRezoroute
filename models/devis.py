@@ -144,8 +144,8 @@ class SaleLine(models.Model):
 
                     rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
                     rec.real_qty_available = product.product_tmpl_id.real_qty_available
-                    rec.price_unit_public = product.product_tmpl_id.lst_price
-                    rec.price_unit_public = product.lst_price
+                    # rec.price_unit_public = product.product_tmpl_id.lst_price
+                    rec.price_unit = product.lst_price
                     rec.qty_location = product.qty_location
                     if(self.order_id.partner_id.is_cheque_flotte):
                         rec.discount = self.order_id.partner_id.pourcentage_remise
