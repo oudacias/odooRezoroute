@@ -8,4 +8,3 @@ product_manufacturer,ps.product.manufacturer,model_ps_product_manufacturer,group
 product_fullimage,ps.product.fullimage,model_ps_product_fullimage,group_gestionnaire,1,1,1,1
 purchase_order,purchase.order,model_purchase_order,group_gestionnaire,0,0,1,1
 
-fleet_vehicule,fleet.vehicle.log.services,model_fleet_vehicule,group_gestionnaire,1,1,1,0
