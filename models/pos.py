@@ -64,7 +64,7 @@ class PosSession(models.Model):
 
 
         print("Payment Method ID: " + str(payment_method_id))
-        print("Payment Method ID: 2" + str(self.payment_id.payment_method_line_id))
+        print("Payment Method ID: 2" + str(self.payment_id.payment_method_line_id.name))
 
         payment_ids = self.env['account.payment'].search([('payment_method_line_id', '=', payment_method_id),('session_id', '=', self.id)])
         total = 0
