@@ -11,6 +11,8 @@ engine_type,engine.type,model_engine_type,group_gestionnaire,1,1,1,1
 
 
 product_fullimage,ps.product.fullimage,model_ps_product_fullimage,group_gestionnaire,1,1,1,1
+
+
 purchase_order,purchase.order,model_purchase_order,group_gestionnaire,1,0,1,1
 
 
