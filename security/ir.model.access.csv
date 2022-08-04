@@ -12,11 +12,5 @@ fleet_vehicule1,fleet.vehicle,model_fleet_vehicle,group_gestionnaire,1,1,1,1
 fleet_vehicule2,fleet.vehicle.log.services,model_fleet_vehicle,group_gestionnaire,1,1,1,1
 fleet_vehicule3,fleet.vehicle.log.contract,model_fleet_vehicle,group_gestionnaire,1,1,1,1
 fleet_vehicule4,fleet.vehicle,model_fleet_vehicle,group_gestionnaire,1,1,1,1
-fleet_vehicule4,mail.activity.type,model_mail_activity_type,group_gestionnaire,1,1,1,1
-fleet_vehicule4,fleet.vehicle.model.brand,model_fleet_vehicle_model_brand,group_gestionnaire,1,1,1,1
-fleet_vehicule4,fleet.vehicle.model.category,model_fleet_vehicle_model_category,group_gestionnaire,1,1,1,1
-fleet_vehicule4,fleet.vehicle.cost.report,model_fleet_vehicle_cost_report,group_gestionnaire,1,1,1,1
-fleet_vehicule4,fleet.service.type,model_fleet_service_type,group_gestionnaire,1,1,1,1
-fleet_vehicule5,fleet.vehicle.model,model_fleet_vehicle_model,group_gestionnaire,1,1,1,1
-fleet_vehicule5,fleet.vehicle.state,model_fleet_vehicle_state,group_gestionnaire,1,1,1,1
-fleet_vehicule5,fleet.vehicle.tag,model_fleet_vehicle_tag,group_gestionnaire,1,1,1,1
+fleet_vehicule4,mail.activity.type,model_fleet_vehicle,group_gestionnaire,1,1,1,1
+
