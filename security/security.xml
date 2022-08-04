@@ -6,8 +6,9 @@
         <field name="name">group_gestionnaire</field>
         <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_manager'))]"/>
-        <!-- <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/> -->
-        <!-- <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/> -->
+        <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+        <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_manager'))]"/>
         <!-- <field name="comment">Office Technology Permission Group.</field> -->
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
