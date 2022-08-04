@@ -294,6 +294,8 @@ class SaleOrderExtra(models.Model):
                 active_ids = self._context.get('active_ids')
                 a = self.env['account.move'].browse(active_ids)
 
+                a.write({'state':  'draft'}) 
+
 
                 # a=self.env.search([('account.move','=',)])
 
