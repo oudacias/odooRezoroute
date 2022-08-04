@@ -174,6 +174,13 @@ class PosSession(models.Model):
         if(self.fond_caisse == self.pos_session_id.espece):
 
             self.pos_session_id.search([('id', '=', self.pos_session_id.id)]).action_pos_session_closing_control()
+            return {
+                'view_mode': 'kanban',
+                'res_model': 'pos.config',
+                # 'target' : 'new',
+                'views' : [(False, 'kanban')],
+                'type': 'ir.actions.act_window',
+             }
             # self.pos_session_id.write({'state':'closed'})
 
 
