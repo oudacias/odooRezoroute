@@ -10,27 +10,14 @@ class purchase_custom(models.Model):
 
     def _get_location_name(self):
         location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        self.location_id = location_dest_id.location_id.name
+        self.location_id = location_dest_id.location_id.complete_name
 
 
 
     def button_confirm(self):
         res = super(purchase_custom, self).button_confirm()
 
-        stock_obj= self.env['stock.picking'].search([('product_id','=',18),('location_id','=',20)])
-        qty =0
-        if stock_obj:            
-            for record in stock_obj:
-                for line in record.move_lines:
-                    
-                    if line.state =='done' and line.product_id.id:
-                           qty += line.quantity
-
-        print('Available qty: %s' % qty)
-
         location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-
-        print('@@@@@@@@  Location: %s' % location_dest_id.location_id)
 
 
 
