@@ -74,8 +74,8 @@ class Devis(models.Model):
         print("@@@@@@@@@@@ ############ HERE HERE HERE"    + str(self.engin_id))
         if(self.engin_id):
             self.odometer = self.engin_id.odometer
-            # self.next_distri_date = self.engin_id.next_distri_date
-            # self.next_ct_date = self.engin_id.next_ct_date
+            self.next_distri_date = self.engin_id.next_distri_date
+            self.next_ct_date = self.engin_id.next_ct_date
 
 
 
