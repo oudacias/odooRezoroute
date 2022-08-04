@@ -34,3 +34,8 @@ fleet_vehicule12,fleet.vehicle.tag,model_fleet_vehicle,group_gestionnaire,1,1,1,
 
 engine_maintenance_variant,engine.maintenance.variant,model_engine_maintenance_variant,group_gestionnaire,1,1,1,1
 
+
+
+achat_pos_config,pos.config,model_pos_config,group_achat,1,1,1,1
+achat_pos_session,pos.session,model_pos_session,group_achat,1,1,1,1
+
