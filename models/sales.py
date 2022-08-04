@@ -294,24 +294,25 @@ class SaleOrderExtra(models.Model):
                 active_ids = self._context.get('active_ids')
                 a = self.env['account.move'].browse(active_ids)
 
-                a.write({'state':  'draft'}) 
+                # a.write({'state':  'draft'}) 
 
 
                 # a=self.env.search([('account.move','=',)])
 
-                print("@@@@@@#####  test_pos actions form    before  move    actions form    for account move  " +str(a))
+                print("@@@@@@#####  test_pos actions form    before  move    actions form    for account move  " +str(active_ids))
 
                 return {
+                    'name': _('Register Payment'),
                     'res_model': 'account.payment.register',
                     'view_mode': 'form',
                     'context': {
                         'active_model': 'account.move',
-                        'active_ids': a.id,
+                        'active_ids': self.ids,
                     },
                     'target': 'new',
                     'type': 'ir.actions.act_window',
                 }
-            
+                    
 
             
         else:
