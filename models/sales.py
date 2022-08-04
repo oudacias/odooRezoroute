@@ -211,8 +211,7 @@ class SaleOrderExtra(models.Model):
 
         if(len(session) == 1):
             print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 2")
-            print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 4    "  +str(self.invoiced))
-            print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 4    "  +str(self.invoiced))
+            
             data = []
 
             if(len(self.invoice_ids) == 0):
@@ -291,8 +290,8 @@ class SaleOrderExtra(models.Model):
                 # stock_picking.move_lines._set_quantities_to_reservation()
                 # stock_picking.button_validate()
                 
-                # active_ids = self._context.get('active_ids')
-                # a = self.env['account.move'].browse(active_ids)
+                active_ids = self._context.get('active_ids')
+                a = self.env['account.move'].browse(active_ids)
 
 
                 # a=self.env.search([('account.move','=',)])
@@ -302,10 +301,10 @@ class SaleOrderExtra(models.Model):
                 return {
                     'res_model': 'account.payment.register',
                     'view_mode': 'form',
-                    # 'context': {
-                    #     'active_model': 'account.move',
-                    #     'active_ids': a.id,
-                    # },
+                    'context': {
+                        'active_model': 'account.move',
+                        'active_ids': a.id,
+                    },
                     'target': 'new',
                     'type': 'ir.actions.act_window',
                 }
