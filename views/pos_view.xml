@@ -60,7 +60,9 @@
                     <notebook>
                         <page string="Résumé">
                             <group>
-                                <field name="payment_id"/>
+                                <field name="payment_id">
+                                    <tree><field name="journal_id"/></tree>
+                                </field>
                                 <field name="espece"/>
                                 <field name="cheque"/>
                             </group>
@@ -69,7 +71,7 @@
                 </xpath>
             </field>
         </record>
-
+        
        
                 
 
