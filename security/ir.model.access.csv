@@ -7,4 +7,4 @@ pos_session,pos.session,model_pos_session,group_gestionnaire,1,1,1,1
 product_manufacturer,ps.product.manufacturer,model_ps_product_manufacturer,group_gestionnaire,1,1,1,1
 product_fullimage,ps.product.fullimage,model_ps_product_fullimage,group_gestionnaire,1,1,1,1
 purchase_order,purchase.order,model_purchase_order,group_gestionnaire,0,0,1,1
-fleet_vehicule,fleet.fleet,model_fleet_fleet,group_gestionnaire,1,1,1,1
+fleet_vehicule,fleet.vehicle,model_fleet_vehicule,group_gestionnaire,1,1,1,1
