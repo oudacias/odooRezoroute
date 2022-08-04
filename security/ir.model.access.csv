@@ -32,5 +32,5 @@ fleet_vehicule10,fleet.vehicle.model,model_fleet_vehicle,group_gestionnaire,1,1,
 fleet_vehicule11,fleet.vehicle.state,model_fleet_vehicle,group_gestionnaire,1,1,1,1
 fleet_vehicule12,fleet.vehicle.tag,model_fleet_vehicle,group_gestionnaire,1,1,1,1
 
-engine_maintenance_variant',engine.maintenance.variant',model_engine_maintenance_variant',group_gestionnaire,1,1,1,1
+engine_maintenance_variant',engine.maintenance.variant',model_fleet_vehicle',group_gestionnaire,1,1,1,1
 
