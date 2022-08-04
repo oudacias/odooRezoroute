@@ -44,6 +44,12 @@ class PosSession(models.Model):
             print("Payment Method ID: 2" + str(rec.journal_id.name))
         print("@@@@@ Methode  de method_id   2 : " + str(self.method_id.name))
 
+    @api.model
+    def default_get(self, default_fields):
+        self.total()
+        # You can write your modified lines of code here
+        rec = super(PosSession, self).default_get(default_fields)
+        return rec
     def total(self):
         print("@@@ Checking Total Payment Amount")
         data=[]
