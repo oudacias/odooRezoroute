@@ -72,9 +72,10 @@ class Devis(models.Model):
     @api.onchange('engin_id')
     def get_extra_data(self):
         print("@@@@@@@@@@@ ############ HERE HERE HERE"    + str(self.engin_id))
-        self.odometer = self.engin_id.odometer
-        self.next_distri_date = self.engin_id.next_distri_date
-        self.next_ct_date = self.engin_id.next_ct_date
+        if(self.engin_id):
+            self.odometer = self.engin_id.odometer
+            # self.next_distri_date = self.engin_id.next_distri_date
+            # self.next_ct_date = self.engin_id.next_ct_date
 
 
 
