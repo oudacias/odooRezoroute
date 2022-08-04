@@ -15,6 +15,10 @@
                         <field name="code_moteur"/>
                         <field name="d_2_1"/>
                         <field name="e"/>   
+                        <field name="next_distri_date"/>   
+                        <field name="next_ct_date"/>   
+                        <field name="detail"/>   
+                        <field name="nb_porte"/>   
                     </group>  
                     <group string="Client">               
                         <field name="partner_id" width="500" required="1"/>

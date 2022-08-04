@@ -14,6 +14,12 @@ class Vehicle(models.Model):
     last_buy = fields.Date(string="Date dernier achat")
     last_servicing_date = fields.Date(string="Date derniere revision")
     odometer = fields.Integer(string="Dernier releve kilometrique")
+    next_distri_date = fields.Date(string="Prochaine Distri.")
+    next_ct_date = fields.Date(string="Prochain C.T.")
+    detail = fields.Text(string="Détails")
+    nb_porte = fields.Text(string="NB Portes")
+
+    engine_maintenance_variant = fields.Many2one('engine.maintenance.variant')
 
 
 class EngineMotor(models.Model):
@@ -86,6 +92,7 @@ class EngineType(models.Model):
     gear_id = fields.Many2one('engine.gear','Gear')    
     
     carosserie_id = fields.Many2one('engine.carosserie','Carosserie')
+
 
 
 
@@ -167,6 +174,12 @@ class EngineGear(models.Model):
     active = fields.Boolean(string="Active")
     note = fields.Text(string="Note")
 
+
+class EngineMaintenancevariant(models.Model):
+    _name="engine.maintenance.variant"
+
+    name = fields.Char(string="Désignation")
+    
 
 
 
