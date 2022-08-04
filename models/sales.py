@@ -294,26 +294,26 @@ class SaleOrderExtra(models.Model):
                 # stock_picking.move_lines._set_quantities_to_reservation()
                 # stock_picking.button_validate()
                 
-                active_ids = self._context.get('active_ids')
+                # active_ids = self._context.get('active_ids')
 
-                a = self.env['account.move'].browse(active_ids)
+                # a = self.env['account.move'].browse(active_ids)
 
-                # a.write({'state':  'draft'}) 
+                # # a.write({'state':  'draft'}) 
 
 
-                # a=self.env.search([('account.move','=',)])
+                # # a=self.env.search([('account.move','=',)])
 
-                return {
-                    # 'name': _('Register Payment'),
-                    'res_model': 'account.payment.register',
-                    'view_mode': 'form',
-                    'context': {
-                        'active_model': 'account.move',
-                        'active_ids': self.ids,
-                    },
-                    'target': 'new',
-                    'type': 'ir.actions.act_window',
-                }
+                # return {
+                #     # 'name': _('Register Payment'),
+                #     'res_model': 'account.payment.register',
+                #     'view_mode': 'form',
+                #     'context': {
+                #         'active_model': 'account.move',
+                #         'active_ids': self.ids,
+                #     },
+                #     'target': 'new',
+                #     'type': 'ir.actions.act_window',
+                # }
                     
 
             
