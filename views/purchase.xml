@@ -41,7 +41,7 @@
 
             <field name="arch" type="xml">  
                 <xpath expr="//button[@name='action_create_invoice']" position="attributes">
-                    <attribute name="attrs">{'invisible': [('state', 'not in', ('draft'))]}</attribute>
+                    <attribute name="attrs">{'invisible': [('state', '!=', 'draft')]}</attribute>
                 </xpath> 
                 <xpath expr="//field[@name='requisition_id']" position="after">
                     <field name="location_id" readonly="1"/>
