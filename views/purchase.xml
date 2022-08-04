@@ -41,7 +41,7 @@
 
             <field name="arch" type="xml">  
                 <xpath expr="//button[@name='button_confirm']" position="replace">
-                    <button name="button_confirm" group="group_achat" string="test"/>
+                    <button name="button_confirm" groups="group_achat" string="test"/>
                 </xpath> 
                 <!-- <xpath expr="//button[@name='button_confirm']" position="attributes">
                     <attribute name="groups">group_achat</attribute>
