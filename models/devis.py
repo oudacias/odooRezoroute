@@ -69,6 +69,12 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
 
 
+    @api.onchange('engine_id')
+    def get_extra_data(self):
+        self.odometer = self.engine_id.odometer
+        self.next_distri_date = self.engine_id.next_distri_date
+        self.next_ct_date = self.engine_id.next_ct_date
+
 
 
 class CrmCaseCateg(models.Model):
