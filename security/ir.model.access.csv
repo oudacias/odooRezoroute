@@ -12,5 +12,11 @@ fleet_vehicule1,fleet.vehicle,model_fleet_vehicle,group_gestionnaire,1,1,1,1
 fleet_vehicule2,fleet.vehicle.log.services,model_fleet_vehicle,group_gestionnaire,1,1,1,1
 fleet_vehicule3,fleet.vehicle.log.contract,model_fleet_vehicle,group_gestionnaire,1,1,1,1
 fleet_vehicule4,fleet.vehicle,model_fleet_vehicle,group_gestionnaire,1,1,1,1
-fleet_vehicule4,mail.activity.type,model_fleet_vehicle,group_gestionnaire,1,1,1,1
-
+fleet_vehicule5,mail.activity.type,model_fleet_vehicle,group_gestionnaire,1,1,1,1
+fleet_vehicule6,fleet.vehicle.model.brand,model_fleet_vehicle,group_gestionnaire,1,1,1,1
+fleet_vehicule7,fleet.vehicle.model.category,model_fleet_vehicle,group_gestionnaire,1,1,1,1
+fleet_vehicule8,fleet.vehicle.cost.report,model_fleet_vehicle,group_gestionnaire,1,1,1,1
+fleet_vehicule9,fleet.service.type,model_fleet_vehicle,group_gestionnaire,1,1,1,1
+fleet_vehicule10,fleet.vehicle.model,model_fleet_vehicle,group_gestionnaire,1,1,1,1
+fleet_vehicule11,fleet.vehicle.state,model_fleet_vehicle,group_gestionnaire,1,1,1,1
+fleet_vehicule12,fleet.vehicle.tag,model_fleet_vehicle,group_gestionnaire,1,1,1,1
