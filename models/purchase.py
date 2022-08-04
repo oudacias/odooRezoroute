@@ -5,6 +5,13 @@ from odoo import fields, models,api
 class purchase_custom(models.Model):
     _inherit = 'purchase.order'
     session_id = fields.Many2one('pos.session',string="Session id")
+    location_id = fields.Char(compute="_get_location_name",string="Emplacement")
+
+
+    def _get_location_name(self):
+        location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        self.location_id = location_dest_id
+
 
 
     def button_confirm(self):

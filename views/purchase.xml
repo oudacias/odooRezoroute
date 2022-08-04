@@ -22,14 +22,26 @@
                 </xpath>
             </field>
         </record>
-        <record model="ir.ui.view" id="ps_rezoroute.POS">
-            <field name="name">ps_rezoroute POS</field>
+        <record model="ir.ui.view" id="ps_rezoroute.Backorder">
+            <field name="name">ps_rezoroute Backorder</field>
             <field name="model">stock.backorder.confirmation</field>
             <field name="inherit_id" ref="stock.view_backorder_confirmation"/>
 
             <field name="arch" type="xml">  
                 <xpath expr="//button[@name='process']" position="attributes">
                     <attribute name="invisible">1</attribute>
+                </xpath> 
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ps_rezoroute.Location">
+            <field name="name">ps_rezoroute Order Location</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+
+            <field name="arch" type="xml">  
+                <xpath expr="//field[@name='requisition_id']" position="after">
+                    <field name="location_id" readonly="1"/>
                 </xpath> 
             </field>
         </record>
