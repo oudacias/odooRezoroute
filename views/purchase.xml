@@ -22,4 +22,15 @@
                 </xpath>
             </field>
         </record>
+        <record model="ir.ui.view" id="ps_rezoroute.POS">
+            <field name="name">ps_rezoroute POS</field>
+            <field name="model">stock.backorder.confirmation</field>
+            <field name="inherit_id" ref="stock.view_backorder_confirmation"/>
+
+            <field name="arch" type="xml">  
+                <xpath expr="//button[@name='process']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath> 
+            </field>
+        </record>
     </odoo>
