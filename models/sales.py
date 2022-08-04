@@ -211,9 +211,10 @@ class SaleOrderExtra(models.Model):
 
         if(len(session) == 1):
             print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 2")
+            print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 4    "  +str(self.invoiced))
             data = []
 
-            if(self.invoice_ids.payment_state != 'paid'):
+            if(self.invoice_ids.payment_state == 'paid'):
 
                 print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 3")
 
