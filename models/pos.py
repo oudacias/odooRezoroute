@@ -23,6 +23,14 @@ class PosSession(models.Model):
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
     total_compute = fields.Integer(compute='_total_compute')
 
+    method_id = fields.Text(string="Méthode de Paiement", compute='_get_method_name')
+    payment_id = fields.Many2one('account.payment')
+
+
+    def _get_method_name(self):
+        self.method_id = self.payment_id.payment_method_line_id
+        print("@@@@@ Methode  de method_id    : " + str(self.method_id))
+
 
     
 
@@ -168,5 +176,16 @@ class PosSession(models.Model):
             
         else:
             raise ValidationError("Le montant de fond de caisse est différent de la somme calculée")
+
+
+
+
+# class PosSessionPaiement(models.Model):
+
+#     name = 'pos.session.paiement'
+
+#     method_id = fields.Many2one('account.payment.method')
+#     payment_id = fields.Many2one('account.payment')
+
 
 
