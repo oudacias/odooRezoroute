@@ -2,4 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
-Access_pos_order_line,pos.config,model_pos_config,group_gestionnaire,1,1,1,1
+pos_close_session,pos.session.cloture,model_pos_config,group_gestionnaire,1,1,1,1
