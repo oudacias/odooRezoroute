@@ -286,8 +286,8 @@ class SaleOrderExtra(models.Model):
                 # stock_picking.move_lines._set_quantities_to_reservation()
                 # stock_picking.button_validate()
                 
-                active_ids = self._context.get('active_ids')
-                a = self.env['account.move'].browse(active_ids)
+                # active_ids = self._context.get('active_ids')
+                # a = self.env['account.move'].browse(active_ids)
 
 
                 # a=self.env.search([('account.move','=',)])
