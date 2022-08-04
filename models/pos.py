@@ -44,20 +44,7 @@ class PosSession(models.Model):
             print("Payment Method ID: 2" + str(rec.journal_id.name))
         print("@@@@@ Methode  de method_id   2 : " + str(self.method_id.name))
 
-        data=[]
-        for a in self.env('account.payment').search([]) : 
-            total = 0
-            for ligne in  self.pos_session_id.payment_id:
-                if ligne.id==a.id:
-                    total +=ligne.amount 
-
-            
-            data.append((0,0 ,{'payment_id':a.id,'total_payment':total})) 
-            print (data)
-            self.total_payment = total
-            total=0
-        self.write({'payment_ids':data})
-
+       
 
 
 
@@ -119,6 +106,22 @@ class PosSession(models.Model):
             total += payment.amount
 
         self.espece = total 
+
+
+        data=[]
+        for a in self.env('account.payment').search([]) : 
+            total = 0
+            for ligne in  self.pos_session_id.payment_id:
+                if ligne.id==a.id:
+                    total +=ligne.amount 
+
+            
+            data.append((0,0 ,{'payment_id':a.id,'total_payment':total})) 
+            print (data)
+            self.total_payment = total
+            total=0
+        self.write({'payment_ids':data})
+
 
 
     def _compute_cheque(self):
