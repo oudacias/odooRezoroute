@@ -15,7 +15,7 @@
 
     <record model="ir.rule" id="show_my_pos_user_rule">
         <field name="name">My POS</field>
-        <field name="model_id" ref="model_pos_session"></field>
+        <field name="model_id" ref="model_pos_config"></field>
         <field name="domain_force">[('user_id','=',user.id)]</field>
     </record>
 
