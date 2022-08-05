@@ -160,7 +160,7 @@ class PosSession(models.Model):
         print("@@@@ Journal: " )
         print(str(data))
 
-        # self.write({'payment_ids':data})
+        self.write({'payment_ids':data})
 
 
 
