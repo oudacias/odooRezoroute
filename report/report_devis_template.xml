@@ -193,7 +193,7 @@
                             <table class="table table-bordered" style="width: 100%;">
                                 <tr>
                                     <td>
-                                        <table class="table table-bordered" style="width: 100%;">
+                                        <table class="table table-bordered" style="width: 100%;height:200px">
                                             <thead style="background-color:#5D89C5">
                                                 <tr>
                                                     <th style="color:white">
@@ -206,7 +206,7 @@
                                         </table>
                                     </td>
                                     <td>
-                                        <table class="table table-bordered" style="width: 100%;">
+                                        <table class="table table-bordered" style="width: 100%;height:200px">
                                             <thead style="background-color:#5D89C5">
                                                 <tr>
                                                     <th style="color:white">
@@ -223,7 +223,7 @@
                                         </table>
                                     </td>
                                     <td>
-                                        <h3>MERCI POUR VOTRE CONFIANCE !</h3>
+                                        <h1>MERCI POUR VOTRE CONFIANCE !</h1>
                                     </td>
                                                 
                                                 
