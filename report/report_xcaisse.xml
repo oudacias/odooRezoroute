@@ -20,14 +20,11 @@
                                 </div>
                                 <div class="col-6">
                                     <br/>
-                                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
-                                    <br/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12" id="hash_config_review">
-                                    <br/>
-                                    <h3>Configuration review</h3>
+                                        <span   > X de caisse : </span> <span t-field="o.name"/>
+                                        <span   > Responsable : </span> <span t-field="o.user_id.name"/>
+                                        <span   > Ouverture : </span> <span t-field="o.start_at"/>
+                                        <span   > Fermeture : </span> <span t-field="o.stop_at"/>
+                                        <span   > Validation : </span> <span t-field="o.date_validation"/>
                                     <br/>
                                 </div>
                             </div>
