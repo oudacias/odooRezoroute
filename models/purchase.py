@@ -24,9 +24,15 @@ class purchase_custom(models.Model):
 
         q= super(purchase_custom, self).create(vals) 
         return q
+    @api.model
+    def write(self,vals):
+        print("00000000000000 @@@@@@@@@@@@   Picking write write ")
+
+        for rec in (vals['order_line']):
+            print("Hello Hello")
 
     def _isReceived(self):
-        print("00000000000000 @@@@@@@@@@@@   Picking State state ")
+        
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
         if(picking_id.state == 'done'):
             self.is_received = True
