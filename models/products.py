@@ -196,6 +196,15 @@ class ProductExtra(models.Model):
 
     qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
 
+    @api.model
+    def create(self, vals):
+        if self.env.user.has_group('ps_rezorout.group_gestionnaire'):
+            raise Warning(
+                ('Vous ne pouvez pas créer un nouveau produit'),
+            )
+        else:
+            return super(ProductExtra, self).create(vals)
+
 
 
     def _get_qty_location(self):

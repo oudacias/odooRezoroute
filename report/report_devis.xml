@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record id="report_xcaisse" model="ir.actions.report">
+            <field name="name">X caisse</field>
+
+            <field name="model">sale.order</field>
+
+            <field name="report_type">qweb-pdf</field>
+
+            <field name="report_name">ps_rezoroute.report_devis_template</field>
+
+            <field name="report_file">ps_rezoroute.report_devis_template</field>
+
+            <field name="print_report_name">(object.id)</field>
+
+            <field name="binding_type">report</field>
+
+            <field name="binding_model_id" ref="model_sale_order"/>
+
+        </record>
+    </odoo>

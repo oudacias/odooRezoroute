@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+
+       <template id="report_xcaisse">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <!-- <div class="header" style="top:1450pt"> -->
+                        <!-- <div class="row"> -->
+                            <!-- <td align="center" valign="center">
+                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                            </td> -->
+                        <!-- </div>
+                    </div> -->
+                        <div class="page">
+                       
+                            <div class="row" id="hash_header">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            <div class="col-6">
+                                                <br/>
+                                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <span t-field="o.company_id.partner_id.name"/>
+                                                    <br/>
+                                                    <span t-field="o.company_id.street"/>
+                                                    <br/>
+                                                    <span>Tel :</span><span t-field="o.company_id.phone"/>
+                                                    <br/>
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        
+                                    </tr>
+                                </table>
+                                
+                            </div>
+                        </div>
+
+                    
+                         
+                        <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;display: grid;">
+                                <tr style="border: 1px solid black">
+                                  <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > Code Article </span>
+                                  </th>
+                                  <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > Designation </span>
+                                  </th>
+                                <!-- <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > N° Client </span>
+                                </th> -->
+                                <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > Qte </span>
+                                </th>
+                                <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > P.U HT </span>
+                                </th>
+                                <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > Rem %  </span>
+                                </th>
+                                <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > P.U NET HT  </span>
+                                </th>
+                                <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > Montant (MAD)  </span>
+                                </th>
+                                <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > TVA  </span>
+                                </th>
+                                 <th style="text-align: left;border: 1px solid black !important">
+                                    <span   > Montant TTC  </span>
+                                </th>
+                                </tr>
+                                <t t-set="test_variable" t-value="0"/>
+                                    <t t-foreach="o.order_line" t-as="line">
+                                    <tr  >
+                                        <td> 
+                                            <span t-field="line.date"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.product_uom_qty"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.price_unit"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.discount"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.price_unit"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.price_total"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.tax_id.amount"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.price_subtotal"/>
+                                        </td>
+                                        <td> 
+                                            <span t-field="line.amount"/>
+                                            <t t-set="test_variable" t-value="test_variable+reg.amount"/> 
+                                        </td>
+                                         
+                                    </tr>
+                                    
+                                </t>
+                                <tr style="border: 1px solid black">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><h5>Total</h5></td>
+                                    <td><h5><t t-esc="test_variable"/></h5></td>
+                                    </tr>
+                                
+                            </table>
+                        
+                        
+                    </t>
+                </t>
+        </template>
+
+    </odoo>
