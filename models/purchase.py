@@ -8,7 +8,7 @@ class purchase_custom(models.Model):
     location_name = fields.Char(string="Emplacement")
     location_id = fields.Integer(string="Emplacement")
 
-    is_received = fields.Boolean(compute="is_received")
+    is_received = fields.Boolean(compute="_isReceived")
     
 
     @api.model
@@ -25,9 +25,9 @@ class purchase_custom(models.Model):
         q= super(purchase_custom, self).create(vals) 
         return q
 
-    def is_received(self):
+    def _isReceived(self):
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
-        print("Picking State state " + str(picking_id.state))
+        print("@@@@@@@@@@@@   Picking State state " + str(picking_id.state))
 
 
 
