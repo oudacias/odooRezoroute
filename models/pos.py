@@ -126,7 +126,7 @@ class PosSession(models.Model):
 
         data = {}
         for a in self.env['account.payment'].search([('session_id', '=', self.id)]) : 
-            if self.journal_id.id==a.journal_id.id:
+            if a.journal_id.id in self.journal_id.id:
                 if self.journal_id.id in data:
                        
                     data[self.journal_id.id] += round(a.amount,2)
@@ -157,7 +157,7 @@ class PosSession(models.Model):
         #                 # print("@@@@ Journal:2 " + str(data[ligne.journal_id.id]))
 
 
-        # print("@@@@ Journal: " )
+        print("@@@@ Journal: " )
         print(str(data))
 
         # self.write({'payment_ids':data})
