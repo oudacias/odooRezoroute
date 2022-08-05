@@ -44,8 +44,8 @@
                     
                         <span><span t-field="o.company_id.name"/></span>
                          
-                        <table class="table table-bordered" style="border-bottom: 1px solid black !important;width: 100%;display: grid;">
-                                <tr>
+                        <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;display: grid;">
+                                <tr style="border: 1px solid black">
                                   <th style="text-align: left;">
                                     <span   > Date </span>
                                   </th>
@@ -100,7 +100,7 @@
                                     </tr>
                                     
                                 </t>
-                                <tr>
+                                <tr style="border: 1px solid black">
                                     <td></td>
                                     <td></td>
                                     <td></td>
