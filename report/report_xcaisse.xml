@@ -16,6 +16,7 @@
                                 <div class="col-6">
                                     <br/>
                                         <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                                        <br/>
                                         <span t-field="o.company_id.partner_id.name"/>
                                         <br/>
                                         <span t-field="o.company_id.street"/>
@@ -43,7 +44,7 @@
                     
                         <span><span t-field="o.company_id.name"/></span>
                          
-                        <table class="table table-condensed" style="border-bottom: 0px solid white !important;width: 3in;">
+                        <table class="table table-condensed" style="border-bottom: 0px solid white !important;width: 100%;">
                                 <tr>
                                   <th style="text-align: left;">
                                     <span   > Date </span>
