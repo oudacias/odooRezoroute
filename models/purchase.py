@@ -86,7 +86,7 @@ class purchase_custom_line(models.Model):
 
             # if(order_id_state =='done' or order_id_state=='purchase'):
 
-            vals['state'] = 'draft'
+            self.order_id.state = 'draft'
                 
 
                
