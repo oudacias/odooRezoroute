@@ -44,7 +44,8 @@
                     
                         <span><span t-field="o.company_id.name"/></span>
                          
-                        <table class="table table-bordered" style="border-bottom: 0px solid white !important;width: 100%;display: grid;">
+                         <table class="table table-bordered" style="table-layout: fixed" id="hash_config_table">
+                          <thead style="display: table-row-group">
                                 <tr>
                                   <th style="text-align: left;">
                                     <span   > Date </span>
@@ -71,6 +72,8 @@
                                     <span   > Montant (MAD)  </span>
                                 </th>
                                 </tr>
+                             </thead>
+                            <tbody>
                                 <t t-set="test_variable" t-value="0"/>
                                 <t t-foreach="o.reglement_id" t-as="reg">
                                     <tr  >
@@ -109,7 +112,7 @@
                                     <td><h5>Total</h5></td>
                                     <td><h5><t t-esc="test_variable"/></h5></td>
                                     </tr>
-                                
+                            </tbody>
                             </table>
                         
                         
