@@ -7,7 +7,7 @@
                     <div class="header">
                         <div class="row">
                             <td align="center" valign="center">
-                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%" alt="Company Logo"/>
+                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:100px" alt="Company Logo"/>
                             </td>
                         </div>
                     </div>
