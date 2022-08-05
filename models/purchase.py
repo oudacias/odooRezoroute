@@ -79,21 +79,17 @@ class purchase_custom_line(models.Model):
         order_id_state = self.order_id.state
 
         order_id = self.order_id
+        if('price_unit' in vals and vals['price_unit'] != self.price_unit):
+            
 
         
 
-        if(order_id_state =='done' or order_id_state=='purchase'):
-            for rec in order_id.order_line:
-                print("Hello Hello   "  +str(rec.price_unit))
+            if(order_id_state =='done' or order_id_state=='purchase'):
+
+                vals['state'] = 'draft'
                 
-            #     if rec.id == self.id:
-            #         if(self.price_unit == rec.price_unit):
 
-            # # for line in self:
-
-            #             print("Hello Hello   "  +str(self.price_unit))
-            #             print("Hello Hello   "  +str(self.id))
-
+               
 
         q= super(purchase_custom_line, self).write(vals) 
         return q
