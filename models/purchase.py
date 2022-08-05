@@ -87,8 +87,8 @@ class StockMove(models.Model):
 
 
 
-class purchase_custom(models.Model):
-    _inherit = 'purchase.order'
+class purchase_custom_line(models.Model):
+    _inherit = 'purchase.order.line'
 
     @api.model
     def write(self,vals):
@@ -98,7 +98,7 @@ class purchase_custom(models.Model):
             print("Hello Hello   "  +str(line.price_unit))
 
 
-        q= super(purchase_custom, self).write(vals) 
+        q= super(purchase_custom_line, self).write(vals) 
         return q
 
         # for rec in (vals['order_line']):
