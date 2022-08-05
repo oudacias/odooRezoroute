@@ -45,12 +45,13 @@
     position:relative;
     font-size:2em;
     line-height:2em;
+    padding:0.5em 1em;
     z-index:0;
   }
   
   .fancy::before {
     content:"";
-    background-color:orange;
+    background-color:#DB4904;
     width:100%;
     height:100%;
     display:block;
