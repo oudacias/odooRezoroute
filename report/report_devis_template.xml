@@ -81,7 +81,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h6>Date :</h6><span><span t-field="o.date_order"/></span>
+                                    <h6>Date :</h6><span t-field="o.date_order"/></span>
                                     <br/>
                                     <span>Votre correspondant:</span>
                                     <br/>
