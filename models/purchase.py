@@ -86,6 +86,7 @@ class purchase_custom_line(models.Model):
             picking_id = self.env['stock.picking'].search([('purchase_id','=',self.order_id.id),('state','!=','cancel')])
 
             for rec in picking_id:
+                print("LocationId   @@@@@= " + str(rec.id))
                 rec.action_cancel()
 
             self.order_id.state = 'draft'
