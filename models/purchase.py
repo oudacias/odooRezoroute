@@ -75,7 +75,7 @@ class purchase_custom_line(models.Model):
 
     @api.model
     def write(self,vals):
-        self.ensure_one()
+        # self.ensure_one()
         order_id_state = self.order_id.state
 
         order_id = self.order_id
