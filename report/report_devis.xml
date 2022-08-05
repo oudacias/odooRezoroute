@@ -21,6 +21,28 @@
 
         </record>
 
+         <record id="report_xcaisse" model="ir.actions.report">
+            <field name="name">Devis Or</field>
+
+            <field name="model">sale.order</field>
+
+            <field name="report_type">qweb-pdf</field>
+
+            <field name="report_name">ps_rezoroute.report_devis_template_or</field>
+
+            <field name="report_file">ps_rezoroute.report_devis_template_or</field>
+
+            <field name="print_report_name">(object.id)</field>
+
+            <field name="binding_type">report</field>
+
+            <field name="binding_model_id" ref="model_sale_order"/>
+
+            
+
+        </record>
+
+
         <!-- <template id="assets_common_l10n_mx_edi" inherit_id="web.report_assets_pdf">
             <xpath expr="." position="inside">
                 <link href="/l10n_mx_edi/static/src/less/report.less" rel="stylesheet" type="text/less"/>
