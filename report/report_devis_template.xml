@@ -67,7 +67,7 @@
   }
                         </style>
                         <table class="table" style="width: 100%;display: grid;">
-                            <tr style="background-color:gray">
+                            <tr style="background-color:#E8E8E8">
                                 <td>
                                     <h1 class="fancy">Commande</h1>
                                 </td>
