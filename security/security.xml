@@ -119,6 +119,20 @@
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_multi_warehouses'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_multi_locations'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_production_lot'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_lot_on_delivery_slip'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_tracking_lot'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_adv_location'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_tracking_owner'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_warning_stock'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.module_category_inventory_inventory'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_storage_categories'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_reception_report'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_sign_delivery'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_auto_reception_report'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_picking_wave'))]"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
 
     </record>
