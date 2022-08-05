@@ -45,7 +45,6 @@
     position:relative;
     font-size:2em;
     line-height:2em;
-    padding:0.5em 1em;
     z-index:0;
   }
   
