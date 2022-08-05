@@ -46,28 +46,28 @@
                          
                         <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;display: grid;">
                                 <tr style="border: 1px solid black">
-                                  <th style="text-align: left;">
+                                  <th style="text-align: left;border: 1px solid black !important">
                                     <span   > Date </span>
                                   </th>
-                                  <th style="text-align: left;">
+                                  <th style="text-align: left;border: 1px solid black !important">
                                     <span   > Num Facture </span>
                                   </th>
-                                <!-- <th style="text-align: left;">
+                                <!-- <th style="text-align: left;border: 1px solid black !important">
                                     <span   > N° Client </span>
                                 </th> -->
-                                <th style="text-align: left;">
+                                <th style="text-align: left;border: 1px solid black !important">
                                     <span   > Nom du Client </span>
                                 </th>
-                                <th style="text-align: left;">
+                                <th style="text-align: left;border: 1px solid black !important">
                                     <span   > Num de reglement </span>
                                 </th>
-                                <th style="text-align: left;">
+                                <th style="text-align: left;border: 1px solid black !important">
                                     <span   > Type de reglement  </span>
                                 </th>
-                                <th style="text-align: left;">
+                                <th style="text-align: left;border: 1px solid black !important">
                                     <span   > Echéance  </span>
                                 </th>
-                                <th style="text-align: left;">
+                                <th style="text-align: left;border: 1px solid black !important">
                                     <span   > Montant (MAD)  </span>
                                 </th>
                                 </tr>
