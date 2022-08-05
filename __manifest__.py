@@ -24,7 +24,7 @@
 
     # always loaded
     'data': [
-        'ps_rezoroute/static/src/css/test.css',
+        'static/src/css/test.css',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
