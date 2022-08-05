@@ -231,10 +231,10 @@
                                                                         <span class="text-right" t-esc="amount_by_group['tax_group_amount']"/>
                                                                     </t>
                                                                     <t t-else="">
-                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_amount']"/></td>
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_base_amount']"/></td>
 
                                                                         <td><span class="text-right" t-esc="amount_by_group['tax_group_amount']" /></td>
-                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_amount'] + amount_by_group['tax_group_base_amount']" /></td>
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_name']" /></td>
                                                                     </t>
                                                                 </t> 
                                                             </t>
