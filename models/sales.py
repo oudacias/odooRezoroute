@@ -122,6 +122,11 @@ class SaleOrderExtra(models.Model):
 
 
     def action_confirm(self):
+        for rec in self.order_line:
+            if(rec.product_id.qty_location <= 0):
+                print("ProductTemplateExtra ACTIONS: %s" % self.product_id.qty_location)
+                raise ValidationError('Quantité non disponible pour le produit ' + str(self.product_id.name))
+            
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
         if self._get_forbidden_state_confirm() & set(self.mapped('state')):

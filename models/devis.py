@@ -134,21 +134,21 @@ class SaleLine(models.Model):
     def additional_info(self):
         if(self.product_id):
             for rec in self:
-                if(self.product_id.qty_location <= 0):
-                    print("ProductTemplateExtra ACTIONS: %s" % self.product_id.qty_location)
-                    raise ValidationError('Quantité non disponible')
+                # if(self.product_id.qty_location <= 0):
+                #     print("ProductTemplateExtra ACTIONS: %s" % self.product_id.qty_location)
+                #     raise ValidationError('Quantité non disponible')
             
                     
-                else:
-                    product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
+                # else:
+                product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
 
-                    rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
-                    rec.real_qty_available = product.product_tmpl_id.real_qty_available
-                    # rec.price_unit_public = product.product_tmpl_id.lst_price
-                    rec.price_unit = product.lst_price
-                    rec.qty_location = product.qty_location
-                    if(self.order_id.partner_id.is_cheque_flotte):
-                        rec.discount = self.order_id.partner_id.pourcentage_remise
+                rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
+                rec.real_qty_available = product.product_tmpl_id.real_qty_available
+                # rec.price_unit_public = product.product_tmpl_id.lst_price
+                rec.price_unit = product.lst_price
+                rec.qty_location = product.qty_location
+                if(self.order_id.partner_id.is_cheque_flotte):
+                    rec.discount = self.order_id.partner_id.pourcentage_remise
                     
 
 
