@@ -37,12 +37,12 @@
         <field name="domain_force">[('user_id', '=', user.id)]</field>
         <field name="groups" eval="[(4, ref('ps_rezoroute.group_gestionnaire'))]"/>
     </record>
-    <record model="ir.rule" id="show_my_purchase_requisition">
+    <!-- <record model="ir.rule" id="show_my_purchase_requisition">
         <field name="name">Salesperson own requisition</field>
         <field name="model_id" ref="model_purchase_requisition"/>
         <field name="domain_force">[('user_id', '=', user.id)]</field>
         <field name="groups" eval="[(4, ref('ps_rezoroute.group_gestionnaire'))]"/>
-    </record>
+    </record> -->
 
 
     <!-- <record model="ir.rule" id="show_my_sale_quotation">
