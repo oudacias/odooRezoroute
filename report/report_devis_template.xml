@@ -67,7 +67,7 @@
     background-color:red;
   }
                         </style>
-                        <table class="table table-bordered">
+                        <table class="table">
                             <tr>
                                 <td>
                                     <h1 class="fancy">Commande</h1>
