@@ -219,6 +219,7 @@
                                                         Taux de TVA
                                                     </th>
                                                 </tr>
+                                            </thead>
                                                 <tr>
                                                     <!-- <td> -->
                                                         <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
@@ -239,9 +240,9 @@
                                                                 </t> 
                                                             </t>
                                                     <!-- </td> -->
-                                                    <td><span t-field="o.tax_totals_json"/></td>
+                                                    <!-- <td><span t-field="o.tax_totals_json"/></td> -->
                                                 </tr>
-                                            </thead>
+                                            
                                         </table>
                                     </td>
                                     <td>
