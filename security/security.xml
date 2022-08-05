@@ -104,8 +104,8 @@
         <field name="name">Achat Group</field>
         <!-- <field name="comment">Office Technology Permission Group.</field> -->
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
-        <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
-        <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+        
+        
         <field name="implied_ids" eval="[(4, ref('purchase.group_warning_purchase'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.group_send_reminder'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.purchase_order_comp_rule'))]"/>
@@ -116,23 +116,10 @@
         <field name="implied_ids" eval="[(4, ref('purchase.portal_purchase_order_line_rule'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.purchase_bill_union_comp_rule'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.purchase_order_report_comp_rule'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_stock_multi_warehouses'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_stock_multi_locations'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_production_lot'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_lot_on_delivery_slip'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_tracking_lot'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_adv_location'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_tracking_owner'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_warning_stock'))]"/>
-        <field name="implied_ids" eval="[(4, ref('base.module_category_inventory_inventory'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_stock_storage_categories'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_reception_report'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_stock_sign_delivery'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_auto_reception_report'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_stock_picking_wave'))]"/>
+
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         
-       
+       <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
 
 
