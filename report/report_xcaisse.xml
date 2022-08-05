@@ -13,9 +13,14 @@
                     </div> -->
                         <div class="page">
                             <div class="row" id="hash_header">
-                                <div class="col-12">
+                                <div class="col-6">
                                     <br/>
-                                    <h2>Hash Integrity Result - </h2>
+                                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                                    <br/>
+                                </div>
+                                <div class="col-6">
+                                    <br/>
+                                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
                                     <br/>
                                 </div>
                             </div>
