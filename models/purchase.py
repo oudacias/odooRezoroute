@@ -50,10 +50,11 @@ class purchase_custom(models.Model):
 
 
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
-        picking_id.write({'location_dest_id':self.location_id})
+        for rec in picking_id:
+            rec.write({'location_dest_id':self.location_id})
 
-        stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
-        stock_move.write({'location_dest_id':self.location_id})
+            stock_move = self.env['stock.move'].search([('picking_id','=',rec.id)])
+            stock_move.write({'location_dest_id':self.location_id})
 
         
         for line in stock_move.move_line_ids:
