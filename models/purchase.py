@@ -28,19 +28,6 @@ class purchase_custom(models.Model):
    
 
 
-    # @api.model
-    # def write(self,vals):
-    #     self.ensure_one()
-    #     print("00000000000000 @@@@@@@@@@@@   Picking write write ")
-    #     for line in self.order_line:
-    #         print("Hello Hello   "  +str(line.price_unit))
-
-
-    #     q= super(purchase_custom, self).write(vals) 
-    #     return q
-
-    #     # for rec in (vals['order_line']):
-    #     #     print("Hello Hello")
 
     def _isReceived(self):
         
@@ -79,10 +66,6 @@ class StockMove(models.Model):
 
     def _get_new_picking_values(self):
         res = super(StockMove, self)._get_new_picking_values()
-
-        print("TEST TEST TEST TEST MOVE LINE ID @@@@@@")
-        # Pass value of note field from Sales Order to Picking
-        # res.update({'note': self.group_id.sale_id.note})
         return res
 
 
@@ -93,14 +76,16 @@ class purchase_custom_line(models.Model):
     @api.model
     def write(self,vals):
         self.ensure_one()
-        for line in self:
-            print("Hello Hello   "  +str(line.price_unit))
+        order_id_state = self.order_id.state
+        if(order_id_state =='done' or order_id_state=='purchase'):
+
+            # for line in self:
+
+            print("Hello Hello   "  +str(self.price_unit))
 
 
         q= super(purchase_custom_line, self).write(vals) 
         return q
 
-        # for rec in (vals['order_line']):
-        #     print("Hello Hello")
 
     
