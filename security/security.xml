@@ -68,7 +68,7 @@
    <record id="membership_product_product_public1" model="ir.rule">
         <field name="name">Product membership: Public</field>
         <field name="model_id" ref="product.model_product_template"/>
-        <field name="groups" eval="[(4, ref('ps_rezoroute.group_gestionnaire'))]"/>
+        <!-- <field name="groups" eval="[(4, ref('ps_rezoroute.group_gestionnaire'))]"/> -->
         <field name="perm_read" eval="True"/>
         <field name="perm_write" eval="False"/>
         <field name="perm_create" eval="False"/>
