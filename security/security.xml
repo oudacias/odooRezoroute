@@ -25,13 +25,20 @@
         <field name="domain_force">[('user_id','=',user.id)]</field>
     </record>
 
-
     <record model="ir.rule" id="show_my_sale_quotation">
+        <field name="name">Salesperson own order</field>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('ps_rezoroute.group_gestionnaire'))]"/>
+    </record>
+
+
+    <!-- <record model="ir.rule" id="show_my_sale_quotation">
         <field name="name">My Quotations</field>
         <field name="model_id" ref="model_sale_order"></field>
-        <field name="domain_force">['|',('user_id','=',user.id),('user_id','=',False)]</field>
-        <!-- <field name="groups" eval="[(4, ref('group_gestionnaire'))]"/> -->
-    </record>
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+       <field name="groups" eval="[(4, ref('group_gestionnaire'))]"/> 
+    </record> -->
 
   
 
