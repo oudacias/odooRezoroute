@@ -223,7 +223,7 @@
                                                     <td>
                                                         <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
                                                             <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
-                                                            <span class="text-right" t-esc="subtotal['amount_untaxed']"/>
+                                                            <span class="text-right" t-esc="subtotal['name']"/>
                                                                 <!-- <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
                                                                 <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
                                                                     <t t-if="len(tax_totals['groups_by_subtotal'][subtotal_to_show]) > 1">
