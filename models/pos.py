@@ -132,10 +132,10 @@ class PosSession(models.Model):
                 if ligne.journal_id.id==a.journal_id.id:
                     if ligne.journal_id.id in data:
                         print("@@@@ Journal: " + str(data[ligne.journal_id.id]))
-                        data[ligne.journal_id.id] += ligne.amount 
+                        data[ligne.journal_id.id] += float(ligne.amount)
                     else:
                         
-                        data[ligne.journal_id.id] = ligne.amount 
+                        data[ligne.journal_id.id] = float(ligne.amount)
                         print("@@@@ Journal:2 " + str(data[ligne.journal_id.id]))
 
 
