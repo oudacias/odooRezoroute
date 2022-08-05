@@ -42,6 +42,8 @@
         'data/cronvalidate.xml',
         'report/report_xcaisse.xml',
         'report/report_posreport.xml',
+        'report/report_devis_template.xml',
+        'report/report_devis.xml',
         'views/purchase.xml',
         'views/payment.xml',
         
