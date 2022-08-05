@@ -108,23 +108,38 @@ class PosSession(models.Model):
         self.espece = total 
 
 
-        data=[]
-        
+        # data=[(0, 0, {'payment_id': 23, 'total_payment': 2201.2}), (0, 0, {'payment_id': 22, 'total_payment': 2201.2}), (0, 0, {'payment_id': 21, 'total_payment': 2201.2})]
+        # data = []
+        # for ligne in  self.payment_id:
+        #     total = 0
+        #     for a in self.env['account.payment'].search([('session_id', '=', self.id)]) : 
+        #         if ligne.journal_id.id==a.journal_id.id:
+        #             total +=ligne.amount 
+
+        #     data.append({'payment_id':a.journal_id.id,'total_payment':total})
+        # res = {}
+        # for v,b in data.item():
+        #     res[b]=[v] if b not in res.keys() else res[b]+ v
+        # self.total_payment = total
+        # total=0
+        # print (str(res))
+
+
+        data = {}
         for ligne in  self.payment_id:
             total = 0
             for a in self.env['account.payment'].search([('session_id', '=', self.id)]) : 
                 if ligne.journal_id.id==a.journal_id.id:
-                    total +=ligne.amount 
+                    if ligne.journal_id.id in data:
+                        data[ligne.journal_id.id] += ligne.amount 
+                    else:
+                        data[ligne.journal_id.id] = ligne.amount 
 
-            data.append({'payment_id':a.journal_id.id,'total_payment':total})
-        res = {}
-        for v,b in data.item():
-            res[b]=[v] if b not in res.keys() else res[b]+ v
-        self.total_payment = total
-        total=0
-        print (str(res))
 
-        self.write({'payment_ids':data})
+
+        print(str(data))
+
+        # self.write({'payment_ids':data})
 
 
 
