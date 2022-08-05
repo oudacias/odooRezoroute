@@ -93,7 +93,6 @@ class purchase_custom_line(models.Model):
     @api.model
     def write(self,vals):
         self.ensure_one()
-        print("00000000000000 @@@@@@@@@@@@   Picking write write ")
         for line in self:
             print("Hello Hello   "  +str(line.price_unit))
 
