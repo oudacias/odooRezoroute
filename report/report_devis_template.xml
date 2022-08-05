@@ -60,7 +60,6 @@
     top:0;
     z-index:-1;
     transform:skew(20deg);
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,1);
   }
   
   .fancy.red::before {
@@ -73,13 +72,13 @@
                                     <h1 class="fancy">Commande</h1>
                                 </td>
                                 <td>
-                                    <span>N </span><span><span t-field="o.name"/></span>
+                                    <b><span>N </span><span><span t-field="o.name"/></span></b>
                                 </td>
                                 <td>
                                    <span><span t-field="o.company_id.partner_id.name"/></span>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr style="background-color:#F5F5F5">
                                 <td>
                                     <h6>Date :</h6><span t-field="o.date_order"/>
                                     <br/>
