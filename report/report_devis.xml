@@ -17,5 +17,13 @@
 
             <field name="binding_model_id" ref="model_sale_order"/>
 
+            <link href="test.css" rel="stylesheet" type="text/css"/>
+
         </record>
+
+        <!-- <template id="assets_common_l10n_mx_edi" inherit_id="web.report_assets_pdf">
+            <xpath expr="." position="inside">
+                <link href="/l10n_mx_edi/static/src/less/report.less" rel="stylesheet" type="text/less"/>
+            </xpath>
+        </template> -->
     </odoo>

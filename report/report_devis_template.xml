@@ -38,6 +38,7 @@
                                 
                             </div>
                         </div>
+                        <h1 class="fancy">Heading which is very long and will most likely split into multiple lines</h1>
 
                     
                          
@@ -78,7 +79,7 @@
                                     <t t-foreach="o.order_line" t-as="line">
                                     <tr  >
                                         <td> 
-                                            <span t-field="line.name"/>
+                                            <span t-field="line.default_code"/>
                                         </td>
                                         <td> 
                                             <span t-field="line.name"/>
