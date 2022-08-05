@@ -222,7 +222,7 @@
                                                 <tr>
                                                     <td><span t-field="o.tax_totals_json"/></td>
                                                     <td><span t-field="o.tax_totals_json"/></td>
-                                                    <td><span t-field="o.tax_totals_json"/></td>
+                                                    <td><span t-field="o.tax_totals_json['amount_total']"/></td>
                                                 </tr>
                                             </thead>
                                         </table>
