@@ -126,15 +126,15 @@ class PosSession(models.Model):
 
         data = {}
         for a in self.env['account.payment'].search([('session_id', '=', self.id)]) : 
-            if a.journal_id.id in self.payment_id.journal_id.id:
-                if self.journal_id.id in data:
-                       
-                    data[self.journal_id.id] += round(a.amount,2)
-                        # print("@@@@ Journal:000 " + str(data[ligne.journal_id.id]))
-                else:
-                        
-                    data[self.journal_id.id] = round(a.amount,2)
-                        # print("@@@@ Journal:2 " + str(data[ligne.journal_id.id]))
+            # if a.journal_id.id in self.payment_id.journal_id.id:
+            if a.journal_id.id in data:
+                    
+                data[self.journal_id.id] += round(a.amount,2)
+                    # print("@@@@ Journal:000 " + str(data[ligne.journal_id.id]))
+            else:
+                    
+                data[self.journal_id.id] = round(a.amount,2)
+                    # print("@@@@ Journal:2 " + str(data[ligne.journal_id.id]))
 
 
 
