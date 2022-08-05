@@ -220,12 +220,12 @@
                                                     </th>
                                                 </tr>
                                                 <tr>
-                                                 <table class="table table-sm">
-                        <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
-                        <t t-call="account.document_tax_totals"/>
-                    </table>
-                                                    <td><span t-field="o.tax_totals_json"/></td>
-                                                    <td><span t-field="o.tax_totals_json"/></td>
+                                                
+                                                    <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
+                                                    <t t-call="account.document_tax_totals"/>
+                                               
+                                                    <td><t t-call="account.document_tax_totals"/></td>
+                                                    <!-- <td><span t-field="o.tax_totals_json"/></td> -->
                                                     <!-- <td><t t-foreach="o.tax_totals_json" t-as="emp"><span t-field="emp['amount_total']"/></t></td> -->
                                                 </tr>
                                             </thead>
