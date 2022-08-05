@@ -104,35 +104,35 @@
                          
                         <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;display: grid;">
                         <thead style="background-color:#5D89C5">
-                                <tr style="border: 1px solid black">
-                                  <th style="text-align: left;border: 1px solid black !important">
+                                <tr>
+                                  <th>
                                     <span   > Code Article </span>
                                   </th>
-                                  <th style="text-align: left;border: 1px solid black !important">
+                                  <th >
                                     <span   > Designation </span>
                                   </th>
                                 <!-- <th style="text-align: left;border: 1px solid black !important">
                                     <span   > N° Client </span>
                                 </th> -->
-                                <th style="text-align: left;border: 1px solid black !important">
+                                <th>
                                     <span   > Qte </span>
                                 </th>
-                                <th style="text-align: left;border: 1px solid black !important">
+                                <th >
                                     <span   > P.U HT </span>
                                 </th>
-                                <th style="text-align: left;border: 1px solid black !important">
+                                <th>
                                     <span   > Rem %  </span>
                                 </th>
-                                <th style="text-align: left;border: 1px solid black !important">
+                                <th >
                                     <span   > P.U NET HT  </span>
                                 </th>
-                                <th style="text-align: left;border: 1px solid black !important">
+                                <th>
                                     <span   > Montant (MAD)  </span>
                                 </th>
-                                <th style="text-align: left;border: 1px solid black !important">
+                                <th >
                                     <span   > TVA  </span>
                                 </th>
-                                 <th style="text-align: left;border: 1px solid black !important">
+                                 <th>
                                     <span   > Montant TTC  </span>
                                 </th>
                                 </tr>
