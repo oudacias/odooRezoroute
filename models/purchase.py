@@ -94,7 +94,7 @@ class purchase_custom(models.Model):
     def write(self,vals):
         self.ensure_one()
         print("00000000000000 @@@@@@@@@@@@   Picking write write ")
-        for line in self.order_line:
+        for line in self:
             print("Hello Hello   "  +str(line.price_unit))
 
 
