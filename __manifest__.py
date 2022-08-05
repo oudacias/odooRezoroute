@@ -24,7 +24,6 @@
 
     # always loaded
     'data': [
-        # 'static/src/css/test.css',
         'security/security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
@@ -54,10 +53,9 @@
         'demo/demo.xml',
     ],
 
+   
     'assets': {
-        
-       
-        'ps_rezoroute/static/src/css/test.css',
-        
-    }
+        'web.assets_backend' [
+            'ps_rezoroute/static/src/css/test.css',
+        ]},
 }
