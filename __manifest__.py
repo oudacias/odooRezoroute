@@ -49,11 +49,11 @@
         
     ],
 
-    'assets': {
-        'web.assets_backend' [
-            'ps_rezoroute/static/src/css/test.css',
-        ]},
-        
+    # 'assets': {
+    #     'web.assets_backend' [
+    #         'ps_rezoroute/static/src/css/test.css',
+    #     ]},
+
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
