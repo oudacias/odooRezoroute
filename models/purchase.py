@@ -32,10 +32,11 @@ class purchase_custom(models.Model):
     def _isReceived(self):
         
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
-        if(picking_id.state == 'done'):
-            self.is_received = True
-        else: 
-            self.is_received = False
+        for rec in picking_id:
+            if(rec.state == 'done'):
+                self.is_received = True
+            else: 
+                self.is_received = False
 
 
 
@@ -81,11 +82,11 @@ class purchase_custom_line(models.Model):
 
         order_id = self.order_id
         if('price_unit' in vals and vals['price_unit'] != self.price_unit):
-            
-            print("Test order order_id_state      price_unit      ")
-        
 
-            # if(order_id_state =='done' or order_id_state=='purchase'):
+            picking_id = self.env['stock.picking'].search([('purchase_id','=',self.order_id.id),('state','!=','cancel')])
+
+            for rec in picking_id:
+                rec.action_cancel()
 
             self.order_id.state = 'draft'
 
