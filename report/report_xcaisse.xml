@@ -13,6 +13,7 @@
                     </div> -->
                         <div class="page">
                             <div class="row" id="hash_header">
+                            <div class="col-xs-12">
                                 <div class="col-6">
                                     <br/>
                                         <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
@@ -37,6 +38,7 @@
                                         <br/>
                                         <span   > Validation : </span> <span t-field="o.date_validation"/>
                                     <br/>
+                                </div>
                                 </div>
                             </div>
                         </div>
