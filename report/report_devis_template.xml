@@ -220,9 +220,10 @@
                                                     </th>
                                                 </tr>
                                                 <tr>
-                                                <td><span t-field="o.tax_totals_json"/></td>
-                                                <td><span t-field="o.tax_totals_json"/></td>
-                                                <td><span t-field="o.tax_totals_json"/></td>
+                                                    <td><span t-field="o.tax_totals_json"/></td>
+                                                    <td><span t-field="o.tax_totals_json"/></td>
+                                                    <td><span t-field="o.tax_totals_json"/></td>
+                                                </tr>
                                             </thead>
                                         </table>
                                     </td>
