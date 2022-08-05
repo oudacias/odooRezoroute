@@ -175,7 +175,7 @@
                                     </tr>
                                     
                                 </t>
-                                <tr style="border: 1px solid black">
+                                <!-- <tr style="border: 1px solid black">
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -184,12 +184,35 @@
                                     <td><h5>Total</h5></td>
                                     <td><h5><t t-esc="test_variable"/></h5></td>
                                     </tr>
-                                
+                                 -->
                             </table>
                             <span style="font-size:12px">CLAUSE DE RESERVE DE PROPRIETE: En application de l'article L021-122 de Commerce, les marchandises vendues resteront juridiquement notre propriété jusqu'à l'encaissement réel et définitif du total des sommes dues par le client.</span>
                             <br/>
                             <br/>
-                            <span>COMMANDE à la somme de : cent quatre-vingt Dirhams</span>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <span>COMMANDE à la somme de : cent quatre-vingt Dirhams</span>
+                                    <td>
+                                    <td>
+                                        <table class="table table-bordered" style="width: 100%;height:200px">
+                                            <tr>
+                                                <td><b>Total H.T.</b></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Total TVA</b></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>TOTAL TTC (DHS)</b></td>
+                                                <td> <span t-field="o.amount_total"/></td>
+                                            </tr>
+                                            
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                             <table class="table table-bordered" style="width: 100%;">
                                 <tr>
                                     <td>
