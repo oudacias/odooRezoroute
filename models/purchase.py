@@ -7,6 +7,8 @@ class purchase_custom(models.Model):
     session_id = fields.Many2one('pos.session',string="Session id")
     location_name = fields.Char(string="Emplacement")
     location_id = fields.Integer(string="Emplacement")
+
+    is_received = fields.Boolean(compute="is_received")
     
 
     @api.model
@@ -22,6 +24,11 @@ class purchase_custom(models.Model):
 
         q= super(purchase_custom, self).create(vals) 
         return q
+
+    def is_received(self):
+        picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
+        print("Picking State state " + str(picking_id.state))
+
 
 
 
