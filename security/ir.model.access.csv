@@ -14,6 +14,7 @@ product_fullimage,ps.product.fullimage,model_ps_product_fullimage,group_gestionn
 
 
 product_product_id,.product.product,model_product_product,group_gestionnaire,0,0,0,0
+product_template_id,.product.template,model_product_template,group_gestionnaire,0,0,0,0
 
 
 
