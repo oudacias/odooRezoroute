@@ -81,7 +81,7 @@ class purchase_custom_line(models.Model):
         order_id = self.order_id
         if('price_unit' in vals and vals['price_unit'] != self.price_unit):
             
-
+            print("Test order order_id_state      price_unit      ")
         
 
             # if(order_id_state =='done' or order_id_state=='purchase'):
