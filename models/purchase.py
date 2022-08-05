@@ -32,6 +32,8 @@ class purchase_custom(models.Model):
     def _isReceived(self):
         
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
+
+        print("@@@@@ Stock Location: " + str(picking_id))
         for rec in picking_id:
             if(rec.state == 'done'):
                 self.is_received = True
