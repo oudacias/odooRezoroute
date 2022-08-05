@@ -27,9 +27,11 @@ class purchase_custom(models.Model):
     @api.model
     def write(self,vals):
         print("00000000000000 @@@@@@@@@@@@   Picking write write ")
+        for line in self.order_line:
+            print("Hello Hello   "  +str(line.price_unit))
 
-        for rec in (vals['order_line']):
-            print("Hello Hello")
+        # for rec in (vals['order_line']):
+        #     print("Hello Hello")
 
     def _isReceived(self):
         
