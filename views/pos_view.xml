@@ -64,13 +64,20 @@
                     <notebook>
                         <page string="Résumé">
                             <group>
-                                <field name="payment_id">
+                                <field name="payment_ids">
+                                    <!-- <tree>
+                                        <field name="journal_id" string="Type de Paiement" readonly="1"/>
+                                        <field name="amount_company_currency_signed" string="Montant"/>
+                                        
+                                    </tree> -->
+                                </field>
+                                <!-- <field name="payment_id">
                                     <tree>
                                         <field name="journal_id" string="Type de Paiement" readonly="1"/>
                                         <field name="amount_company_currency_signed" string="Montant"/>
                                         
                                     </tree>
-                                </field>
+                                </field> -->
                                 <field name="espece"/>
                                 <field name="cheque"/>
                             </group>

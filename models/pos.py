@@ -6,7 +6,7 @@ from odoo.exceptions import ValidationError
 class payments_model(models.Model):
     _name ="payements"
 
-    payment_id = fields.Many2one('account.payment')
+    payment_id = fields.Many2one('account.journal')
     pos_session_id = fields.Many2one('pos.session')
 
     total_payment = fields.Float( )
@@ -160,7 +160,7 @@ class PosSession(models.Model):
         print("@@@@ Journal: " )
         print(str(data))
 
-        # self.write({'payment_ids':data})
+        self.write({'payment_ids':data})
 
 
 
