@@ -67,8 +67,8 @@
     background-color:red;
   }
                         </style>
-                        <table class="table" style="border: 1px solid black !important;width: 100%;display: grid;">
-                            <tr>
+                        <table class="table" style="width: 100%;display: grid;">
+                            <tr style="background-color:gray">
                                 <td>
                                     <h1 class="fancy">Commande</h1>
                                 </td>
