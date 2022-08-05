@@ -220,12 +220,24 @@
                                                     </th>
                                                 </tr>
                                                 <tr>
+                                                <t t-set="tax_totals" t-value="json.loads(doc.tax_totals_json)"/>
+<t t-foreach="tax_totals['subtotals']" t-as="subtotal">
+    <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
+    <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
+        <t t-if="len(tax_totals['groups_by_subtotal'][subtotal_to_show]) > 1">
+            <span class="text-right" t-esc="amount_by_group['formatted_tax_group_amount']"/>
+        </t>
+        <t t-else="">
+            <span class="text-right" t-esc="amount_by_group['formatted_tax_group_amount']" />
+        </t>
+    </t>
+</t>
                                                 
-                                                    <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
+                                                    <!-- <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/> -->
                                                     <!-- <t t-call="account.document_tax_totals"/> -->
                                                
                                                     <!-- <td><t t-call="account.document_tax_totals"/></td> -->
-                                                    <td><t t-call="account.document_tax_totals"/></td>
+                                                    <!-- <td><t t-call="account.document_tax_totals"/></td> -->
                                                     <!-- <td><span t-field="o.tax_totals_json"/></td> -->
                                                     <!-- <td><t t-foreach="o.tax_totals_json" t-as="emp"><span t-field="emp['amount_total']"/></t></td> -->
                                                 </tr>
