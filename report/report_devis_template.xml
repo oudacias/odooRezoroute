@@ -220,7 +220,7 @@
                                                     </th>
                                                 </tr>
                                                 <tr>
-                                                    <td>
+                                                    <!-- <td> -->
                                                         <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
                                                             <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
                                                                 <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
@@ -230,13 +230,13 @@
                                                                         <span class="text-right" t-esc="amount_by_group['formatted_tax_group_amount']"/>
                                                                     </t>
                                                                     <t t-else="">
-                                                                        <span class="text-right" t-esc="amount_by_group['tax_group_base_amount']"/>
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_base_amount']"/></td>
 
-                                                                        <span class="text-right" t-esc="amount_by_group['formatted_tax_group_amount']" />
+                                                                        <td><span class="text-right" t-esc="amount_by_group['formatted_tax_group_amount']" /><td>
                                                                     </t>
                                                                 </t> 
                                                             </t>
-                                                    </td>
+                                                    <!-- </td> -->
                                                     <td><span t-field="o.tax_totals_json"/></td>
                                                 </tr>
                                             </thead>
