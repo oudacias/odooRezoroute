@@ -81,17 +81,17 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h6>Date :</h6><span t-field="o.date_order"/></span>
+                                    <h6>Date :</h6><span t-field="o.date_order"/>
                                     <br/>
                                     <span>Votre correspondant:</span>
                                     <br/>
-                                    <span t-field="o.company_id.name"/></span>
-                                    <span t-field="o.company_id.email"/></span>
+                                    <span t-field="o.company_id.name"/>
+                                    <span t-field="o.company_id.email"/>
                                 </td>
                                 <td></td>
                                 <td>
-                                    <span t-field="o.company_id.street"/></span>
-                                    <span t-field="o.partner_ref"/></span>
+                                    <span t-field="o.company_id.street"/>
+                                    <span t-field="o.partner_ref"/>
                                 </td>
                             </tr>
                             
