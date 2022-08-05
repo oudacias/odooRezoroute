@@ -96,9 +96,14 @@
                             
                         </table>
 
+                        <br/>
+                        <br/>
+                        <br/>
+
                     
                          
                         <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;display: grid;">
+                        <thead style="background-color:#2C415E">
                                 <tr style="border: 1px solid black">
                                   <th style="text-align: left;border: 1px solid black !important">
                                     <span   > Code Article </span>
@@ -131,6 +136,7 @@
                                     <span   > Montant TTC  </span>
                                 </th>
                                 </tr>
+                            </thead>
                                 <t t-set="test_variable" t-value="0"/>
                                     <t t-foreach="o.order_line" t-as="line">
                                     <tr  >
