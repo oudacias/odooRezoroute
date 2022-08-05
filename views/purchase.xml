@@ -81,7 +81,7 @@
                 </xpath> 
                 <xpath expr="//field[@name='requisition_id']" position="after">
                     <field name="location_name" readonly="1"/>
-                    <field name="location_id" readonly="1" invisible="1"/>
+                    <field name="location_id" readonly="1" />
                 </xpath> 
             </field>
         </record>
