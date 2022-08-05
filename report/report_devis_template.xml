@@ -73,10 +73,10 @@
                                     <h1 class="fancy">Commande</h1>
                                 </td>
                                 <td>
-                                    <h1>N </h1><span><span t-field="o.name"/></span>
+                                    <span>N </span><span><span t-field="o.name"/></span>
                                 </td>
                                 <td>
-                                    <h1>N </h1><span><span t-field="o.company_id.partner_id.name"/></span>
+                                   <span><span t-field="o.company_id.partner_id.name"/></span>
                                 </td>
                             </tr>
                             <tr>
