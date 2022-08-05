@@ -106,10 +106,10 @@
                         <thead style="background-color:#5D89C5">
                                 <tr>
                                   <th>
-                                    <span   > Code Article </span>
+                                   Code Article
                                   </th>
                                   <th >
-                                    <span   > Designation </span>
+                                  Designation
                                   </th>
                                 <!-- <th style="text-align: left;border: 1px solid black !important">
                                     <span   > N° Client </span>
