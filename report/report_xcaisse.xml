@@ -15,7 +15,7 @@
                             <div class="row" id="hash_header">
                                 <div class="col-12">
                                     <br/>
-                                    <h2>Hash Integrity Result - <span t-esc="data['printing_date']"/></h2>
+                                    <h2>Hash Integrity Result - </h2>
                                     <br/>
                                 </div>
                             </div>
