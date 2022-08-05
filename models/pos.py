@@ -134,8 +134,9 @@ class PosSession(models.Model):
                         print("@@@@ Journal: " + str(data[ligne.journal_id.id]))
                         data[ligne.journal_id.id] += ligne.amount 
                     else:
-                        print("@@@@ Journal:2 " + str(data[ligne.journal_id.id]))
+                        
                         data[ligne.journal_id.id] = ligne.amount 
+                        print("@@@@ Journal:2 " + str(data[ligne.journal_id.id]))
 
 
 
