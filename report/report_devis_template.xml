@@ -78,7 +78,7 @@
                                     <t t-foreach="o.order_line" t-as="line">
                                     <tr  >
                                         <td> 
-                                            <span t-field="line.date"/>
+                                            <span t-field="line.default_code"/>
                                         </td>
                                         <td> 
                                             <span t-field="line.name"/>
