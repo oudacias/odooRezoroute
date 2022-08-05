@@ -2,6 +2,7 @@ import string
 from urllib.parse import uses_relative
 from odoo import fields, models,api
 from odoo.exceptions import ValidationError
+from datetime import date
 
 class payments_model(models.Model):
     _name ="payements"
@@ -32,6 +33,7 @@ class PosSession(models.Model):
     # pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
     total_compute = fields.Integer(compute='_total_compute')
+    date_validation = fields.Datetime()
 
     method_id = fields.Text(string="Méthode de Paiement", compute='_get_method_name')
     payment_id = fields.One2many('account.payment','session_id')
@@ -73,7 +75,9 @@ class PosSession(models.Model):
 
     def check_cash_funds(self):
         print("Checking cash_control    ids for cash_control    inline  data    in"  + str(self.id))
+
         self.write({'state':'closing_control'})
+        self.write({'date_validation':date.today()})
         
 
     
