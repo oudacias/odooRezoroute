@@ -31,7 +31,7 @@ class purchase_custom(models.Model):
 
     def _isReceived(self):
         
-        picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
+        picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
         if(picking_id.state == 'done'):
             self.is_received = True
         else: 
@@ -49,7 +49,7 @@ class purchase_custom(models.Model):
 
 
 
-        picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
+        picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
         for rec in picking_id:
             rec.write({'location_dest_id':self.location_id})
 
@@ -88,6 +88,7 @@ class purchase_custom_line(models.Model):
             # if(order_id_state =='done' or order_id_state=='purchase'):
 
             self.order_id.state = 'draft'
+
                 
 
                
