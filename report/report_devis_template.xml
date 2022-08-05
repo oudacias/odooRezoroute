@@ -219,6 +219,10 @@
                                                         Taux de TVA
                                                     </th>
                                                 </tr>
+                                                <tr>
+                                                <td><span t-field="o.tax_totals_json"/></td>
+                                                <td><span t-field="o.tax_totals_json"/></td>
+                                                <td><span t-field="o.tax_totals_json"/></td>
                                             </thead>
                                         </table>
                                     </td>
