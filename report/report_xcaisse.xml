@@ -31,7 +31,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="col-6">
+                                            <div class="col-6" style="margin-left:100px !important">
                                                 <br/>
                                                     <span   > X de caisse : </span> <span t-field="o.name"/>
                                                     <br/>
@@ -52,7 +52,6 @@
                         </div>
 
                     
-                        <span><span t-field="o.company_id.name"/></span>
                          
                         <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;display: grid;">
                                 <tr style="border: 1px solid black">
