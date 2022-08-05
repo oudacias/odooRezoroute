@@ -12,48 +12,42 @@
                         <!-- </div>
                     </div> -->
                         <div class="page">
-                        <div class="row mt32 mb32">
-                    <div class="col-xs-4">
-                        <strong>TEST</strong>
-                    </div>
-
-                    <div class="col-xs-4">
-                        <strong>TEST</strong>
-                    </div>
-                    <div class="col-xs-4">
-                        <strong>TEST</strong>
-
-                    </div>
-                </div>
+                       
                             <div class="row" id="hash_header">
-                            
-                            <div class="col-xs-12">
-                                <div class="col-6">
-                                    <br/>
-                                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
-                                        <br/>
-                                        <span t-field="o.company_id.partner_id.name"/>
-                                        <br/>
-                                        <span t-field="o.company_id.street"/>
-                                        <br/>
-                                        <span>Tel :</span><span t-field="o.company_id.phone"/>
-                                        <br/>
-                                    <br/>
-                                </div>
-                                <div class="col-6">
-                                    <br/>
-                                        <span   > X de caisse : </span> <span t-field="o.name"/>
-                                        <br/>
-                                        <span   > Responsable : </span> <span t-field="o.user_id.name"/>
-                                        <br/>
-                                        <span   > Ouverture : </span> <span t-field="o.start_at"/>
-                                        <br/>
-                                        <span   > Fermeture : </span> <span t-field="o.stop_at"/>
-                                        <br/>
-                                        <span   > Validation : </span> <span t-field="o.date_validation"/>
-                                    <br/>
-                                </div>
-                                </div>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            <div class="col-6">
+                                                <br/>
+                                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                                                    <br/>
+                                                    <span t-field="o.company_id.partner_id.name"/>
+                                                    <br/>
+                                                    <span t-field="o.company_id.street"/>
+                                                    <br/>
+                                                    <span>Tel :</span><span t-field="o.company_id.phone"/>
+                                                    <br/>
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="col-6">
+                                                <br/>
+                                                    <span   > X de caisse : </span> <span t-field="o.name"/>
+                                                    <br/>
+                                                    <span   > Responsable : </span> <span t-field="o.user_id.name"/>
+                                                    <br/>
+                                                    <span   > Ouverture : </span> <span t-field="o.start_at"/>
+                                                    <br/>
+                                                    <span   > Fermeture : </span> <span t-field="o.stop_at"/>
+                                                    <br/>
+                                                    <span   > Validation : </span> <span t-field="o.date_validation"/>
+                                                <br/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
                             </div>
                         </div>
 
