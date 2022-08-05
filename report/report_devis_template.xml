@@ -191,11 +191,11 @@
                             <br/>
                             <table>
                                 <tr>
-                                    <td>
+                                    <td style="width:60%">
                                         <span>COMMANDE à la somme de : cent quatre-vingt Dirhams</span>
                                     </td>
                                     <td>
-                                        <table class="table table-bordered" style="width: 40%">
+                                        <table class="table table-bordered">
                                             <tr>
                                                 <td><b>Total H.T.</b></td>
                                                 <td><span t-field="o.amount_untaxed"/></td>
