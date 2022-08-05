@@ -30,6 +30,10 @@ class purchase_custom(models.Model):
         for line in self.order_line:
             print("Hello Hello   "  +str(line.price_unit))
 
+
+        q= super(purchase_custom, self).write(vals) 
+        return q
+
         # for rec in (vals['order_line']):
         #     print("Hello Hello")
 
