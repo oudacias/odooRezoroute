@@ -21,6 +21,8 @@
                                                 <br/>
                                                     <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
                                                     <br/>
+                                                    <br/>
+                                                    <br/>
                                                     <span t-field="o.company_id.partner_id.name"/>
                                                     <br/>
                                                     <span t-field="o.company_id.street"/>
@@ -31,7 +33,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="col-6" style="margin-left:100px !important">
+                                            <div class="col-6" style="margin-left:300px !important">
                                                 <br/>
                                                     <span   > X de caisse : </span> <span t-field="o.name"/>
                                                     <br/>
