@@ -225,7 +225,7 @@
                                                     <!-- <t t-call="account.document_tax_totals"/> -->
                                                
                                                     <td><t t-call="account.document_tax_totals"/></td>
-                                                    <td><t t-call="tax_totals.amount_total"/></td>
+                                                    <td><t t-call="tax_totals['amount_total']"/></td>
                                                     <td><span t-field="o.tax_totals_json"/></td>
                                                     <!-- <td><t t-foreach="o.tax_totals_json" t-as="emp"><span t-field="emp['amount_total']"/></t></td> -->
                                                 </tr>
