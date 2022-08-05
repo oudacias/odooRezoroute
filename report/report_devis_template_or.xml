@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
 
-       <template id="report_devis_template_or">
+       <template id="report_devis_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <!-- <div class="header" style="top:1450pt"> -->
@@ -43,7 +43,7 @@
     color:#fff;
     display:inline-block;
     position:relative;
-    font-size:1.5em;
+    font-size:2em;
     line-height:2em;
     padding:0.5em 1em;
     z-index:0;
@@ -69,7 +69,7 @@
                         <table class="table" style="width: 100%;display: grid;">
                             <tr style="background-color:#E8E8E8">
                                 <td>
-                                    <h1 class="fancy">Ordre de Reparation</h1>
+                                    <h1 class="fancy">Ordre Reparation</h1>
                                 </td>
                                 <td>
                                     <b><span>N </span><span><span t-field="o.name"/></span></b>
@@ -175,7 +175,7 @@
                                     </tr>
                                     
                                 </t>
-                                <tr style="border: 1px solid black">
+                                <!-- <tr style="border: 1px solid black">
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -184,12 +184,37 @@
                                     <td><h5>Total</h5></td>
                                     <td><h5><t t-esc="test_variable"/></h5></td>
                                     </tr>
-                                
+                                 -->
                             </table>
-                            <span>CLAUSE DE RESERVE DE PROPRIETE: En application de l'article L021-122 de Commerce, les marchandises vendues resteront juridiquement notre propriété jusqu'à l'encaissement réel et définitif du total des sommes dues par le client.</span>
+                            <span style="font-size:12px">CLAUSE DE RESERVE DE PROPRIETE: En application de l'article L021-122 de Commerce, les marchandises vendues resteront juridiquement notre propriété jusqu'à l'encaissement réel et définitif du total des sommes dues par le client.</span>
                             <br/>
                             <br/>
-                            <span>COMMANDE à la somme de : cent quatre-vingt Dirhams</span>
+                            <table>
+                                <tr>
+                                    <td style="width:70%">
+                                        <span>COMMANDE à la somme de : cent quatre-vingt Dirhams</span>
+                                    </td>
+                                    <td>
+                                        <table class="table table-bordered">
+                                            <tbody style="background-color:#F5F5F5">
+                                                <tr>
+                                                    <td><b>Total H.T.</b></td>
+                                                    <td><span t-field="o.amount_untaxed"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>Total TVA</b></td>
+                                                    <td><span t-field="o.amount_tax"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>TOTAL TTC (DHS)</b></td>
+                                                    <td> <span t-field="o.amount_total"/></td>
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
                             <table class="table table-bordered" style="width: 100%;">
                                 <tr>
                                     <td>
@@ -201,8 +226,10 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tr>
-                                            </tr>
+                                            <tbody style="background-color:#F5F5F5">
+                                                <tr>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </td>
                                     <td>
@@ -219,27 +246,44 @@
                                                         Taux de TVA
                                                     </th>
                                                 </tr>
-                                                <tr>
-                                                
-                                                    <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
-                                                    <!-- <t t-call="account.document_tax_totals"/> -->
-                                               
-                                                    <!-- <td><t t-call="account.document_tax_totals"/></td> -->
-                                                    <!-- <td><t t-call="account.amount_total"/></td> -->
-                                                    <!-- <td><span t-field="o.tax_totals_json"/></td> -->
-                                                    <!-- <td><t t-foreach="o.tax_totals_json" t-as="emp"><span t-field="emp['amount_total']"/></t></td> -->
-                                                </tr>
                                             </thead>
+                                            <tbody style="background-color:#F5F5F5">
+                                                <tr>
+                                                    <!-- <td> -->
+                                                        <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
+                                                            <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
+                                                                <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
+                                                                <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
+                                                                    <t t-if="len(tax_totals['groups_by_subtotal'][subtotal_to_show]) > 1">
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                        <!-- <span class="text-right" t-esc="amount_total['amount_untaxed']"/>
+                                                                        <span class="text-right" t-esc="amount_by_group['amount_untaxed']"/>
+                                                                        <span class="text-right" t-esc="amount_by_group['tax_group_amount']"/> -->
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_base_amount']"/></td>
+
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_amount']" /></td>
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_name']" /></td>
+                                                                    </t>
+                                                                </t> 
+                                                            </t>
+                                                    <!-- </td> -->
+                                                    <!-- <td><span t-field="o.tax_totals_json"/></td> -->
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </td>
                                     <td>
-                                        <h1>MERCI POUR VOTRE CONFIANCE !</h1>
+                                        <h4>MERCI POUR VOTRE CONFIANCE !</h4>
                                     </td>
                                                 
                                                 
                                 </tr>
                             </table>
-                            <span>REZOROUTE S.A AU CAPITAL DE DH 10 700 000 - ICE: 001526657000023 - R.C. 65155 - I.F. 01640196 - C.N.S.S. 2150308 - Patente 31831461
+                            <span style="font-size:12px">REZOROUTE S.A AU CAPITAL DE DH 10 700 000 - ICE: 001526657000023 - R.C. 65155 - I.F. 01640196 - C.N.S.S. 2150308 - Patente 31831461
 18 Bd Al Massira AL KHADRA, Immeuble Massimo Dutti- Casablanca-Maroc</span>
 
                         
