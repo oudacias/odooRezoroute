@@ -82,6 +82,7 @@ class purchase_custom_line(models.Model):
             # for line in self:
 
             print("Hello Hello   "  +str(self.price_unit))
+            print("Hello Hello   "  +str(self.id))
 
 
         q= super(purchase_custom_line, self).write(vals) 
