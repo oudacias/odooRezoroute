@@ -105,8 +105,8 @@
                                             <span t-field="line.price_subtotal"/>
                                         </td>
                                         <td> 
-                                            <span t-field="line.amount"/>
-                                            <t t-set="test_variable" t-value="test_variable+reg.amount"/> 
+                                            <!-- <span t-field="line.amount"/> -->
+                                            <t t-set="test_variable" t-value="test_variable+line.price_subtotal"/> 
                                         </td>
                                          
                                     </tr>
