@@ -46,6 +46,7 @@
         'report/report_devis.xml',
         'views/purchase.xml',
         'views/payment.xml',
+        'views/stock_picking.xml',
         
     ],
 
