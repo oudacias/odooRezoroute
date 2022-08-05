@@ -128,6 +128,8 @@ class PosSession(models.Model):
         data = {}
         for ligne in  self.payment_id:
             total = 0
+
+            print("Payment Session ID: " + str(self.id))
             for a in self.env['account.payment'].search([('session_id', '=', self.id)]) : 
                 print("@@@@ Account Payment :000 " + str(a.journal_id.id))
                 if ligne.journal_id.id==a.journal_id.id:
