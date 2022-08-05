@@ -17,7 +17,7 @@
 
             <field name="binding_model_id" ref="model_sale_order"/>
 
-            <link href="test.css" rel="stylesheet" type="text/css"/>
+            
 
         </record>
 
