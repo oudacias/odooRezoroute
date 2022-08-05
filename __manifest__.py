@@ -56,8 +56,8 @@
 
     'assets': {
         
-        'web.assets_backend': [
-            'ps_rezoroute/static/src/css/test.css',
-        ]
+       
+        'ps_rezoroute/static/src/css/test.css',
+        
     }
 }
