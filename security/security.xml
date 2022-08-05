@@ -9,6 +9,7 @@
         <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
         <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
+        
         <!-- <field name="comment">Office Technology Permission Group.</field> -->
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
@@ -22,6 +23,14 @@
         <field name="name">My POS</field>
         <field name="model_id" ref="model_pos_session"></field>
         <field name="domain_force">[('user_id','=',user.id)]</field>
+    </record>
+
+
+    <record model="ir.rule" id="show_my_sale_quotation">
+        <field name="name">My Quotations</field>
+        <field name="model_id" ref="model_sale_order"></field>
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_gestionnaire'))]"/>
     </record>
 
   
