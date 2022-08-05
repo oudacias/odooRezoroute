@@ -186,7 +186,50 @@
                                     </tr>
                                 
                             </table>
-                        
+                            <span>CLAUSE DE RESERVE DE PROPRIETE: En application de l'article L021-122 de Commerce, les marchandises vendues resteront juridiquement notre propriété jusqu'à l'encaissement réel et définitif du total des sommes dues par le client.</span>
+                            <br/>
+                            <br/>
+                            <span>COMMANDE à la somme de : cent quatre-vingt Dirhams</span>
+                            <table class="table table-bordered" style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <table class="table table-bordered" style="width: 100%;">
+                                            <thead style="background-color:#5D89C5">
+                                                <tr>
+                                                    <th style="color:white">
+                                                        Le client - Signature et cachet "Lu et Accepté"
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tr>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table class="table table-bordered" style="width: 100%;">
+                                            <thead style="background-color:#5D89C5">
+                                                <tr>
+                                                    <th style="color:white">
+                                                        Base TVA
+                                                    </th>
+                                                    <th style="color:white">
+                                                        Montant de TVA
+                                                    </th>
+                                                    <th style="color:white">
+                                                        Taux de TVA
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <h3>MERCI POUR VOTRE CONFIANCE !</h3>
+                                    </td>
+                                                
+                                                
+                                </tr>
+                            </table>
+
                         
                     </t>
                 </t>
