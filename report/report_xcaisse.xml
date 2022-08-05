@@ -4,7 +4,7 @@
        <template id="report_xcaisse">
             <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                    <div class="header" style="margin-top:1450pt">
+                    <div class="header" style="top:1450pt">
                         <div class="row">
                             <td align="center" valign="center">
                                 <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:145pt" alt="Company Logo"/>
