@@ -230,6 +230,8 @@
                                                                         <span class="text-right" t-esc="amount_by_group['formatted_tax_group_amount']"/>
                                                                     </t>
                                                                     <t t-else="">
+                                                                        <span class="text-right" t-esc="amount_by_group['amount_untaxed']"/>
+
                                                                         <span class="text-right" t-esc="amount_by_group['formatted_tax_group_amount']" />
                                                                     </t>
                                                                 </t>
