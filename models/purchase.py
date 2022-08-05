@@ -28,7 +28,10 @@ class purchase_custom(models.Model):
     def _isReceived(self):
         print("00000000000000 @@@@@@@@@@@@   Picking State state ")
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
-        print("@@@@@@@@@@@@   Picking State state " + str(picking_id.state))
+        if(picking_id.state == 'done'):
+            self.is_received = True
+        else: 
+            self.is_received = False
 
 
 
