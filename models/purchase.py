@@ -34,7 +34,7 @@ class purchase_custom(models.Model):
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
         # for rec in picking_id:
         #     if(rec.state == 'done'):
-        #         self.is_received = True
+        self.is_received = True
         #     else: 
         #         self.is_received = False
 
