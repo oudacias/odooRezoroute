@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
         <record id="report_xcaisse" model="ir.actions.report">
-            <field name="name">X caisse</field>
+            <field name="name">Devis</field>
 
             <field name="model">sale.order</field>
 
