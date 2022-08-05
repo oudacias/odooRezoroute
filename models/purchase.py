@@ -25,20 +25,22 @@ class purchase_custom(models.Model):
         q= super(purchase_custom, self).create(vals) 
         return q
 
-
-    @api.model
-    def write(self,vals):
-        self.ensure_one()
-        print("00000000000000 @@@@@@@@@@@@   Picking write write ")
-        for line in self.order_line:
-            print("Hello Hello   "  +str(line.price_unit))
+   
 
 
-        q= super(purchase_custom, self).write(vals) 
-        return q
+    # @api.model
+    # def write(self,vals):
+    #     self.ensure_one()
+    #     print("00000000000000 @@@@@@@@@@@@   Picking write write ")
+    #     for line in self.order_line:
+    #         print("Hello Hello   "  +str(line.price_unit))
 
-        # for rec in (vals['order_line']):
-        #     print("Hello Hello")
+
+    #     q= super(purchase_custom, self).write(vals) 
+    #     return q
+
+    #     # for rec in (vals['order_line']):
+    #     #     print("Hello Hello")
 
     def _isReceived(self):
         
@@ -82,3 +84,24 @@ class StockMove(models.Model):
         # Pass value of note field from Sales Order to Picking
         # res.update({'note': self.group_id.sale_id.note})
         return res
+
+
+
+class purchase_custom(models.Model):
+    _inherit = 'purchase.order'
+
+    @api.model
+    def write(self,vals):
+        self.ensure_one()
+        print("00000000000000 @@@@@@@@@@@@   Picking write write ")
+        for line in self.order_line:
+            print("Hello Hello   "  +str(line.price_unit))
+
+
+        q= super(purchase_custom, self).write(vals) 
+        return q
+
+        # for rec in (vals['order_line']):
+        #     print("Hello Hello")
+
+    
