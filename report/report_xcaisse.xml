@@ -21,9 +21,13 @@
                                 <div class="col-6">
                                     <br/>
                                         <span   > X de caisse : </span> <span t-field="o.name"/>
+                                        <br/>
                                         <span   > Responsable : </span> <span t-field="o.user_id.name"/>
+                                        <br/>
                                         <span   > Ouverture : </span> <span t-field="o.start_at"/>
+                                        <br/>
                                         <span   > Fermeture : </span> <span t-field="o.stop_at"/>
+                                        <br/>
                                         <span   > Validation : </span> <span t-field="o.date_validation"/>
                                     <br/>
                                 </div>
