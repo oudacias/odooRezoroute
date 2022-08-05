@@ -116,11 +116,8 @@
         <field name="implied_ids" eval="[(4, ref('purchase.portal_purchase_order_line_rule'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.purchase_bill_union_comp_rule'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.purchase_order_report_comp_rule'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_multi_warehouses'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_multi_locations'))]"/>
-        <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_production_lot'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_lot_on_delivery_slip'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_tracking_lot'))]"/>
@@ -140,6 +137,8 @@
         <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
         <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
+
 
     </record>
     
