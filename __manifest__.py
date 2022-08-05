@@ -49,7 +49,14 @@
         'views/stock_picking.xml',
         
     ],
-
+    'assets': {
+        'web._assets_primary_variables': [
+            
+        ],
+        'web.assets_backend': [
+            'ps_rezoroute/static/src/css/test.css',
+        ]
+    },
     # 'assets': {
     #     'web.assets_backend' [
     #         'ps_rezoroute/static/src/css/test.css',
