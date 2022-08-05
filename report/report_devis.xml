@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-        <record id="report_xcaisse" model="ir.actions.report">
+        <record id="report_devis" model="ir.actions.report">
             <field name="name">Devis</field>
 
             <field name="model">sale.order</field>
@@ -21,7 +21,7 @@
 
         </record>
 
-         <record id="report_xcaisse" model="ir.actions.report">
+         <record id="report_devis_or" model="ir.actions.report">
             <field name="name">Devis Or</field>
 
             <field name="model">sale.order</field>
