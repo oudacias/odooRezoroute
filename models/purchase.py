@@ -77,12 +77,19 @@ class purchase_custom_line(models.Model):
     def write(self,vals):
         self.ensure_one()
         order_id_state = self.order_id.state
+
+        order_id = self.order_id
+
+        
+
         if(order_id_state =='done' or order_id_state=='purchase'):
+            for rec in order_id.order_line:
+                if rec.id == self.id:
 
             # for line in self:
 
-            print("Hello Hello   "  +str(self.price_unit))
-            print("Hello Hello   "  +str(self.id))
+                    print("Hello Hello   "  +str(self.price_unit))
+                    print("Hello Hello   "  +str(self.id))
 
 
         q= super(purchase_custom_line, self).write(vals) 
