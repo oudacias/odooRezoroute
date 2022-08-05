@@ -222,7 +222,7 @@
                                                 <tr>
                                                     <td><span t-field="o.tax_totals_json"/></td>
                                                     <td><span t-field="o.tax_totals_json"/></td>
-                                                    <td><span t-field="o.tax_totals_json['amount_total']"/></td>
+                                                    <td><t t-foreach="o.tax_totals_json" t-as="emp"><span t-field="emp['amount_total']"/></t></td>
                                                 </tr>
                                             </thead>
                                         </table>
