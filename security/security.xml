@@ -78,30 +78,8 @@
   
 
 
-
-
-
-
-
-    <!-- <record model="ir.rule" id="show_my_pos_config_user_rule">
-        <field name="name">My POS </field>
-
-        <field name="model_id" ref="model_pos_config"></field>
-        <field name="domain_force">[('user_id','=','user.id')]</field>
-    </record> -->
-
-
-
-
-
-
-    <!-- <record model="ir.module.category" id="module_category_ng_office_technology">
-            <field name="name">Office Technology</field>
-            <field name="description">The Office technology Applilcation</field>
-            <field name="sequence">20</field>
-    </record> -->
     <record id="group_achat" model="res.groups">
-        <field name="name">Achat Group</field>
+        <field name="name">Achat Group1</field>
         <!-- <field name="comment">Office Technology Permission Group.</field> -->
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
         
@@ -121,8 +99,6 @@
         
        <!-- <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/> -->
-
-
     </record>
     
 
@@ -132,9 +108,6 @@
     <record id="group_siege" model="res.groups">
         <field name="name">Siège Group</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-
-        <!-- <field name="comment">Office Technology Permission Group.</field> -->
-        <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
 </data>
 </odoo>
