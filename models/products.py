@@ -91,6 +91,9 @@ class ProductTemplateExtraa(models.Model):
 
         maxi_rec = self.env['sequence.product'].search([])
 
+        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@ 94  "  + str(maxi_rec))    
+
+
         if(len(maxi_rec) == 0):
             last_sequence = 1
         else:
@@ -127,8 +130,8 @@ class ProductTemplateExtraa(models.Model):
 
         maxi_rec.create({'sequence_id': last_sequence})
 
-        q= super(ProductTemplateExtraa, self).create(values) 
-        return q
+        # q= super(ProductTemplateExtraa, self).create(values) 
+        # return q
         
 
 
