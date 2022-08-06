@@ -148,6 +148,9 @@ class SaleOrderExtra(models.Model):
         # Change stock location
         location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
+
+        for rec in picking_id.move_ids_without_package:
+            print("@@@@ Quantity Product Pickings   formed from: " + str(rec.product_uom_qty))
         
         picking_id.write({'location_id':location_id.location_id.id})
 
