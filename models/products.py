@@ -94,7 +94,7 @@ class ProductTemplateExtraa(models.Model):
         if(len(maxi_rec) == 0):
             last_sequence = 1
         else:
-            last_sequence = max(maxi_rec) + 1
+            last_sequence = int(max(maxi_rec)) + 1
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
         type_pr = values['detailed_type'].split()
 
