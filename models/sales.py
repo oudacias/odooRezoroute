@@ -145,8 +145,8 @@ class SaleOrderExtra(models.Model):
 
         
 
-        # Change stock location
-        location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        
+        
         
 
         
@@ -167,7 +167,18 @@ class SaleOrderExtra(models.Model):
         if self.env.user.has_group('sale.group_auto_done_setting'):
             self.action_done()
 
+        # Change stock location
+
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
+        location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        picking_id.write({'location_id':location_id.location_id.id})
+
+        stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
+        stock_move.write({'location_id':location_id.location_id.id})
+
+        
+        for line in stock_move.move_line_ids:
+            line.write({'location_id':location_id.location_id.id})
         # Change stock location -- END
 
         
