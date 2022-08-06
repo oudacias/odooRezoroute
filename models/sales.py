@@ -171,7 +171,7 @@ class SaleOrderExtra(models.Model):
 
         # print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
-        return a
+        return True
 
 
 
