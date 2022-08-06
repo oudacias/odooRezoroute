@@ -43,7 +43,7 @@ class purchase_custom(models.Model):
                 self.is_received = True
             else: 
                 self.is_received = False
-        print("@@@@@@@@@@@@@@@@ Stock Pickings Result: " + str(is_received))
+        print("@@@@@@@@@@@@@@@@ Stock Pickings Result: " + str(self.is_received))
 
 
 
