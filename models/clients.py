@@ -16,6 +16,33 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
+
+    @api.model
+    def create(self, values):
+
+        max_nbr_digits = 5
+
+        maxi_rec = self.env['sequence.partner'].search([])
+        last_sequence = len(maxi_rec) + 1
+
+        print("@@@@ Last sequence: " + str(last_sequence))
+
+        current_nbr_digits = max_nbr_digits - len(str(last_sequence))
+
+        code = str(int(last_sequence).zfill(current_nbr_digits)) + str(last_sequence)
+        
+        
+        print("@@@@ Last sequence Code: " + str(code))
+
+        values['partner_ref'] = "C" +"-"+ str(last_sequence)
+
+        print("@@@@ Last value Code: " + str(values['partner_ref']))
+        # maxi_rec.create({'sequence_id': last_sequence})
+
+        # q= super(PartnerExtra, self).create(values) 
+        # return q
+        
+
  
 
 
@@ -47,4 +74,10 @@ class PartnerExtra(models.Model):
         
     }
 
+
+class SequencePartner(models.Model):
+
+    _name = 'sequence.partner'
+
+    sequence_id = fields.Integer()
 

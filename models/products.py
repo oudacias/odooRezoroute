@@ -88,13 +88,8 @@ class ProductTemplateExtraa(models.Model):
 
         reference_new = ""
         type_new = ""
-
         maxi_rec = self.env['sequence.product'].search([])
-
-        
         last_sequence = len(maxi_rec) + 1
-
-        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@ 99")    
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
         type_pr = values['detailed_type'].split()
 
@@ -104,9 +99,6 @@ class ProductTemplateExtraa(models.Model):
             for type in type_pr:
                 type = type.lstrip().upper()
                 type_new += type[0:2]
-
-        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@ 110")    
-
 
         reference = category_pr.complete_name.split('/')
         for ref in reference:
@@ -118,11 +110,6 @@ class ProductTemplateExtraa(models.Model):
        
 
         values['default_code'] = str(type_new) +"."+ str(reference_new) +"-"+ str(last_sequence)
-
-        # print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(values['reference_code']))
-        # print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(type_new) +"."+ str(reference_new) +"-"+ str(last_sequence))
-        
-
         maxi_rec.create({'sequence_id': last_sequence})
 
         q= super(ProductTemplateExtraa, self).create(values) 
