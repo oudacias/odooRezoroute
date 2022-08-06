@@ -91,13 +91,11 @@ class ProductTemplateExtraa(models.Model):
 
         maxi_rec = self.env['sequence.product'].search([])
 
-        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@ 94  "  + str(maxi_rec))    
+        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@ 94  "  + str(len(maxi_rec)))    
 
 
-        if(len(maxi_rec) == 0):
-            last_sequence = 1
-        else:
-            last_sequence = int(max(maxi_rec)) + 1
+        
+        last_sequence = len(maxi_rec) + 1
 
         print("@@@ NEW PRODUCT_TMPL_ID: @@@@@ 99")    
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
