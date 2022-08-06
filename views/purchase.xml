@@ -53,8 +53,6 @@
                     <button name="print_quotation" string="Imprimer RFQ" type="object" states="draft" class="oe_highlight" data-hotkey="k" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
                     <!-- <button name="button_confirm" string="Confirmer la commande 1"  invisible="1" modifiers="{&quot;invisible&quot;: true}"/> -->
                     <button name="button_approve" type="object" states="to approve" string="Confirmer le commande" class="oe_highlight" data-hotkey="z" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;to approve&quot;]]]}"/>
-                    <!-- <attribute name="attrs">{'invisible': [('state', '!=', 'draft')]}</attribute> -->
-                    <!-- <button name="action_create_invoice" string="Créer Facture" attrs="{'invisible': [('state', '!=', 'done')]}" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;!=&quot;, &quot;done&quot;]]}"/> -->
                     <button name="action_rfq_send" states="sent" string="Re-Envoyer courriel" type="object" context="{'send_rfq':True}" data-hotkey="g" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;sent&quot;]]]}"/>
                     <button name="print_quotation" string="Imprimer RFQ" type="object" states="sent" data-hotkey="k" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;sent&quot;]]]}"/>
                     <button name="button_confirm" type="object" states="draft" string="Confirmer Commande" groups="ps_rezoroute.group_achat" id="draft_confirm" modifiers="{&quot;invisible&quot;: [[&quot;state&quot;, &quot;not in&quot;, [&quot;draft&quot;]]]}"/>
