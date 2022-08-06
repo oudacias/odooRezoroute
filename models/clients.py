@@ -29,7 +29,7 @@ class PartnerExtra(models.Model):
 
         current_nbr_digits = max_nbr_digits - len(str(last_sequence))
 
-        code = str(int(last_sequence).zfill(current_nbr_digits)) + str(last_sequence)
+        code = str(int(last_sequence)).zfill(current_nbr_digits) + str(last_sequence)
         
         
         print("@@@@ Last sequence Code: " + str(code))
