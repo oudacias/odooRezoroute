@@ -122,7 +122,6 @@ class SaleOrderExtra(models.Model):
 
 
     def action_confirm(self):
-        a=super(SaleOrderExtra, self).sudo().action_confirm()
         for rec in self.order_line:
             if(rec.product_id.qty_location <= 0):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
@@ -130,19 +129,19 @@ class SaleOrderExtra(models.Model):
             
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
-        # if self._get_forbidden_state_confirm() & set(self.mapped('state')):
-        #     raise UserError(_(
-        #         'It is not allowed to confirm an order in the following states: %s'
-        #     ) % (', '.join(self._get_forbidden_state_confirm())))
+        if self._get_forbidden_state_confirm() & set(self.mapped('state')):
+            raise UserError(_(
+                'It is not allowed to confirm an order in the following states: %s'
+            ) % (', '.join(self._get_forbidden_state_confirm())))
 
-        # for order in self.filtered(lambda order: order.partner_id not in order.message_partner_ids):
-        #     order.message_subscribe([order.partner_id.id])
-        # self.write(self._prepare_confirmation_values())
+        for order in self.filtered(lambda order: order.partner_id not in order.message_partner_ids):
+            order.message_subscribe([order.partner_id.id])
+        self.write(self._prepare_confirmation_values())
 
-        # # Context key 'default_name' is sometimes propagated up to here.
-        # # We don't need it and it creates issues in the creation of linked records.
-        # context = self._context.copy()
-        # context.pop('default_name', None)
+        # Context key 'default_name' is sometimes propagated up to here.
+        # We don't need it and it creates issues in the creation of linked records.
+        context = self._context.copy()
+        context.pop('default_name', None)
 
         
 
@@ -158,18 +157,18 @@ class SaleOrderExtra(models.Model):
         
         for line in stock_move.move_line_ids:
             line.write({'location_id':location_id.location_id.id})
-        #     line.write({'quantity_done':line.product_uom_qty})
+            line.write({'quantity_done':line.product_uom_qty})
 
-        # stock_move.write({'state':'done'})
+        stock_move.write({'state':'done'})
 
+        
+        self.with_context(context)._action_confirm()
+        if self.env.user.has_group('sale.group_auto_done_setting'):
+            self.action_done()
 
-        # picking_id.with_context(context)._action_confirm()
-        # if self.env.user.has_group('sale.group_auto_done_setting'):
-        #     picking_id.action_done()
+        # Change stock location -- END
 
-        # # Change stock location -- END
-
-        # print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
         return True
 

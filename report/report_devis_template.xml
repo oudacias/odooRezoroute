@@ -69,7 +69,7 @@
                         <table class="table" style="width: 100%;display: grid;">
                             <tr style="background-color:#E8E8E8">
                                 <td>
-                                    <h1 class="fancy">Commande</h1>
+                                    <h1 class="fancy">Devis</h1>
                                 </td>
                                 <td>
                                     <b><span>N </span><span><span t-field="o.name"/></span></b>
