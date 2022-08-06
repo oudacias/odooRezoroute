@@ -96,7 +96,7 @@ class ProductTemplateExtraa(models.Model):
         else:
             last_sequence = int(max(maxi_rec)) + 1
 
-            
+        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@ 99")    
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
         type_pr = values['detailed_type'].split()
 
@@ -106,6 +106,10 @@ class ProductTemplateExtraa(models.Model):
             for type in type_pr:
                 type = type.lstrip().upper()
                 type_new += type[0:2]
+
+        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@ 110")    
+
+
         reference = category_pr.complete_name.split('/')
         for ref in reference:
             ref = ref.lstrip().upper()
