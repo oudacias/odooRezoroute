@@ -174,8 +174,8 @@ class SaleOrderExtra(models.Model):
         # Change stock location -- END
 
         
-        for rec in picking_id.move_ids_without_package:
-            print("@@@@ Quantity Product Pickings   formed from: " + str(rec.product_uom_qty))
+        # for rec in picking_id.move_ids_without_package:
+        print("@@@@ Quantity Product Pickings   formed from: " + str(picking_id.move_ids_without_package))
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
