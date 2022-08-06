@@ -219,7 +219,7 @@ class SaleOrderExtra(models.Model):
         }
 
     def create_payment_move(self):
-        self.ensure_one()
+        # self.ensure_one()
         session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
 
 
