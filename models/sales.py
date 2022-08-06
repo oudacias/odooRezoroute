@@ -147,31 +147,32 @@ class SaleOrderExtra(models.Model):
 
         # Change stock location
         location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
+        
 
         
-        picking_id.write({'location_id':location_id.location_id.id})
+        # picking_id.write({'location_id':location_id.location_id.id})
 
-        stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
-        stock_move.write({'location_id':location_id.location_id.id})
+        # stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
+        # stock_move.write({'location_id':location_id.location_id.id})
 
         
-        for line in stock_move.move_line_ids:
-            line.write({'location_id':location_id.location_id.id})
-            # line.write({'quantity_done':line.product_uom_qty})
+        # for line in stock_move.move_line_ids:
+        #     line.write({'location_id':location_id.location_id.id})
+        #     # line.write({'quantity_done':line.product_uom_qty})
 
-        stock_move.write({'state':'done'})
+        # stock_move.write({'state':'done'})
 
         
         self.with_context(context)._action_confirm()
         if self.env.user.has_group('sale.group_auto_done_setting'):
             self.action_done()
 
+        picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
         # Change stock location -- END
 
         
         # for rec in picking_id.move_ids_without_package:
-        print("@@@@ Quantity Product Pickings   formed from: " + str(stock_move))
+        print("@@@@ Quantity Product Pickings   formed from: " + str(picking_id))
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
