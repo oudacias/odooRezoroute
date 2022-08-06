@@ -183,7 +183,8 @@ class SaleOrderExtra(models.Model):
 
         
         for rec in picking_id.move_ids_without_package:
-            print("@@@@ Quantity Product Pickings   formed from: " + str(rec.product_uom_qty))
+            rec.write({'quantity_done':rec.product_uom_qty})
+
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
