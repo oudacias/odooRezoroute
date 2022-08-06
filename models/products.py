@@ -89,12 +89,12 @@ class ProductTemplateExtraa(models.Model):
         reference_new = ""
         type_new = ""
 
-        # maxi_rec = self.env['sequence.product'].search([])
+        maxi_rec = self.env['sequence.product'].search([])
 
-        # if(len(maxi_rec) == 0):
-        #     last_sequence = 1
-        # else:
-        #     last_sequence = max(maxi_rec) + 1
+        if(len(maxi_rec) == 0):
+            last_sequence = 1
+        else:
+            last_sequence = max(maxi_rec) + 1
         category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
         type_pr = values['detailed_type'].split()
 
@@ -111,15 +111,15 @@ class ProductTemplateExtraa(models.Model):
         
         reference_new = reference_new[:-1]
 
-        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(type_new) + str(reference_new))
+        print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(last_sequence))
 
         values['reference_code'] = str(type_new) +"."+ str(reference_new)
         
 
         # maxi_rec.create({'sequence_id': last_sequence})
 
-        q= super(ProductTemplateExtraa, self).create(values) 
-        return q
+        # q= super(ProductTemplateExtraa, self).create(values) 
+        # return q
         
 
 
