@@ -143,10 +143,7 @@ class SaleOrderExtra(models.Model):
         context = self._context.copy()
         context.pop('default_name', None)
 
-        self.with_context(context)._action_confirm()
-        if self.env.user.has_group('sale.group_auto_done_setting'):
-            self.action_done()
-
+        
 
         # Change stock location
         location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
@@ -160,9 +157,14 @@ class SaleOrderExtra(models.Model):
         
         for line in stock_move.move_line_ids:
             line.write({'location_id':location_id.location_id.id})
-            line.write({'quantity_done':line.product_uom_qty})
+        #     line.write({'quantity_done':line.product_uom_qty})
 
-        stock_move.write({'state':'done'})
+        # stock_move.write({'state':'done'})
+
+
+        self.with_context(context)._action_confirm()
+        if self.env.user.has_group('sale.group_auto_done_setting'):
+            self.action_done()
 
         # Change stock location -- END
 
