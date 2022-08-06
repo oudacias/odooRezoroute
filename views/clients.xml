@@ -17,6 +17,11 @@
 
                     </header>
                 </xpath>
+                <field name="type" position="before">
+
+                    <field name="partner_ref"/>
+                
+                </field>
                 <field name="website" position="after">
 
                     <field name="siret"/>
