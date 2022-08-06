@@ -68,6 +68,9 @@ class purchase_custom(models.Model):
         for line in stock_move.move_line_ids:
             line.write({'location_dest_id':self.location_id})
 
+        super(purchase_custom, self).button_unlock()
+
+
         return res 
 
 class StockMove(models.Model):
