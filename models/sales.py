@@ -140,32 +140,17 @@ class SaleOrderExtra(models.Model):
 
         # Context key 'default_name' is sometimes propagated up to here.
         # We don't need it and it creates issues in the creation of linked records.
+
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  2222")
         context = self._context.copy()
         context.pop('default_name', None)
-
-        
-
-        
-        
-        
-
-        
-        # picking_id.write({'location_id':location_id.location_id.id})
-
-        # stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
-        # stock_move.write({'location_id':location_id.location_id.id})
-
-        
-        # for line in stock_move.move_line_ids:
-        #     line.write({'location_id':location_id.location_id.id})
-        #     # line.write({'quantity_done':line.product_uom_qty})
-
-        # stock_move.write({'state':'done'})
 
         
         self.with_context(context)._action_confirm()
         if self.env.user.has_group('sale.group_auto_done_setting'):
             self.action_done()
+
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  3333")
 
         # Change stock location
 
