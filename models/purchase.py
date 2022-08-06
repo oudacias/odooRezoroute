@@ -33,7 +33,7 @@ class purchase_custom(models.Model):
         
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
 
-        print("@@@@@@@@@@@@@@@@ Stock Pickings: " + str(picking_id))
+        print("@@@@@@@@@@@@@@@@Stock Pickings: " + str(picking_id))
         if(not picking_id):
             self.is_received = False
         
@@ -43,6 +43,7 @@ class purchase_custom(models.Model):
                 self.is_received = True
             else: 
                 self.is_received = False
+        print("@@@@@@@@@@@@@@@@ Stock Pickings Result: " + str(is_received))
 
 
 
