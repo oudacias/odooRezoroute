@@ -122,7 +122,7 @@ class SaleOrderExtra(models.Model):
 
 
     def action_confirm(self):
-        a=super(SaleOrderExtra, self).action_confirm()
+        a=super(SaleOrderExtra, self).sudo().action_confirm()
         for rec in self.order_line:
             if(rec.product_id.qty_location <= 0):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
