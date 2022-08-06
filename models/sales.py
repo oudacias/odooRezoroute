@@ -175,7 +175,7 @@ class SaleOrderExtra(models.Model):
 
         
         # for rec in picking_id.move_ids_without_package:
-        print("@@@@ Quantity Product Pickings   formed from: " + str(stock_move.move_ids_without_package))
+        print("@@@@ Quantity Product Pickings   formed from: " + str(stock_move))
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
