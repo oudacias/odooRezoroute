@@ -34,13 +34,13 @@ class PartnerExtra(models.Model):
         
         print("@@@@ Last sequence Code: " + str(code))
 
-        values['partner_ref'] = "C" +"-"+ str(last_sequence)
+        values['partner_ref'] = "C" +"-"+ str(code)
 
         print("@@@@ Last value Code: " + str(values['partner_ref']))
-        # maxi_rec.create({'sequence_id': last_sequence})
+        maxi_rec.create({'sequence_id': last_sequence})
 
-        # q= super(PartnerExtra, self).create(values) 
-        # return q
+        q= super(PartnerExtra, self).create(values) 
+        return q
         
 
  
