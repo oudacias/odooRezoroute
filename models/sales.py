@@ -160,6 +160,9 @@ class SaleOrderExtra(models.Model):
         
         for line in stock_move.move_line_ids:
             line.write({'location_id':location_id.location_id.id})
+            line.write({'quantity_done':line.product_uom_qty})
+
+        stock_move.write({'state':'done'})
 
         # Change stock location -- END
 

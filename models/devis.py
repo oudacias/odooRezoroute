@@ -115,6 +115,7 @@ class SaleLine(models.Model):
 
     qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
     type_remise = fields.Boolean(related='order_id.partner_id.is_cheque_flotte')
+    # marge = fields.Float()
 
 
 
@@ -164,7 +165,7 @@ class SaleLine(models.Model):
                         raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
 
                 for rec in self:
-                    if(rec.marge > self.product_id.product_tmpl_id.categ_id.marge and self.product_id.product_tmpl_id.categ_id.marge > 0):                    
+                    if(rec.margin_percent > self.product_id.product_tmpl_id.categ_id.marge and self.product_id.product_tmpl_id.categ_id.marge > 0):                    
                         self.marge = 0
                         raise ValidationError('Vous avez dépassé la marge du prix   ' )
 
