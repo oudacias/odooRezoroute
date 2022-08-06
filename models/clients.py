@@ -30,13 +30,13 @@ class PartnerExtra(models.Model):
         current_nbr_digits = max_nbr_digits - len(str(last_sequence))
 
         code = str(int(last_sequence)).zfill(current_nbr_digits) + str(last_sequence)
-        
-        
-        print("@@@@ Last sequence Code: " + str(code))
 
+        print("@@@@  value Code: " + str(int(last_sequence)).zfill(current_nbr_digits))
+        
+        
         values['partner_ref'] = "C" +"-"+ str(code)
 
-        print("@@@@ Last value Code: " + str(values['partner_ref']))
+        
         maxi_rec.create({'sequence_id': last_sequence})
 
         q= super(PartnerExtra, self).create(values) 
