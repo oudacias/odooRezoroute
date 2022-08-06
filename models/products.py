@@ -119,13 +119,13 @@ class ProductTemplateExtraa(models.Model):
 
         print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(last_sequence))
 
-        values['reference_code'] = str(type_new) +"."+ str(reference_new)
+        values['reference_code'] = str(type_new) +"."+ str(reference_new) +"-"+ str(last_sequence)
         
 
-        # maxi_rec.create({'sequence_id': last_sequence})
+        maxi_rec.create({'sequence_id': last_sequence})
 
-        # q= super(ProductTemplateExtraa, self).create(values) 
-        # return q
+        q= super(ProductTemplateExtraa, self).create(values) 
+        return q
         
 
 
