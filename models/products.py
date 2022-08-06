@@ -119,7 +119,7 @@ class ProductTemplateExtraa(models.Model):
 
        
 
-        values['reference_code'] = str(type_new) +"."+ str(reference_new) +"-"+ str(last_sequence)
+        values['default_code'] = str(type_new) +"."+ str(reference_new) +"-"+ str(last_sequence)
 
         print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(values['reference_code']))
         print("@@@ NEW PRODUCT_TMPL_ID: @@@@@" + str(type_new) +"."+ str(reference_new) +"-"+ str(last_sequence))
