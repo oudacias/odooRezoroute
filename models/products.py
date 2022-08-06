@@ -209,7 +209,7 @@ class ProductExtra(models.Model):
 
     def _get_qty_location(self):
 
-        location = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1) 
+        location = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
         
         # location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         for rec in self:

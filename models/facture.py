@@ -15,7 +15,7 @@ class AcoountMoveExtra(models.Model):
         # session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
         # session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
 
-        session =  self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)  
+        session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
 
         print(str(session.id))
 
@@ -34,7 +34,7 @@ class StockPickingExtra(models.Model):
     @api.model
     def create(self,vals):
 
-        session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
+        session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
         vals['session_id'] = session.id
 
         q= super(StockPickingExtra, self).create(vals) 
@@ -52,14 +52,14 @@ class StockPickingExtra(models.Model):
 
 
     def button_validate(self):
-        session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
+        session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
 
-        return super(StockPickingExtra, self).button_validate()
+        # return super(StockPickingExtra, self).button_validate()
         
-        # if(len(session) == 1):
-        #     return super(StockPickingExtra, self).button_validate()
-        # else:
-        #     raise ValidationError('Vous devez ouvrir une nouvelle session 3')
+        if(len(session) == 1):
+            return super(StockPickingExtra, self).button_validate()
+        else:
+            raise ValidationError('Vous devez ouvrir une nouvelle session 3')
         
 
 class RegelementExtra(models.Model):
@@ -70,7 +70,7 @@ class RegelementExtra(models.Model):
     @api.model
     def create(self,vals):
 
-        session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
+        session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
 
         vals['session_id'] = session.id
 

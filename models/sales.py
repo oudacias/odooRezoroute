@@ -87,7 +87,7 @@ class SaleOrderExtra(models.Model):
     @api.model
     def create(self,vals):
 
-        session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
+        session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
         if(len(session) == 1):
 
             vals['session_id'] = session.id
@@ -220,7 +220,7 @@ class SaleOrderExtra(models.Model):
 
     def create_payment_move(self):
         self.ensure_one()
-        session = self.env['pos.session'].search([('state','=','opening_control')],order="id desc", limit =1)
+        session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
 
 
         print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable")
