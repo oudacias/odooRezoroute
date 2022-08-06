@@ -122,8 +122,8 @@ class SaleLine(models.Model):
 
     def _get_qty_location(self):
         
-        # location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        location = self.env['pos.config'].search([('user_id','=',2)], limit=1)
+        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        # location = self.env['pos.config'].search([('user_id','=',2)], limit=1)
         for rec in self:
             
             rec.qty_location = rec.product_id.qty_location
