@@ -26,8 +26,8 @@
                                <div class="o_field_widget o_stat_info">
                                     <span class="o_stat_value">
                                         <field name="pricelist_item_count"/>
-                                    </span>attrs
-                                    <span ="{'invisible': [('pricelist_item_count', '=', 1)]}">
+                                    </span>
+                                    <span attrs="{'invisible': [('pricelist_item_count', '=', 1)]}">
                                         Extra Prices
                                     </span>
                                     <span attrs="{'invisible': [('pricelist_item_count', '!=', 1)]}">

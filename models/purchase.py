@@ -32,6 +32,8 @@ class purchase_custom(models.Model):
     def _isReceived(self):
         
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
+
+        print("@@@@@@@@@@@@@@@@ Stock Pickings: " + str(picking_id))
         if(not picking_id):
             self.is_received = False
         
