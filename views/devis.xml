@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-        <record model="ir.ui.view" id="ps_rezoroute.partner">
-            <field name="name">ps_rezoroute list</field>
+        <record model="ir.ui.view" id="ps_rezoroute.sale_order_view">
+            <field name="name">ps_rezoroute Sale Order View</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">    
