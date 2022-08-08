@@ -199,6 +199,7 @@ class SaleOrderExtra(models.Model):
         print("Engine actions should    be implemented  before  this actions    are implemented." + str(self.engin_id.id))  
         
         return {
+                'name': ('Sale Order Repair'),
                 # 'res_model': 'order.repair.confirm',
                 'res_model': 'sale.order',
                 'view_mode': 'form',
