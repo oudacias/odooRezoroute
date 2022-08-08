@@ -344,7 +344,7 @@ class ConfirmRepairOrder(models.Model):
         # sale_id = self.env['sale'].search([('id','=',self.id)], limit=1)
 
         # sale_id.write({'state':'progress'})
-        super(SaleOrderExtra, self).action_confirm()
+        super(SaleOrderExtra, self.sale_order_id).action_confirm()
 
         # print("Sale order CONFIRMATION SUCCESSFUL!  "  +str(self.sale_order_id))
         
