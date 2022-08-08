@@ -34,7 +34,7 @@
                 </xpath>
 
                 <xpath expr="//button[@name='action_confirm']" position="attributes">
-                    <attribute name="invisible">1</attribute>
+                    <attribute name="groups">ps_rezoroute.group_siege</attribute>
                 </xpath> 
 
                 <xpath expr="//field[@name='validity_date']" position="attributes">
