@@ -331,7 +331,9 @@ class SaleOrderExtra(models.Model):
 
 class ConfirmRepairOrder(models.Model):
 
-    _name = "order.repair.confirm"
+    # _name = "order.repair.confirm"
+
+    _inherit = 'sale.order'
 
     sale_order_id = fields.Many2one('sale.order')
     
@@ -358,7 +360,8 @@ class ConfirmRepairOrder(models.Model):
 
         # sale_id.write({'state':'progress'})
         # super(SaleOrderExtra, self).action_confirm()
-        self.sale_order_id.action_confirm()
+        
+        self.action_confirm()
 
 
 
