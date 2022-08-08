@@ -198,22 +198,22 @@ class SaleOrderExtra(models.Model):
 
         print("Engine actions should    be implemented  before  this actions    are implemented." + str(self.engin_id.id))  
         
-        # return {
-        #         'res_model': 'order.repair.confirm',
-        #         'view_mode': 'form',
-        #         'target': 'new',
-        #         'type': 'ir.actions.act_window',
-        #         'views' : [(False, 'form')],
-        #         'context' : {   
-        #                         'default_client_id' : self.partner_id.id,
-        #                         'default_engin_order_id' : 1,
-        #                         'default_odometer': self.odometer,
-        #                         'default_next_distri_date' : self.next_distri_date,
-        #                         'default_next_ct_date' : self.next_ct_date,
-        #                         'default_user_repair_id' : self.user_repair_id.id,
-        #                         'default_sale_order_id' : self.id,
-        #                     }
-        #         }  
+        return {
+                'res_model': 'order.repair.confirm',
+                'view_mode': 'form',
+                'target': 'new',
+                'type': 'ir.actions.act_window',
+                'views' : [(False, 'form')],
+                'context' : {   
+                                'default_client_id' : self.partner_id.id,
+                                'default_engin_order_id' : 1,
+                                'default_odometer': self.odometer,
+                                'default_next_distri_date' : self.next_distri_date,
+                                'default_next_ct_date' : self.next_ct_date,
+                                'default_user_repair_id' : self.user_repair_id.id,
+                                'default_sale_order_id' : self.id,
+                            }
+                }  
 
 
     def action_order_deposit(self):
