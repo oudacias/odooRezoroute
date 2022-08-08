@@ -28,7 +28,7 @@ class SaleOrderExtra(models.Model):
 
     session_id = fields.Many2one('pos.session',string="Session id")
 
-    # repair_order_id = fields.One2many('order.repair.confirm','sale_order_id',string="Numéro de devis")
+    repair_order_id = fields.One2many('order.repair.confirm','sale_order_id',string="Numéro de devis")
 
     invoice_compute = fields.Integer(compute="_compute_invoice_count")
 
@@ -200,7 +200,6 @@ class SaleOrderExtra(models.Model):
         
         return {
                 'res_model': 'order.repair.confirm',
-                'res_model': 'sale.order',
                 'view_mode': 'form',
                 'target': 'new',
                 'type': 'ir.actions.act_window',
@@ -334,8 +333,6 @@ class ConfirmRepairOrder(models.Model):
 
     _name = "order.repair.confirm"
 
-    # _inherit = 'sale.order'
-
     sale_order_id = fields.Many2one('sale.order')
     
     client_id = fields.Many2one('res.partner',string="Client")
@@ -361,8 +358,10 @@ class ConfirmRepairOrder(models.Model):
 
         # sale_id.write({'state':'progress'})
         # super(SaleOrderExtra, self).action_confirm()
+
+        print("Sale order CONFIRMATION SUCCESSFUL!  "  +str(self.sale_order_id))
         
-        self.action_confirm()
+        # self.sale_order_id.action_confirm()
 
 
 
