@@ -45,7 +45,7 @@
                        
                 </xpath>
 
-                <xpath expr="//button[@name='action_confirm']" position="attributes">
+                <xpath expr="//button[@name='action_confirm'][0]" position="attributes">
                     <attribute name="invisible"> [('state', 'not in', ['sent'])]</attribute>
                 </xpath>
 
