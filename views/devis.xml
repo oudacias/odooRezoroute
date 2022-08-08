@@ -154,7 +154,7 @@
             <field name="view_mode">form</field>
         </record>
 
-        <record model="ir.actions.act_window" id="ps_rezoroute.order_repair_confirm">
+        <!-- <record model="ir.actions.act_window" id="ps_rezoroute.order_repair_confirm">
             <field name="name">ps_rezoroute window</field>
             <field name="res_model">order.repair.confirm</field>
             <field name="view_mode">form</field>
@@ -166,7 +166,7 @@
             <field name="arch" type="xml">
                 <form string="Confirmation de l'ordre de réparation">
                     <group string="Ordre de réparation">
-                        <field name="sale_order_id" readonly="1"/>
+                        <!-- <field name="sale_order_id" readonly="1"/> -->
                         <field name="client_id" readonly="1"/>
                         <field name="engin_order_id" readonly="1"/>
                         <field name="odometer"/>
@@ -183,7 +183,7 @@
                     </footer>
                 </form>
             </field>
-        </record>
+        </record> -->
                             
 
 
