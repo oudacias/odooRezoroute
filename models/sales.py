@@ -335,7 +335,7 @@ class ConfirmRepairOrder(models.Model):
 
     _inherit = 'sale.order'
 
-    sale_order_id = fields.Many2one('sale.order')
+    # sale_order_id = fields.Many2one('sale.order')
     
     client_id = fields.Many2one('res.partner',string="Client")
     engin_order_id = fields.Many2one('fleet.vehicle',string="Véhicule")
