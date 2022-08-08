@@ -199,8 +199,7 @@ class SaleOrderExtra(models.Model):
         print("Engine actions should    be implemented  before  this actions    are implemented." + str(self.engin_id.id))  
         
         return {
-                'name': ('Sale Order Repair'),
-                # 'res_model': 'order.repair.confirm',
+                'res_model': 'order.repair.confirm',
                 'res_model': 'sale.order',
                 'view_mode': 'form',
                 'target': 'new',
@@ -333,11 +332,11 @@ class SaleOrderExtra(models.Model):
 
 class ConfirmRepairOrder(models.Model):
 
-    # _name = "order.repair.confirm"
+    _name = "order.repair.confirm"
 
-    _inherit = 'sale.order'
+    # _inherit = 'sale.order'
 
-    # sale_order_id = fields.Many2one('sale.order')
+    sale_order_id = fields.Many2one('sale.order')
     
     client_id = fields.Many2one('res.partner',string="Client")
     engin_order_id = fields.Many2one('fleet.vehicle',string="Véhicule")
