@@ -34,14 +34,14 @@
                         attrs="{'invisible': [('paid_check', '=', False)]}" type="object" class="btn-primary" data-hotkey="q"
                         />
                     <!-- <button name="create_payment_move" string="Créer facture" type="object" class="oe_highlight"  attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}" modifiers="{'invisible': [['state','=','sale']]}" readonly="0"/> -->
-                    <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0">
+                    <!-- <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0"> -->
                         <!-- <button name="action_fix_payment" type="object" string="Corriger le/les paiement(s)" attrs="{'invisible':[('percent_open_balance','&lt;=',0)]}" modifiers="{'invisible': [['percent_open_balance', '&lt;=', 0]]}"/> -->
                         <!-- <button name="action_processed" string="Facturer / Régler" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_processed','=',True)]}" modifiers="{'invisible': [['hide_action_processed', '=', true]]}"/> -->
                         <!-- <button name="action_paid_from_order" string="Enregistrer le règlement" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_invoiced','=',False), ('percent_open_balance','=',100.00)]}" modifiers="{'invisible': ['|', ['percent_invoiced', '=', false], ['percent_open_balance', '=', 100.0]]}"/> --> -->
                         <!-- <field name="hide_action_makde_picking" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
                         <!-- <button name="action_make_picking" string="Valider BL" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_shipping','!=',False),('hide_action_makde_picking','=',True)]}" modifiers="{'invisible': ['|', ['percent_shipping', '!=', false], ['hide_action_makde_picking', '=', true]]}"/>
                         <button name="action_make_picking" string="Continuer à livrer" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_shipping','=',False),'&amp;',('percent_shipping','!=',False),('hide_action_makde_picking','=',True)]}" modifiers="{'invisible': ['|', ['percent_shipping', '=', false], '&amp;', ['percent_shipping', '!=', false], ['hide_action_makde_picking', '=', true]]}"/> -->
-                    </button>
+                    <!-- </button> -->
                        
                 </xpath>
 
