@@ -108,59 +108,60 @@ class SaleOrderExtra(models.Model):
             self.hide_confirm = True
 
 
-    # def action_confirm(self):
-    #     for rec in self.order_line:
-    #         if(rec.product_id.qty_location <= 0):
-    #             print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
-    #             raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
+    def action_confirm(self):
+        for rec in self.order_line:
+            if(rec.product_id.qty_location <= 0):
+                print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+                raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
             
 
-    #     print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
-    #     if self._get_forbidden_state_confirm() & set(self.mapped('state')):
-    #         raise UserError(_(
-    #             'It is not allowed to confirm an order in the following states: %s'
-    #         ) % (', '.join(self._get_forbidden_state_confirm())))
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
+        if self._get_forbidden_state_confirm() & set(self.mapped('state')):
+            raise UserError(_(
+                'It is not allowed to confirm an order in the following states: %s'
+            ) % (', '.join(self._get_forbidden_state_confirm())))
 
-    #     for order in self.filtered(lambda order: order.partner_id not in order.message_partner_ids):
-    #         order.message_subscribe([order.partner_id.id])
-    #     self.write(self._prepare_confirmation_values())
+        for order in self.filtered(lambda order: order.partner_id not in order.message_partner_ids):
+            order.message_subscribe([order.partner_id.id])
+        self.write(self._prepare_confirmation_values())
 
-    #     # Context key 'default_name' is sometimes propagated up to here.
-    #     # We don't need it and it creates issues in the creation of linked records.
+        # Context key 'default_name' is sometimes propagated up to here.
+        # We don't need it and it creates issues in the creation of linked records.
 
-    #     print("CONFIRMATION ACTION  @@@@@@@@@@@@@  2222")
-    #     context = self._context.copy()
-    #     context.pop('default_name', None)
-
-        
-    #     self.with_context(context)._action_confirm()
-    #     if self.env.user.has_group('sale.group_auto_done_setting'):
-    #         self.action_done()
-
-    #     print("CONFIRMATION ACTION  @@@@@@@@@@@@@  3333")
-
-    #     # Change stock location
-
-    #     picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
-    #     location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-    #     picking_id.write({'location_id':location_id.location_id.id})
-
-    #     stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
-    #     stock_move.write({'location_id':location_id.location_id.id})
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  2222")
+        context = self._context.copy()
+        context.pop('default_name', None)
 
         
-    #     for line in stock_move.move_line_ids:
-    #         line.write({'location_id':location_id.location_id.id})
-    #     # Change stock location -- END
+        self.with_context(context)._action_confirm()
+        if self.env.user.has_group('sale.group_auto_done_setting'):
+            self.action_done()
+
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  3333")
+
+        # Change stock location
+
+        picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
+        location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        picking_id.write({'location_id':location_id.location_id.id})
+
+        stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
+        stock_move.write({'location_id':location_id.location_id.id})
 
         
-    #     for rec in picking_id.move_ids_without_package:
-    #         rec.write({'quantity_done':rec.product_uom_qty})
+        for line in stock_move.move_line_ids:
+            line.write({'location_id':location_id.location_id.id})
+        # Change stock location -- END
+
+        
+        for rec in picking_id.move_ids_without_package:
+            print("CONFIRMATION ACTION  @@@@@@@@@@@@@  4444  " +str(rec.product_uom_qty))
+            rec.write({'quantity_done':rec.product_uom_qty})
 
 
-    #     print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
+        print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
-    #     return True
+        return True
 
 
 

@@ -17,7 +17,7 @@
                     <!-- <button name="action_confirm" string="Confirmer la vente" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', true]]}"/> -->
                     <!-- <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight"  attrs="{'invisible': [('state','not in',['draft','to_prepare','making','prepared','','','',''])]}"/> -->
                     <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight"  attrs="{'invisible': [('state','!=','repair_order')]}"/>
-                    <button name="action_confirm" string="Terminer OR1" type="object" class="oe_highlight"  attrs="{'invisible': [('state','!=','repair_order')]}"/>
+                    <!-- <button name="action_confirm" string="Terminer OR1" type="object" class="oe_highlight"  attrs="{'invisible': [('state','!=','repair_order')]}"/> -->
 
                     
                     <!-- <button name="action_print_picking_from_sale" string="Imprimer la livraison" type="object" class="oe_highlight" invisible="1" modifiers="{'invisible': true}"/>
