@@ -8,6 +8,10 @@
                                 
                         <table style="border: 1px solid black;float:right;width:70%;font-family: Tahoma;">
                         <tr>
+                            <td style="white-space:nowrap; padding:5pt;font-size:11pt">
+                                                                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+
+                            </td>
                             <td rowspan="3" style="width:50%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
                                 <span t-if="ch.picking_type_id.code == 'outgoing'"><strong>BON DE LIVRAISON</strong></span>
                                 <span t-if="ch.picking_type_id.code == 'internal'"><strong>BON DE TRANSFERT</strong></span>
@@ -162,10 +166,9 @@
                         </table> -->
                         <br/>
                         <div name="signature">
-                            <table style="width:100%; border:1pt solid black; font-family: Tahoma; font-size:11pt">
+                            <table style="width:50%; border:1pt solid black; font-family: Tahoma; font-size:11pt">
                                 <tr style="border:1pt solid black; height:100px">
                                     <td class="text-left" style="width:50%;"><strong style="padding:10pt">Réceptionnaire: </strong></td>
-                                    <td class="text-left" style="width:50%;"></td>
                                 </tr>
                             </table>
                         </div>
