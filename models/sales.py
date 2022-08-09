@@ -361,6 +361,7 @@ class PaymentRegister(models.TransientModel):
     cash_amount = fields.Float(string="Montant payé")
     cash_amount_residual = fields.Float(string="Monnaie rendu")
     is_cash = fields.Boolean(string="iscash")
+    cheque_titulaire = fields.Char(string="Titulaire du chèque")
 
     @api.onchange('journal_id')
     def on_journal_change(self):
@@ -377,6 +378,8 @@ class PaymentRegister(models.TransientModel):
                 print("Changing journal_id to 2" + str(self.journal_id.name ))
                 self.is_cash = False
                 print("Changing journal_id to 2" + str(self.is_cash ))
+
+            
 
     @api.onchange('cash_amount')
     def on_cash_amount(self):
