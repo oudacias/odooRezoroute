@@ -107,41 +107,7 @@
                             </tbody>
                         </table>
                         <br/>
-                        <table style="font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white" name="stock_move_line_table">
-                            <thead style="background-color:#808080">
-                                <tr style="border:1pt solid white; height:40px">
-                                    <th style="border:1pt solid white;vertical-align:middle"><strong style="padding:5pt">Compartiment</strong></th>
-                                    <th style="border:1pt solid white;vertical-align:middle"><strong style="padding:5pt">Produit</strong></th>
-                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center"><strong>Qté</strong></th>
-                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center"><strong>N° Scéllé Haut/Bas</strong></th>
-                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center"><strong>Temp</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody style="background-color:#D3D3D3">
-                                <t t-set="lines" t-value="ch.move_line_ids_without_package.filtered(lambda x: x.state != 'cancel')"/>
-                                <tr t-foreach="lines" t-as="move" style="border:1pt solid white">
-                                    <td class="text-left" style="border:1pt solid white">
-                                        <span style="padding:5pt" t-esc="move.compartment_id.sequence"/>
-                                    </td>
-                                    <td class="text-left" style="border:1pt solid white">
-                                        <span style="padding:5pt" t-field="move.product_id"/>
-                                    </td>
-                                    <td class="text-center" style="border:1pt solid white">
-                                        <span t-field="move.product_uom_qty"/>
-                                        <span t-field="move.product_uom_id"/>
-                                    </td>
-                                    <td class="text-center" style="border:1pt solid white">
-                                        <span t-field="move.numero_scelleh"/> /
-                                        <span t-field="move.numero_scelleb"/>
-                                    </td>
-                                    <td class="text-center" style="border:1pt solid white">
-                                        <t t-set="sm" t-value="o.chargement_ids.filtered(lambda x: x.product_id.id == move.product_id.id)"/>
-                                        <span t-field="sm.temperature"/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br/>
+                        
 
                         <!-- <table style="font-family: Tahoma; font-size:11pt">
                             <tr>
@@ -195,14 +161,14 @@
                             </tr>
                         </table> -->
                         <br/>
-                        <!-- <div name="signature">
+                        <div name="signature">
                             <table style="width:100%; border:1pt solid black; font-family: Tahoma; font-size:11pt">
                                 <tr style="border:1pt solid black; height:100px">
                                     <td class="text-left" style="width:50%; border:1pt solid black"><strong style="padding:10pt">Réceptionnaire: </strong></td>
-                                    <td class="text-left" style="width:50%; border:1pt solid black"><strong style="padding:10pt">Chauffeur: </strong></td>
+                                    <!-- <td class="text-left" style="width:50%; border:1pt solid black"><strong style="padding:10pt">Chauffeur: </strong></td> -->
                                 </tr>
                             </table>
-                        </div> -->
+                        </div>
                         <br/>
                         <!-- <table class="table table-bordered" style="border:1pt solid black !important; border-left:1pt solid black !important;width: 50%;float:right;">
                                 <tr style="border: 1pt solid black; border-left:1pt solid black;height:70px ">
