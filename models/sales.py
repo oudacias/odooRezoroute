@@ -116,7 +116,7 @@ class SaleOrderExtra(models.Model):
                 raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
         for rec in self.order_line:
-            if(rec.margin_percent > rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):                    
+            if(rec.margin_percent < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):                    
                 raise ValidationError('Vous avez dépassé la marge du prix pour le produit ' + str(rec.product_id.name))
 
 
