@@ -74,7 +74,7 @@
                         <div style="font-family: Tahoma; font-size:11pt; width:100%">
                             <div t-if="ch.sale_id" name="div_origin" style="float:left">
                                 <strong>Votre Commande N°:</strong>
-                                <span t-esc="ch.sale_id.name"/> du <span t-esc="ch.sale_id.commitment_date.strftime('%d/%m/%Y')"/>
+                                <span t-esc="ch.sale_id.name"/> du <span t-esc="ch.sale_id"/>
                             </div>
                             <div  style="float:right">
                                 <strong><span t-if="ch.sale_id.partner_shipping_id"><span t-esc="ch.sale_id.partner_shipping_id.afriware_parms_id.name"/></span></strong>
