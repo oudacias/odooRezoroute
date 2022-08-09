@@ -5,6 +5,8 @@
                 <div class="page">
                         <!-- <t t-foreach="o.invoice_ids" t-as="inv"> -->
                         <t t-foreach="docs" t-as="inv">
+                                <img t-if="inv.company_id.logo" t-att-src="image_data_uri(inv.company_id.logo)" style="max-height:45pt;max-width:90%;" alt="Company Logo"/>
+
                            
                                 <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
                                   <tr>
@@ -172,7 +174,7 @@
                                 </div> -->
 
 
-                                <!-- <div style="margin-top:0.5cm; width:50%; float:right">
+                                <div style="margin-top:0.5cm; width:50%; float:right">
                                     <table class="table table-bordered" style="border: 1pt solid black;width: 100%;float:right;">
                                             <tr style="border: 1pt solid black;height:70px ">
                                                 <td style="vertical-align: middle; width:70px;height:70px; border:1pt solid black">
@@ -188,7 +190,7 @@
                                                 </td>
                                             </tr>
                                     </table>
-                                </div> -->
+                                </div>
 
                                 <!-- <div id="qrcode" t-if="inv.display_qr_code and inv.amount_residual &gt; 0">
                                     <p t-if="qr_code_urls.get(inv.id)">
