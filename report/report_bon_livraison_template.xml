@@ -78,7 +78,7 @@
                             </div>
                             <div  style="float:right">
                                 <strong>
-                                    <span t-if="ch.sale_id.partner_shipping_id">
+                                    <span t-if="ch.sale_id.partner_shipping_id"></span>
                                     <!-- <span t-esc="ch.sale_id.partner_shipping_id.afriware_parms_id.name"/></span> -->
                                 </strong>
                             </div>
