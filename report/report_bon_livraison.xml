@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record id="report_bl_client" model="ir.actions.report">
+            <field name="name">Bon de Livraison</field>
+
+            <field name="model">stock.picking</field>
+
+            <field name="report_type">qweb-pdf</field>
+
+            <field name="report_name">ps_rezoroute.report_bon_livraison_template</field>
+
+            <field name="report_file">ps_rezoroute.report_bon_livraison_template</field>
+
+            <field name="print_report_name">'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)</field>
+
+            <field name="binding_type">report</field>
+
+            <field name="binding_model_id" ref="model_stock_picking"/>
+
+        </record>
+    </odoo>
