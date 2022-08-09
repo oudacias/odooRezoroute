@@ -202,19 +202,6 @@
             <field name="mode">primary</field>
             <field name="inherit_id" ref="sale.view_sales_order_filter"/>
             <field name="arch" type="xml">
-            <!-- <xpath expr="//filter[@name='my_sale_orders_filter']" position="replace">
-
-                <button name="action_view_facture"
-                    class="oe_stat_button"
-                    icon="fa-money"
-                    type="object">
-                    <field name="facture_count" widget="statinfo" string="Factures"/>
-                </button>
- -->
-
-
-
-
                 <xpath expr="//filter[@name='my_sale_orders_filter']" position="replace">
                     <field name="campaign_id"/>
                     <separator/>
