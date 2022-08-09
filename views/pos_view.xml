@@ -78,8 +78,8 @@
                                         
                                     </tree>
                                 </field>
-                                <field name="espece"/>
-                                <field name="cheque"/>
+                                <!-- <field name="espece"/>
+                                <field name="cheque"/> -->
                             </group>
                         </page>
                     </notebook>
