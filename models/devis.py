@@ -160,14 +160,7 @@ class SaleLine(models.Model):
                         self.discount = 0
                         raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
 
-            if(self.margin_percent):
-
-                for rec in self:
-                    if(rec.margin_percent > self.product_id.product_tmpl_id.categ_id.marge and self.product_id.product_tmpl_id.categ_id.marge > 0):                    
-                        self.marge = 0
-                        raise ValidationError('Vous avez dépassé la marge du prix   ' )
-
-
+            
     # @api.onchange('discount')
     # def check_marge(self):
     #     if(self.product_id):

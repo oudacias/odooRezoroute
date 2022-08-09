@@ -114,6 +114,13 @@ class SaleOrderExtra(models.Model):
             if(rec.product_id.qty_location <= 0):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
                 raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
+
+        for rec in self.order_line:
+            if(rec.margin_percent > self.product_id.product_tmpl_id.categ_id.marge and self.product_id.product_tmpl_id.categ_id.marge > 0):                    
+                self.marge = 0
+                raise ValidationError('Vous avez dépassé la marge du prix   ' )
+
+
             
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
