@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
         <record id="report_bl_client" model="ir.actions.report">
-            <field name="name">Bon de Livraison</field>
+            <field name="name">Bon de Livraison 1</field>
 
             <field name="model">stock.picking</field>
 
