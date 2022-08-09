@@ -7,7 +7,7 @@
 
                     <div class="page">
                                 
-                        <table style="border: 1px solid black;float:right;width:70%;font-family: Tahoma;">
+                        <!-- <table style="border: 1px solid black;float:right;width:70%;font-family: Tahoma;">
                         <tr>
                             <td rowspan="3" style="width:50%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
                                 <span t-if="ch.picking_type_id.code == 'outgoing'"><strong>BON DE LIVRAISON</strong></span>
@@ -28,14 +28,6 @@
                                     <strong class="m-0" t-esc="ch.scheduled_date.strftime('%d/%m/%Y')"/>
                             </td>
                         </tr>
-                        <!-- <tr>
-                            <td style="white-space:nowrap; padding:5pt;font-size:11pt">
-                                    <strong>N° TOURNÉE: </strong>
-                            </td>
-                            <td style="white-space:nowrap; padding:5pt;font-size:11pt">
-                                <strong class="m-0" t-field="o.name"/> - <strong><span t-field="o.bill_of_loading_type" class="m-0"/></strong>
-                            </td>
-                        </tr> -->
                         </table>
 
                         <br/><br/>
@@ -79,13 +71,12 @@
                             <div  style="float:right">
                                 <strong>
                                     <span t-if="ch.sale_id.partner_shipping_id"></span>
-                                    <!-- <span t-esc="ch.sale_id.partner_shipping_id.afriware_parms_id.name"/></span> -->
                                 </strong>
                             </div>
                             
                         </div>
                         <br/>
-                        <!-- <table name="stock_move_table" style="height:180px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
+                        <table name="stock_move_table" style="height:180px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
                             <thead style="background-color:#808080">
                                 <tr style="border:1pt solid white; height:40px">
                                     <th style="border:1pt solid white;vertical-align:middle" name="th_sm_product"><strong style="padding:5pt">Produit</strong></th>
@@ -228,9 +219,8 @@
                                         <strong><span t-esc="int(copie_bl+1)" /></strong>
                                     </td>
                                 </tr>
-                        </table> -->
-                        <p style="page-break-after:always;"> </p>
-                            <!-- </t> -->
+                        </table>-->
+                        
                     </div>
                 </t>
             </t>
