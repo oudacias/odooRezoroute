@@ -133,12 +133,6 @@ class SaleLine(models.Model):
     def additional_info(self):
         if(self.product_id):
             for rec in self:
-                # if(self.product_id.qty_location <= 0):
-                #     print("ProductTemplateExtra ACTIONS: %s" % self.product_id.qty_location)
-                #     raise ValidationError('Quantité non disponible')
-            
-                    
-                # else:
                 product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
 
                 rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id

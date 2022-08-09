@@ -47,8 +47,8 @@
 
        
 
-        'report/report_bon_livraison.xml',
-        'report/report_bon_livraison_template.xml',
+        # 'report/report_bon_livraison.xml',
+        # 'report/report_bon_livraison_template.xml',
 
         'report/report_facture.xml',
         'report/report_facture_template.xml',
