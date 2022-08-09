@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-        <record id="report_bl_client" model="ir.actions.report">
+        <record id="report_facture_client" model="ir.actions.report">
             <field name="name">Facture</field>
 
             <field name="model">account.move</field>
