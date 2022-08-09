@@ -5,11 +5,12 @@
                 <t t-foreach="docs" t-as="ch">
 
                     <div class="page">
+                                                    <img t-if="ch.company_id.logo" t-att-src="image_data_uri(ch.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+
                                 
                         <table style="border: 1px solid black;float:right;width:70%;font-family: Tahoma;">
                         <tr>
                             <td style="white-space:nowrap; padding:5pt;font-size:11pt">
-                                <img t-if="ch.company_id.logo" t-att-src="image_data_uri(ch.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
 
                             </td>
                             <td rowspan="3" style="width:50%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
