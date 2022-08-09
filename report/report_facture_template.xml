@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-        <template id="report_bon_livraison_template">
+        <template id="report_facture_template">
             <t t-call="web.html_container">
                 <div class="page">
                         <!-- <t t-foreach="o.invoice_ids" t-as="inv"> -->
