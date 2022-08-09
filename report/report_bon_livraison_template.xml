@@ -107,7 +107,7 @@
                             </tbody>
                         </table>
                         <br/>
-                        <!-- <table style="font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white" name="stock_move_line_table">
+                        <table style="font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white" name="stock_move_line_table">
                             <thead style="background-color:#808080">
                                 <tr style="border:1pt solid white; height:40px">
                                     <th style="border:1pt solid white;vertical-align:middle"><strong style="padding:5pt">Compartiment</strong></th>
@@ -140,7 +140,7 @@
                                     </td>
                                 </tr>
                             </tbody>
-                        </table> -->
+                        </table>
                         <br/>
 
                         <!-- <table style="font-family: Tahoma; font-size:11pt">
