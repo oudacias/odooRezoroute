@@ -35,7 +35,7 @@
                                         <br/><br/><br/>
                                 </div>
 
-                                <!-- <div name="address" style="margin-top:2cm">
+                                <div name="address" style="margin-top:2cm">
                                     <table style="width:100%;font-family: Tahoma; font-size:11pt">
                                         <tr>
                                             <td style="width:45% !important; border: 1px solid black; padding:10pt; vertical-align:top">
@@ -62,7 +62,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </div> -->
+                                </div>
                                 <br/>
 
                                 <!-- <div style="font-family: Tahoma; font-size:11pt; width:100%">
