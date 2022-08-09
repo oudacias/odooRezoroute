@@ -45,8 +45,14 @@
         'report/report_devis_template_or.xml',
         'report/report_devis_template.xml',
 
+       
+
         'report/report_bon_livraison.xml',
         'report/report_bon_livraison_template.xml',
+
+        'report/report_facture.xml',
+        'report/report_facture_template.xml',
+
         'report/report_devis.xml',
         'views/purchase.xml',
         'views/payment.xml',
