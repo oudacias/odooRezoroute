@@ -20,6 +20,7 @@
                 </xpath>
                 <xpath expr="//field[@name='partner_bank_id']" position="after">
                     <!-- <group> -->
+                        <field name="is_cheque"  invisible="1"/>
                         <field name="cheque_titulaire"  attrs="{'required': [('journal_id.name','=like','Chèque%')]}" />
 
                     <!-- </group> -->
