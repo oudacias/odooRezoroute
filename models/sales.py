@@ -355,10 +355,10 @@ class ConfirmRepairOrder(models.Model):
             
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
-        if self.sale_order_id._get_forbidden_state_confirm() & set(self.mapped('state')):
+        if self.sale_order_id._get_forbidden_state_confirm() & set(self.sale_order_id.mapped('state')):
             raise UserError(_(
                 'It is not allowed to confirm an order in the following states: %s'
-            ) % (', '.join(self._get_forbidden_state_confirm())))
+            ) % (', '.join(self.sale_order_id._get_forbidden_state_confirm())))
 
         for order in self.sale_order_id.filtered(lambda order: order.partner_id not in order.message_partner_ids):
             order.message_subscribe([order.partner_id.id])
