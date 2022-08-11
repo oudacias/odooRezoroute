@@ -82,10 +82,7 @@
                                 <td>
                                     <h6>Date :</h6><span t-field="o.date_order"/>
                                     <br/>
-                                    <span>Votre correspondant:</span>
-                                    <br/>
-                                    <span t-field="o.company_id.name"/>
-                                    <span t-field="o.company_id.email"/>
+                                   
                                 </td>
                                 <td></td>
                                 <td>
