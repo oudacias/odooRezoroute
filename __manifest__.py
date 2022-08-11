@@ -47,7 +47,7 @@
 
 
         'report/report_demande_prix.xml.xml',
-        'report/report_demande_prix_template.xml.xml',
+        'report/report_demande_prix_template.xml',
 
        
 
