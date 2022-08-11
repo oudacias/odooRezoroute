@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-        <record id="report_bl_client" model="ir.actions.report">
+        <record id="report_demande_prix" model="ir.actions.report">
             <field name="name">Demande de prix</field>
 
             <field name="model">purchase.order</field>
