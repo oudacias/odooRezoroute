@@ -56,7 +56,7 @@
                     
                          
                         <table style="height:180px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
-                        <thead style="background-color:#AFAFAF">
+                        <thead style="background-color:#5576A3">
                                 <tr style="border:1pt solid white; height:40px">
                                     <th style="border:1pt solid white;vertical-align:middle" name="th_sm_product"><strong style="padding:5pt">Date</strong></th>
                                     <th style="border:1pt solid white;vertical-align:middle" class="text-center" name="th_sm_ordered"><strong>Num Facture</strong></th>
