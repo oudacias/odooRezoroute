@@ -212,7 +212,7 @@
                             </table>
                             <table class="table table-bordered" style="width: 100%;">
                                 <tr>
-                                    <td style="width: 30%">
+                                    <td style="width: 20%">
                                         
                                     </td>
                                     <td>
@@ -230,7 +230,7 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody style="background-color:#F5F5F5">
+                                            <tbody style="background-color:#F5F5F5;height:200px;">
                                                 <tr>
                                                     <!-- <td> -->
                                                         <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
