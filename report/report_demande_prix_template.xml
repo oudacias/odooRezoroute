@@ -82,15 +82,11 @@
                                 <td>
                                     <h6>Date :</h6><span t-field="o.date_order"/>
                                     <br/>
-                                    <span>Votre correspondant:</span>
-                                    <br/>
-                                    <span t-field="o.company_id.name"/>
-                                    <span t-field="o.company_id.email"/>
                                 </td>
                                 <td></td>
                                 <td>
                                     <span t-field="o.company_id.street"/>
-                                    <span t-field="o.partner_ref"/>
+                                    Tel : <span t-field="o.company_id.phone"/>
                                 </td>
                             </tr>
                             
@@ -181,13 +177,12 @@
                                     </tr>
                                  -->
                             </table>
-                            <span style="font-size:12px">CLAUSE DE RESERVE DE PROPRIETE: En application de l'article L021-122 de Commerce, les marchandises vendues resteront juridiquement notre propriété jusqu'à l'encaissement réel et définitif du total des sommes dues par le client.</span>
                             <br/>
                             <br/>
                             <table>
                                 <tr>
                                     <td style="width:70%">
-                                        <span>COMMANDE à la somme de : cent quatre-vingt Dirhams</span>
+                                        <span>DEVIS à la somme de : cent quatre-vingt Dirhams</span>
                                     </td>
                                     <td>
                                         <table class="table table-bordered">
@@ -217,7 +212,7 @@
                                             <thead style="background-color:#5D89C5">
                                                 <tr>
                                                     <th style="color:white">
-                                                        Le client - Signature et cachet "Lu et Accepté"
+                                                        
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -271,10 +266,7 @@
                                             </tbody>
                                         </table>
                                     </td>
-                                    <td>
-                                        <h4>MERCI POUR VOTRE CONFIANCE !</h4>
-                                    </td>
-                                                
+                                   
                                                 
                                 </tr>
                             </table>
