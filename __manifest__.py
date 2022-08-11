@@ -45,6 +45,10 @@
         'report/report_devis_template_or.xml',
         'report/report_devis_template.xml',
 
+
+        'report/report_demande_prix.xml.xml',
+        'report/report_demande_prix_template.xml.xml',
+
        
 
         'report/report_bon_livraison.xml',
