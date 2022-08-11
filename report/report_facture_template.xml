@@ -80,7 +80,7 @@
                                 <!-- <t t-set="display_discount" t-value="any(l.discount for l in inv.invoice_line_ids)"/> -->
 
                                 <table name="invoice_line_table" style="height:400px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
-                                    <thead style="background-color:#808080">
+                                    <thead style="background-color:#AFAFAF">
                                         <tr style="border:1pt solid white; height:40px">
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_description" class="text-center"><span style="padding:5pt">Description</span></th>
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_quantity" class="text-center"><span>Quantité</span></th>
@@ -147,7 +147,7 @@
                                     </table>
                                     <table style="font-family: Tahoma; font-size:11pt; width:40%; float:right; border:1pt solid white">
                                         <tr style="border:1pt solid white; height:40px">
-                                            <td style="border:1pt solid white;background-color:#808080; width:50%; vertical-align:middle">
+                                            <td style="border:1pt solid white;background-color:#AFAFAF; width:50%; vertical-align:middle">
                                                 <strong style="padding:10pt">Total HT</strong>
                                             </td>
                                             <td style="border:1pt solid white;background-color:#D3D3D3; width:50%; vertical-align:middle">
@@ -155,7 +155,7 @@
                                             </td>
                                         </tr>
                                         <tr style="border:1pt solid white; height:40px">
-                                            <td style="border:1pt solid white;background-color:#808080; width:50%; vertical-align:middle">
+                                            <td style="border:1pt solid white;background-color:#AFAFAF; width:50%; vertical-align:middle">
                                                 <strong style="padding:10pt">TVA</strong>
                                             </td>
                                             <td style="border:1pt solid white;background-color:#D3D3D3; width:50%; vertical-align:middle">
@@ -163,7 +163,7 @@
                                             </td>
                                         </tr>
                                         <tr style="border:1pt solid white; height:40px">
-                                            <td style="border:1pt solid white;background-color:#808080; width:50%; vertical-align:middle">
+                                            <td style="border:1pt solid white;background-color:#AFAFAF; width:50%; vertical-align:middle">
                                                 <strong style="padding:10pt">Total Général</strong>
                                             </td>
                                             <td style="border:1pt solid white;background-color:#D3D3D3; width:50%; vertical-align:middle">

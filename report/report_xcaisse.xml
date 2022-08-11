@@ -55,62 +55,50 @@
 
                     
                          
-                        <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;display: grid;">
-                                <tr style="border: 1px solid black">
-                                  <th style="text-align: left;border: 1px solid black !important">
-                                    <span   > Date </span>
-                                  </th>
-                                  <th style="text-align: left;border: 1px solid black !important">
-                                    <span   > Num Facture </span>
-                                  </th>
-                                <!-- <th style="text-align: left;border: 1px solid black !important">
-                                    <span   > N° Client </span>
-                                </th> -->
-                                <th style="text-align: left;border: 1px solid black !important">
-                                    <span   > Nom du Client </span>
-                                </th>
-                                <th style="text-align: left;border: 1px solid black !important">
-                                    <span   > Num de reglement </span>
-                                </th>
-                                <th style="text-align: left;border: 1px solid black !important">
-                                    <span   > Type de reglement  </span>
-                                </th>
-                                <th style="text-align: left;border: 1px solid black !important">
-                                    <span   > Echéance  </span>
-                                </th>
-                                <th style="text-align: left;border: 1px solid black !important">
-                                    <span   > Montant (MAD)  </span>
-                                </th>
+                        <table style="height:180px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
+                        <thead style="background-color:#AFAFAF">
+                                <tr style="border:1pt solid white; height:40px">
+                                    <th style="border:1pt solid white;vertical-align:middle" name="th_sm_product"><strong style="padding:5pt">Date</strong></th>
+                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center" name="th_sm_ordered"><strong>Num Facture</strong></th>
+                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center" name="th_sm_um"><strong>Nom du Client</strong></th>
+                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center" name="th_sm_quantity"><strong>Num de reglement</strong></th>
+                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center" name="th_sm_quantity"><strong>Type de reglement</strong></th>
+                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center" name="th_sm_quantity"><strong>Echéance</strong></th>
+                                    <th style="border:1pt solid white;vertical-align:middle" class="text-center" name="th_sm_quantity"><strong>Montant (MAD)</strong></th>
                                 </tr>
-                                <t t-set="test_variable" t-value="0"/>
-                                <t t-foreach="o.reglement_id" t-as="reg">
-                                    <tr  >
-                                        <td> 
-                                            <span t-field="reg.date"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="reg.ref"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="reg.partner_id.name"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="reg.name"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="reg.journal_id.name"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="reg.date"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="reg.amount"/>
-                                            <t t-set="test_variable" t-value="test_variable+reg.amount"/> 
-                                        </td>
-                                         
-                                    </tr>
-                                    
-                                </t>
+                            </thead>
+                            <t t-set="test_variable" t-value="0"/>
+                            <tbody style="background-color:#D3D3D3">
+                                
+                                <tr t-foreach="o.reglement_id" t-as="reg" style="border:1pt solid white">
+                                    <td style="border:1pt solid white">
+                                        <span style="padding:5pt" t-field="reg.date"/>
+                                    </td>
+                                    <td class="text-center" style="border:1pt solid white">
+                                        <span t-field="reg.ref"/>
+                                    </td>
+                                    <td class="text-center" style="border:1pt solid white">
+                                        <span t-field="reg.partner_id.name"/>
+                                    </td>
+                                    <td class="text-center" style="border:1pt solid white">
+                                        <span t-field="reg.name"/>
+                                    </td>
+                                    <td class="text-center" style="border:1pt solid white">
+                                        <span t-field="reg.journal_id.name"/>
+                                    </td>
+                                    <td class="text-center" style="border:1pt solid white">
+                                        <span t-field="reg.date"/>
+                                    </td>
+                                    <td class="text-center" style="border:1pt solid white">
+                                        <span t-field="reg.amount"/>
+                                    </td>
+                                    <t t-set="test_variable" t-value="test_variable+reg.amount"/> 
+                                </tr>
+                            </tbody>
+                                
+                                
+                                
+                                
                                 <tr style="border: 1px solid black">
                                     <td></td>
                                     <td></td>
@@ -119,7 +107,7 @@
                                     <td></td>
                                     <td><h5>Total</h5></td>
                                     <td><h5><t t-esc="test_variable"/></h5></td>
-                                    </tr>
+                                </tr>
                                 
                             </table>
                         
