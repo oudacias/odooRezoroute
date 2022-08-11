@@ -120,9 +120,6 @@
                                 <th>
                                     <span   > Un </span>
                                 </th>
-                                <th >
-                                    <span   > P.U HT </span>
-                                </th>
                                 
                                 <th >
                                     <span   > P.U NET HT  </span>
@@ -152,17 +149,17 @@
                                             <span t-field="line.product_uom_qty"/>
                                         </td>
                                         <td> 
-                                            <span t-field="line.price_unit"/>
+                                            <span t-field="line.product_uom"/>
                                         </td>
                                         
                                         <td> 
                                             <span t-field="line.price_unit"/>
                                         </td>
                                         <td> 
-                                            <span t-field="line.price_total"/>
+                                            <span t-field="line.price_subtotal"/>
                                         </td>
                                         <td> 
-                                            <span t-field="line.tax_id.amount"/>
+                                            <span t-field="line.taxes_id.amount"/>
                                         </td>
                                         
                                         <td> 
