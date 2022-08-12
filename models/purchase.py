@@ -21,6 +21,8 @@ class purchase_custom(models.Model):
         vals['location_id'] = location_dest_id.location_id.id
         session_id = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
 
+
+        print("@@@@@@@    Session: " + str(session_id))
         vals['session_id'] = session_id.id
 
 
