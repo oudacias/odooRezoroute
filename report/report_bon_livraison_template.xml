@@ -54,11 +54,11 @@
                                     <td style="width:45%; border: 1px solid black; padding:10pt; vertical-align:top">
                                         <strong>LIVRÉ À:</strong>
                                         <div style="padding:10pt">
-                                            <span t-if="ch.sale_id.partner_shipping_id"><strong><span t-esc="ch.sale_id.partner_shipping_id.name"/></strong> <br/></span>
-                                            <span t-if="ch.sale_id.partner_shipping_id.street"><span t-esc="ch.sale_id.partner_shipping_id.street"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_shipping_id.street2"><span t-esc="ch.sale_id.partner_shipping_id.street2"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_shipping_id.city"><span t-esc="ch.sale_id.partner_shipping_id.city"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_shipping_id.phone">Tél: <span t-esc="ch.sale_id.partner_shipping_id.phone"/> </span>
+                                            <span t-if="ch.location_dest_id.name"><strong><span t-esc="ch.location_dest_id.name"/></strong> <br/></span>
+                                            <!-- <span t-if="ch.sale_id.partner_shipping_id.street"><span t-esc="ch.partner_shipping_id.street"/> <br/></span>
+                                            <span t-if="ch.sale_id.partner_shipping_id.street2"><span t-esc="ch.partner_shipping_id.street2"/> <br/></span>
+                                            <span t-if="ch.sale_id.partner_shipping_id.city"><span t-esc="ch.partner_shipping_id.city"/> <br/></span>
+                                            <span t-if="ch.sale_id.partner_shipping_id.phone">Tél: <span t-esc="ch.partner_shipping_id.phone"/> </span> -->
                                         </div>
                                     </td>
                                 </tr>
