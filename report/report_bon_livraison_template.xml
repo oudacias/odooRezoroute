@@ -42,11 +42,11 @@
                                     <td style="width:45% !important; border: 1px solid black; padding:10pt; vertical-align:top">
                                         <strong>FACTURÉ À:</strong>
                                         <div style="padding:10pt">
-                                            <span t-if="ch.sale_id.partner_id"><strong><span t-esc="ch.sale_id.partner_id.name"/></strong> <br/></span>
-                                            <span t-if="ch.sale_id.partner_id.street"><span t-esc="ch.sale_id.partner_id.street"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_id.street2"><span t-esc="ch.sale_id.partner_id.street2"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_id.city"><span t-esc="ch.sale_id.partner_id.city"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_id.phone">Tél: <span t-esc="ch.sale_id.partner_id.phone"/> </span>
+                                            <span t-if="ch.partner_id"><strong><span t-esc="ch.partner_id.name"/></strong> <br/></span>
+                                            <span t-if="ch.partner_id.street"><span t-esc="ch.partner_id.street"/> <br/></span>
+                                            <span t-if="ch.partner_id.street2"><span t-esc="ch.partner_id.street2"/> <br/></span>
+                                            <span t-if="ch.partner_id.city"><span t-esc="ch.partner_id.city"/> <br/></span>
+                                            <span t-if="ch.partner_id.phone">Tél: <span t-esc="ch.partner_id.phone"/> </span>
                                         </div>
                                     </td>
                                     <td style="width:10%">
@@ -68,16 +68,16 @@
                         <br/><br/>
 
                         <div style="font-family: Tahoma; font-size:11pt; width:100%">
-                            <div t-if="ch.sale_id" name="div_origin" style="float:left">
+                            <div name="div_origin" style="float:left">
                                 <strong>Votre Commande N°:</strong>
-                                <span t-esc="ch.sale_id.name"/> 
+                                <span t-esc="ch.origin"/> 
                                 <!-- du <span t-esc="ch.sale_id"/> -->
                             </div>
-                            <div  style="float:right">
+                            <!-- <div  style="float:right">
                                 <strong>
-                                    <span t-if="ch.sale_id.partner_shipping_id"></span>
+                                    <span t-if="ch.partner_shipping_id"></span>
                                 </strong>
-                            </div>
+                            </div> -->
                             
                         </div>
                         <br/>
