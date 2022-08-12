@@ -33,8 +33,10 @@ class StockPickingExtra(models.Model):
 
         session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
         vals['session_id'] = session.id
-
+         
         q= super(StockPickingExtra, self).create(vals) 
+        if q.purchase_id:
+            q.session_id = q.purchase_id.session_id.id
         return q
 
         # print("LEN Sessions ID: @@@@@" + str(len(session))    + str(self.env.user))
