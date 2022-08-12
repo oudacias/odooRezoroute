@@ -54,7 +54,8 @@ class StockPickingExtra(models.Model):
 
     def button_validate(self):
         # session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
-
+        if self.purchase_id:
+            self.write({'session_id':self.purchase_id.session_id.id})
         return super(StockPickingExtra, self).button_validate()
         
         # if(len(session) == 1):
