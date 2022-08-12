@@ -35,6 +35,8 @@ class StockPickingExtra(models.Model):
         vals['session_id'] = session.id
          
         q= super(StockPickingExtra, self).create(vals) 
+
+        print("Sessions created successfully    for " + str(q.purchase_id.session_id.id))
         if q.purchase_id:
             q.session_id = q.purchase_id.session_id.id
         return q
