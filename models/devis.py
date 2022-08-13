@@ -149,7 +149,8 @@ class SaleLine(models.Model):
 
     @api.onchange('discount')
     def check_discount(self):
-        if(self.product_id):
+        print("@@@@@@@@ Checking discount    for %s" % self.product_id.id)
+        if(self.product_id.id):
             if(self.discount):
                 for rec in self:
                     if(rec.discount > self.product_id.product_tmpl_id.categ_id.seuil and self.product_id.product_tmpl_id.categ_id.seuil > 0):                    
