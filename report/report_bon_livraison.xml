@@ -18,7 +18,7 @@
             <field name="binding_model_id" ref="model_stock_picking"/>
 
         </record>
-        <record id="stock.report_deliveryslip" model="ir.actions.report">
+        <record id="stock.action_report_delivery" model="ir.actions.report">
             <field name="binding_model_id" eval="False"/>
         </record>
     </odoo>
