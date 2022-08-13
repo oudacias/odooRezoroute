@@ -194,10 +194,10 @@
                                             <span t-field="line.taxes_id.amount"/>
                                         </td>
                                         
-                                        <td> 
-                                            <span t-field="line.amount"/>
+                                        <!-- <td>  -->
+                                            <!-- <span t-field="line.amount"/> -->
                                             <!-- <t t-set="test_variable" t-value="test_variable+line.price_subtotal"/>  -->
-                                        </td>
+                                        <!-- </td> -->
                                          
                                     </tr>
                                     
