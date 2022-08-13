@@ -184,7 +184,8 @@
                             <table>
                                 <tr>
                                     <td style="width:70%">
-                                        <span>DEVIS à la somme de : <span t-field="o.amount_to_text(o.amount_total,'Euro')"/></span>
+                                        <!-- <span>DEVIS à la somme de : <span t-field="o.amount_to_text(o.amount_total,'Euro')"/></span> -->
+                                        <span>DEVIS à la somme de : <span t-esc="o.currency_id.with_context(lang='es_AR').amount_to_text(o.amount_total)"/></span>
                                     </td>
                                     <td>
                                         <table class="table table-bordered">

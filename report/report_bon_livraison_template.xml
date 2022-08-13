@@ -13,7 +13,6 @@
                             <td style="white-space:nowrap; padding:5pt;font-size:11pt">
 
                             </td>
-                            <t t-set="location" t-value="ch.test()"/>
                             <td rowspan="3" style="width:50%;vertical-align: middle;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
                                 <span t-if="ch.picking_type_id.code == 'outgoing'"><strong>BON DE LIVRAISON</strong></span>
                                 <span t-if="ch.picking_type_id.code == 'internal'"><strong>BON DE TRANSFERT</strong></span>
