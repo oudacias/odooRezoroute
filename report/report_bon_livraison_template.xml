@@ -34,7 +34,7 @@
                                   <tr>
                                       <td rowspan="3" style="width:50%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
                                           <span t-if="ch.picking_type_id.code == 'outgoing'"><strong>BON DE LIVRAISON</strong></span>
-                                          <span t-if="cho.picking_type_id.code == 'internal'"><strong>BON DE TRANSFERT</strong></span>
+                                          <span t-if="ch.picking_type_id.code == 'internal'"><strong>BON DE TRANSFERT</strong></span>
                                       </td>
                                       <td style="white-space:nowrap; padding:5pt;font-size:11pt">
                                               <strong>NUMÉRO : </strong>
