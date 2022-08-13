@@ -2,6 +2,7 @@
 <odoo>
 <template id="report_demande_prix_template">
     <t t-call="web.external_layout">
+    <t t-foreach="docs" t-as="o">
         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
         <t t-set="address">
             <div t-field="o.partner_id"
@@ -120,6 +121,7 @@
             <p t-field="o.notes"/>
             <div class="oe_structure"/>
         </div>
+    </t>
     </t>
 </template>
 
