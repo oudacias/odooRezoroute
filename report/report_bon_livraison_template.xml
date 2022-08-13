@@ -42,7 +42,7 @@
                                               <strong>NUMÉRO : </strong>
                                       </td>
                                       <td style="white-space:nowrap; padding:5pt;font-size:11pt">
-                                              <strong><span t-field="ch.name"/></strong>
+                                              <strong><span t-field="ch.picking_type_id.code"/></strong>
                                       </td>
                                   </tr>
                                   <tr>
