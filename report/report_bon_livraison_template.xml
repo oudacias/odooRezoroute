@@ -75,10 +75,7 @@
                                         <strong>LIVRÉ À:</strong>
                                         <div style="padding:10pt">
                                             <span t-if="ch.location_dest_id.name"><strong><span t-esc="ch.location_dest_id.name"/></strong> <br/></span>
-                                            <!-- <span t-if="ch.sale_id.partner_shipping_id.street"><span t-esc="ch.partner_shipping_id.street"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_shipping_id.street2"><span t-esc="ch.partner_shipping_id.street2"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_shipping_id.city"><span t-esc="ch.partner_shipping_id.city"/> <br/></span>
-                                            <span t-if="ch.sale_id.partner_shipping_id.phone">Tél: <span t-esc="ch.partner_shipping_id.phone"/> </span> -->
+                                            
                                         </div>
                                     </td>
                                 </tr>
@@ -112,78 +109,25 @@
                             <tbody style="background-color:#D3D3D3">
                                 <t t-set="lines" t-value="ch.move_lines.filtered(lambda x: x.state != 'cancel')"/>
                                 <tr t-foreach="lines" t-as="move" style="border:1pt solid white">
-                                    <td style="border:1pt solid white">
+                                    <td style="border:1pt solid white;vertical-align:top;padding-top:10px">
                                         <span style="padding:5pt" t-field="move.product_id"/>
                                         <p t-if="move.description_picking != move.product_id.name and move.description_picking != move.product_id.display_name">
                                             <span t-field="move.description_picking"/>
                                         </p>
                                     </td>
-                                    <td class="text-center" style="border:1pt solid white">
+                                    <td class="text-center" style="border:1pt solid white;vertical-align:top;padding-top:10px">
                                         <span t-field="move.product_uom_qty"/>
                                     </td>
-                                    <td class="text-center" style="border:1pt solid white">
+                                    <td class="text-center" style="border:1pt solid white;vertical-align:top;padding-top:10px">
                                         <span t-field="move.product_uom"/>
                                     </td>
-                                    <td class="text-center" style="border:1pt solid white">
+                                    <td class="text-center" style="border:1pt solid white;vertical-align:top;padding-top:10px">
                                         <span t-field="move.quantity_done"/>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <br/>
-                        
-
-                        <!-- <table style="font-family: Tahoma; font-size:11pt">
-                            <tr>
-                                <td style="width:40%">
-                                    <strong>Réf: </strong>
-                                </td>
-                                <td>
-                                    <span t-esc="ch.sale_id.origin" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:40%">
-                                    <strong>Dépôt: </strong>
-                                </td>
-                                <td>
-                                    <span t-esc="o.loading_location_id.name" />
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td style="width:40%">
-                                    <strong>Véhicule: </strong>
-                                </td>
-                                <td>
-                                    <span t-esc="o.vehicle_id.name" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:40%">
-                                    <strong>C.J.Citerne: </strong>
-                                </td>
-                                <td>
-                                    <span t-esc="o.vehicle_id.certificat" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:40%">
-                                    <strong>Chauffeur: </strong>
-                                </td>
-                                <td>
-                                    <span t-esc="o.driver_id.name" t-if="o.driver_id" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:40%">
-                                    <strong>CIN Chauffeur: </strong>
-                                </td>
-                                <td>
-                                    <span t-esc="o.driver_id.ref" t-if="o.driver_id" />
-                                </td>
-                            </tr>
-                        </table> -->
                         <br/>
                         <div name="signature">
                             <table style="width:50%; border:1pt solid black; font-family: Tahoma; font-size:11pt">
