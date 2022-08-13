@@ -1,277 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <odoo>
+<odoo>
+    <data>
 
-       <template id="report_demande_prix_template">
+        <template id="report_demande_prix_template">
             <t t-call="web.html_container">
-                <t t-set="docs" t-value="docs.with_context(lang=docs.partner_id.lang)"/>
-
                 <t t-foreach="docs" t-as="o">
-                    <!-- <div class="header" style="top:1450pt"> -->
-                        <!-- <div class="row"> -->
-                            <!-- <td align="center" valign="center">
-                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
-                            </td> -->
-                        <!-- </div>
-                    </div> -->
+                    <t t-call="web.external_layout">
                         <div class="page">
-                       
-                            <div class="row" id="hash_header">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <td>
-                                            <div class="col-6">
-                                                <br/>
-                                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <span t-field="o.company_id.partner_id.name"/>
-                                                    <br/>
-                                                    <span t-field="o.company_id.street"/>
-                                                    <br/>
-                                                    <span>Tel :</span><span t-field="o.company_id.phone"/>
-                                                    <br/>
-                                                <br/>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-                                </table>
-                                
+                            <div class="row justify-content-end mb16">
+                                <div class="col-4" name="right_box">
+                                    <div t-field="o.name" t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:300px;height:50px;'}"/>
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col-6" name="div_outgoing_address">
+                                    <div t-if="o.move_ids_without_package and o.move_ids_without_package[0].partner_id and o.move_ids_without_package[0].partner_id.id != o.partner_id.id">
+                                        <span><strong>Delivery Address:</strong></span>
+                                        <div t-field="o.move_ids_without_package[0].partner_id"
+                                            t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                                    </div>
+                                    <div t-if="o.picking_type_id.code != 'internal' and (not o.move_ids_without_package or not o.move_ids_without_package[0].partner_id) and o.picking_type_id.warehouse_id.partner_id">
+                                        <span><strong>Warehouse Address:</strong></span>
+                                        <div t-field="o.picking_type_id.warehouse_id.partner_id"
+                                            t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                                    </div>
+                                </div>
+                                <div class="col-5 offset-1" name="div_incoming_address">
+                                    <div t-if="o.picking_type_id.code=='incoming' and o.partner_id">
+                                        <span><strong>Vendor Address:</strong></span>
+                                    </div>
+                                    <div t-if="o.picking_type_id.code=='internal' and o.partner_id">
+                                        <span><strong>Warehouse Address:</strong></span>
+                                    </div>
+                                    <div t-if="o.picking_type_id.code=='outgoing' and o.partner_id">
+                                        <span><strong>Customer Address:</strong></span>
+                                    </div>
+                                    <div t-if="o.partner_id" name="partner_header">
+                                        <div t-field="o.partner_id"
+                                           t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                                        <p t-if="o.sudo().partner_id.vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.sudo().partner_id.vat"/></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <h1 t-field="o.name" class="mt0 float-left"/>
+                            <div class="row mt48 mb32">
+                                <div t-if="o.origin" class="col-auto" name="div_origin">
+                                    <strong>Order:</strong>
+                                    <p t-field="o.origin"/>
+                                </div>
+                                <div class="col-auto" name="div_state">
+                                    <strong>Status:</strong>
+                                    <p t-field="o.state"/>
+                                </div>
+                                <div class="col-auto" name="div_sched_date">
+                                    <strong>Scheduled Date:</strong>
+                                    <p t-field="o.scheduled_date"/>
+                                </div>
+                            </div>
+                            <table class="table table-sm" t-if="o.move_line_ids and o.move_ids_without_package">
+                                <t t-set="has_barcode" t-value="any(move_line.product_id and move_line.product_id.sudo().barcode or move_line.package_id for move_line in o.move_line_ids)"/>
+                                <t t-set="has_serial_number" t-value="any(move_line.lot_id or move_line.lot_name for move_line in o.move_line_ids)" groups="stock.group_production_lot"/>
+                                <thead>
+                                    <tr>
+                                        <th name="th_product">
+                                            <strong>Product</strong>
+                                        </th>
+                                        <th>
+                                            <strong>Quantity</strong>
+                                        </th>
+                                        <th name="th_from" t-if="o.picking_type_id.code != 'incoming'" align="left" groups="stock.group_stock_multi_locations">
+                                            <strong>From</strong>
+                                        </th>
+                                        <th name="th_to" t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations">
+                                            <strong>To</strong>
+                                        </th>
+                                        <th name="th_serial_number" class="text-center" t-if="has_serial_number">
+                                           <strong>Lot/Serial Number</strong>
+                                        </th>
+                                        <th name="th_barcode" class="text-center" t-if="has_barcode">
+                                            <strong>Product Barcode</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- In case you come across duplicated lines, ask NIM or LAP -->
+                                    <t t-foreach="o.move_line_ids_without_package" t-as="ml">
+                                        <tr>
+                                            <td>
+                                                <span t-field="ml.product_id.display_name"/><br/>
+                                                <span t-field="ml.product_id.description_picking"/>
+                                            </td>
+                                            <td>
+                                                <span t-if="o.state != 'done'" t-field="ml.product_uom_qty"/>
+                                                <span t-if="o.state == 'done'" t-field="ml.qty_done"/>
+                                                <span t-field="ml.product_uom_id" groups="uom.group_uom"/>
+                                            </td>
+                                            <td t-if="o.picking_type_id.code != 'incoming'" groups="stock.group_stock_multi_locations">
+                                                <span t-esc="ml.location_id.display_name"/>
+                                                    <t t-if="ml.package_id">
+                                                        <span t-field="ml.package_id"/>
+                                                    </t>
+                                            </td>
+                                            <td t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations">
+                                                <div>
+                                                    <span t-field="ml.location_dest_id"/>
+                                                    <t t-if="ml.result_package_id">
+                                                        <span t-field="ml.result_package_id"/>
+                                                    </t>
+                                                </div>
+                                            </td>
+                                            <td class=" text-center h6" t-if="has_serial_number">
+                                                <div t-if="has_serial_number and (ml.lot_id or ml.lot_name)" t-esc="ml.lot_id.name or ml.lot_name" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100, 'img_style': 'width:100%;height:35px;'}"/>
+                                            </td>
+                                            <td class="text-center" t-if="has_barcode">
+                                                <t t-if="product_barcode != ml.product_id.barcode">
+                                                    <span t-if="ml.product_id and ml.product_id.barcode">
+                                                        <div t-field="ml.product_id.barcode" t-options="{'widget': 'barcode', 'symbology': 'auto', 'width': 400, 'height': 100, 'quiet': 0, 'img_style': 'height:35px;'}"/>
+                                                    </span>
+                                                    <t t-set="product_barcode" t-value="ml.product_id.barcode"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                  </tbody>
+                            </table>
+                            <table class="table table-sm" t-if="o.package_level_ids and o.picking_type_entire_packs and o.state in ['assigned', 'done']">
+                                <thead>
+                                    <tr>
+                                        <th name="th_package">Package</th>
+                                        <th name="th_pko_from" t-if="o.picking_type_id.code != 'incoming'" groups="stock.group_stock_multi_locations">From</th>
+                                        <th name="th_pki_from" t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations">To</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.package_level_ids.sorted(key=lambda p: p.package_id.name)" t-as="package">
+                                        <t t-set="package" t-value="package.with_context(picking_id=o.id)" />
+                                        <td name="td_pk_barcode">
+                                            <div t-field="package.package_id.name" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 600, 'height': 100, 'img_style': 'width:300px;height:50px;margin-left: -50px;'}"/><br/>
+                                        </td>
+                                        <td t-if="o.picking_type_id.code != 'incoming'" groups="stock.group_stock_multi_locations">
+                                            <span t-field="package.location_id"/>
+                                        </td>
+                                        <td t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations">
+                                            <span t-field="package.location_dest_id"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <t t-set="no_reserved_product" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty != x.reserved_availability and x.move_line_ids and x.state!='done')"/>
+                            <p t-if="o.state in ['draft', 'waiting', 'confirmed'] or no_reserved_product"><i class="fa fa-exclamation-triangle" />
+                                All products could not be reserved. Click on the "Check Availability" button to try to reserve products.
+                            </p>
+                            <p t-field="o.note"/>
                         </div>
-                        <style>
-                            .fancy {
-    color:#fff;
-    display:inline-block;
-    position:relative;
-    font-size:2em;
-    line-height:2em;
-    padding:0.5em 1em;
-    z-index:0;
-  }
-  
-  .fancy::before {
-    content:"";
-    background-color:#DB4904;
-    width:100%;
-    height:100%;
-    display:block;
-    position:absolute;
-    left:0;
-    top:0;
-    z-index:-1;
-    transform:skew(20deg);
-  }
-  
-  .fancy.red::before {
-    background-color:red;
-  }
-                        </style>
-                        <table class="table" style="width: 100%;display: grid;">
-                            <tr style="background-color:#E8E8E8">
-                                <td>
-                                    <h1 class="fancy">Devis</h1>
-                                </td>
-                                <td>
-                                    <b><span>N </span><span><span t-field="o.name"/></span></b>
-                                </td>
-                                <td>
-                                   <span><span t-field="o.company_id.partner_id.name"/></span>
-                                </td>
-                            </tr>
-                            <tr style="background-color:#F5F5F5">
-                                <td>
-                                    <h6>Date :</h6><span t-field="o.date_order"/>
-                                    <br/>
-                                   
-                                </td>
-                                <td></td>
-                                <td>
-                                    <span t-field="o.company_id.street"/>
-                                    <br/>
-                                    <span>Tel :</span><span t-field="o.company_id.phone"/>
-                                </td>
-                            </tr>
-                            
-                        </table>
-
-                        <br/>
-                        <br/>
-                        <br/>
-
-                    
-                         
-                        <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;">
-                        <thead style="background-color:#5D89C5">
-                                <tr>
-                                  <th>
-                                   Code Article
-                                  </th>
-                                  <th>
-                                   Ref.Fournisseur
-                                  </th>
-                                  <th >
-                                  Designation
-                                  </th>
-                                <th>
-                                    <span   > Quantité </span>
-                                </th>
-                                <th>
-                                    <span   > Un </span>
-                                </th>
-                                
-                                <th >
-                                    <span   > P.U NET HT  </span>
-                                </th>
-                                <th>
-                                    <span   > Montant</span>
-                                </th>
-                                <th >
-                                    <span   > TVA  </span>
-                                </th>
-                                
-                                </tr>
-                            </thead>
-                                <t t-set="test_variable" t-value="0"/>
-                                    <t t-foreach="o.order_line" t-as="line">
-                                    <tr  >
-                                        <td> 
-                                            <span t-field="line.product_id.default_code"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="o.partner_id.name"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="line.name"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="line.product_uom_qty"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="line.product_uom.encode('ascii','ignore')"/>
-                                        </td>
-                                        
-                                        <td> 
-                                            <span t-field="line.price_unit"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="line.price_subtotal"/>
-                                        </td>
-                                        <td> 
-                                            <span t-field="line.taxes_id.amount"/>
-                                        </td>
-                                        
-                                        <td> 
-                                            <!-- <span t-field="line.amount"/> -->
-                                            <t t-set="test_variable" t-value="test_variable+line.price_subtotal"/> 
-                                        </td>
-                                         
-                                    </tr>
-                                    
-                                </t>
-                                <!-- <tr style="border: 1px solid black">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><h5>Total</h5></td>
-                                    <td><h5><t t-esc="test_variable"/></h5></td>
-                                    </tr>
-                                 -->
-                            </table>
-                            <br/>
-                            <br/>
-                            <table>
-                                <tr>
-                                    <td style="width:70%">
-                                        <!-- <span>DEVIS à la somme de : <span t-field="o.amount_to_text(o.amount_total,'Euro')"/></span> -->
-                                        <span>DEVIS à la somme de : <span t-esc="o.currency_id.with_context(lang='fr_FR').amount_to_text(o.amount_total)"/></span>
-                                    </td>
-                                    <td>
-                                        <table class="table table-bordered">
-                                            <tbody style="background-color:#F5F5F5">
-                                                <tr>
-                                                    <td><b>Total H.T.</b></td>
-                                                    <td><span t-field="o.amount_untaxed"/></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Total TVA</b></td>
-                                                    <td><span t-field="o.amount_tax"/></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>TOTAL TTC (DHS)</b></td>
-                                                    <td> <span t-field="o.amount_total"/></td>
-                                                </tr>
-                                            </tbody>
-                                            
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                            <table class="table table-bordered" style="width: 100%;">
-                                <tr>
-                                    <td style="width: 20%">
-                                        
-                                    </td>
-                                    <td>
-                                        <table class="table table-bordered" style="width: 100%;height:200px">
-                                            <thead style="background-color:#5D89C5">
-                                                <tr>
-                                                    <th style="color:white">
-                                                        Base TVA
-                                                    </th>
-                                                    <th style="color:white">
-                                                        Montant de TVA
-                                                    </th>
-                                                    <th style="color:white">
-                                                        Taux de TVA
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody style="background-color:#F5F5F5;height:200px;">
-                                                <tr>
-                                                    <!-- <td> -->
-                                                        <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
-                                                            <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
-                                                                <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
-                                                                <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
-                                                                    <t t-if="len(tax_totals['groups_by_subtotal'][subtotal_to_show]) > 1">
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                        <!-- <span class="text-right" t-esc="amount_total['amount_untaxed']"/>
-                                                                        <span class="text-right" t-esc="amount_by_group['amount_untaxed']"/>
-                                                                        <span class="text-right" t-esc="amount_by_group['tax_group_amount']"/> -->
-                                                                    </t>
-                                                                    <t t-else="">
-                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_base_amount']"/></td>
-
-                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_amount']" /></td>
-                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_name']" /></td>
-                                                                    </t>
-                                                                </t> 
-                                                            </t>
-                                                    <!-- </td> -->
-                                                    <!-- <td><span t-field="o.tax_totals_json"/></td> -->
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <h4>MERCI POUR VOTRE CONFIANCE !</h4>
-                                    </td>
-                                                
-                                                
-                                </tr>
-                            </table>
-                            <span style="font-size:12px">REZOROUTE S.A AU CAPITAL DE DH 10 700 000 - ICE: 001526657000023 - R.C. 65155 - I.F. 01640196 - C.N.S.S. 2150308 - Patente 31831461
-18 Bd Al Massira AL KHADRA, Immeuble Massimo Dutti- Casablanca-Maroc</span>
-
-                        
                     </t>
                 </t>
+            </t>
         </template>
-
-    </odoo>
+        <template id="report_payment_receipt">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang" t-value="o.partner_id.lang or o.company_id.partner_id.lang"/>
+                    <t t-call="stock.report_demande_prix_template" t-lang="lang"/>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
