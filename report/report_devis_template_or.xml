@@ -66,35 +66,59 @@
     background-color:red;
   }
                         </style>
-                        <table class="table" style="width: 100%;display: grid;">
-                            <tr style="background-color:#E8E8E8">
-                                <td>
-                                    <h1 class="fancy">Ordre Reparation</h1>
-                                </td>
-                                <td>
-                                    <b><span>N </span><span><span t-field="o.name"/></span></b>
-                                </td>
-                                <td>
-                                   <span><span t-field="o.company_id.partner_id.name"/></span>
-                                </td>
-                            </tr>
-                            <tr style="background-color:#F5F5F5">
-                                <td>
-                                    <h6>Date :</h6><span t-field="o.date_order"/>
-                                    <br/>
-                                    <span>Votre correspondant:</span>
-                                    <br/>
-                                    <span t-field="o.company_id.name"/>
-                                    <span t-field="o.company_id.email"/>
-                                </td>
-                                <td></td>
-                                <td>
-                                    <span t-field="o.company_id.street"/>
-                                    <span t-field="o.partner_ref"/>
-                                </td>
-                            </tr>
-                            
-                        </table>
+                        <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
+                                <tr>
+                                    <td rowspan="2" style="width:40%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
+                                        <strong>Devis</strong>
+                                          <!-- <span t-esc="lang" /> -->
+                                    </td>
+                                    <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong>NUMÉRO: </strong>
+                                    </td>
+                                    <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong><span t-field="o.name"/></strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                            <strong>DATE: </strong>
+                                    </td>
+                                    <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                            <strong class="m-0" t-field="o.date_approve"/>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div>
+                                    <br/><br/><br/>
+                            </div>
+
+                            <div name="address" style="margin-top:2cm">
+                                <table style="width:100%;font-family: Tahoma; font-size:11pt">
+                                    <tr>
+                                        <td style="width:45% !important; border: 1px solid black; padding:10pt; vertical-align:top">
+                                            <strong>FACTURÉ À:</strong>
+                                            <div style="padding:10pt">
+                                                <span t-if="o.partner_id"><strong><span t-esc="o.partner_id.name"/></strong> <br/></span>
+                                                <span t-if="o.partner_id.street"><span t-esc="o.partner_id.street"/> <br/></span>
+                                                <span t-if="o.partner_id.street2"><span t-esc="o.partner_id.street2"/> <br/></span>
+                                                <span t-if="o.partner_id.city"><span t-esc="o.partner_id.city"/> <br/></span>
+                                                <span t-if="o.partner_id.phone">Tél: <span t-esc="o.partner_id.phone"/> </span>
+                                            </div>
+                                        </td>
+                                        <td style="width:10%">
+                                        </td>
+                                        <!-- <td style="width:45%; border: 1px solid black; padding:10pt; vertical-align:top">
+                                            <strong>LIVRÉ À:</strong>
+                                            <div style="padding:10pt">
+                                                <span t-if="o.location_name"><strong><span t-esc="o.location_name"/></strong> <br/></span>
+                                                
+                                            </div>
+                                        </td> -->
+                                    </tr>
+                                </table>
+                            </div>
+                            <br/>
 
                         <br/>
                         <br/>
@@ -186,13 +210,15 @@
                                     </tr>
                                  -->
                             </table>
+                            <br/>
+                            <br/>
                             <span style="font-size:12px">CLAUSE DE RESERVE DE PROPRIETE: En application de l'article L021-122 de Commerce, les marchandises vendues resteront juridiquement notre propriété jusqu'à l'encaissement réel et définitif du total des sommes dues par le client.</span>
                             <br/>
                             <br/>
                             <table>
                                 <tr>
                                     <td style="width:70%">
-                                        <span>COMMANDE à la somme de : cent quatre-vingt Dirhams</span>
+                                        <span>COMMANDE à la somme de : <span t-esc="o.currency_id.with_context(lang='fr_FR').amount_to_text(o.amount_total)"/></span>
                                     </td>
                                     <td>
                                         <table class="table table-bordered">
