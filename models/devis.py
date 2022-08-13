@@ -144,12 +144,11 @@ class SaleLine(models.Model):
                 rec.qty_location = product.qty_location
                 if(self.order_id.partner_id.is_cheque_flotte):
                     rec.discount = self.order_id.partner_id.pourcentage_remise
-                    
+                rec.discount = 0
 
 
     @api.onchange('discount')
     def check_discount(self):
-        print("@@@@@@@@ Checking discount    for %s" % self.product_id.id)
         if(self.product_id.id):
             if(self.discount):
                 for rec in self:
