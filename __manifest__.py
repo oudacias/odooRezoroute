@@ -58,6 +58,7 @@
         'report/report_facture_template.xml',
 
         'report/report_devis.xml',
+        'report/hide_reports.xml',
         'views/purchase.xml',
         'views/payment.xml',
         'views/stock_picking.xml',
