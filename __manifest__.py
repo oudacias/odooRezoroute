@@ -57,6 +57,10 @@
         'report/report_facture.xml',
         'report/report_facture_template.xml',
 
+
+        'report/report_bon_commande.xml',
+        'report/report_bon_commande_template.xml',
+
         'report/report_devis.xml',
         'report/hide_reports.xml',
         'views/purchase.xml',
