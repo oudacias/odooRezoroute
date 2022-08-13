@@ -184,7 +184,7 @@
                             <table>
                                 <tr>
                                     <td style="width:70%">
-                                        <span>DEVIS à la somme de : cent quatre-vingt Dirhams</span>
+                                        <span>DEVIS à la somme de : <span t-field="o.amount_to_text(o.amount_total,'Euro')"/></span>
                                     </td>
                                     <td>
                                         <table class="table table-bordered">

@@ -1,5 +1,6 @@
 from requests import session
 from odoo import fields, models,api
+from odoo.tools import amount_to_text
 
 
 class purchase_custom(models.Model):
@@ -77,6 +78,11 @@ class purchase_custom(models.Model):
 
 
         return res 
+
+    @api.multi
+    def amount_to_text(self, amount, currency='Euro'):
+       return amount_to_text(amount, currency)
+
 
 class StockMove(models.Model):
     _inherit = 'stock.move'

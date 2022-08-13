@@ -48,8 +48,7 @@ class StockPickingExtra(models.Model):
             self.write({'session_id':self.purchase_id.session_id.id})
         return super(StockPickingExtra, self).button_validate()
 
-    def test(self):
-        return "HEllo"
+    
        
         
 
