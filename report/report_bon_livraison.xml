@@ -18,4 +18,7 @@
             <field name="binding_model_id" ref="model_stock_picking"/>
 
         </record>
+        <xpath expr="//button[@name='%(stock.action_report_delivery)d']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
     </odoo>
