@@ -14,7 +14,7 @@ class purchase_custom(models.Model):
 
     def test(self):
         
-        return (("HÀ") )
+        return (("HÀ").encode('utf-8') )
     
 
     @api.model
