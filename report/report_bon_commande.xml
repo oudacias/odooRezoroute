@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
         <record id="report_bon_commande" model="ir.actions.report">
-            <field name="name">Demande de prix</field>
+            <field name="name">Bon de Commande</field>
 
             <field name="model">purchase.order</field>
 
@@ -10,8 +10,10 @@
             <field name="report_name">ps_rezoroute.report_bon_commande_template</field>
 
             <field name="report_file">ps_rezoroute.report_bon_commande_template</field>
+            <field name="print_report_name">
+                (object.state in ('draft', 'sent') and 'Request for Quotation - %s' % (object.name) or
+                'Purchase Order - %s' % (object.name))</field>
 
-            <field name="print_report_name">'Demande Prix - %s - %s' % (object.partner_id.name or '', object.name)</field>
 
             <field name="binding_type">report</field>
 
