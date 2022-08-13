@@ -9,6 +9,9 @@ class purchase_custom(models.Model):
     location_id = fields.Integer(string="Emplacement")
 
     is_received = fields.Boolean(compute="_isReceived")
+
+    def test(self):
+        return (("HÀ").encode())
     
 
     @api.model
