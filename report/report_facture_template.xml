@@ -11,15 +11,15 @@
                                 <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
                                   <tr>
                                       <td rowspan="2" style="width:40%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
-                                          <strong t-if="inv.move_type == 'out_invoice'">FACTURE</strong>
-                                          <strong t-if="inv.move_type == 'out_refund'">AVOIR</strong>
+                                         
+                                          <strong><span t-field="inv.move_type"/></strong>
                                           <!-- <span t-esc="lang" /> -->
                                       </td>
                                       <td style="white-space:nowrap; padding:5pt; font-size:11pt">
                                               <strong>NUMÉRO: </strong>
                                       </td>
                                       <td style="white-space:nowrap; padding:5pt; font-size:11pt">
-                                              <strong><span t-field="inv.move_type"/></strong>
+                                              <strong><span t-field="inv.name"/></strong>
                                       </td>
                                   </tr>
                                   <tr>
@@ -73,7 +73,7 @@
                                         <span t-field="inv.invoice_origin"/>
                                     </div>
                                     <div style="float:right">
-                                        <strong>Bon de Livraison:</strong> <span t-field="inv.ref"/>
+                                        <strong>Bon de Livraison:</strong> <span t-field="inv.invoice_origin"/>
                                     </div>
                                 </div>
 
@@ -96,14 +96,11 @@
                                         </tr>
                                     </thead>
                                     <tbody style="background-color:#D3D3D3">
-                                        <t t-set="current_subtotal" t-value="0"/>
-                                        <t t-set="lines" t-value="inv.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
-
+                                       
                                         <t t-foreach="lines" t-as="line">
-                                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
-                                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
-
-                                            <tr style="border:1pt solid white">
+                                           
+                                           
+                                            <tr style="border:1pt solid white;vertical-align:top">
                                                 <td style="border:1pt solid white" name="account_invoice_line_name"><span style="padding:5pt" t-field="line.name" /></td>
                                                 <td style="border:1pt solid white" class="text-right">
                                                     <span t-field="line.quantity"/>
@@ -128,76 +125,7 @@
                                 </table>
 
                                 <br/>
-                                <!-- <div style="width:100%">
-                                    <table style="font-family: Tahoma; font-size:11pt;border: 2px solid black;width: 55% !important; float:left">
-                                        <tr>
-                                            <td>
-                                                <strong style="padding:5pt">Conditions de paiement : </strong> <br/>
-                                                <span style="float:right; margin-right:5pt">Au Comptant
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr style="border-top:1px solid grey">
-                                            <td>
-                                                <br/>
-                                                <strong style="padding:5pt">Arrêté la présente facture à la somme de : </strong>
-                                                <p style="padding:5pt" t-esc="inv.currency_id.amount_to_text(inv.amount_total)"/>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table style="font-family: Tahoma; font-size:11pt; width:40%; float:right; border:1pt solid white">
-                                        <tr style="border:1pt solid white; height:40px">
-                                            <td style="border:1pt solid white;background-color:#AFAFAF; width:50%; vertical-align:middle">
-                                                <strong style="padding:10pt">Total HT</strong>
-                                            </td>
-                                            <td style="border:1pt solid white;background-color:#D3D3D3; width:50%; vertical-align:middle">
-                                                <strong style="padding:10pt"><span class="text-nowrap" t-field="inv.amount_untaxed" /></strong>
-                                            </td>
-                                        </tr>
-                                        <tr style="border:1pt solid white; height:40px">
-                                            <td style="border:1pt solid white;background-color:#AFAFAF; width:50%; vertical-align:middle">
-                                                <strong style="padding:10pt">TVA</strong>
-                                            </td>
-                                            <td style="border:1pt solid white;background-color:#D3D3D3; width:50%; vertical-align:middle">
-                                                <strong style="padding:10pt"><span class="text-nowrap" t-field="inv.amount_tax"/></strong>
-                                            </td>
-                                        </tr>
-                                        <tr style="border:1pt solid white; height:40px">
-                                            <td style="border:1pt solid white;background-color:#AFAFAF; width:50%; vertical-align:middle">
-                                                <strong style="padding:10pt">Total Général</strong>
-                                            </td>
-                                            <td style="border:1pt solid white;background-color:#D3D3D3; width:50%; vertical-align:middle">
-                                                <strong style="padding:10pt"><span class="text-nowrap" t-field="inv.amount_total"/></strong>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div> -->
-
-
-                                <!-- <div style="margin-top:0.5cm; width:50%; float:right">
-                                    <table class="table table-bordered" style="border: 1pt solid black;width: 100%;float:right;">
-                                            <tr style="border: 1pt solid black;height:70px ">
-                                                <td style="vertical-align: middle; width:70px;height:70px; border:1pt solid black">
-                                                    <img style="width:70px;height:70px" t-attf-src="data:image/png;base64,{{inv.get_qr_code('http://afriquia.ma/'+inv.name)}}"/>
-                                                </td>
-                                                <td style="text-align:center; height:70px; border:1pt solid black">
-                                                        <strong>GED: <span t-esc="inv.name"/></strong>
-                                                        <br/>
-                                                        <strong>Exemplaire Client</strong>
-                                                </td>
-                                                <td style="vertical-align: middle; border:1pt solid black;color: white;background-color:black;text-align:center;font-size:25pt;font-family:&quot;Tahoma&quot;,sans-serif;">
-                                                    <strong><span t-esc="int(copie_facture+1)" /></strong>
-                                                </td>
-                                            </tr>
-                                    </table>
-                                </div> -->
-
-                                <!-- <div id="qrcode" t-if="inv.display_qr_code and inv.amount_residual &gt; 0">
-                                    <p t-if="qr_code_urls.get(inv.id)">
-                                        <strong class="text-center">Scan me with your banking app.</strong><br/><br/>
-                                        <img class="border border-dark rounded" t-att-src="qr_code_urls[inv.id]"/>
-                                    </p>
-                                </div> -->
+                               
 
                                 <p style="page-break-after:always;"> </p>
                         </t>
