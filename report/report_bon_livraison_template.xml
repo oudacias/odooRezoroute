@@ -11,16 +11,16 @@
                                     <td>
                                         <div class="col-6">
                                             <br/>
-                                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                                                <img t-if="ch.company_id.logo" t-att-src="image_data_uri(ch.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
                                                 <br/>
                                                 <br/>
                                                 <br/>
-                                                <span t-field="o.company_id.partner_id.name"/>
+                                                <span t-field="ch.company_id.partner_id.name"/>
                                                 <br/>
-                                                <span t-field="o.company_id.street"/>
+                                                <span t-field="ch.company_id.street"/>
                                                 <br/>
-                                                <span>Tel :</span><span t-field="o.company_id.phone"/>
-                                                Tel <t t-set="location" t-value="o.test()"/><t t-esc="location"/>
+                                                <span>Tel :</span><span t-field="ch.company_id.phone"/>
+                                                Tel <t t-set="location" t-value="ch.test()"/><t t-esc="location"/>
                                                 <br/>
                                             <br/>
                                         </div>
@@ -34,14 +34,14 @@
                         <table style="border: 1px solid black;float:right;width:70%;font-family: Tahoma;">
                                   <tr>
                                       <td rowspan="3" style="width:50%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
-                                          <span t-if="o.picking_type_id.code == 'outgoing'"><strong>BON DE LIVRAISON</strong></span>
-                                          <span t-if="o.picking_type_id.code == 'internal'"><strong>BON DE TRANSFERT</strong></span>
+                                          <span t-if="ch.picking_type_id.code == 'outgoing'"><strong>BON DE LIVRAISON</strong></span>
+                                          <span t-if="cho.picking_type_id.code == 'internal'"><strong>BON DE TRANSFERT</strong></span>
                                       </td>
                                       <td style="white-space:nowrap; padding:5pt;font-size:11pt">
                                               <strong>NUMÉRO : </strong>
                                       </td>
                                       <td style="white-space:nowrap; padding:5pt;font-size:11pt">
-                                              <strong><span t-field="o.name"/></strong>
+                                              <strong><span t-field="ch.name"/></strong>
                                       </td>
                                   </tr>
                                   <tr>
@@ -49,7 +49,7 @@
                                               <strong>DATE : </strong>
                                       </td>
                                       <td style="white-space:nowrap; padding:5pt;font-size:11pt">
-                                              <strong class="m-0" t-esc="o.scheduled_date.strftime('%d/%m/%Y')"/>
+                                              <strong class="m-0" t-esc="ch.scheduled_date.strftime('%d/%m/%Y')"/>
                                       </td>
                                   </tr>
                                   
