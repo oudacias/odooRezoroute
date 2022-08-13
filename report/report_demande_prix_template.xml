@@ -264,7 +264,7 @@
                                             </thead>
                                             <tbody style="background-color:#F5F5F5;height:200px;">
                                                 <tr>
-                                                    <!-- <td> -->
+                                                    <td>
                                                         <t t-set="tax_totals" t-value="json.loads(o.tax_totals_json)"/>
                                                             <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
                                                                 <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
@@ -273,9 +273,9 @@
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td></td>
-                                                                        <!-- <span class="text-right" t-esc="amount_total['amount_untaxed']"/>
+                                                                        <span class="text-right" t-esc="amount_total['amount_untaxed']"/>
                                                                         <span class="text-right" t-esc="amount_by_group['amount_untaxed']"/>
-                                                                        <span class="text-right" t-esc="amount_by_group['tax_group_amount']"/> -->
+                                                                        <span class="text-right" t-esc="amount_by_group['tax_group_amount']"/>
                                                                     </t>
                                                                     <t t-else="">
                                                                         <td><span class="text-right" t-esc="amount_by_group['tax_group_base_amount']"/></td>
@@ -285,8 +285,8 @@
                                                                     </t>
                                                                 </t> 
                                                             </t>
-                                                    <!-- </td> -->
-                                                    <!-- <td><span t-field="o.tax_totals_json"/></td> -->
+                                                     </td>
+                                                    <td><span t-field="o.tax_totals_json"/></td> 
                                                 </tr>
                                             </tbody>
                                         </table>
