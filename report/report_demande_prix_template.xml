@@ -27,9 +27,9 @@
                                                     <br/>
                                                     <span t-field="o.company_id.partner_id.name"/>
                                                     <br/>
-                                                    <span t-field="o.company_id.street"/>
+                                                    <span t-field="o.company_id.street.encode('utf-8')"/>
                                                     <br/>
-                                                    <span>Tel :</span><span t-field="o.partner_id.lang"/>
+                                                    <span>Tel :</span><span t-field="o.company_id.phone"/>
                                                     <br/>
                                                 <br/>
                                             </div>
