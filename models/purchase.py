@@ -11,7 +11,7 @@ class purchase_custom(models.Model):
     is_received = fields.Boolean(compute="_isReceived")
 
     def test(self):
-        return (("HÀ").encode())
+        return (("HÀ").decode('utf8'))
     
 
     @api.model
