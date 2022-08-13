@@ -14,7 +14,7 @@ class purchase_custom(models.Model):
 
     def test(self):
         
-        return base64.b64encode('\n'.join("HÀ").encode('UTF-8'))
+        return (("HÀ").encode('utf8').decode('iso-8859-1') )
     
 
     @api.model
