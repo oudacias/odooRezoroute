@@ -149,7 +149,7 @@
                                             <span t-field="line.product_uom_qty"/>
                                         </td>
                                         <td> 
-                                            <span t-field="line.product_uom.encode('utf-8')"/>
+                                            <span t-field="line.product_uom.encode('ascii','ignore')"/>
                                         </td>
                                         
                                         <td> 
