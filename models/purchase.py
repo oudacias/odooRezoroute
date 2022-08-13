@@ -1,5 +1,7 @@
 from requests import session
 from odoo import fields, models,api
+import base64
+
 
 
 class purchase_custom(models.Model):
@@ -11,7 +13,8 @@ class purchase_custom(models.Model):
     is_received = fields.Boolean(compute="_isReceived")
 
     def test(self):
-        return (("HÀ").decode('utf8'))
+        
+        return base64.b64encode('\n'.join("HÀ").encode('UTF-8'))
     
 
     @api.model
