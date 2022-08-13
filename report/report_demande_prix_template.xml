@@ -2,9 +2,8 @@
 <odoo>
 <template id="report_demande_prix_template">
     <t t-call="web.external_layout">
-    <t t-foreach="docs" t-as="o">
-    <span t-field="o.with_context(lang=o.partner_id.lang)"/>
-        <!-- <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/> -->
+    <!-- <t t-foreach="docs" t-as="o"> -->
+        <t t-set="docs" t-value="docs.with_context(lang=docs.partner_id.lang)"/>
         <t t-set="address">
             <div t-field="o.partner_id"
             t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
@@ -122,7 +121,7 @@
             <p t-field="o.notes"/>
             <div class="oe_structure"/>
         </div>
-    </t>
+    <!-- </t> -->
     </t>
 </template>
 
