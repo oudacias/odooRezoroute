@@ -1,6 +1,6 @@
 from requests import session
 from odoo import fields, models,api
-from odoo.tools import amount_to_text
+from odoo import amount_to_text
 
 
 class purchase_custom(models.Model):
