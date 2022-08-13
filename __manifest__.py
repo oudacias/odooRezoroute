@@ -62,7 +62,7 @@
         'report/report_bon_commande_template.xml',
 
         'report/report_devis.xml',
-        'report/hide_reports.xml',
+        # 'report/hide_reports.xml',
         'views/purchase.xml',
         'views/payment.xml',
         'views/stock_picking.xml',
