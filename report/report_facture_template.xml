@@ -79,7 +79,7 @@
 
                                 <!-- <t t-set="display_discount" t-value="any(l.discount for l in inv.invoice_line_ids)"/> -->
 
-                                <table name="invoice_line_table" style="height:400px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
+                                <table name="invoice_line_table">
                                     <thead style="background-color:#AFAFAF">
                                         <tr style="border:1pt solid white; height:40px">
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_description" class="text-center"><span style="padding:5pt">Description</span></th>
