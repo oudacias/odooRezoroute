@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
     <odoo>
 
        <template id="report_devis_template_or">
@@ -71,7 +71,7 @@
                         <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
                                 <tr>
                                     <td rowspan="2" style="width:40%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
-                                        <strong>ORDRE DE REPARATION</strong>
+                                        <strong>Devis</strong>
                                           <!-- <span t-esc="lang" /> -->
                                     </td>
                                     <td style="white-space:nowrap; padding:5pt; font-size:11pt">
@@ -165,17 +165,6 @@
                             </thead>
                                 <t t-set="test_variable" t-value="0"/>
                                     <t t-foreach="o.order_line" t-as="line">
-                                    <tr>
-                                        <td></td>
-                                        <td><span t-field="o.engin_id.model_id.brand_id.name"/>/<span t-field="o.engin_id.model_id.name"/></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
                                     <tr  >
                                         <td> 
                                             <span t-field="line.product_id.default_code"/>
@@ -223,8 +212,6 @@
                                     </tr>
                                  -->
                             </table>
-                            <br/>
-                            <br/>
                             <span style="font-size:12px">CLAUSE DE RESERVE DE PROPRIETE: En application de l'article L021-122 de Commerce, les marchandises vendues resteront juridiquement notre propriété jusqu'à l'encaissement réel et définitif du total des sommes dues par le client.</span>
                             <br/>
                             <br/>
