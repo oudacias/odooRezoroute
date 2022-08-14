@@ -17,7 +17,7 @@ class PartnerExtra(models.Model):
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
     def get_pdf_contract(self):
-        maxi_rec = self.env['res.partner'].search([])
+        maxi_rec = self.env['sale.order'].search([])
         return {'type': 'ir.actions.report','report_name': 'client_contracts.contract_template','report_type':"qweb-pdf",'data': maxi_rec,}
 
 
