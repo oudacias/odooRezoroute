@@ -44,6 +44,7 @@
         
         'report/report_devis_template_or.xml',
         'report/report_devis_template.xml',
+        'report/report_test.xml',
 
 
         'report/report_demande_prix.xml',
