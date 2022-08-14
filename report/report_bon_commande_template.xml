@@ -3,8 +3,9 @@
 
        <template id="report_bon_commande_template" inherit_id="purchase.report_purchaseorder_document">
        <xpath expr="//div[hasclass('page')]" position="replace">
-            
+            <div class="page">
                                                     Tel 
+                                                </div>
                                                    
             </xpath>
         </template>
