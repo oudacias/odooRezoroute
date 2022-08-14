@@ -16,6 +16,18 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
+    @api.multi
+    def get_report(self):
+        data = {
+            'model': self._name,
+            'ids': self.ids,
+            'form': {
+                'id': self.id,
+            },
+        }
+
+        # ref `module_name.report_id` as reference.
+        return self.env.ref('custom_report_odoo12.sale_summary_report').report_action(self, data=data)
 
 
 
