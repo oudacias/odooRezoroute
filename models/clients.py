@@ -16,14 +16,7 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
-    def print_sample_report(self):
-        data = {
-    
-        'model_id': self.id,
-                   
-        }
-        # docids = self.env['purchase.order'].search([]).ids
-        return self.env.ref('ps_rezoroute.action_report_vehicle_order').report_action(None, data=data)
+
 
 
     @api.model
