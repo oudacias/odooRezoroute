@@ -16,7 +16,7 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
-    def get_pdf_contract(self, docids, data=None):
+    def get_pdf_contract(self):
         # maxi_rec = self.env['res.partner'].search([('id','=',self.id)])
         maxi_rec = self.browse([self.id])
 
