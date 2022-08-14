@@ -16,11 +16,14 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
-    def get_pdf_contract(self):
-        # maxi_rec = self.env['res.partner'].search([('id','=',self.id)])
-        maxi_rec = self.browse([self.id])
-
-        return {'type': 'ir.actions.report','report_name': 'client_contracts.contract_template','report_type':"qweb-pdf",'data': maxi_rec,}
+    def print_sample_report(self):
+        data = {
+    
+        'model_id': self.id,
+                   
+        }
+        # docids = self.env['purchase.order'].search([]).ids
+        return self.env.ref('module_name.action_report_vehicle_order').report_action(None, data=data)
 
 
     @api.model
