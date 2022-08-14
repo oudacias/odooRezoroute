@@ -2,7 +2,9 @@
 <odoo>
 <template id="report_bon_commande_template">
     <t t-call="web.external_layout">
+    <t t-foreach="docs" t-as="o">
         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+    </t>
     </t>
 </template>
 </odoo>
