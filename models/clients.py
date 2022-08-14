@@ -16,7 +16,6 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
-    @api.multi
     def get_report(self):
         data = {
             'model': self._name,
