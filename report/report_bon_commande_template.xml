@@ -6,7 +6,7 @@
             <t t-call="web.internal_layout">
 
                 <t t-foreach="docs" t-as="o">
-                <t t-set="o" t-value="o.with_context(lang='fr_FR')"/>
+                <!-- <t t-set="o" t-value="o.with_context(lang='fr_FR')"/> -->
                     <!-- <div class="header" style="top:1450pt"> -->
                         <!-- <div class="row"> -->
                             <!-- <td align="center" valign="center">
@@ -305,7 +305,7 @@
 18 Bd Al Massira AL KHADRA, Immeuble Massimo Dutti- Casablanca-Maroc</span>
 
                         
-                    </t>
+                    <!-- </t> -->
                     </t>
                 </t>
         </template>
