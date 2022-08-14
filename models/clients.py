@@ -16,6 +16,10 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
+    def get_pdf_contract(self):
+        context = self._generate_context()
+        return {'type': 'ir.actions.report','report_name': 'client_contracts.contract_template','report_type':"qweb-pdf",'data': context,}
+
 
     @api.model
     def create(self, values):
