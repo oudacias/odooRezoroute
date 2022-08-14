@@ -26,7 +26,7 @@ class PartnerExtra(models.Model):
         }
 
         # ref `module_name.report_id` as reference.
-        return self.env.ref('custom_report_odoo12.sale_summary_report').report_action(self, data=data)
+        return self.env.ref('ps_rezoroute.action_report_vehicle_order').report_action(self, data=data)
 
 
 
