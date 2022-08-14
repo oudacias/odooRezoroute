@@ -6,6 +6,7 @@
                 <t t-set="docs" t-value="docs.with_context(lang=docs.partner_id.lang)"/>
 
                 <t t-foreach="docs" t-as="o">
+                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
                     <!-- <div class="header" style="top:1450pt"> -->
                         <!-- <div class="row"> -->
                             <!-- <td align="center" valign="center">
