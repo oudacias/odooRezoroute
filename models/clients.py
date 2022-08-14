@@ -16,8 +16,10 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
-    def get_pdf_contract(self):
-        maxi_rec = self.env['res.partner'].search([('id','=',self.id)])
+    def get_pdf_contract(self, docids, data=None):
+        # maxi_rec = self.env['res.partner'].search([('id','=',self.id)])
+        maxi_rec = self.browse([self.id])
+
         return {'type': 'ir.actions.report','report_name': 'client_contracts.contract_template','report_type':"qweb-pdf",'data': maxi_rec,}
 
 
