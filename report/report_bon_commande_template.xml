@@ -2,7 +2,7 @@
     <odoo>
 
         <template id="report_bon_commande_template" inherit_id="purchase.action_report_purchase_order">
-            <xpath expr="//div[hasclass('page')]" position="replace">
+            <xpath expr="//div[hasclass('oe_structure')]" position="replace">
                 <div class="page">
                     Tel <t t-set="location" t-value="o.test()"/><t t-esc="location"/>
                 </div>
