@@ -71,7 +71,7 @@
                         <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
                                 <tr>
                                     <td rowspan="2" style="width:40%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
-                                        <strong>Devis</strong>
+                                        <strong>Ordre de réparation</strong>
                                           <!-- <span t-esc="lang" /> -->
                                     </td>
                                     <td style="white-space:nowrap; padding:5pt; font-size:11pt">
@@ -164,6 +164,29 @@
                                 </tr>
                             </thead>
                                 <t t-set="test_variable" t-value="0"/>
+                                <tr>
+                                        <td></td>
+                                        <td>
+                                            Véhicule : <span t-field="o.engin_id.model_id.brand_id.name"/>/<span t-field="o.engin_id.model_id.name"/>
+                                            <br/>
+                                            Kilométrage : <span t-field="o.odometer"/>
+                                            <br/>
+                                            Tél. client : <span t-field="o.mobile"/>
+                                            <br/>
+                                            Mécanicien : <span t-field="o.user_repair_id.name"/>
+
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </tr>
                                     <t t-foreach="o.order_line" t-as="line">
                                     <tr  >
                                         <td> 
