@@ -14,7 +14,7 @@
 
                         <button name="creer_ordre_reparation" string="Créer un ordre de réparation" 
                             type="object" class="oe_highlight"/>
-                            <button string="Test pdf x" type="object" name="get_pdf_contract" />
+                            <button string="Test pdf x" type="object" name="get_report" />
 
                     </header>
                 </xpath>
