@@ -2,6 +2,8 @@
     <odoo>
         <template id="report_facture_template">
             <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+
                 <div class="page">
                         <!-- <t t-foreach="o.invoice_ids" t-as="inv"> -->
                         <t t-foreach="docs" t-as="inv">
@@ -128,6 +130,7 @@
                             </t>
 
                 </div>
+            </t>
             </t>
         </template>
 
