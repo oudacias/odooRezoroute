@@ -23,7 +23,7 @@ class PartnerExtra(models.Model):
                    
         }
         # docids = self.env['purchase.order'].search([]).ids
-        return self.env.ref('module_name.action_report_vehicle_order').report_action(None, data=data)
+        return self.env.ref('ps_rezoroute.action_report_vehicle_order').report_action(None, data=data)
 
 
     @api.model
