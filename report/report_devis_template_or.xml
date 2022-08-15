@@ -6,6 +6,14 @@
             <t t-call="web.internal_layout">
 
                 <t t-foreach="docs" t-as="o">
+                <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
                      <div class="header">
                      <table class="table table-bordered">
                                     <tr>
