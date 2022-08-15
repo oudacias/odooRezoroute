@@ -6,34 +6,16 @@
             <t t-call="web.internal_layout">
 
                 <t t-foreach="docs" t-as="o">
-               
-                    
+                    <!-- <div class="header" style="top:1450pt"> -->
+                        <!-- <div class="row"> -->
+                            <!-- <td align="center" valign="center">
+                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                            </td> -->
+                        <!-- </div>
+                    </div> -->
                         <div class="page">
-                        <div class="header">
-                     <table class="table table-bordered">
-                                    <tr>
-                                        <td>
-                                            <div class="col-6">
-                                                <br/>
-                                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <span t-field="o.company_id.partner_id.name"/>
-                                                    <br/>
-                                                    <span t-field="o.company_id.street"/>
-                                                    <br/>
-                                                    <span>Tel :</span><span t-field="o.company_id.phone"/>
-                                                    <br/>
-                                                <br/>
-                                            </div>
-                                        </td>
-                                        
-                                    </tr>
-                                </table>
-                      
-                    </div>
-                            <!-- <div class="row" id="hash_header">
+                       
+                            <div class="row" id="hash_header">
                                 <table class="table table-bordered">
                                     <tr>
                                         <td>
@@ -56,7 +38,7 @@
                                     </tr>
                                 </table>
                                 
-                            </div> -->
+                            </div>
                         </div>
                         <style>
                             .fancy {
@@ -139,12 +121,6 @@
                                 </table>
                             </div>
                             <br/>
-
-                        <br/>
-                        <br/>
-                        <br/>
-
-                    
                          
                         <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;">
                         <thead style="background-color:#5D89C5">
@@ -203,7 +179,7 @@
                                         <td></td>
                                         
                                     </tr>
-                                        <br/>
+                                    <br/>
                                         <br/>
                                         <br/>
                                     <t t-foreach="o.order_line" t-as="line">
