@@ -118,6 +118,9 @@ class SaleOrderExtra(models.Model):
         for rec in self.order_line:
             if(rec.margin_percent < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):                    
                 raise ValidationError('Vous avez dépassé la marge du prix pour le produit ' + str(rec.product_id.name))
+        for rec in self.order_line:
+            if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil and rec.product_id.product_tmpl_id.categ_id.seuil > 0):                    
+                raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
 
 
             
