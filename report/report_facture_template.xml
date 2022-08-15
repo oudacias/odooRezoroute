@@ -12,16 +12,15 @@
                                     <td>
                                         <div class="col-6">
                                             <br/>
-                                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                                                <img t-if="inv.company_id.logo" t-att-src="image_data_uri(inv.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
                                                 <br/>
                                                 <br/>
                                                 <br/>
-                                                <span t-field="o.company_id.partner_id.name"/>
+                                                <span t-field="inv.company_id.partner_id.name"/>
                                                 <br/>
-                                                <span t-field="o.company_id.street"/>
+                                                <span t-field="inv.company_id.street"/>
                                                 <br/>
-                                                <span>Tel :</span><span t-field="o.company_id.phone"/>
-                                                Tel <t t-set="location" t-value="o.test()"/><t t-esc="location"/>
+                                                <span>Tel :</span><span t-field="inv.company_id.phone"/>
                                                 <br/>
                                             <br/>
                                         </div>
