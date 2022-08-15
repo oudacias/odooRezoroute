@@ -14,7 +14,20 @@
                     -->
                     <!-- <button name="action_order_deposit" string="Acompte" type="object" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" context="{'default_partner_id':partner_id, 'default_account_payment_type_id':account_payment_type_id, 'default_amount':amount_residual or amount_total}" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}"/> -->
                     
-                    <button name="action_confirm" string="Confirmer" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True),('state', 'not in', ['draft'])]}"/>
+                    <!-- <button name="action_confirm" string="Confirmer" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True),('state', 'not in', ['draft'])]}"/> -->
+                    <button name="action_confirm" id="action_confirm" data-hotkey="v"
+                        string="Confirm" class="btn-primary" type="object"
+                        attrs="{'invisible': [('state', 'not in', ['sent'])]}"/>
+                    <button name="action_confirm" data-hotkey="v"
+                        string="Confirm 2" type="object"
+                        attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <!-- <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight"  attrs="{'invisible': [('state','not in',['draft','to_prepare','making','prepared','','','',''])]}"/> -->
                     <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight"  attrs="{'invisible': [('state','!=','repair_order')]}"/>
 
