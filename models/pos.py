@@ -32,7 +32,7 @@ class PosSession(models.Model):
     espece = fields.Integer(compute='_compute_espece')
     # pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
-    total_compute = fields.Integer(compute='_total_compute')
+    total_compute = fields.Float(compute='_total_compute',string="Total")
     date_validation = fields.Datetime()
 
     method_id = fields.Text(string="Méthode de Paiement", compute='_get_method_name')
