@@ -218,7 +218,7 @@
                             <table>
                                 <tr>
                                     <td style="width:70%">
-                                        <span>COMMANDE à la somme de : <span t-esc="o.currency_id.with_context(lang='fr_FR').amount_to_text(o.amount_total)"/></span>
+                                        <span>Devis à la somme de : <span t-esc="o.currency_id.with_context(lang='fr_FR').amount_to_text(o.amount_total)"/></span>
                                     </td>
                                     <td>
                                         <table class="table table-bordered">

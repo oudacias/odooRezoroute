@@ -108,25 +108,40 @@
                                  <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;">
                                     <thead style="background-color:#5D89C5">
                                         <tr style="border:1pt solid white; height:40px">
-                                            <th style="border:1pt solid white;vertical-align:middle" name="th_description" class="text-center"><span style="padding:5pt">Description</span></th>
-                                            <th style="border:1pt solid white;vertical-align:middle" name="th_quantity" class="text-center"><span>Quantité</span></th>
-                                            <th style="border:1pt solid white;vertical-align:middle" name="th_priceunit" class="text-center"><span>Prix unitaire</span></th>
-                                            <th style="border:1pt solid white;vertical-align:middle" name="th_price_unit" t-if="display_discount" t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                                <span>Rem.%</span>
-                                            </th>
+                                            <th style="border:1pt solid white;vertical-align:middle" name="th_description" class="text-center"><span style="padding:5pt">Code Article</span></th>
+                                            <th style="border:1pt solid white;vertical-align:middle" name="th_description" class="text-center"><span style="padding:5pt">Désignation</span></th>
+                                            <th style="border:1pt solid white;vertical-align:middle" name="th_quantity" class="text-center"><span>Qté</span></th>
+                                            <th style="border:1pt solid white;vertical-align:middle" name="th_priceunit" class="text-center"><span>P.U HT</span></th>
+                                            <th style="border:1pt solid white;vertical-align:middle" name="th_price_unit" t-if="display_discount"> <span>Rem.%</span></th>
+                                            <th style="border:1pt solid white;vertical-align:middle" name="th_priceunit" class="text-center"><span>P.U Net HT</span></th>
+                                            <th style="border:1pt solid white;vertical-align:middle" name="th_priceunit" class="text-center"><span>Montant HT</span></th>
+
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_taxes" class="text-center"><span>TVA</span></th>
-                                            <th style="border:1pt solid white;vertical-align:middle" name="th_subtotal" class="text-center">
-                                                <span groups="account.group_show_line_subtotals_tax_excluded">Montant HT</span>
-                                                <span groups="account.group_show_line_subtotals_tax_included">Prix Total</span>
-                                            </th>
+                                            <th style="border:1pt solid white;vertical-align:middle" name="th_subtotal" class="text-center"><span>Montant TTC</span></th>
                                         </tr>
                                     </thead>
                                     <tbody style="background-color:#D3D3D3">
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                Bon de livraison <span t-field="inv.invoice_origin" /> du <span t-field="inv.stock_move_id.picking_id.date" />
+                                                <br/>
+                                                Bon de commande : <span t-field="inv.name" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
                                        
                                         <t t-foreach="inv.invoice_line_ids" t-as="line">
                                            
                                            
                                             <tr style="border:1pt solid white">
+                                                <td style="border:1pt solid white;vertical-align:top;padding-top:10px" name="account_invoice_line_code"><span style="padding:5pt" t-field="line.default_code" /></td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" name="account_invoice_line_name"><span style="padding:5pt" t-field="line.name" /></td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
                                                     <span t-field="line.quantity"/>
