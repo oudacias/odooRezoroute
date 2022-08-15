@@ -14,7 +14,7 @@
                             </td> -->
                         <!-- </div>
                     </div> -->
-                        <div class="page">
+                        <div class="page" style="margin-top:-100px !important">
                        
                             <div class="row" id="hash_header">
                                 <table class="table table-bordered">
