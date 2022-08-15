@@ -30,7 +30,7 @@
                     </group>      
                 </xpath>
                 <xpath expr="//field[@name='license_plate']" position="attributes">
-                    <attribute name="required">0</attribute>
+                    <attribute name="required">1</attribute>
                 </xpath>                  
             </field>
         </record>
