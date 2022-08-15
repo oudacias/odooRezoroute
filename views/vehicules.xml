@@ -25,13 +25,19 @@
                         <field name="partner_id" width="500" required="1"/>
                         <field name="last_buy"/>
                         <field name="last_servicing_date"/>
-                        <field name="odometer" required="1"/>  
+                        
                     </group>      
                     </group>      
                 </xpath>
                 <xpath expr="//field[@name='license_plate']" position="attributes">
                     <attribute name="required">1</attribute>
+                    <attribute name="odometer">1</attribute>
                 </xpath>                  
             </field>
         </record>
+        <menuitem id="sale_order_menu_or"
+            name="Ordre de réparation"
+            parent="sale.sale_menu_root"
+            sequence="2"/>
+
     </odoo>

@@ -16,6 +16,8 @@ class PartnerExtra(models.Model):
     is_cheque_flotte = fields.Boolean(string = 'Chèque flotte ?')
     pourcentage_remise = fields.Float(string = 'Pourcentage de la Remise ')
 
+    is_repair_user = fields.Boolean(string='Mécanicien ?')
+
     def get_report(self):
         data = {
             'model': self._name,
