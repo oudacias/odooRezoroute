@@ -115,9 +115,9 @@ class SaleOrderExtra(models.Model):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
                 raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
-        for rec in self.order_line:
-            if(rec.margin_percent <= rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):                    
-                raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
+        # for rec in self.order_line:
+        #     if(rec.margin_percent < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):                    
+        #         raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
 
         for rec in self.order_line:
             if(rec.margin_percent < 0):                    
