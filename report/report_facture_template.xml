@@ -3,11 +3,36 @@
         <template id="report_facture_template">
             <t t-call="web.html_container">
             <t t-call="web.internal_layout">
-
-                <div class="page">
+                <t t-foreach="docs" t-as="inv">
+                    <div class="page">
+                
+                        <div class="row" id="hash_header">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td>
+                                        <div class="col-6">
+                                            <br/>
+                                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <span t-field="o.company_id.partner_id.name"/>
+                                                <br/>
+                                                <span t-field="o.company_id.street"/>
+                                                <br/>
+                                                <span>Tel :</span><span t-field="o.company_id.phone"/>
+                                                Tel <t t-set="location" t-value="o.test()"/><t t-esc="location"/>
+                                                <br/>
+                                            <br/>
+                                        </div>
+                                    </td>
+                                    
+                                </tr>
+                            </table>
+                                
+                        </div>
                         <!-- <t t-foreach="o.invoice_ids" t-as="inv"> -->
-                        <t t-foreach="docs" t-as="inv">
-                                <img t-if="inv.company_id.logo" t-att-src="image_data_uri(inv.company_id.logo)" style="max-height:45pt;max-width:90%;" alt="Company Logo"/>
+                        
 
                            
                                 <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
@@ -81,8 +106,8 @@
 
                                 <!-- <t t-set="display_discount" t-value="any(l.discount for l in inv.invoice_line_ids)"/> -->
 
-                                <table name="invoice_line_table" style="display: block;height:400px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
-                                    <thead style="background-color:#AFAFAF">
+                                 <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;">
+                                    <thead style="background-color:#5D89C5">
                                         <tr style="border:1pt solid white; height:40px">
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_description" class="text-center"><span style="padding:5pt">Description</span></th>
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_quantity" class="text-center"><span>Quantité</span></th>
@@ -127,9 +152,12 @@
                                 </table>
 
                                 <br/>
-                            </t>
+                            
 
                 </div>
+                
+
+            </t>
             </t>
             </t>
         </template>
