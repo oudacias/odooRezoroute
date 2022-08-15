@@ -6,15 +6,10 @@
             <t t-call="web.internal_layout">
 
                 <t t-foreach="docs" t-as="o">
-                <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                     <div class="header">
+               
+                    
+                        <div class="page">
+                        <div class="header">
                      <table class="table table-bordered">
                                     <tr>
                                         <td>
@@ -38,9 +33,7 @@
                                 </table>
                       
                     </div>
-                        <!-- <div class="page">
-                       
-                            <div class="row" id="hash_header">
+                            <!-- <div class="row" id="hash_header">
                                 <table class="table table-bordered">
                                     <tr>
                                         <td>
@@ -63,8 +56,8 @@
                                     </tr>
                                 </table>
                                 
-                            </div>
-                        </div> -->
+                            </div> -->
+                        </div>
                         <style>
                             .fancy {
     color:#fff;
