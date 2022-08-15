@@ -116,8 +116,8 @@ class SaleOrderExtra(models.Model):
                 raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
         for rec in self.order_line:
-            if(rec.margin_percent < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):   
-                print("Margin Percentage: " + str(rec.margin_percent))                
+            if(rec.margin_percent * 100 < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):   
+                print("Margin Percentage: " + str(rec.margin_percent * 100))                
                 print("Margin Percentage Product: %d" % rec.product_id.product_tmpl_id.categ_id.marge)                 
                 raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
 
