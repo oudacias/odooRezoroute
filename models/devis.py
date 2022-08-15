@@ -9,7 +9,7 @@ class Devis(models.Model):
     _inherit = 'sale.order'
 
 
-    odometer = fields.Float(string="Kilométrage")
+    odometer = fields.Integer(string="Kilométrage")
 
     partner_ref = fields.Char(string="Code Client")
     mobile = fields.Char(string="Tel. portable")

@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models,api
 
 class Vehicle(models.Model):
 
@@ -20,6 +20,19 @@ class Vehicle(models.Model):
     nb_porte = fields.Text(string="NB Portes")
 
     engine_maintenance_variant = fields.Many2one('engine.maintenance.variant')
+
+
+
+    @api.model
+    def create(self, values):
+        odometer_history = self.env['odometer.history'].search([])
+        odometer_history.create({   'vehicle_id': self.id,
+                                    'odometer':self.odometer
+                                })
+
+        
+        q= super(Vehicle, self).create(values) 
+        return q
 
 
 class EngineMotor(models.Model):
@@ -179,6 +192,14 @@ class EngineMaintenancevariant(models.Model):
     _name="engine.maintenance.variant"
 
     name = fields.Char(string="Désignation")
+
+
+
+class OdoMeter(models.Model):
+    _name ="odometer.history"
+
+    vehicle_id = fields.Many2one('fleet.vehicle')
+    odometer = fields.Integer()
     
 
 

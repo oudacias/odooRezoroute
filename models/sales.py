@@ -333,7 +333,7 @@ class ConfirmRepairOrder(models.Model):
     client_id = fields.Many2one('res.partner',string="Client")
     engin_order_id = fields.Many2one('fleet.vehicle',string="Véhicule")
     
-    odometer = fields.Float(string="Kilométrage")
+    odometer = fields.Integer(string="Kilométrage")
     next_distri_date = fields.Date(strign="Prochaine Distri.")
     next_ct_date = fields.Date(strign="Prochaine C.T.")
 
