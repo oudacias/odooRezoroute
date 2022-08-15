@@ -20,7 +20,7 @@
                         attrs="{'invisible': [('state', 'not in', ['sent'])]}"/>
                     <button name="action_confirm" data-hotkey="v"
                         string="Confirm 2" type="object"
-                        attrs="{'invisible': [('state', 'not in', ['draft']), ('hide_confirm', '=', True)]}"/>
+                        attrs="{'invisible': [('state', 'not in', ['draft']), ('hide_confirm', '=', True)]}" modifiers="{'invisible': [('state', 'not in', ['draft']), ('hide_confirm', '=', True)]}"/>
                     
                     
                     
