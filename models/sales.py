@@ -117,7 +117,7 @@ class SaleOrderExtra(models.Model):
 
         for rec in self.order_line:
             if(rec.margin_percent < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):   
-                print("Margin Percentage: %d" % rec.margin_percent)                 
+                print("Margin Percentage: " + str(rec.margin_percent))                
                 print("Margin Percentage Product: %d" % rec.product_id.product_tmpl_id.categ_id.marge)                 
                 raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
 
