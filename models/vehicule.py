@@ -25,15 +25,15 @@ class Vehicle(models.Model):
 
     @api.model
     def create(self, values):
-        odometer_history = self.env['odometer.history'].search([])
-        print("@@@@@@@@@@@@@   odometer_history: %s" % self.odometer)
-        # odometer_history.create({   'vehicle_id': self.id,
-        #                             'odometer':self.odometer
-        #                         })
+        # odometer_history = self.env['odometer.history'].search([])
+        # print("@@@@@@@@@@@@@   odometer_history: %s" % self.odometer)
+        # # odometer_history.create({   'vehicle_id': self.id,
+        # #                             'odometer':self.odometer
+        # #                         })
 
         
-        # q= super(Vehicle, self).create(values) 
-        # return q
+        q= super(Vehicle, self).create(values) 
+        return q
 
 
 class EngineMotor(models.Model):
