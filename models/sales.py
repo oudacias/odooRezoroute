@@ -117,10 +117,10 @@ class SaleOrderExtra(models.Model):
 
         for rec in self.order_line:
             if(rec.margin_percent <= rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):                    
-                raise ValidationError('Vous avez dépassé la marge du prix pour le produit ' + str(rec.product_id.name))
+                raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
 
         for rec in self.order_line:
-            if(rec.product_id.product_tmpl_id.categ_id.marge < 0):                    
+            if(rec.margin_percent < 0):                    
                 raise ValidationError('La marge du prix pour le produit ' + str(rec.product_id.name) + ' ne peut pas être négative')
 
         for rec in self.order_line:
