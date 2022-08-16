@@ -113,7 +113,6 @@
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_quantity" class="text-center"><span>Qté</span></th>
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_priceunit" class="text-center"><span>P.U HT</span></th>
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_price_unit" t-if="display_discount"> <span>Rem.%</span></th>
-                                            <th style="border:1pt solid white;vertical-align:middle" name="th_priceunit" class="text-center"><span>P.U Net HT</span></th>
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_priceunit" class="text-center"><span>Montant HT</span></th>
 
                                             <th style="border:1pt solid white;vertical-align:middle" name="th_taxes" class="text-center"><span>TVA</span></th>
@@ -154,11 +153,10 @@
                                                     <span class="text-nowrap" t-field="line.discount"/>
                                                 </td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-left">
-                                                    <span style="padding:5pt" t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/>
+                                                   <span class="text-nowrap" t-field="line.taxes_id.amount"/>
                                                 </td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
                                                     <span t-field="line.price_subtotal"/>
-                                                    <span t-field="line.price_total"/>
                                                 </td>
                                             </tr>
                                         </t>
