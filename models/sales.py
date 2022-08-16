@@ -271,6 +271,7 @@ class SaleOrderExtra(models.Model):
                                     'price_subtotal': rec.price_subtotal,
                                     'price_total': rec.price_total,
                                     'currency_id': rec.currency_id.id,
+                                    'discount' :rec.discount,
                                 }))
             
                 a=self.env['account.move'].create({
@@ -283,6 +284,7 @@ class SaleOrderExtra(models.Model):
                             'move_type':"out_invoice",
                             'session_id': session.id,
                             'payment_reference': self.name,
+                            
 
                             # 'echeance_id':line.id, 
                             # 'taux':line.abonnement_id.devis_id.taux,

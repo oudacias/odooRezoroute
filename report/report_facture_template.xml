@@ -166,6 +166,102 @@
                                 </table>
 
                                 <br/>
+                                CLAUSE DE RESERVE DE PROPRIETE: En application de l'article L021-122 de Commerce, les marchandises vendues resteront juridiquement notre propriété jusqu'à
+l'encaissement réel et définitif du total des sommes dues par le client.
+                            <br/>
+                            <br/>
+                            <table>
+                                <tr>
+                                    <td style="width:70%">
+                                        <!-- <span>DEVIS à la somme de : <span t-field="o.amount_to_text(o.amount_total,'Euro')"/></span> -->
+                                        <span>FACTURE à la somme de : <span t-esc="o.currency_id.with_context(lang='fr_FR').amount_to_text(o.amount_total)"/></span>
+                                    </td>
+                                    <td>
+                                        <table class="table table-bordered">
+                                            <tbody style="background-color:#F5F5F5">
+                                                <tr>
+                                                    <td><b>Total H.T.</b></td>
+                                                    <td><span t-field="inv.amount_untaxed"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>Total TVA</b></td>
+                                                    <td><span t-field="inv.amount_tax"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>TOTAL TTC (DHS)</b></td>
+                                                    <td> <span t-field="inv.amount_total"/></td>
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table table-bordered" style="width: 100%;">
+                                <tr>
+                                    <td style="width: 20%">
+                                        Tout retard de règlement donnera lieu de plein
+                                        droit et sans qu'aucune mise en demeure ne
+                                        soit nécessaire, au paiement de pénalités
+                                        égales à 3 fois le taux d'intérêt légal et au
+                                        paiement d'une indemnité forfaitaire pour frais
+                                        de recouvrement d'un montant de 40 DHS
+                                        
+                                    </td>
+                                    <td>
+                                        <table class="table table-bordered" style="width: 100%;height:200px">
+                                            <thead style="background-color:#5D89C5">
+                                                <tr>
+                                                    <th style="color:white">
+                                                        Base TVA
+                                                    </th>
+                                                    <th style="color:white">
+                                                        Montant de TVA
+                                                    </th>
+                                                    <th style="color:white">
+                                                        Taux de TVA
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="background-color:#F5F5F5;height:200px;">
+                                                <tr>
+                                                    <!-- <td> -->
+                                                        <t t-set="tax_totals" t-value="json.loads(inv.tax_totals_json)"/>
+                                                            <t t-foreach="tax_totals['subtotals']" t-as="subtotal">
+                                                                <t t-set="subtotal_to_show" t-value="subtotal['name']"/>
+                                                                <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
+                                                                    <t t-if="len(tax_totals['groups_by_subtotal'][subtotal_to_show]) > 1">
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                        <!-- <span class="text-right" t-esc="amount_total['amount_untaxed']"/>
+                                                                        <span class="text-right" t-esc="amount_by_group['amount_untaxed']"/>
+                                                                        <span class="text-right" t-esc="amount_by_group['tax_group_amount']"/> -->
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_base_amount']"/></td>
+
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_amount']" /></td>
+                                                                        <td><span class="text-right" t-esc="amount_by_group['tax_group_name']" /></td>
+                                                                    </t>
+                                                                </t> 
+                                                            </t>
+                                                    <!-- </td> -->
+                                                    <!-- <td><span t-field="o.tax_totals_json"/></td> -->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                                
+                                                
+                                </tr>
+                            </table>
+                            <br/>
+                            <span style="font-size:12px">REZOROUTE S.A AU CAPITAL DE DH 10 700 000 - ICE: 001526657000023 - R.C. 65155 - I.F. 01640196 - C.N.S.S. 2150308 - Patente 31831461
+18 Bd Al Massira AL KHADRA, Immeuble Massimo Dutti- Casablanca-Maroc</span>
                             
 
                 </div>
