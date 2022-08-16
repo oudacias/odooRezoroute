@@ -81,11 +81,8 @@
                                             <td style="width:45%; border: 1px solid black; padding:10pt; vertical-align:top">
                                                 <strong>LIVRÉ À:</strong>
                                                 <div style="padding:10pt">
-                                                    <span t-if="inv.partner_shipping_id"><strong><span t-esc="inv.partner_shipping_id.name"/></strong> <br/></span>
-                                                    <span t-if="inv.partner_shipping_id.street"><span t-esc="inv.partner_shipping_id.street"/> <br/></span>
-                                                    <span t-if="inv.partner_shipping_id.street2"><span t-esc="inv.partner_shipping_id.street2"/> <br/></span>
-                                                    <span t-if="inv.partner_shipping_id.city"><span t-esc="inv.partner_shipping_id.city"/> <br/></span>
-                                                    <span t-if="inv.partner_shipping_id.phone">Tél: <span t-esc="inv.partner_shipping_id.phone"/> </span>
+                                                    <span t-if="o.location_name"><strong><span t-esc="o.location_name"/></strong> <br/></span>
+                                                   
                                                 </div>
                                             </td>
                                         </tr>
