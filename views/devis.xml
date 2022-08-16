@@ -16,14 +16,11 @@
                     
                     <!-- <button name="action_confirm" string="Confirmer" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True),('state', 'not in', ['draft'])]}"/> -->
                     <button name="action_confirm" id="action_confirm" data-hotkey="v"
-                        string="Confirm" class="btn-primary" type="object"
+                        string="Confirmer" class="btn-primary" type="object"
                         attrs="{'invisible': [('state', 'not in', ['sent'])]}"/>
-                    <button name="action_confirm" data-hotkey="v"
-                        string="Confirm 2" type="object"
-                        attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
 
                     <button name="action_confirm" data-hotkey="v"
-                        string="Confirm 3" type="object"
+                        string="Confirmer" type="object"
                        attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', true]]}"/>
                     
                     
