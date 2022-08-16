@@ -123,7 +123,10 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                Bon de livraison <t t-foreach="inv.purchase_id.picking_ids" t-as="o"> <span t-field="o.name" /> du <span t-field="o.date_done" /> </t>
+                                                Bon de livraison 
+                                                    <!-- <t t-foreach="inv.purchase_id" t-as="o">  -->
+                                                        <span t-field="inv.purchase_id" /> 
+                                                        <!-- du <span t-field="o.date_done" /> </t> -->
                                                 <br/>
                                                 Bon de commande : <span t-field="inv.purchase_id.name" />
                                             </td>
@@ -211,7 +214,7 @@ l'encaissement réel et définitif du total des sommes dues par le client.
                                     </td>
                                     <td style="width: 50%">
                                         <table class="table table-bordered" style="width: 100%;height:200px">
-                                            <thead style="background-color:#5D89C5">
+                                            <thead style="background-color:#F5F5F5">
                                                 <tr>
                                                     <th style="color:white">
                                                         Base TVA
