@@ -124,11 +124,12 @@
                                             <td></td>
                                             <td>
                                                 Bon de livraison 
+                                                <t t-set="location" t-value="inv.get_info()"/><t t-esc="location"/>
                                                     <!-- <t t-foreach="inv.purchase_id" t-as="o">  -->
-                                                        <span t-field="inv.purchase_id" /> 
+                                                        <!-- <span t-field="inv.invoice_origin" />  -->
                                                         <!-- du <span t-field="o.date_done" /> </t> -->
                                                 <br/>
-                                                Bon de commande : <span t-field="inv.purchase_id.name" />
+                                                Bon de commande : <span t-field="inv.invoice_origin" />
                                             </td>
                                             <td></td>
                                             <td></td>

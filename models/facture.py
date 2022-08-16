@@ -21,6 +21,9 @@ class AcoountMoveExtra(models.Model):
 
         q= super(AcoountMoveExtra, self).create(vals) 
         return q
+    def get_info(self):
+        purchase_order = self.env['purchase.order'].search([('name','=',self.invoice_origin)])
+        return purchase_order.id
 
 
 class StockPickingExtra(models.Model):
