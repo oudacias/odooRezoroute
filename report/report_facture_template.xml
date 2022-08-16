@@ -153,7 +153,7 @@
                                                     <span class="text-nowrap" t-field="line.discount"/>
                                                 </td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-left">
-                                                   <span class="text-nowrap" t-field="line.taxes_id.amount"/>
+                                                   <span class="text-nowrap" t-field="line.tax_ids.amount"/>
                                                 </td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
                                                     <span t-field="line.price_subtotal"/>
