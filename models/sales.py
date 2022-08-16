@@ -104,7 +104,7 @@ class SaleOrderExtra(models.Model):
     def hide_repair_order(self):
         
 
-        if(self.is_repair_order and self.state == 'repair_order'):
+        if(self.is_repair_order):
             self.hide_confirm = True
 
 
