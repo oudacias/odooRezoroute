@@ -158,6 +158,9 @@
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
                                                     <span t-field="line.price_subtotal"/>
                                                 </td>
+                                                <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
+                                                    <span t-field="line.price_total"/>
+                                                </td>
                                             </tr>
                                         </t>
                                     </tbody>
