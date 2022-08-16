@@ -133,7 +133,6 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
                                         </tr>
                                        
                                         <t t-foreach="inv.invoice_line_ids" t-as="line">
@@ -152,11 +151,12 @@
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" t-if="display_discount" class="text-right">
                                                     <span class="text-nowrap" t-field="line.discount"/>
                                                 </td>
-                                                <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-left">
-                                                   <span class="text-nowrap" t-field="line.tax_ids.amount"/>
-                                                </td>
+                                               
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
                                                     <span t-field="line.price_subtotal"/>
+                                                </td>
+                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-left">
+                                                   <span class="text-nowrap" t-field="line.tax_ids.amount"/>
                                                 </td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
                                                     <span t-field="line.price_total"/>
