@@ -124,7 +124,7 @@
                                             <td></td>
                                             <td>
                                                 Bon de livraison 
-                                                <t t-set="location" t-value="inv.get_info()"/><t t-esc="location"/>
+                                                <t t-set="stock" t-value="inv.get_info()"/><t t-esc="stock.name"/>
                                                     <!-- <t t-foreach="inv.purchase_id" t-as="o">  -->
                                                         <!-- <span t-field="inv.invoice_origin" />  -->
                                                         <!-- du <span t-field="o.date_done" /> </t> -->
