@@ -145,7 +145,7 @@
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" name="account_invoice_line_name"><span style="padding:5pt" t-field="line.name" /></td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
                                                     <span t-field="line.quantity"/>
-                                                    <span t-field="line.product_uom_id" groups="uom.group_uom"/>
+                                                    
                                                 </td>
                                                 <td style="border:1pt solid white;vertical-align:top;padding-top:10px" class="text-right">
                                                     <span class="text-nowrap" t-esc="'%.2f' % line.price_unit"/>
