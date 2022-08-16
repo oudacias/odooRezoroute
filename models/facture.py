@@ -23,7 +23,7 @@ class AcoountMoveExtra(models.Model):
         return q
     def get_info(self):
         purchase_order = self.env['purchase.order'].search([('name','=',self.invoice_origin)])
-        return purchase_order.id
+        return purchase_order.picking_ids
 
 
 class StockPickingExtra(models.Model):
