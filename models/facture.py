@@ -27,6 +27,7 @@ class AcoountMoveExtra(models.Model):
             return purchase_order.picking_ids
         else:
             sale_order = self.env['sale.order'].search([('name','=',self.invoice_origin)])
+            return sale_order.picking_ids
 
 
 
