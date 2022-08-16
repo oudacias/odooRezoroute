@@ -423,7 +423,7 @@ class ConfirmRepairOrder(models.Model):
 
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
-        self.hide_confirm = True
+        self.sale_order_id.hide_confirm = True
 
 
 
