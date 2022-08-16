@@ -92,7 +92,7 @@
                
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    <field name="hide_confirm" invisible="1"/>
+                    <field name="hide_confirm"/>
 
                     <field name="partner_ref" readonly="1"/>
                     <field name="paid_check" invisible="1"/>
