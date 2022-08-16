@@ -184,7 +184,7 @@ class SaleOrderExtra(models.Model):
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
 
-        self.hide_confirm = False
+        self.hide_confirm = True
 
         return True
 
@@ -423,7 +423,7 @@ class ConfirmRepairOrder(models.Model):
 
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
-        self.hide_confirm = False
+        self.hide_confirm = True
 
 
 
