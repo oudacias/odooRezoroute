@@ -21,7 +21,7 @@
 
                     <button name="action_confirm" data-hotkey="v"
                         string="Confirmer" type="object"
-                       attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', true], ['is_repair_order', '=', true]]}"/>
+                       attrs="{'invisible': ['|', ('hide_confirm', '=', False),('is_repair_order', '=', True)]}" modifiers="{'invisible': ['|', ['hide_confirm', '=', False], ['is_repair_order', '=', true]]}"/>
                     
                     
                     
