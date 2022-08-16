@@ -284,6 +284,7 @@ class SaleOrderExtra(models.Model):
                             'move_type':"out_invoice",
                             'session_id': session.id,
                             'payment_reference': self.name,
+                            'invoice_origin': self.name,
                             
 
                             # 'echeance_id':line.id, 
