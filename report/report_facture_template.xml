@@ -199,7 +199,7 @@ l'encaissement réel et définitif du total des sommes dues par le client.
                             </table>
                             <table class="table table-bordered" style="width: 100%;">
                                 <tr>
-                                    <td style="width: 20%">
+                                    <td style="width: 30%;font-size:11pt">
                                         Tout retard de règlement donnera lieu de plein
                                         droit et sans qu'aucune mise en demeure ne
                                         soit nécessaire, au paiement de pénalités
@@ -208,7 +208,7 @@ l'encaissement réel et définitif du total des sommes dues par le client.
                                         de recouvrement d'un montant de 40 DHS
                                         
                                     </td>
-                                    <td>
+                                    <td style="width: 50%">
                                         <table class="table table-bordered" style="width: 100%;height:200px">
                                             <thead style="background-color:#5D89C5">
                                                 <tr>
