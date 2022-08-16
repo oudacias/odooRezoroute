@@ -27,8 +27,6 @@
                     
                     
                     
-                    
-                    
                     <!-- <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight"  attrs="{'invisible': [('state','not in',['draft','to_prepare','making','prepared','','','',''])]}"/> -->
                     <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight"  attrs="{'invisible': [('state','!=','repair_order')]}"/>
 
