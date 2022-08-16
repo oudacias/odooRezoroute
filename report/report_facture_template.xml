@@ -123,9 +123,9 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                Bon de livraison <span t-field="inv.invoice_origin" /> du <span t-field="inv.stock_move_id.picking_id.date" />
+                                                Bon de livraison <span t-field="inv.purchase_id.stock_id.name" /> du <span t-field="inv.purchase_id.stock_id.date_done" />
                                                 <br/>
-                                                Bon de commande : <span t-field="inv.name" />
+                                                Bon de commande : <span t-field="inv.purchase_id.name" />
                                             </td>
                                             <td></td>
                                             <td></td>
@@ -200,7 +200,7 @@ l'encaissement réel et définitif du total des sommes dues par le client.
                             </table>
                             <table class="table table-bordered" style="width: 100%;">
                                 <tr>
-                                    <td style="width: 30%;font-size:11pt">
+                                    <td style="width: 30%;font-size:9pt;background-color:#5D89C5">
                                         Tout retard de règlement donnera lieu de plein
                                         droit et sans qu'aucune mise en demeure ne
                                         soit nécessaire, au paiement de pénalités
