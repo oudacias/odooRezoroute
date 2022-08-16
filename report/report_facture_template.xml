@@ -81,7 +81,7 @@
                                             <td style="width:45%; border: 1px solid black; padding:10pt; vertical-align:top">
                                                 <strong>LIVRÉ À:</strong>
                                                 <div style="padding:10pt">
-                                                    <span t-if="o.location_name"><strong><span t-esc="o.location_name"/></strong> <br/></span>
+                                                    <span t-if="inv.location_name"><strong><span t-esc="inv.location_name"/></strong> <br/></span>
                                                    
                                                 </div>
                                             </td>
