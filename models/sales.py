@@ -482,4 +482,4 @@ class PaymentRegister(models.TransientModel):
     @api.onchange('cash_amount')
     def on_cash_amount(self):
         if(self.cash_amount):
-            self.cash_amount_residual = self.amount - self.cash_amount
+            self.cash_amount_residual = self.cash_amount - self.amount 
