@@ -21,7 +21,7 @@
 
                     <button name="action_confirm" data-hotkey="v"
                         string="Confirmer" type="object"
-                       attrs="{'invisible': [('hide_confirm', '=', True)]}" modifiers="{'invisible': [['hide_confirm', '=', True]]}"/>
+                       attrs="{'invisible': [('hide_confirm', '=', False)]}" modifiers="{'invisible': [['hide_confirm', '=', False]]}"/>
                     
                     
                     
