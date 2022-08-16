@@ -174,7 +174,7 @@ l'encaissement réel et définitif du total des sommes dues par le client.
                                 <tr>
                                     <td style="width:70%">
                                         <!-- <span>DEVIS à la somme de : <span t-field="o.amount_to_text(o.amount_total,'Euro')"/></span> -->
-                                        <span>FACTURE à la somme de : <span t-esc="o.currency_id.with_context(lang='fr_FR').amount_to_text(o.amount_total)"/></span>
+                                        <span>FACTURE à la somme de : <span t-esc="inv.currency_id.with_context(lang='fr_FR').amount_to_text(inv.amount_total)"/></span>
                                     </td>
                                     <td>
                                         <table class="table table-bordered">
