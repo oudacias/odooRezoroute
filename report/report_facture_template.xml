@@ -93,7 +93,7 @@
                                 </div>
                                 <br/>
 
-                                <div style="font-family: Tahoma; font-size:11pt; width:100%">
+                                <!-- <div style="font-family: Tahoma; font-size:11pt; width:100%">
                                     <div name="div_origin" style="float:left">
                                         <strong style="padding:5pt">Votre Commande: </strong>
                                         <span t-field="inv.invoice_origin"/>
@@ -101,7 +101,7 @@
                                     <div style="float:right">
                                         <strong>Bon de Livraison:</strong> <span t-field="inv.invoice_origin"/>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!-- <t t-set="display_discount" t-value="any(l.discount for l in inv.invoice_line_ids)"/> -->
 
