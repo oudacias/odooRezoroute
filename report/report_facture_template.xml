@@ -123,9 +123,10 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                Bon de livraison <span t-field="inv.purchase_id.stock_id.name" /> du <span t-field="inv.purchase_id.stock_id.date_done" />
+                                                Bon de livraison <span t-field="inv.stock_move_id.picking_id.name" /> 
+                                                <!-- du <span t-field="inv.purchase_id.stock_id.date_done" /> -->
                                                 <br/>
-                                                Bon de commande : <span t-field="inv.purchase_id.name" />
+                                                <!-- Bon de commande : <span t-field="inv.purchase_id.name" /> -->
                                             </td>
                                             <td></td>
                                             <td></td>
