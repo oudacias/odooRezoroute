@@ -97,15 +97,21 @@ class SaleOrderExtra(models.Model):
     @api.depends('is_repair_order')
     def hide_repair_order(self):
         
-        if(self.is_repair_order and self.state == 'repair_order'):
-            self.hide_confirm = True           
+        
+        if(self.is_repair_order == True):
+            self.hide_confirm = True
+        else:
+            self.hide_confirm = False        
 
     @api.onchange('is_repair_order')
     def hide_repair_order(self):
         
 
-        if(self.is_repair_order):
+        if(self.is_repair_order == True):
             self.hide_confirm = True
+        else:
+            self.hide_confirm = False
+
 
 
     def action_confirm(self):
