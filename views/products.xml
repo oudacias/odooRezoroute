@@ -10,6 +10,8 @@
                         <group>
                         <!-- <label for="ps_code_article" string="Code de l'article"/>
                         <div class="d-flex">-->
+                            <field class="o_text_overflow" name="category_product"/>
+                            <field class="o_text_overflow" name="product_code"/>
                             <field class="o_text_overflow" name="ps_code_article"/>
                         <!--</div> -->
                         <!-- <label for="manufacturer_id" string="Constructeur"/>

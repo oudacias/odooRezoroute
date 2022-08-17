@@ -4,6 +4,15 @@ class ProductTemplateExtraa(models.Model):
 
     _inherit = 'product.template'
 
+
+    # ----------------temp fields
+
+    category_product = fields.Text(string="Catégarie du produit")
+    product_code = fields.Text(string="Code du produit")
+
+
+    # ----------------temp fields end
+
     image1 = fields.Image(String="Image 1")
     image2 = fields.Image(String="Image 2")
 
