@@ -36,11 +36,9 @@ class SaleOrderExtra(models.Model):
 
     def _paid_check(self):
 
-        print("@@@ Paid Facture "+ str(len(self.invoice_ids)))
-
         if(len(self.invoice_ids) > 0):
 
-            self.paid_check = True
+            self.paid_check = False
         
 
         if(len(self.invoice_ids) == 0):
