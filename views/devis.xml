@@ -43,7 +43,7 @@
                          type="object" class="btn-primary" data-hotkey="q" attrs="{'invisible': [('invoice_check', '=', True)]}"
                         />
                     <button name="create_payment_move" string="Régler Facture"
-                        attrs="{'invisible': [('paid_check1', '=', True)]}" type="object" class="btn-primary" data-hotkey="q"
+                        attrs="{'invisible': [('paid_check', '=', True)]}" type="object" class="btn-primary" data-hotkey="q"
                         />
                     <!-- <button name="create_payment_move" string="Créer facture" type="object" class="oe_highlight"  attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}" modifiers="{'invisible': [['state','=','sale']]}" readonly="0"/> -->
                     <!-- <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0"> -->
@@ -93,7 +93,7 @@
                     <field name="hide_confirm"/>
 
                     <field name="partner_ref" readonly="1"/>
-                    <field name="paid_check1" readonly="0"/>
+                    <field name="paid_check" readonly="0"/>
                     <field name="invoice_check" readonly="0"/>
                     <field name="mobile" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                     <field name="phone"  modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>

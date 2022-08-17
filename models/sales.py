@@ -33,7 +33,7 @@ class SaleOrderExtra(models.Model):
     invoice_compute = fields.Integer(compute="_compute_invoice_count")
 
     invoice_check = fields.Boolean(compute="_invoice_check")
-    paid_check1 = fields.Boolean(compute="_paid_check")
+    paid_check = fields.Boolean(compute="_paid_check")
 
     def _invoice_check(self):
 
@@ -42,15 +42,13 @@ class SaleOrderExtra(models.Model):
             self.invoice_check = True
 
     def _paid_check(self):
-        self.paid_check1 = False
+        self.paid_check = False
+
         if(len(self.invoice_ids) > 0):
 
-            
-
-            if(self.invoice_ids.payment_state == 'not_paid'):
-
-                self.paid_check1 = True
-
+            if(self.invoice_ids.payment_state == 'paid'):
+                self.paid_check = True
+           
 
       
 
