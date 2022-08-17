@@ -40,6 +40,9 @@ class SaleOrderExtra(models.Model):
         if(len(self.invoice_ids) > 0):
 
             self.invoice_check = True
+        else:
+            self.invoice_check = False
+
 
     def _paid_check(self):
         self.paid_check = False
