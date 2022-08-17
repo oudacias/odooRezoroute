@@ -12,7 +12,7 @@
                 <xpath expr="//field[@name='partner_bank_id']" position="after">
                     <!-- <group> -->
                         <field name="is_cash"  invisible="1"/>
-                        <field name="cash_amount"  attrs="{'invisible': [('is_cash', '=', False)]}" />
+                        <field name="cash_amount"  invisible="1" />
                         <field name="cash_amount_residual" readonly="1" attrs="{'invisible': [('is_cash', '=', False)]}"/>
 
                     <!-- </group> -->

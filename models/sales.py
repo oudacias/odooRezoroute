@@ -479,7 +479,8 @@ class PaymentRegister(models.TransientModel):
         self.is_cheque = self.journal_id.name
             
 
-    @api.onchange('cash_amount')
+    @api.onchange('amount')
     def on_cash_amount(self):
+        
         if(self.cash_amount):
             self.cash_amount_residual = self.cash_amount - self.amount 
