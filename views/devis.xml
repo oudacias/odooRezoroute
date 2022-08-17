@@ -15,15 +15,15 @@
                     <!-- <button name="action_order_deposit" string="Acompte" type="object" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" context="{'default_partner_id':partner_id, 'default_account_payment_type_id':account_payment_type_id, 'default_amount':amount_residual or amount_total}" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}"/> -->
                     
                     <!-- <button name="action_confirm" string="Confirmer" id="action_button_confirm_repair_order" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('hide_confirm', '=', True),('is_repair_order', '=', True),('state', 'not in', ['draft'])]}"/> -->
-                    <button name="action_confirm" id="action_confirm" data-hotkey="v"
+                    <!-- <button name="action_confirm" id="action_confirm" data-hotkey="v"
                         string="Confirmer" class="btn-primary" type="object"
-                       />
+                       /> -->
 
-                    <!-- <button name="action_confirm" data-hotkey="v"
+                    <button name="action_confirm" data-hotkey="v"
                         string="Confirmer" type="object"
                        attrs="{'invisible': [('hide_confirm', '=', False)]}" modifiers="{'invisible': [['hide_confirm', '=', False]]}"/>
                     
-                     -->
+                    
                     
                     
                     
@@ -90,7 +90,7 @@
                
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
-                    <field name="hide_confirm" invisible="1"/>
+                    <field name="hide_confirm"/>
 
                     <field name="partner_ref" readonly="1"/>
                     <field name="paid_check" invisible="1"/>
