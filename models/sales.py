@@ -42,10 +42,11 @@ class SaleOrderExtra(models.Model):
             self.invoice_check = True
 
     def _paid_check(self):
+        if(len(self.invoice_ids) > 0):
 
-        # if(self.invoice_ids.payment_state == 'not_paid'):
+            if(self.invoice_ids.payment_state == 'not_paid'):
 
-        self.paid_check = True
+                self.paid_check = True
 
 
       
