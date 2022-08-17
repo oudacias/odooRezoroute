@@ -7,7 +7,7 @@ class ProductTemplateExtraa(models.Model):
 
     # ----------------temp fields
 
-    category_product = fields.Text(string="Catégarie du produit")
+    category_product = fields.Text(string="Catégorie du produit")
     product_code = fields.Text(string="Code du produit")
 
 

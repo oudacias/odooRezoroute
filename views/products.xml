@@ -307,5 +307,11 @@
                 </field>
             </field>
         </record>
+        <record id="action_view_manufacturer" model="ir.actions.act_window">
+            <field name="name">Product Manufacturer</field>
+            <field name="res_model">engine.manufacturer</field>
+            <field name="view_mode">tree,form</field>        
+        </record>
+        <menuitem id="sub_menu_manufacturer" action="action_view_manufacturer" name="Constructeurs" parent="purchase.menu_purchase_products"/>
     </data>
 </odoo>
