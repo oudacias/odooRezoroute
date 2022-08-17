@@ -40,7 +40,7 @@
                     <!-- <button name="action_view_delivery" string="Voir le bon de livraison" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_picking','=',True)]}" modifiers="{'invisible': [['hide_action_picking', '=', true]]}"/> -->
                     
                     <button name="create_payment_move" string="Créer facture"
-                         type="object" class="btn-primary" data-hotkey="q"
+                         type="object" class="btn-primary" data-hotkey="q" attrs="{'invisible': [('invoice_status', '!=', 'to invoice')]}"
                         />
                     <button name="create_payment_move" string="Régler Facture"
                         attrs="{'invisible': [('paid_check', '=', False)]}" type="object" class="btn-primary" data-hotkey="q"
