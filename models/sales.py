@@ -344,6 +344,7 @@ class SaleOrderExtra(models.Model):
                     'context': {
                         'active_model': 'account.move',
                         'active_ids': a.id,
+                        'default_communication' : a.id,
                     },
                     'target': 'new',
                     'type': 'ir.actions.act_window',
