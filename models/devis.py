@@ -71,11 +71,8 @@ class Devis(models.Model):
 
 
     def _isconfirmed(self):
-        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.state))
-        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.is_repair_order))
         if(self.state == "draft"):
             if(self.is_repair_order == True):
-                print("@@@@@ Checking if transaction  is confirmed...22"    +str(self.is_repair_order))
                 self.is_confirm = True
             else:
                 self.is_confirm = False
@@ -87,7 +84,6 @@ class Devis(models.Model):
 
     @api.onchange('engin_id')
     def get_extra_data(self):
-        print("@@@@@@@@@@@ ############ HERE HERE HERE"    + str(self.engin_id))
         if(self.engin_id):
             self.odometer = self.engin_id.odometer
             self.next_distri_date = self.engin_id.next_distri_date
