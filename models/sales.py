@@ -49,11 +49,13 @@ class SaleOrderExtra(models.Model):
 
     def _paid_check(self):
         self.paid_check = False
-
-        if(len(self.invoice_ids) > 0):
-
+        if(self.state == "sale" and len(self.invoice_ids) > 0):
             if(self.invoice_ids.payment_state == 'paid'):
                 self.paid_check = True
+        
+
+            
+        
     
     def _isconfirmed(self):
         if(self.state == "draft" or self.is_repair_order == True):

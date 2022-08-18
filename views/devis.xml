@@ -20,37 +20,17 @@
                         string="Confirmer" type="object"
                        attrs="{'invisible': [('is_confirm', '=', True)]}"/>
                     
-                    
-                    
-                    
-                    
-                    <!-- <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight"  attrs="{'invisible': [('state','not in',['draft','to_prepare','making','prepared','','','',''])]}"/> -->
                     <button name="action_button_confirm_repair_order" string="Terminer OR" id="action_button_confirm_repair_order_repair" type="object" class="oe_highlight"  attrs="{'invisible': [('state','!=','repair_order')]}"/>
 
                     
-                    <!-- <button name="action_print_picking_from_sale" string="Imprimer la livraison" type="object" class="oe_highlight" invisible="1" modifiers="{'invisible': true}"/>
-                    <button name="action_print_invoice_from_sale" string="Imprimer la facture" type="object" class="oe_highlight" attrs="{'invisible': [('invoice_exists', '=', False)]}" modifiers="{'invisible': [['invoice_exists', '=', false]]}"/>
-                    <button name="action_send_invoice_from_sale" string="Envoyer la facture" type="object" class="oe_highlight" id="action_send_invoice_from_sale_never" attrs="{'invisible': ['|',('invoice_exists', '=', False),('date_invoice_sent', '!=', False)]}" modifiers="{'invisible': ['|', ['invoice_exists', '=', false], ['date_invoice_sent', '!=', false]]}"/>
-                    <button name="action_send_invoice_from_sale" string="Envoyer la facture" type="object" id="action_send_invoice_from_sale_already" attrs="{'invisible': ['|',('invoice_exists', '=', False),('date_invoice_sent', '=', False)]}" modifiers="{'invisible': ['|', ['invoice_exists', '=', false], ['date_invoice_sent', '=', false]]}"/>
-                    <button name="action_view_invoice" string="Afficher la facture" type="object" class="oe_highlight" attrs="{'invisible': [('invoice_exists', '=', False)]}" modifiers="{'invisible': [['invoice_exists', '=', false]]}"/> -->
-                    <!-- <field name="picking_ids" invisible="1" on_change="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
-                    <!-- <button name="action_view_delivery" string="Voir le bon de livraison" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_picking','=',True)]}" modifiers="{'invisible': [['hide_action_picking', '=', true]]}"/> -->
-                    
+                   
                     <button name="create_payment_move" string="Créer facture"
                          type="object" class="btn-primary" data-hotkey="q" attrs="{'invisible': [('invoice_check', '=', False)]}"
                         />
                     <button name="create_payment_move" string="Régler Facture"
-                        attrs="{'invisible': [('paid_check', '=', True)]}" type="object" class="btn-primary" data-hotkey="q"
+                        attrs="{'invisible': [('paid_check', '=', False)]}" type="object" class="btn-primary" data-hotkey="q"
                     />
-                    <!-- <button name="create_payment_move" string="Créer facture" type="object" class="oe_highlight"  attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}" modifiers="{'invisible': [['state','=','sale']]}" readonly="0"/> -->
-                    <!-- <button name="cancel" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" string="Annuler le devis" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}" readonly="0"> -->
-                        <!-- <button name="action_fix_payment" type="object" string="Corriger le/les paiement(s)" attrs="{'invisible':[('percent_open_balance','&lt;=',0)]}" modifiers="{'invisible': [['percent_open_balance', '&lt;=', 0]]}"/> -->
-                        <!-- <button name="action_processed" string="Facturer / Régler" type="object" class="oe_highlight" attrs="{'invisible':[('hide_action_processed','=',True)]}" modifiers="{'invisible': [['hide_action_processed', '=', true]]}"/> -->
-                        <!-- <button name="action_paid_from_order" string="Enregistrer le règlement" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_invoiced','=',False), ('percent_open_balance','=',100.00)]}" modifiers="{'invisible': ['|', ['percent_invoiced', '=', false], ['percent_open_balance', '=', 100.0]]}"/> --> -->
-                        <!-- <field name="hide_action_makde_picking" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/> -->
-                        <!-- <button name="action_make_picking" string="Valider BL" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_shipping','!=',False),('hide_action_makde_picking','=',True)]}" modifiers="{'invisible': ['|', ['percent_shipping', '!=', false], ['hide_action_makde_picking', '=', true]]}"/>
-                        <button name="action_make_picking" string="Continuer à livrer" type="object" class="oe_highlight" attrs="{'invisible':['|',('percent_shipping','=',False),'&amp;',('percent_shipping','!=',False),('hide_action_makde_picking','=',True)]}" modifiers="{'invisible': ['|', ['percent_shipping', '=', false], '&amp;', ['percent_shipping', '!=', false], ['hide_action_makde_picking', '=', true]]}"/> -->
-                    <!-- </button> -->
+                   
                        
                 </xpath>
 
