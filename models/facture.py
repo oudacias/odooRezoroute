@@ -56,6 +56,7 @@ class StockPickingExtra(models.Model):
         if self.purchase_id:
             self.write({'session_id':self.purchase_id.session_id.id})
         if self.purchase_id:
+            print("@@@@@@@@ Confirm Pric e   "   str(self.purchase_id.order_line))
             
 
             for rec in self.move_ids_without_package:
