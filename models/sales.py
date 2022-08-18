@@ -36,7 +36,7 @@ class SaleOrderExtra(models.Model):
     invoice_check = fields.Boolean(compute="_invoice_check")
     paid_check = fields.Boolean(compute="_paid_check")
 
-    devis_date = fields.Date(default= date.today() + timedelta(days=3))
+    date_order = fields.Date(default= date.today() + timedelta(days=3))
 
     def _invoice_check(self):
 
