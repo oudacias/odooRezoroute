@@ -67,6 +67,7 @@
                 <xpath expr="//field[@name='require_signature']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+
                
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
@@ -90,8 +91,8 @@
                     <field name="is_central_company" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     
                     <field name="client_order_ref" />
-                    <field name="devis_date" readonly="0"/>
                     <field name="warehouse_id" />
+                    <field name="devis_date" />
 
                     <field name="categ_ids" widget="many2many_tags" modifiers="{'readonly': [['state', 'not in', ['waiting_replenishment', 'draft', 'repair_order', 'making', 'to_prepare', 'purchase_finished', 'customer_validated', 'sent', 'prepared']]]}"/>
                     <field name="is_repair_order" attrs="{'invisible': [('is_central_company', '=', True)],'readonly':[['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}" on_change="1" modifiers="{'invisible': [['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
