@@ -56,11 +56,11 @@ class StockPickingExtra(models.Model):
         if self.purchase_id:
             self.write({'session_id':self.purchase_id.session_id.id})
         if self.purchase_id:
-            print("@@@@@@@@ Confirm Pric e   " +  str(self.purchase_id.order_line))
+            print("@@@@@@@@ Confirm Pric e   " +  str(list(self.purchase_id.order_line)))
             
 
             for rec in self.move_ids_without_package:
-                    if(rec.purchase_line_id.id in self.purchase_id.order_line):
+                    if(rec.purchase_line_id.id in list(self.purchase_id.order_line)):
                         print("@@@@@@@@ Confirm Price")
                         print (rec.confirm_price)
                         print("@@@@@@@@ Purchase ID    " + str(rec.sequence))
