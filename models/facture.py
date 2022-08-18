@@ -55,10 +55,18 @@ class StockPickingExtra(models.Model):
         
         if self.purchase_id:
             self.write({'session_id':self.purchase_id.session_id.id})
+        if self.purchase_id:
+            for rec in self.purchase_id.order_line:
+                print("@@@@@@@@ Purchase Price    " + str(rec.price_unit))
+                print("@@@@@@@@ Purchase ID    " + str(rec.sequence))
 
-        for rec in self.move_ids_without_package:
-            print("@@@@@@@@ Confirm Price")
-            print (rec.confirm_price)
+
+            for rec in self.move_ids_without_package:
+                print("@@@@@@@@ Confirm Price")
+                print (rec.confirm_price)
+                print("@@@@@@@@ Purchase ID    " + str(rec.sequence))
+                print("@@@@@@@@ Purchase ID    " + str(rec.created_purchase_line_id))
+
         # return super(StockPickingExtra, self).button_validate()
 
     
