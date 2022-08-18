@@ -80,6 +80,9 @@
                     <field name="location_name" readonly="1"/>
                     <field name="location_id" readonly="1" invisible="1"/>
                 </xpath> 
+                <xpath expr="//field[@name='taxes_id']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
             </field>
         </record>
     </odoo>
