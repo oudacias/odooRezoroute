@@ -1,12 +1,11 @@
 from functools import partial
 from sre_parse import State
-from datetime import date
+from datetime import datetime, timedelta, date
 import string
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 
-from datetime import datetime
 
 
 
@@ -61,7 +60,7 @@ class SaleOrderExtra(models.Model):
 
     def _devis_date(self):
         date_1 = date.today()
-        self.devis_date = date_1 + datetime.timedelta(days=3)
+        self.devis_date = date_1 + timedelta(days=3)
 
     
         
