@@ -58,14 +58,14 @@ class StockPickingExtra(models.Model):
         if self.purchase_id:
             for rec in self.purchase_id.order_line:
                 print("@@@@@@@@ Purchase Price    " + str(rec.price_unit))
-                print("@@@@@@@@ Purchase ID    " + str(rec.sequence))
+                print("@@@@@@@@ Purchase ID    " + str(rec.id))
 
 
             for rec in self.move_ids_without_package:
                 print("@@@@@@@@ Confirm Price")
                 print (rec.confirm_price)
                 print("@@@@@@@@ Purchase ID    " + str(rec.sequence))
-                print("@@@@@@@@ Purchase ID    " + str(rec.created_purchase_line_id))
+                print("@@@@@@@@ Purchase ID    " + str(rec.purchase_line_id.id))
 
         # return super(StockPickingExtra, self).button_validate()
 
