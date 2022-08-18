@@ -52,6 +52,7 @@ class SaleOrderExtra(models.Model):
 
     def _paid_check(self):
         self.paid_check = False
+        print("@@@ Payment Satus @@@@@ 1  "  +str(len(self.invoice_ids)))
         if(len(self.invoice_ids) > 0 ):
             print("@@@ Payment Satus @@@@@   "  +str(self.invoice_ids.payment_state))
             if(self.invoice_check == True):
