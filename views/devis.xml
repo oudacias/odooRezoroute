@@ -174,7 +174,7 @@
                         <field name="next_ct_date"/>
                     </group>
                     <group string="Informations de réparation">
-                        <field name="user_repair_id" readonly="1"/>
+                        <field name="user_repair_id"/>
                         <field name="repair_order_note"/>
                         
                     </group>

@@ -163,6 +163,8 @@
                                         <td>
                                             Véhicule : <span t-field="o.engin_id.model_id.brand_id.name"/>/<span t-field="o.engin_id.model_id.name"/>
                                             <br/>
+                                            Immatriculation : <span t-field="o.engin_id.license_plate"/>
+                                            <br/>
                                             Kilométrage : <span t-field="o.odometer"/>
                                             <br/>
                                             Tél. client : <span t-field="o.mobile"/>
