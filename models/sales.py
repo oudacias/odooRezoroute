@@ -40,6 +40,8 @@ class SaleOrderExtra(models.Model):
         if(len(self.invoice_ids) > 0 and self.state == "sale"):
 
             self.invoice_check = True
+        elif(self.state == "sale"):
+            self.invoice_check = True
         else:
             self.invoice_check = False
 
