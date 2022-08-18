@@ -34,7 +34,6 @@ class SaleOrderExtra(models.Model):
 
     invoice_check = fields.Boolean(compute="_invoice_check")
     paid_check = fields.Boolean(compute="_paid_check")
-    is_confirm = fields.Boolean(compute="_isconfirmed")
 
     def _invoice_check(self):
 
@@ -60,18 +59,7 @@ class SaleOrderExtra(models.Model):
             
         
     
-    def _isconfirmed(self):
-        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.state))
-        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.is_confirm))
-        if(self.state == "draft"):
-            if(self.is_repair_order == True):
-                self.is_confirm = False
-            else:
-                self.is_confirm = True
-        elif(self.state == "sale"):
-            self.is_confirm = False
-
-
+    
 
       
 

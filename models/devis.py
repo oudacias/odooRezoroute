@@ -67,6 +67,21 @@ class Devis(models.Model):
     manufacturer_id = fields.Many2one('engine.manufacturer','Constructeur')
 
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
+    is_confirm = fields.Boolean(compute="_isconfirmed")
+
+
+    def _isconfirmed(self):
+        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.state))
+        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.is_confirm))
+        if(self.state == "draft"):
+            if(self.is_repair_order == True):
+                self.is_confirm = False
+            else:
+                self.is_confirm = True
+        elif(self.state == "sale"):
+            self.is_confirm = False
+
+
 
 
     @api.onchange('engin_id')
