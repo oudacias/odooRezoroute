@@ -39,8 +39,8 @@ class SaleOrderExtra(models.Model):
     def _invoice_check(self):
 
         if(len(self.invoice_ids) > 0 and self.state == "sale"):
-
-            self.invoice_check = True
+            if(self.invoice_ids.payment_state == 'paid'):
+                self.invoice_check = True
         elif(self.state == "sale"):
             self.invoice_check = True
         else:
