@@ -56,7 +56,7 @@ class StockPickingExtra(models.Model):
         if self.purchase_id:
             self.write({'session_id':self.purchase_id.session_id.id})
 
-        for rec in self.self.move_ids_without_package:
+        for rec in self.move_ids_without_package:
             print("@@@@@@@@ Confirm Price")
             print (rec.confirm_price)
         # return super(StockPickingExtra, self).button_validate()
