@@ -60,7 +60,7 @@ class StockPickingExtra(models.Model):
             
 
             for rec in self.move_ids_without_package:
-                    if(rec.purchase_line_id.id in list(self.purchase_id.order_line)):
+                    if(rec.purchase_line_id.id in self.purchase_id.order_line):
                         print("@@@@@@@@ Confirm Price")
                         print (rec.confirm_price)
                         print("@@@@@@@@ Purchase ID    " + str(rec.sequence))
