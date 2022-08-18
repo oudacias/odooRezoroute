@@ -60,7 +60,8 @@ class StockPickingExtra(models.Model):
             
 
             for rec in self.move_ids_without_package:
-                if(rec.purchase_line_id.id in self.purchase_id.order_line):
+                purchase_order = self.env['purchase.order.line'].search([('id','=',rec.purchase_line_id.id)])
+                if(rec.confirm_price != purchase_order.price_unit):
                     print("@@@@@@@@ Confirm Price")
                     print (rec.confirm_price)
                     print("@@@@@@@@ Purchase ID    " + str(rec.sequence))
