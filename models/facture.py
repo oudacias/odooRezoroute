@@ -37,6 +37,7 @@ class StockPickingExtra(models.Model):
     session_id = fields.Many2one('pos.session',string="Session id")
     confirm_price = fields.Float(string="Prix")
 
+
     @api.model
     def create(self,vals):
 
@@ -55,7 +56,11 @@ class StockPickingExtra(models.Model):
         
         if self.purchase_id:
             self.write({'session_id':self.purchase_id.session_id.id})
-        return super(StockPickingExtra, self).button_validate()
+
+        for rec in self.self.move_ids_without_package:
+            print("@@@@@@@@ Confirm Price")
+            print (rec.confirm_price)
+        # return super(StockPickingExtra, self).button_validate()
 
     
        

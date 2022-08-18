@@ -91,12 +91,12 @@ class purchase_custom(models.Model):
 
 class StockMove(models.Model):
     _inherit = 'stock.move'
-    confirm_price = fields.Float(string="Prix")
     
 
     def _get_new_picking_values(self):
         res = super(StockMove, self)._get_new_picking_values()
         return res
+    
 
 
 
