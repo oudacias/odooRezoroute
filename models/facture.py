@@ -52,6 +52,8 @@ class StockPickingExtra(models.Model):
 
 
     def button_validate(self):
+
+        check_price = True
         
         if self.purchase_id:
             self.write({'session_id':self.purchase_id.session_id.id})
@@ -62,12 +64,15 @@ class StockPickingExtra(models.Model):
             for rec in self.move_ids_without_package:
                 purchase_order = self.env['purchase.order.line'].search([('id','=',rec.purchase_line_id.id)])
                 if(rec.confirm_price != purchase_order.price_unit):
-                    print("@@@@@@@@ Confirm Price")
-                    print (rec.confirm_price)
-                    print("@@@@@@@@ Purchase ID    " + str(rec.sequence))
-                    print("@@@@@@@@ Purchase ID    " + str(rec.purchase_line_id.id))
+                    check_price = False
+                    raise ValidationError("Le prix que vous avez saisi pour le produit "+str(rec.product_id.name)+" n'est pas compatible avec la demande de prix." )
+            
+            if(check_price == True):
+                return super(StockPickingExtra, self).button_validate()
 
-        # return super(StockPickingExtra, self).button_validate()
+
+        else:
+            return super(StockPickingExtra, self).button_validate()
 
     
        
