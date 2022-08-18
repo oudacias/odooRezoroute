@@ -61,6 +61,7 @@ class SaleOrderExtra(models.Model):
     def _devis_date(self):
         date_1 = date.today()
         self.devis_date = date_1 + timedelta(days=3)
+        self.date_order = self.devis_date
 
     
         
