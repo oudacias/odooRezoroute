@@ -55,7 +55,7 @@ class SaleOrderExtra(models.Model):
             if(self.invoice_ids.payment_state == 'paid'):
                 self.paid_check = True
     
-    def is_confirmed(self):
+    def _isconfirmed(self):
         if(self.state == "draft" or self.is_repair_order == True):
             self.is_confirm = False
         else:
