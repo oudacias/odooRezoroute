@@ -64,10 +64,14 @@ class SaleOrderExtra(models.Model):
         
     
     def _isconfirmed(self):
-        if(self.state == "draft" or self.is_repair_order == True):
+        if(self.state == "draft"):
+            if(self.is_repair_order == True):
+                self.is_confirm = False
+            else:
+                self.is_confirm = True
+        elif(self.state == "sale"):
             self.is_confirm = False
-        else:
-            self.is_confirm = True
+
 
 
       
