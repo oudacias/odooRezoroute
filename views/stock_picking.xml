@@ -12,6 +12,12 @@
                 <xpath expr="//button[@name='button_scrap']" position="attributes">
                     <attribute name="groups">ps_rezoroute.group_siege</attribute>
                 </xpath> 
+
+                <xpath expr="//field[@name='move_ids_without_package']//tree/field[@name='product_uom_qty']" position="after">
+                     <field name="confirm_price">1</field>
+                </xpath>
             </field>
         </record>
+
+        
     </odoo>

@@ -91,6 +91,7 @@ class purchase_custom(models.Model):
 
 class StockMove(models.Model):
     _inherit = 'stock.move'
+    
 
     def _get_new_picking_values(self):
         res = super(StockMove, self)._get_new_picking_values()

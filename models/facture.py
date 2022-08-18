@@ -35,6 +35,7 @@ class StockPickingExtra(models.Model):
 
     _inherit = 'stock.picking'
     session_id = fields.Many2one('pos.session',string="Session id")
+    confirm_price = fields.Float(string="Prix")
 
     @api.model
     def create(self,vals):
