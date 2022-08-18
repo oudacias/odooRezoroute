@@ -6,6 +6,8 @@ from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
 
+from datetime import datetime
+
 
 
 
@@ -35,6 +37,8 @@ class SaleOrderExtra(models.Model):
     invoice_check = fields.Boolean(compute="_invoice_check")
     paid_check = fields.Boolean(compute="_paid_check")
 
+    devis_date = fields.Date(compute="_devis_date")
+
     def _invoice_check(self):
 
         if(len(self.invoice_ids) > 0 and self.state == "sale"):
@@ -54,6 +58,12 @@ class SaleOrderExtra(models.Model):
         if(len(self.invoice_ids) > 0 ):            
             if(self.invoice_ids.payment_state != 'paid'):
                 self.paid_check = True
+
+    def _devis_date(self):
+        date_1 = date.today()
+        self.devis_date = date_1 + datetime.timedelta(days=3)
+
+    
         
 
             
@@ -120,7 +130,7 @@ class SaleOrderExtra(models.Model):
 
     @api.onchange('is_repair_order')
     def hide_repair_order(self):
-        
+
         if(self.state == "draft"):
             if(self.is_repair_order == True):
                 self.is_confirm = True

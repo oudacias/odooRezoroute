@@ -90,6 +90,7 @@
                     <field name="is_central_company" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     
                     <field name="client_order_ref" />
+                    <field name="devis_date" />
                     <field name="warehouse_id" />
 
                     <field name="categ_ids" widget="many2many_tags" modifiers="{'readonly': [['state', 'not in', ['waiting_replenishment', 'draft', 'repair_order', 'making', 'to_prepare', 'purchase_finished', 'customer_validated', 'sent', 'prepared']]]}"/>
