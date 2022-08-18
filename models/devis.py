@@ -72,7 +72,7 @@ class Devis(models.Model):
 
     def _isconfirmed(self):
         print("@@@@@ Checking if transaction  is confirmed..."    +str(self.state))
-        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.is_confirm))
+        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.is_repair_order))
         if(self.state == "draft"):
             if(self.is_repair_order == True):
                 self.is_confirm = False
