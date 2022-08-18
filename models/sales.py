@@ -380,23 +380,12 @@ class ConfirmRepairOrder(models.Model):
     def confirm_order(self):
 
         rec =  self.env['sale.order'].search([],order="id desc", limit =1)  
-        # for h in rec:
-        #     h.write({'state':'sale'})
-
-        # rec = self.env['sale.order'].search([('id','=',self.id)], limit=1)
-
-        # sale_id = self.env['sale'].search([('id','=',self.id)], limit=1)
-
-        # sale_id.write({'state':'progress'})
-        # super(SaleOrderExtra, self.sale_order_id).action_confirm()
 
         for rec in self.sale_order_id.order_line:
             if(rec.product_id.qty_location <= 0):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
                 raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
             
-
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
         if self.sale_order_id._get_forbidden_state_confirm() & set(self.sale_order_id.mapped('state')):
             raise UserError(_(
                 'It is not allowed to confirm an order in the following states: %s'
@@ -408,8 +397,6 @@ class ConfirmRepairOrder(models.Model):
 
         # Context key 'default_name' is sometimes propagated up to here.
         # We don't need it and it creates issues in the creation of linked records.
-
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  2222")
         context = self.sale_order_id._context.copy()
         context.pop('default_name', None)
 
@@ -417,9 +404,6 @@ class ConfirmRepairOrder(models.Model):
         self.sale_order_id.with_context(context)._action_confirm()
         if self.sale_order_id.env.user.has_group('sale.group_auto_done_setting'):
             self.sale_order_id.action_done()
-
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  3333")
-
         # Change stock location
 
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
@@ -441,11 +425,14 @@ class ConfirmRepairOrder(models.Model):
 
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
-        self.sale_order_id.hide_confirm = True
+        self.sale_order_id.create_payment_move()
+
+
+        
 
 
 
-        return True
+        return self.sale_order_id.create_payment_move()
 
 
 
