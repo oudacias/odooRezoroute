@@ -79,7 +79,7 @@ class Devis(models.Model):
                 self.is_confirm = True
             else:
                 self.is_confirm = False
-        elif(self.state == "sale"):
+        else:
             self.is_confirm = False
 
 
