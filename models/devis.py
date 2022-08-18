@@ -76,9 +76,9 @@ class Devis(models.Model):
         if(self.state == "draft"):
             if(self.is_repair_order == True):
                 print("@@@@@ Checking if transaction  is confirmed...22"    +str(self.is_repair_order))
-                self.is_confirm = False
-            else:
                 self.is_confirm = True
+            else:
+                self.is_confirm = False
         elif(self.state == "sale"):
             self.is_confirm = False
 
