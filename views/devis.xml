@@ -92,8 +92,6 @@
                     
                     <field name="client_order_ref" />
                     <field name="warehouse_id" />
-                    <field name="devis_date" />
-
                     <field name="categ_ids" widget="many2many_tags" modifiers="{'readonly': [['state', 'not in', ['waiting_replenishment', 'draft', 'repair_order', 'making', 'to_prepare', 'purchase_finished', 'customer_validated', 'sent', 'prepared']]]}"/>
                     <field name="is_repair_order" attrs="{'invisible': [('is_central_company', '=', True)],'readonly':[['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}" on_change="1" modifiers="{'invisible': [['is_central_company', '=', true]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
                     <!-- <field name="user_repair_id" domain="[('company_id','=',company_id),('is_user_repair', '=', True)]" widget="selection" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/> -->
