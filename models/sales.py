@@ -52,10 +52,7 @@ class SaleOrderExtra(models.Model):
 
     def _paid_check(self):
         self.paid_check = False
-        print("@@@ Payment Satus @@@@@ 1  "  +str(len(self.invoice_ids)))
-        if(len(self.invoice_ids) > 0 ):
-            print("@@@ Payment Satus @@@@@   "  +str(self.invoice_ids.payment_state))
-            
+        if(len(self.invoice_ids) > 0 ):            
             if(self.invoice_ids.payment_state != 'paid'):
                 self.paid_check = True
         
@@ -64,6 +61,8 @@ class SaleOrderExtra(models.Model):
         
     
     def _isconfirmed(self):
+        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.state))
+        print("@@@@@ Checking if transaction  is confirmed..."    +str(self.is_confirm))
         if(self.state == "draft"):
             if(self.is_repair_order == True):
                 self.is_confirm = False
