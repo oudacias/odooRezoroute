@@ -80,7 +80,7 @@ class Devis(models.Model):
             else:
                 self.is_confirm = False
         else:
-            self.is_confirm = False
+            self.is_confirm = True
 
 
 
