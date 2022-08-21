@@ -41,6 +41,7 @@ class SaleOrderExtra(models.Model):
     def _invoice_check(self):
 
         if(len(self.invoice_ids) > 0 and self.state == "sale"):
+            print("CONFIRMATION ACTION  @@@@@@@@@@@@@  00000")
             if(self.invoice_ids.payment_state == 'paid'):
                 self.invoice_check = True
             else:
@@ -57,21 +58,6 @@ class SaleOrderExtra(models.Model):
         if(len(self.invoice_ids) > 0 ):            
             if(self.invoice_ids.payment_state != 'paid'):
                 self.paid_check = True
-
-    # def _devis_date(self):
-    #     date_1 = date.today()
-    #     self.devis_date = date_1 + timedelta(days=3)
-        # self.date_order = self.devis_date
-
-    
-        
-
-            
-        
-    
-    
-
-      
 
 
     state = fields.Selection([
@@ -142,7 +128,6 @@ class SaleOrderExtra(models.Model):
 
 
     def action_confirm(self):
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  00000")
         for rec in self.order_line:
             if(rec.product_id.qty_location <= 0):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
