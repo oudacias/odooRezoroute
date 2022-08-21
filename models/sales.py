@@ -438,10 +438,18 @@ class ConfirmRepairOrder(models.Model):
 
 
         print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
-        self.sale_order_id.create_payment_move()
+        # self.sale_order_id.create_payment_move()
+
+        # Update Odometer value
+
+        for record in self:
+            
+            date = fields.Date.context_today(record)
+            data = {'value': record.odometer, 'date': date, 'vehicle_id': record.engin_order_id.id}
+            self.env['fleet.vehicle.odometer'].create(data)
 
 
-        
+        print("Update Odometer ACTION  @@@@@@@@@@@@@ END")
 
 
 
