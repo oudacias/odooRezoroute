@@ -113,6 +113,9 @@ class SaleOrderExtra(models.Model):
         else:
             self.is_confirm = True
 
+    def sale_order_to_repair_order(self):
+        self.write({'state':'repair_order','hide_confirm' : True})
+
 
 
     def action_confirm(self):
