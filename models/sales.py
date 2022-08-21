@@ -90,7 +90,6 @@ class SaleOrderExtra(models.Model):
             vals['session_id'] = session.id
 
             q= super(SaleOrderExtra, self).create(vals) 
-            
             return q
         else:
             raise ValidationError('Vous devez ouvrir une nouvelle session !!!!')
@@ -103,10 +102,9 @@ class SaleOrderExtra(models.Model):
                 partner = rec.env['res.partner'].search([('id','=',rec.partner_id.id)])
                 rec.mobile = partner.mobile      
 
-    
 
-    
-    
+    def sale_order_to_repair_order(self):
+        self.write({'state':'repair_order','hide_confirm' : True})
 
 
 
