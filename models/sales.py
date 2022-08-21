@@ -304,7 +304,7 @@ class SaleOrderExtra(models.Model):
                     'target': 'new',
                     'type': 'ir.actions.act_window',
                 }  
-            elif(self.invoice_ids.payment_state == 'not_paid'):
+            elif(self.invoice_ids.payment_state == 'not_paid' or self.invoice_ids.payment_state == "partial"):
 
 
                 print("Product prices   ids TEST TEST TEST" +str(self.invoice_ids.id))
