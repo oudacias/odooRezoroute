@@ -41,10 +41,12 @@ class SaleOrderExtra(models.Model):
     def _invoice_check(self):
 
         if(len(self.invoice_ids) > 0 and self.state == "sale"):
-            print("CONFIRMATION ACTION  @@@@@@@@@@@@@  00000")
+            
             if(self.invoice_ids.payment_state == 'paid'):
+                print("CONFIRMATION ACTION  @@@@@@@@@@@@@  11111")
                 self.invoice_check = True
             else:
+                print("CONFIRMATION ACTION  @@@@@@@@@@@@@  22222")
                 self.invoice_check = False
 
         elif(self.state == "sale"):
