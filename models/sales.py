@@ -42,12 +42,12 @@ class SaleOrderExtra(models.Model):
 
         if(len(self.invoice_ids) > 0 and self.state == "sale"):
             
-            if(self.invoice_ids.payment_state == 'paid'):
+            if(self.invoice_ids.state == 'posted'):
                 print("CONFIRMATION ACTION  @@@@@@@@@@@@@  11111")
-                self.invoice_check = False
+                self.invoice_check = True
             else:
                 print("CONFIRMATION ACTION  @@@@@@@@@@@@@  22222")
-                self.invoice_check = True
+                self.invoice_check = False
 
         elif(self.state == "sale"):
             self.invoice_check = True
@@ -434,31 +434,7 @@ class ConfirmRepairOrder(models.Model):
             date = fields.Date.context_today(record)
             data = {'value': record.odometer, 'date': date, 'vehicle_id': record.engin_order_id.id}
             self.env['fleet.vehicle.odometer'].create(data)
-
-
-        print("Update Odometer ACTION  @@@@@@@@@@@@@ END")
-
-
-
         return self.sale_order_id.create_payment_move()
-
-
-
-
-
-
-
-
-
-
-
-
-        # print("Sale order CONFIRMATION SUCCESSFUL!  "  +str(self.sale_order_id))
-        
-        # self.sale_order_id.action_confirm()
-
-
-
 
 class PaymentRegister(models.TransientModel):
 
