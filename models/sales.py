@@ -346,9 +346,6 @@ class ConfirmRepairOrder(models.Model):
     repair_order_note = fields.Text(string="Note de réparation")
 
     def confirm_order(self):
-
-        rec =  self.env['sale.order'].search([],order="id desc", limit =1)  
-
         for rec in self.sale_order_id.order_line:
             if(rec.product_id.qty_location <= 0):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
@@ -388,12 +385,7 @@ class ConfirmRepairOrder(models.Model):
 
         
         for rec in picking_id.move_ids_without_package:
-            print("CONFIRMATION ACTION  @@@@@@@@@@@@@  4444  " +str(rec.product_uom_qty))
             rec.write({'quantity_done':rec.product_uom_qty})
-
-
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
-        # self.sale_order_id.create_payment_move()
 
         # Update Odometer value
 
@@ -402,6 +394,11 @@ class ConfirmRepairOrder(models.Model):
             date = fields.Date.context_today(record)
             data = {'value': record.odometer, 'date': date, 'vehicle_id': record.engin_order_id.id}
             self.env['fleet.vehicle.odometer'].create(data)
+
+            self.sale_order_id.odometer = record.odometer
+
+            self.sale_order_id.write({'odometer': record.odometer})
+
         return self.sale_order_id.create_payment_move()
 
 class PaymentRegister(models.TransientModel):
