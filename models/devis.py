@@ -9,7 +9,7 @@ class Devis(models.Model):
     _inherit = 'sale.order'
 
 
-    odometer = fields.Integer(string="Kilométrage")
+    odometer = fields.Integer(string="Kilométrage", compute="_get_last_odometer")
 
     partner_ref = fields.Char(string="Code Client")
     mobile = fields.Char(string="Tel. portable")
@@ -68,6 +68,16 @@ class Devis(models.Model):
 
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
+
+
+    def _get_last_odometer(self):
+        FleetVehicalOdometer = self.env['fleet.vehicle.odometer']
+        for record in self:
+            vehicle_odometer = FleetVehicalOdometer.search([('vehicle_id', '=', record.engin_id.id)], limit=1, order='value desc')
+            if vehicle_odometer:
+                record.odometer = vehicle_odometer.value
+            else:
+                record.odometer = 0
 
 
     def _isconfirmed(self):
