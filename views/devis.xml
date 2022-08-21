@@ -25,7 +25,7 @@
                     
                    
                     <button name="create_payment_move" string="Créer facture"
-                         type="object" class="btn-primary" data-hotkey="q" attrs="{'invisible': [('x', '=', False)]}"
+                         type="object" class="btn-primary" data-hotkey="q" attrs="{'invisible': [('invoice_check', '=', False)]}"
                         />
                     <button name="create_payment_move" string="Régler Facture"
                         attrs="{'invisible': [('paid_check', '=', False)]}" type="object" class="btn-primary" data-hotkey="q"
@@ -71,6 +71,7 @@
                
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="hide_action_tecrmi" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
+
                     <field name="partner_ref" invisible="1"/>
                     <field name="paid_check" invisible="1"/>
                     <field name="invoice_check" invisible="1"/>
