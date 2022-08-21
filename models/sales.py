@@ -21,7 +21,6 @@ class SaleOrderExtra(models.Model):
     hide_action_tecrmi = fields.Boolean(store=False)
     hide_action_processed = fields.Boolean(store=False)
     hide_action_invoice = fields.Boolean(store=False)
-    hide_confirm = fields.Boolean(store=True)
     hide_repair_order = fields.Boolean(store=False)
 
     account_payment_type_id = fields.Many2one('pos.payment.method',string="Type de paiement")
@@ -43,10 +42,8 @@ class SaleOrderExtra(models.Model):
         if(len(self.invoice_ids) > 0 and self.state == "sale"):
             
             if(self.invoice_ids.state == 'posted'):
-                print("CONFIRMATION ACTION  @@@@@@@@@@@@@  11111")
                 self.invoice_check = False
             else:
-                print("CONFIRMATION ACTION  @@@@@@@@@@@@@  22222")
                 self.invoice_check = True
 
         elif(self.state == "sale"):
@@ -103,18 +100,7 @@ class SaleOrderExtra(models.Model):
         if(self.partner_id):
             for rec in self:
                 partner = rec.env['res.partner'].search([('id','=',rec.partner_id.id)])
-                rec.mobile = partner.mobile
-                
-
-
-    @api.depends('is_repair_order')
-    def hide_repair_order(self):
-        
-        
-        if(self.is_repair_order == True):
-            self.hide_confirm = True
-        else:
-            self.hide_confirm = False        
+                rec.mobile = partner.mobile      
 
     @api.onchange('is_repair_order')
     def hide_repair_order(self):
@@ -149,10 +135,6 @@ class SaleOrderExtra(models.Model):
             if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil and rec.product_id.product_tmpl_id.categ_id.seuil > 0):                    
                 raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
 
-
-            
-
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  1111")
         if self._get_forbidden_state_confirm() & set(self.mapped('state')):
             raise UserError(_(
                 'It is not allowed to confirm an order in the following states: %s'
@@ -162,10 +144,6 @@ class SaleOrderExtra(models.Model):
             order.message_subscribe([order.partner_id.id])
         self.write(self._prepare_confirmation_values())
 
-        # Context key 'default_name' is sometimes propagated up to here.
-        # We don't need it and it creates issues in the creation of linked records.
-
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  2222")
         context = self._context.copy()
         context.pop('default_name', None)
 
@@ -173,8 +151,6 @@ class SaleOrderExtra(models.Model):
         self.with_context(context)._action_confirm()
         if self.env.user.has_group('sale.group_auto_done_setting'):
             self.action_done()
-
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@  3333")
 
         # Change stock location
 
@@ -192,14 +168,7 @@ class SaleOrderExtra(models.Model):
 
         
         for rec in picking_id.move_ids_without_package:
-            print("CONFIRMATION ACTION  @@@@@@@@@@@@@  4444  " +str(rec.product_uom_qty))
             rec.write({'quantity_done':rec.product_uom_qty})
-
-
-        print("CONFIRMATION ACTION  @@@@@@@@@@@@@ END")
-
-        self.hide_confirm = True
-
         return True
 
 
@@ -208,12 +177,6 @@ class SaleOrderExtra(models.Model):
     
     def sale_order_to_prepare(self):
         self.write({'state':'to_prepare'})
-        
-        
-
-    def sale_order_to_repair_order(self):
-        self.hide_confirm = True
-        self.write({'state':'repair_order','hide_confirm' : True})
         
 
     def sale_order_making(self):
@@ -254,6 +217,8 @@ class SaleOrderExtra(models.Model):
         }
 
     def create_payment_move(self):
+
+        print("@@@@@ Payment state      "  +str(self.invoice_ids.payment_state))
         # self.ensure_one()
         session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
 
