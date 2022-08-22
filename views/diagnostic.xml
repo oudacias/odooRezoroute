@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<record id="action_view_diagnostic_line_tree" model="ir.ui.view">
+<record id="action_view_diagnostic_form" model="ir.ui.view">
         <field name="name">engin.diagnostic.list</field>
         <field name="model">engin.diagnostic</field>
         <field name="arch" type="xml">
