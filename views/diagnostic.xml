@@ -33,7 +33,9 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">    
             <xpath expr="//page[@name='order_lines']" postion="after">
-                <button string="Ajouter une fiche diagnostic" type="object" name="add_diagnostic"/>
+                <page string="Fiche diagnostic" name="fiche_diagnostic">
+                    <button string="Ajouter une fiche diagnostic" type="object" name="add_diagnostic"/>
+                </page>
             </xpath>
         </field>
     </record>
