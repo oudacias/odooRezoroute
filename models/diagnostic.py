@@ -41,16 +41,16 @@ class DiagnosticWizard(models.Model):
     sale_id = fields.Many2one('sale.order')
 
 
-    @api.model
-    def create(self, values):
-        print("@@@@@@@@ DiagnosticWizard    created: " +str(values['diagnostic_id']))
+    # @api.model
+    # def create(self, values):
+    #     diagnostic_id = self.env['engin.diagnostic'].search([('id','=',values['diagnostic_id'])])
+    #     sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
 
-        diagnostic_id = self.env['engin.diagnostic'].search([('id','=',values['diagnostic_id'])])
+    #     for rec in diagnostic_id.engin_diagnostic_line:
+    #         sale_id.create{'':}
+            
 
-        for rec in diagnostic_id:
-            print("@@@@@@@@ DiagnosticWizard    created: " + str(rec.name))
 
-
-        q= super(DiagnosticWizard, self).create(values) 
-        return q
+    #     q= super(DiagnosticWizard, self).create(values) 
+    #     return q
         
