@@ -12,16 +12,20 @@
         <field name="view_mode">tree,form</field>
     </record>
     <record id="action_view_diagnostic_line_tree" model="ir.ui.view">
-            <field name="name">engin.diagnostic.list</field>
-            <field name="model">engin.diagnostic.line</field>
-            <field name="arch" type="xml">
-                <tree editable="botttom">
-                    <field name="sequence"/>
-                    <field name="name"/>
-                    <field name="description"/>
-                </tree>
-            </field>
-        </record>
+        <field name="name">engin.diagnostic.list</field>
+        <field name="model">engin.diagnostic</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="engin_diagnostic_line">
+                    <tree editable="botttom">
+                        <field name="sequence"/>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    </record>
     <menuitem id="sub_menu_diagnostic" action="action_view_diagnostic" name="Diagnostic" parent="purchase.menu_purchase_products" sequence="23"/>
 
 </odoo>
