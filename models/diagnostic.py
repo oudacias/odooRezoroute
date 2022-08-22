@@ -36,6 +36,6 @@ class DevisDiagnostic(models.Model):
 class DiagnosticWizard(models.Model):
 
     _name = 'engin.diagnostic.wizard'
-    diagnostic_id = fields.Many2one('engin.diagnostic')
+    diagnostic_id = fields.Many2one('engin.diagnostic', string="Fiche diagnostic")
     sale_id = fields.Many2one('sale.order')
 
