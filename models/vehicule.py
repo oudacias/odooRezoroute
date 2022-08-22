@@ -49,14 +49,6 @@ class Vehicle(models.Model):
             for m in meeting_data:
                 meetings[m[0]].add(m[1])
 
-            # Add the events linked to the children of the partner
-            all_partners.read(['parent_id'])
-            for p in all_partners:
-                partner = p
-                while partner:
-                    if partner in self:
-                        meetings[partner.id] |= meetings[p.id]
-                    partner = partner.parent_id
             return {p.id: list(meetings[p.id]) for p in self}
         return {}
 
