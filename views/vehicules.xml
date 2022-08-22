@@ -35,24 +35,47 @@
                 </xpath>  
 
                  <xpath expr="//header"  postion="inside">
-                        <button name="creer_devis" string="Créer un devis" 
-                            type="object" class="oe_highlight"/>
+                    <button name="creer_devis" string="Créer un devis" 
+                        type="object" class="oe_highlight"/>
 
-                        <button name="creer_ordre_reparation" string="Créer un ordre de réparation" 
-                            type="object" class="oe_highlight"/>
+                    <button name="creer_ordre_reparation" string="Créer un ordre de réparation" 
+                        type="object" class="oe_highlight"/>
                 </xpath>
-                
 
-                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <xpath expr="//button[@name='open_assignation_logs']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='open_assignation_logs']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='oe_button_box']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='country_code']" position="attributes">
+                    <div class="oe_button_box" name="button_box1">
+                        <button name="return_action_to_open" type="object" class="oe_stat_button" icon="fa-tachometer" context="{'xml_id':'fleet_vehicle_odometer_action'}" help="show the odometer logs for this vehicle" attrs="{'invisible': [('vehicle_type', '!=', 'car')]}">
+                            <field name="odometer_count" widget="statinfo" string="Odometer"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="schedule_meeting" icon="fa-calendar" context="{'engin_id': active_id}">
+                            <field name="calendar_count" widget="statinfo" string="Rendez-vous"/>
+                        </button>
+                        <button class="oe_stat_button" type="object" name="sale_history" icon="fa-file-text" context="{'engin_id': active_id}">
+                            <field name="sale_count" widget="statinfo" string="Devis"/>
+                        </button>
+                    </div>
+                </xpath>
+
+                <!-- <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
                     <button class="oe_stat_button" type="object" name="schedule_meeting" icon="fa-calendar" context="{'engin_id': active_id}">
                         <field name="calendar_count" widget="statinfo" string="Rendez-vous"/>
                     </button>
                 </xpath>
                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
-                    <button class="oe_stat_button" type="object" name="sale_history" icon="fa-calendar" context="{'engin_id': active_id}">
+                    <button class="oe_stat_button" type="object" name="sale_history" icon="fa-file-text" context="{'engin_id': active_id}">
                         <field name="sale_count" widget="statinfo" string="Devis"/>
                     </button>
-                </xpath>
+                </xpath> -->
                 
                 
             </field>
