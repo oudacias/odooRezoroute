@@ -6,6 +6,20 @@
         <field name="res_model">engin.diagnostic</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record id="action_view_diagnostic_line" model="ir.actions.act_window">
+        <field name="name">Diagnostic Liste</field>
+        <field name="res_model">engin.diagnostic.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="action_view_diagnostic_line_tree" model="ir.ui.view">
+            <field name="name">engin.diagnostic.list</field>
+            <field name="model">engin.diagnostic.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sequence"/>
+                </tree>
+            </field>
+        </record>
     <menuitem id="sub_menu_diagnostic" action="action_view_diagnostic" name="Diagnostic" parent="purchase.menu_purchase_products" sequence="23"/>
 
 </odoo>
