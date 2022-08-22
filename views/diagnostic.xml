@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_view_diagnostic" model="ir.actions.act_window">
+        <field name="name">Diagnostic</field>
+        <field name="res_model">engin.diagnostic</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="sub_menu_diagnostic" action="action_view_diagnostic" name="Diagnostic" parent="purchase.menu_purchase_products" sequence="23"/>
+
+</odoo>

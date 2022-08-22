@@ -66,7 +66,7 @@ class PartnerExtra(models.Model):
         return {
         'view_mode': 'form',
         'res_model': 'sale.order',
-        'target' : '_blank',
+        'target' : 'new',
         'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
         'context' : {
