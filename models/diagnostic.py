@@ -44,7 +44,7 @@ class DiagnosticWizard(models.Model):
     @api.model
     def create(self, values):
 
-        for rec in self.diagnostic_id.engin_diagnostic_line:
+        for rec in self.diagnostic_id:
             print("@@@@@@@@ DiagnosticWizard    created: " + str(rec.name))
 
 
