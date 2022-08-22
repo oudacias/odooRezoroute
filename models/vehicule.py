@@ -43,7 +43,7 @@ class Vehicle(models.Model):
 
     def sale_history(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id("sale.view_order_tree")
+        action = self.env["ir.actions.actions"]._for_xml_id("sale.action_orders")
         action['context'] = {
             'default_engin_id': self.id,
         }
