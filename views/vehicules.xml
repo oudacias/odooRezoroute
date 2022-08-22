@@ -51,18 +51,26 @@
                 <xpath expr="//button[@name='return_action_to_open'][2]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" type="object" name="sale_history" icon="fa-file-text" context="{'engin_id': active_id}">
+                        <field name="sale_count" widget="statinfo" string="Ventes"/>
+                    </button>
+                </xpath>
                
+                <!-- <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" type="object" name="sale_history" icon="fa-file-text" context="{'engin_id': active_id}">
+                        <field name="sale_count" widget="statinfo" string="Livraison"/>
+                    </button>
+                </xpath>
+                -->
 
                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
                     <button class="oe_stat_button" type="object" name="schedule_meeting" icon="fa-calendar" context="{'engin_id': active_id}">
                         <field name="calendar_count" widget="statinfo" string="Rendez-vous"/>
                     </button>
                 </xpath>
-                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
-                    <button class="oe_stat_button" type="object" name="sale_history" icon="fa-file-text" context="{'engin_id': active_id}">
-                        <field name="sale_count" widget="statinfo" string="Devis"/>
-                    </button>
-                </xpath>
+                
                 
                 
             </field>
