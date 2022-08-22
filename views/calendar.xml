@@ -5,7 +5,7 @@
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
             <field name="arch" type="xml">    
-                <xpath expr="//field[@name='description']"  postion="after">
+                <xpath expr="//page[@name='page_details']"  postion="inside">
                     <field name="sale_id"/>
                     <field name="engin_id"/>
                 </xpath>
