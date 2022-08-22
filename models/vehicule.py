@@ -29,7 +29,7 @@ class Vehicle(models.Model):
 
     def _compute_meeting_engin(self):
         if self.ids:
-            all_partners = self.with_context(active_test=False).search([('id', 'child_of', self.ids)])
+            all_partners = self.with_context(active_test=False).search([('id', '=', self.ids)])
 
             event_id = self.env['calendar.event']._search([])  # ir.rules will be applied
             subquery_string, subquery_params = event_id.select()
