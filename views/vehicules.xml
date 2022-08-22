@@ -35,7 +35,7 @@
                 </xpath>  
 
                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
-                    <button class="oe_stat_button" type="object" name="schedule_meeting" icon="fa-calendar" context="{'partner_id': active_id, 'partner_name': name}">
+                    <button class="oe_stat_button" type="object" name="schedule_meeting" icon="fa-calendar" context="{'engin_id': active_id}">
                         <field name="calendar_count" widget="statinfo" string="Rendez-vous"/>
                     </button>
                 </xpath>
