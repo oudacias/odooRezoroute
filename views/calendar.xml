@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <record model="ir.ui.view" id="ps_rezoroute.calendar_event_view">
+            <field name="name">ps_rezoroute Calendar View</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">    
+                <xpath expr="//field[@name='user_id']"  postion="after">
+                    <field name="sale_id"/>
+                    <field name="engin_id"/>
+                </xpath>
+            </field>
+        </record>
+    </odoo>

@@ -14,3 +14,4 @@ from . import pos
 from . import facture
 from . import purchase
 from . import validatepos
+from . import calendar

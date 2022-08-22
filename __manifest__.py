@@ -67,6 +67,7 @@
         'views/purchase.xml',
         'views/payment.xml',
         'views/stock_picking.xml',
+        'views/calendar.xml',
         
     ],
     'assets': {

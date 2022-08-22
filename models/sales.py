@@ -37,6 +37,8 @@ class SaleOrderExtra(models.Model):
 
     date_order = fields.Date(default= date.today() + timedelta(days=3))
 
+    
+
     def _invoice_check(self):
 
         if(len(self.invoice_ids) > 0 and self.state == "sale"):

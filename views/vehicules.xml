@@ -32,7 +32,17 @@
                 <xpath expr="//field[@name='license_plate']" position="attributes">
                     <attribute name="required">1</attribute>
                     <attribute name="odometer">1</attribute>
-                </xpath>                  
+                </xpath>  
+
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button name="return_action_to_open"
+                        class="oe_stat_button"
+                        icon="fa-calendar"
+                        type="object">
+                        <field name="events_count" widget="statinfo" string="Rendez-vous"/>
+                    </button>
+                </xpath>
+                
             </field>
         </record>
         <menuitem id="sale_order_menu_or"

@@ -68,6 +68,10 @@ class Devis(models.Model):
 
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
+
+    _sql_constraints = {
+        ('check_mobile', 'check(length(mobile)=10)', 'Le numéro de téléphone doit contenir 10 chiffres')
+    }
         
 
 
