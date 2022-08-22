@@ -40,6 +40,19 @@
         </field>
     </record>
 
+    <record id="action_view_diagnostic_wizard_form" model="ir.ui.view">
+        <field name="name">engin.diagnostic.wizard</field>
+        <field name="model">engin.diagnostic.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="diagnostic_id"/>
+                    <field name="sale_order" invisible="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
     <record id="action_view_diagnostic_wizard" model="ir.actions.act_window">
         <field name="name">Diagnostic Devis</field>
         <field name="res_model">engin.diagnostic.wizard</field>
