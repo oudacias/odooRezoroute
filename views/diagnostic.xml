@@ -15,8 +15,10 @@
             <field name="name">engin.diagnostic.list</field>
             <field name="model">engin.diagnostic.line</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree editable="botttom">
                     <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="description"/>
                 </tree>
             </field>
         </record>
