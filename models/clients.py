@@ -69,7 +69,12 @@ class PartnerExtra(models.Model):
         'target' : 'new',
         'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
-        'context' : {'default_partner_id' : self.id }
+        'context' : {
+            'default_partner_id' : self.id, 
+            'default_mobile' : self.mobile, 
+            'default_phone' : self.phone, 
+            'default_partner_ref' : self.partner_ref,
+        }
         
     }
 
@@ -82,7 +87,13 @@ class PartnerExtra(models.Model):
         'target' : 'new',
         'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
-        'context' : {'default_partner_id' : self.id , 'default_is_repair_order' : True}
+        'context' : {
+            'default_partner_id' : self.id, 
+            'default_mobile' : self.mobile, 
+            'default_phone' : self.phone, 
+            'default_partner_ref' : self.partner_ref,
+            'default_is_repair_order' : True
+        }
         
     }
 

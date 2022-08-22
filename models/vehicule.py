@@ -69,6 +69,9 @@ class Vehicle(models.Model):
         'context' : {
             'default_engin_id': self.id,
             'default_partner_id' : self.partner_id.id, 
+            'default_mobile' : self.partner_id.mobile, 
+            'default_phone' : self.partner_id.phone, 
+            'default_partner_ref' : self.partner_id.partner_ref, 
         }
         
     }
@@ -85,7 +88,10 @@ class Vehicle(models.Model):
         'context' : {
             'default_engin_id': self.id,
             'default_partner_id' : self.partner_id.id, 
-            'default_is_repair_order' : True
+            'default_mobile' : self.partner_id.mobile, 
+            'default_phone' : self.partner_id.phone, 
+            'default_partner_ref' : self.partner_id.partner_ref,
+            'default_is_repair_order' : True,
         }
         
     }

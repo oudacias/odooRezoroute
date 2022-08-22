@@ -34,7 +34,7 @@
                     <attribute name="odometer">1</attribute>
                 </xpath>  
 
-                <xpath expr="//div[@name='button_box']" postion="inside">
+                 <xpath expr="//header"  postion="inside">
                     <header>
                         <button name="creer_devis" string="Créer un devis" 
                             type="object" class="oe_highlight"/>
