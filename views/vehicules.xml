@@ -48,9 +48,9 @@
                 <xpath expr="//button[@name='open_assignation_logs']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                <xpath expr="//button[@name='button_box']" position="attributes">
+                <!-- <xpath expr="//button[@name='button_box']" position="attributes">
                     <attribute name="invisible">1</attribute>
-                </xpath>
+                </xpath> -->
 
                 <xpath expr="//field[@name='country_code']" position="attributes">
                     <div class="oe_button_box" name="button_box1">
