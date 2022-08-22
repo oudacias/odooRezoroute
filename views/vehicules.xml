@@ -35,13 +35,11 @@
                 </xpath>  
 
                  <xpath expr="//header"  postion="inside">
-                    <header>
                         <button name="creer_devis" string="Créer un devis" 
                             type="object" class="oe_highlight"/>
 
                         <button name="creer_ordre_reparation" string="Créer un ordre de réparation" 
                             type="object" class="oe_highlight"/>
-                    </header>
                 </xpath>
                 
 
