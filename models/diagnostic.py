@@ -16,3 +16,4 @@ class EnginDiagnosticLine(models.Model):
     name = fields.Char(string="Fiche diagnostic")
     sequence = fields.Integer(string="Séquence")
     description = fields.Text(string="Description de la tâche")
+    engin_diagnostic_id = fields.One2many('engin.diagnostic','engin_line_rel','diagnostic_id','line_ids')
