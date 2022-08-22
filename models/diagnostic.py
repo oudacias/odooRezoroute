@@ -48,6 +48,6 @@ class DiagnosticWizard(models.Model):
             print("@@@@@@@@ DiagnosticWizard    created: " + str(rec.name))
 
 
-        # q= super(DiagnosticWizard, self).create(values) 
-        # return q
+        q= super(DiagnosticWizard, self).create(values) 
+        return q
         
