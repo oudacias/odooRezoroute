@@ -51,13 +51,45 @@ class Vehicle(models.Model):
         return action
 
 
-
-
-
     @api.model
     def create(self, values):
         q= super(Vehicle, self).create(values) 
         return q
+
+
+    def creer_devis(self):
+        self.ensure_one()
+        
+        return {
+        'view_mode': 'form',
+        'res_model': 'sale.order',
+        'target' : 'new',
+        'views' : [(False, 'form')],
+        'type': 'ir.actions.act_window',
+        'context' : {
+            'default_engin_id': self.id,
+            'default_partner_id' : self.partner_id.id, 
+        }
+        
+    }
+
+    def creer_ordre_reparation(self):
+        self.ensure_one()
+        
+        return {
+        'view_mode': 'form',
+        'res_model': 'sale.order',
+        'target' : 'new',
+        'views' : [(False, 'form')],
+        'type': 'ir.actions.act_window',
+        'context' : {
+            'default_engin_id': self.id,
+            'default_partner_id' : self.partner_id.id, 
+            'default_is_repair_order' : True
+        }
+        
+    }
+
 
 
 class EngineMotor(models.Model):
