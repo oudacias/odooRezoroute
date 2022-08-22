@@ -34,7 +34,7 @@ class Vehicle(models.Model):
         action['context'] = {
             'default_engin_id': self.id,
         }
-        action['domain'] = [('engin_id', 'in', self.id)]
+        action['domain'] = [('engin_id', '=', self.id)]
         return action
 
 
