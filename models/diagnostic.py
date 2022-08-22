@@ -43,13 +43,12 @@ class DiagnosticWizard(models.Model):
 
     @api.model
     def create(self, values):
-        q= super(DiagnosticWizard, self).create(values) 
-        print("@@@@@@@@ DiagnosticWizard    created: " +str(self))
+        print("@@@@@@@@ DiagnosticWizard    created: " +str(values['diagnostic_id']))
 
         for rec in self.diagnostic_id:
             print("@@@@@@@@ DiagnosticWizard    created: " + str(rec.name))
 
 
-        
+        q= super(DiagnosticWizard, self).create(values) 
         return q
         

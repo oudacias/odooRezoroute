@@ -39,9 +39,6 @@ class PartnerExtra(models.Model):
 
         maxi_rec = self.env['sequence.partner'].search([])
         last_sequence = len(maxi_rec) + 1
-
-        print("@@@@ Last sequence: " + str(last_sequence))
-
         current_nbr_digits = max_nbr_digits - len(str(last_sequence))
 
         code = str(int(last_sequence)).zfill(current_nbr_digits) 
