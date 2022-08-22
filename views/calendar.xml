@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-        <record model="ir.ui.view" id="ps_rezoroute.calendar_event_view">
+        <record model="ir.ui.view" id="ps_rezoroute.calendar_events_view">
             <field name="name">ps_rezoroute Calendar View</field>
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
