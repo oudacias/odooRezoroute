@@ -27,6 +27,48 @@ class Vehicle(models.Model):
         for record in self:
             record.calendar_count = Calendar.search_count([('engin_id', '=', record.id)])
 
+    def _compute_meeting_engin(self):
+        if self.ids:
+            all_partners = self.with_context(active_test=False).search([('id', 'child_of', self.ids)])
+
+            event_id = self.env['calendar.event']._search([])  # ir.rules will be applied
+            subquery_string, subquery_params = event_id.select()
+            subquery = self.env.cr.mogrify(subquery_string, subquery_params).decode()
+
+            self.env.cr.execute("""
+                SELECT engin_id, calendar_event_id, count(1)
+                  FROM calendar_event_res_partner_rel
+                 WHERE engin_id IN %s AND calendar_event_id IN ({})
+              GROUP BY engin_id, calendar_event_id
+            """.format(subquery), [tuple(all_partners.ids)])
+
+            meeting_data = self.env.cr.fetchall()
+
+            # Create a dict {partner_id: event_ids} and fill with events linked to the partner
+            meetings = {p.id: set() for p in all_partners}
+            for m in meeting_data:
+                meetings[m[0]].add(m[1])
+
+            # Add the events linked to the children of the partner
+            all_partners.read(['parent_id'])
+            for p in all_partners:
+                partner = p
+                while partner:
+                    if partner in self:
+                        meetings[partner.id] |= meetings[p.id]
+                    partner = partner.parent_id
+            return {p.id: list(meetings[p.id]) for p in self}
+        return {}
+
+    def schedule_meeting(self):
+        self.ensure_one()
+        action = self.env["ir.actions.actions"]._for_xml_id("calendar.action_calendar_event")
+        action['context'] = {
+            'default_engin_id': self.id,
+        }
+        action['domain'] = ['|', ('id', 'in', self._compute_meeting_engin()[self.id]), ('engin_id', 'in', self.id)]
+        return action
+
 
 
 
