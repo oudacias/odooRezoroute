@@ -7,7 +7,7 @@ class EnginDiagnostic(models.Model):
     name = fields.Char(string="Fiche diagnostic")
     is_default = fields.Boolean(string="Par défaut")
     active = fields.Boolean(string="Active")
-    engin_diagnostic_line = fields.Many2one('engin.diagnostic.line')
+    engin_diagnostic_line = fields.Many2many('engin.diagnostic.line','engin_line_rel','diagnostic_id','line_ids')
 
 
 class EnginDiagnosticLine(models.Model):
