@@ -48,6 +48,9 @@
                 <xpath expr="//button[@name='return_action_to_open'][1]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <xpath expr="//button[@name='return_action_to_open'][2]" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                
 
                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
