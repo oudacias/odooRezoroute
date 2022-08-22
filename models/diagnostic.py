@@ -40,3 +40,14 @@ class DiagnosticWizard(models.Model):
     diagnostic_id = fields.Many2one('engin.diagnostic', string="Fiche diagnostic")
     sale_id = fields.Many2one('sale.order')
 
+
+    @api.model
+    def create(self, values):
+
+        for rec in self.diagnostic_id.engin_diagnostic_line:
+            print("@@@@@@@@ DiagnosticWizard    created: " + str(rec.name))
+
+
+        # q= super(DiagnosticWizard, self).create(values) 
+        # return q
+        
