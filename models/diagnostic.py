@@ -45,7 +45,9 @@ class DiagnosticWizard(models.Model):
     def create(self, values):
         print("@@@@@@@@ DiagnosticWizard    created: " +str(values['diagnostic_id']))
 
-        for rec in self.diagnostic_id:
+        diagnostic_id = self.env['engin.diagnostic'].search([('id','=',values['diagnostic_id'])])
+
+        for rec in diagnostic_id:
             print("@@@@@@@@ DiagnosticWizard    created: " + str(rec.name))
 
 
