@@ -32,7 +32,7 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">    
-            <xpath expr="notebook[last()]" postion="after">
+            <xpath expr="/page[last()]" postion="after">
                 <page string="Fiche diagnostic" name="fiche_diagnostic">
                     <button string="Ajouter une fiche diagnostic" type="object" name="add_diagnostic"/>
                 </page>
