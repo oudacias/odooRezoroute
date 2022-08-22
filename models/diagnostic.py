@@ -8,7 +8,6 @@ class EnginDiagnostic(models.Model):
     is_default = fields.Boolean(string="Par défaut")
     active = fields.Boolean(string="Active")
     engin_diagnostic_line = fields.One2many('engin.diagnostic.line','diagnostic_id')
-    diagnostic_sale_id = fields.Many2one('sale.order')
 
 
 class EnginDiagnosticLine(models.Model):
@@ -18,11 +17,13 @@ class EnginDiagnosticLine(models.Model):
     sequence = fields.Integer(string="Séquence")
     description = fields.Text(string="Description de la tâche")
     diagnostic_id = fields.Many2one('engin.diagnostic')
+    diagnostic_sale_id = fields.Many2one('sale.order')
+
 
 class DevisDiagnostic(models.Model):
 
     _inherit = 'sale.order'
-    engin_diagnostic_sale = fields.One2many('engin.diagnostic','diagnostic_sale_id')
+    engin_diagnostic_sale = fields.One2many('engin.diagnostic.line','diagnostic_sale_id')
 
     def add_diagnostic(self):
         return {

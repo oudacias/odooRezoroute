@@ -37,9 +37,9 @@
                     <button string="Ajouter une fiche diagnostic" type="object" name="add_diagnostic"/>
                     <field name="engin_diagnostic_sale">
                         <tree>
-                            <!-- <field name="sequence"/> -->
+                            <field name="sequence"/>
                             <field name="name"/>
-                            <!-- <field name="description"/> -->
+                            <field name="description"/>
                         </tree>
                     </field>
 
