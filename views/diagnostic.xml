@@ -6,23 +6,19 @@
         <field name="res_model">engin.diagnostic</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <record id="action_view_diagnostic_line" model="ir.actions.act_window">
-        <field name="name">Diagnostic Liste</field>
-        <field name="res_model">engin.diagnostic.line</field>
-        <field name="view_mode">tree,form</field>
-    </record>
     <record id="action_view_diagnostic_line_tree" model="ir.ui.view">
         <field name="name">engin.diagnostic.list</field>
         <field name="model">engin.diagnostic</field>
         <field name="arch" type="xml">
             <form>
-                <field name="engin_diagnostic_line">
+                <field name="name"/>
+                <!-- <field name="engin_diagnostic_line">
                     <tree editable="botttom">
                         <field name="sequence"/>
                         <field name="name"/>
                         <field name="description"/>
                     </tree>
-                </field>
+                </field> -->
             </form>
         </field>
     </record>
