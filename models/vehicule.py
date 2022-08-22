@@ -20,6 +20,14 @@ class Vehicle(models.Model):
     nb_porte = fields.Text(string="NB Portes")
 
     engine_maintenance_variant = fields.Many2one('engine.maintenance.variant')
+    calendar_count = fields.Integer(compute="_compute_calendar")
+
+    def _compute_calendar(self):
+        Calendar = self.env['calendar.event']
+        for record in self:
+            record.calendar_count = Calendar.search_count([('engin_id', '=', record.id)])
+
+
 
 
 
