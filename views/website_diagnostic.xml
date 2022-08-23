@@ -18,8 +18,7 @@
                 <div class="oe_structure">
                     <form role="form" action="/update/diagnostic" method="post">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                        <table style="width:70%; font-family: Tahoma;position:absolute;margin-left: auto;
-  margin-right: auto; border-color:red" class="table table-bordered">
+                        <table style="width:70%; font-family: Tahoma;position:absolute;margin-left: auto;margin-right: auto" class="table table-bordered">
                             <thead style="background-color:#557EB5;color:white">
                                 <th>TÂCHES À EFFECTUER</th>
                                 <th>COMMENTAIRE</th>
@@ -59,13 +58,10 @@
                                 </t>
                             </tbody>
                         </table>
-                        <!-- <div class="form-group">
-                            <label for="sale_order" class="control-label">Numéro du devis</label>
-                            <input type="text" name="" t-att-value="sale_id.name" class="form-control"/>
-                        </div> -->
-                        <div class="clearfix oe_login_buttons" style="position:absolute;">
-                            <button type="submit" class="btn btn-primary">Sauvegarder la fiche diagnostic</button>
-                        </div>
+                        
+                        <!-- <div class="clearfix oe_login_buttons" style="position:absolute;"> -->
+                            <button type="submit" class="oe_highlight">Sauvegarder la fiche diagnostic</button>
+                        <!-- </div> -->
                     </form>
                 </div>
             </div>
