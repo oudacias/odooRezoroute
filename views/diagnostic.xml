@@ -12,7 +12,7 @@
                 </group>
                 <field name="engin_diagnostic_line">
                     <tree editable="botttom">
-                        <field name="sequence"/>
+                        <!-- <field name="sequence"/> -->
                         <field name="name"/>
                         <field name="description"/>
                     </tree>
