@@ -20,7 +20,7 @@ class EnginDiagnosticLine(models.Model):
     diagnostic_sale_id = fields.Many2one('sale.order')
 
     comment = fields.Char(string="Observations/Commentaires")
-    next_reminder = fields.Selection([('jamais','Jamais'),('immediat','Immédiat'),('1 mois','1 mois'),('2 mois','2 mois'),('3 mois','3 mois'),('6 mois','6 mois'),('9 mois','9 mois'),('1 ans','1 ans'),('2 ans','2 ans'),('3 ans','3 ans')])
+    next_reminder = fields.Selection([('jamais','Jamais'),('immediat','Immédiat'),('1 mois','1 mois'),('2 mois','2 mois'),('3 mois','3 mois'),('6 mois','6 mois'),('9 mois','9 mois'),('1 ans','1 ans'),('2 ans','2 ans'),('3 ans','3 ans')],string="Prochain rappel dans")
     done = fields.Boolean(string="Tâche effectuée ou non")
 
 
