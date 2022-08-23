@@ -47,7 +47,8 @@ class DiagnosticWizard(models.Model):
         sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
 
         for rec in diagnostic_id.engin_diagnostic_line:
-            sale_id.update({
+            print("@@@@ DiagnosticWizard format: " + str(rec.id)
+            sale_id.write({
                 'diagnostic_sale_id': [(0, 0, {rec.id})],
             })
             
