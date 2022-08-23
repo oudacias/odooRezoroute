@@ -25,7 +25,7 @@
                                             <td><input type="checkbox" name="done" multiple="multiple" checked=""/></td>
                                         </t>
                                         <t t-if="sale_diagnostic_line.done == False">
-                                            <td><input type="checkbox" name="done" multiple="multiple"/></td>
+                                            <td><input type="checkbox" name="done_diagnostic" multiple="multiple"/></td>
                                         </t>
                                         
                                     </tr>
