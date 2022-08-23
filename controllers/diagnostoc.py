@@ -20,7 +20,7 @@ class Diagnostic(http.Controller):
         next_reminder_list = request.httprequest.form.getlist('next_reminder')
         # done_list = request.httprequest.form.getlist('done_diagnostic')
         done_list = request.httprequest.form.to_dict(flat=False)
-        print("@@@@ Hello ")
+        
         done_list_dict = list(done_list.values())[4]
        
 
@@ -29,6 +29,7 @@ class Diagnostic(http.Controller):
             is_done = False
             if(line_list[i] in done_list_dict):
                 is_done = True
+                print("@@@@ Hello 111")
 
             line_diagnostic.write({'comment':comment_list[i],
                                     'next_reminder':next_reminder_list[i],
