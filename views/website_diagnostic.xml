@@ -22,7 +22,7 @@
                                         <td><textarea name="comment" multiple="multiple"><t t-esc="sale_diagnostic_line.comment"/></textarea></td>
                                         <td><input type="text" name="next_reminder" t-att-value="sale_diagnostic_line.next_reminder" class="form-control" multiple="multiple"/></td>
                                         <!-- <span t-if="ch.partner_shipping_id"></span> -->
-                                        <td><input type="checkbox" name="done" multiple="multiple" value="on"/></td>
+                                        <td><input type="checkbox" name="done" multiple="multiple" checked="checked"/></td>
                                         
                                     </tr>
                                 </t>
