@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="update_diagnostic_template" name="Fiche diagnostic">
-        <!-- <t t-call="website.layout"> -->
+        <t t-call="website.layout">
             <div class="wrap">
                 <div class="oe_structure">
                     <form role="form" action="/update/diagnostic" method="post">
@@ -57,7 +57,7 @@
                     </form>
                 </div>
             </div>
-        <!-- </t> -->
+        </t>
     </template>
     <record id="update_diagnostic_done" model="website.page">
         <field name="name">Fin de diagnostic</field>
