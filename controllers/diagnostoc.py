@@ -22,6 +22,8 @@ class Diagnostic(http.Controller):
         done_list = request.httprequest.form.to_dict(flat=False)
         
         done_list_dict = list(done_list.values())[4]
+
+        print("@@@@####### Reminder " +str(next_reminder_list))
        
 
         for i in range(len(line_list)):
