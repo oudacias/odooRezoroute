@@ -30,7 +30,9 @@ class Diagnostic(http.Controller):
             if(line_list[i] in done_list_dict):
                 is_done = True
                 print("@@@@ Hello 111")
+                print("@@@@ Hello 111  "  + str(line_list[i]))
                 print("@@@@ Hello 111  "  + str(comment_list[i]))
+                print("@@@@ Hello 111  "  + str(next_reminder_list[i]))
 
             line_diagnostic.write({'comment':comment_list[i],
                                     'next_reminder':next_reminder_list[i],
