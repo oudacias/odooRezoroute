@@ -50,7 +50,7 @@ class DiagnosticWizard(models.Model):
         for rec in diagnostic_id.engin_diagnostic_line:
             print("@@@@ DiagnosticWizard format 1: " + str(values['sale_id']))
             print("@@@@ DiagnosticWizard format: " + str(sale_id.id))
-            sale_id.write({
+            sale_id.update({
                 'engin_diagnostic_sale': [(0, 0, {rec.id})],
             })
             
