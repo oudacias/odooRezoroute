@@ -21,7 +21,7 @@ class Diagnostic(http.Controller):
         # done_list = request.httprequest.form.getlist('done_diagnostic')
         done_list = request.httprequest.form.to_dict()
         print("@@@@ Hello ")
-        print(str(done_list))
+        print((done_list))
         # print(str(done_list[0]))
         # print(str(done_list[0]))
 
