@@ -22,7 +22,7 @@
                                         <td><textarea name="comment" multiple="multiple"><t t-esc="sale_diagnostic_line.comment"/></textarea></td>
                                         <td>
                                             <select class="form-control" name="next_reminder" multiple="multiple">
-                                                <option t-attf-value="'jamais'">Jamais</option>
+                                                <option t-attf-value="'Jamais'">Jamais</option>
                                                 <option t-attf-value="'immediat'">Immediat</option>
                                                 <option t-attf-value="'1 mois'">1 mois</option>
                                                 <option t-attf-value="'2 mois'">2 mois</option>
