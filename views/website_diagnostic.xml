@@ -23,16 +23,16 @@
                                         <td>
                                             <select class="form-control" name="next_reminder">
                                            
-                                                <option t-attf-value="jamais">Jamais</option>
-                                                <option t-attf-value="immediat">Immediat</option>
-                                                <option t-attf-value="1 mois">1 mois</option>
-                                                <option t-attf-value="2 mois">2 mois</option>
-                                                <option t-attf-value="3 mois">3 mois</option>
-                                                <option t-attf-value="6 mois">6 mois</option>
-                                                <option t-attf-value="9 mois">9 mois</option>
-                                                <option t-attf-value="1 ans">1 ans</option>
-                                                <option t-attf-value="2 ans">2 ans</option>
-                                                <option t-attf-value="3 ans">3 ans</option>
+                                                <option>Jamais</option>
+                                                <option>Immediat</option>
+                                                <option>1 mois</option>
+                                                <option>2 mois</option>
+                                                <option>3 mois</option>
+                                                <option>6 mois</option>
+                                                <option>9 mois</option>
+                                                <option>1 ans</option>
+                                                <option>2 ans</option>
+                                                <option>3 ans</option>
                                             </select>
                                         </td>
                      
