@@ -39,7 +39,7 @@ class DevisDiagnostic(models.Model):
             'context' : {'default_sale_id' : self.id }
             
             }  
-    def add_diagnostic(self):
+    def update_diagnostic(self):
         return {
            'type': 'ir.actions.act_url',
             'url': '/ps_rezoroute/ps_rezoroute',
