@@ -22,6 +22,7 @@ class Diagnostic(http.Controller):
         print("@@@@ Hello ")
         print(type(done_list))
         print(str(done_list))
+        print(str(done_list[0]))
 
         # for i in range(len(line_list)):
             # line_diagnostic = request.env['sale.order'].search([('id','=',line_list[i])])
