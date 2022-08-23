@@ -17,6 +17,7 @@ product_product_id,product.product,model_product_product,group_gestionnaire,0,0,
 product_template_id,product.template,model_product_template,group_gestionnaire,0,0,0,0
 order_repair_confirm_id,order.repair.confirm,model_order_repair_confirm,group_gestionnaire,1,1,1,1
 sequence_product_id,sequence.product,model_sequence_product,group_gestionnaire,1,1,1,1
+sequence_engin_diagnostic_line,engin.diagnostic.line,model_engin_diagnostic_line,group_gestionnaire,1,1,1,1
 
 
 
