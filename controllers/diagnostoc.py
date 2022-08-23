@@ -8,7 +8,7 @@ class Diagnostic(http.Controller):
     def index(self, **kw):
         print("@@@@ Hello")
         print("@@@@ Hello " +str(kw.get('sale_id')))
-        sale_id = self.env['sale.order'].search([('id','=',kw.get('sale_id'))])
+        sale_id = request.env['sale.order'].search([('id','=',kw.get('sale_id'))])
         return http.request.render('ps_rezoroute.update_diagnostic_template', {'sale_id':sale_id})
 
     # @http.route('/ps_rezoroute/ps_rezoroute/objects', auth='public')
