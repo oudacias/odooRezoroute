@@ -35,7 +35,7 @@ class Diagnostic(http.Controller):
 
 
             line_diagnostic.write({'comment':comment_list[i],
-                                    'next_reminder': '1 mois',
+                                    'next_reminder': str(next_reminder_list[i]),
                                     'done':is_done,
                                     })
 
