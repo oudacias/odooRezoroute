@@ -15,11 +15,14 @@ class Diagnostic(http.Controller):
     @http.route('/update/diagnostic',type="http", website=True ,auth='public')
     def update_diagnostic(self, **kw):
 
-        selected_list = request.httprequest.form.getlist('line_id')
+        line_list = request.httprequest.form.getlist('line_id')
+        comment_list = request.httprequest.form.getlist('comment')
+        next_reminder_list = request.httprequest.form.getlist('next_reminder')
+        done_list = request.httprequest.form.getlist('done')
 
        
-        print("@@@@ Hello " +str(selected_list)[1])
-        print("@@@@ Hello " +str(kw.get('line_id')))
+        print("@@@@ Hello " +str(line_list)[1])
+        print("@@@@ Hello " +str(type(line_list)))
         return http.request.render('ps_rezoroute.update_diagnostic_done', {})
 
     # @http.route('/ps_rezoroute/ps_rezoroute/objects', auth='public')
