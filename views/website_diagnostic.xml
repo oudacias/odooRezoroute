@@ -17,7 +17,7 @@
                             <tbody>
                                 <t t-foreach="sale_id.engin_diagnostic_sale" t-as="sale_diagnostic_line">
                                     <tr>
-                                        <td><input type="hidden" name="line_id" t-att-value="sale_diagnostic_line.id" multiple="multiple"/></td>
+                                        <input type="hidden" name="line_id" t-att-value="sale_diagnostic_line.id" multiple="multiple"/>
                                         <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
                                         <td><textarea name="comment" multiple="multiple"><t t-esc="sale_diagnostic_line.comment"/></textarea></td>
                                         <td>
