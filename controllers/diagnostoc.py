@@ -7,7 +7,7 @@ class Diagnostic(http.Controller):
     @http.route('/ps_rezoroute/ps_rezoroute',type="http", website=True ,auth='public')
     def index(self, **kw):
         print("@@@@ Hello")
-        print("@@@@ Hello " +str(kw.get('res_id')))
+        print("@@@@ Hello " +str(kw))
         return http.request.render('ps_rezoroute.update_diagnostic_template', {})
 
     # @http.route('/ps_rezoroute/ps_rezoroute/objects', auth='public')
