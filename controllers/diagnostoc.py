@@ -27,13 +27,8 @@ class Diagnostic(http.Controller):
         for i in range(len(line_list)):
             line_diagnostic = request.env['engin.diagnostic.line'].search([('id','=',line_list[i])])
             is_done = False
-            print("@@@@ Hello 1112  "  + str(line_diagnostic))
             if(line_list[i] in done_list_dict):
                 is_done = True
-                print("@@@@ Hello 111")
-                print("@@@@ Hello 111  "  + str(line_list[i]))
-                print("@@@@ Hello 111  "  + str(comment_list[i]))
-                print("@@@@ Hello 111  "  + str(next_reminder_list[i]))
 
             line_diagnostic.write({'comment':comment_list[i],
                                     'next_reminder':next_reminder_list[i],
