@@ -23,16 +23,16 @@
                                         <td>
                                             <select class="form-control" name="next_reminder">
                                            
-                                                <option t-attf-value="jamais">Jamais</option>
-                                                <option t-attf-value="immediat">Immediat</option>
-                                                <option t-attf-value="1 mois">1 mois</option>
-                                                <option t-attf-value="2 mois">2 mois</option>
-                                                <option t-attf-value="3 mois">3 mois</option>
-                                                <option t-attf-value="6 mois">6 mois</option>
-                                                <option t-attf-value="9 mois">9 mois</option>
-                                                <option t-attf-value="1 ans">1 ans</option>
-                                                <option t-attf-value="2 ans">2 ans</option>
-                                                <option t-attf-value="3 ans" selected="true">3 ans</option>
+                                                <option t-attf-value="jamais" t-att-selected='sale_diagnostic_line.next_reminder == "jamais"'>Jamais</option>
+                                                <option t-attf-value="immediat" t-att-selected='sale_diagnostic_line.next_reminder == "immediat"'>Immediat</option>
+                                                <option t-attf-value="1 mois" t-att-selected='sale_diagnostic_line.next_reminder == "1 mois"'>1 mois</option>
+                                                <option t-attf-value="2 mois" t-att-selected='sale_diagnostic_line.next_reminder == "2 mois"'>2 mois</option>
+                                                <option t-attf-value="3 mois" t-att-selected='sale_diagnostic_line.next_reminder == "3 mois"'>3 mois</option>
+                                                <option t-attf-value="6 mois" t-att-selected='sale_diagnostic_line.next_reminder == "6 mois"'>6 mois</option>
+                                                <option t-attf-value="9 mois" t-att-selected='sale_diagnostic_line.next_reminder == "9 mois"'>9 mois</option>
+                                                <option t-attf-value="1 ans" t-att-selected='sale_diagnostic_line.next_reminder == "1 ans"'>1 ans</option>
+                                                <option t-attf-value="2 ans" t-att-selected='sale_diagnostic_line.next_reminder == "2 ans"'>2 ans</option>
+                                                <option t-attf-value="" t-att-selected='sale_diagnostic_line.next_reminder == "3 ans"'>3 ans</option>
                                             </select>
                                         </td>
                      
