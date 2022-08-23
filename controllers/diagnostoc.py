@@ -6,9 +6,9 @@ from odoo.http import request
 class Diagnostic(http.Controller):
     @http.route('/ps_rezoroute/ps_rezoroute',type="http", website=True ,auth='public')
     def index(self, **kw):
-        sale_id = request.env['sale.order'].search([('id','=',kw.get('sale_id'))])
+        sale_id = request.env['sale.order'].search([('id','=',kw.get('sale_order'))])
 
-        print("@@@@ Hello " +str(kw.get('sale_id')))
+        print("@@@@ Hello " +str(kw.get('sale_order')))
         print("@@@@ Hello " +str(sale_id))
         return http.request.render('ps_rezoroute.update_diagnostic_template', {'sale_id':sale_id})
 
