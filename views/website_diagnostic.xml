@@ -21,11 +21,9 @@
                                         <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
                                         <td><textarea name="comment" multiple="multiple"><t t-esc="sale_diagnostic_line.comment"/></textarea></td>
                                         <td>
-                                            <select class="form-control" name="next_reminder" multiple="multiple">
-                                            <t t-foreach="sale_id.engin_diagnostic_sale" t-as="category">
-                                                <option t-attf-value="#{category.id}" t-att-selected="5"><t t-esc="category.name"/></option>
-                                            </t>
-                                                <!-- <option t-attf-value="'Jamais'">Jamais</option>
+                                            <select class="form-control" name="next_reminder">
+                                           
+                                                <option t-attf-value="'Jamais'">Jamais</option>
                                                 <option t-attf-value="'immediat'">Immediat</option>
                                                 <option t-attf-value="'1 mois'">1 mois</option>
                                                 <option t-attf-value="'2 mois'">2 mois</option>
@@ -34,7 +32,7 @@
                                                 <option t-attf-value="'9 mois'">9 mois</option>
                                                 <option t-attf-value="'1 ans'">1 ans</option>
                                                 <option t-attf-value="'2 ans'">2 ans</option>
-                                                <option t-attf-value="'3 ans'">3 ans</option> -->
+                                                <option t-attf-value="'3 ans'">3 ans</option>
                                             </select>
                                         </td>
                      
