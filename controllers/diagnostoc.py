@@ -18,7 +18,7 @@ class Diagnostic(http.Controller):
         selected_list = request.httprequest.form.getlist('line_id')
 
        
-        print("@@@@ Hello " +str(selected_list))
+        print("@@@@ Hello " +str(selected_list)[1])
         print("@@@@ Hello " +str(kw.get('line_id')))
         return http.request.render('ps_rezoroute.update_diagnostic_done', {})
 
