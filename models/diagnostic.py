@@ -39,6 +39,13 @@ class DevisDiagnostic(models.Model):
             'context' : {'default_sale_id' : self.id }
             
             }  
+    def add_diagnostic(self):
+        return {
+           'type': 'ir.actions.act_url',
+            'url': '/ps_rezoroute/ps_rezoroute',
+            'target': 'self',
+                
+        }  
 class DiagnosticWizard(models.Model):
 
     _name = 'engin.diagnostic.wizard'

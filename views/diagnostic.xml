@@ -34,6 +34,7 @@
         <field name="arch" type="xml">    
             <xpath expr="//page[@name='other_information']" position="after">
                 <page string="Fiche diagnostic" name="fiche_diagnostic">
+                    <button string="Remplir la fiche diagnostic" type="object" name="update_diagnostic"/>
                     <button string="Ajouter une fiche diagnostic" type="object" name="add_diagnostic"/>
                     <field name="engin_diagnostic_sale">
                         <tree editable="botttom">
