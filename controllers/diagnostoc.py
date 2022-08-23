@@ -21,16 +21,19 @@ class Diagnostic(http.Controller):
         # done_list = request.httprequest.form.getlist('done_diagnostic')
         done_list = request.httprequest.form.to_dict(flat=False)
         print("@@@@ Hello ")
-        print(list(done_list.values())[4])
-        # print(str(done_list[0]))
-        # print(str(done_list[0]))
+        done_list_dict = list(done_list.values())[4]
+       
 
-        # for i in range(len(line_list)):
-            # line_diagnostic = request.env['sale.order'].search([('id','=',line_list[i])])
-            # line_diagnostic.write({'comment':comment_list[i],
-            #                         'next_reminder':next_reminder_list[i],
-            #                         'done':done_list[i],
-            #                         })
+        for i in range(len(line_list)):
+            line_diagnostic = request.env['sale.order'].search([('id','=',line_list[i])])
+            is_done = False
+            if(line_list[i] in done_list_dict):
+                is_done = True
+
+            line_diagnostic.write({'comment':comment_list[i],
+                                    'next_reminder':next_reminder_list[i],
+                                    'done':is_done,
+                                    })
 
        
         return http.request.render('ps_rezoroute.update_diagnostic_done', {})
