@@ -59,9 +59,9 @@
                             </tbody>
                         </table>
                         
-                        <!-- <div class="clearfix oe_login_buttons" style="position:absolute;"> -->
+                        <div class="clearfix oe_login_buttons" style="position:absolute;">
                             <button type="submit" class="oe_highlight">Sauvegarder la fiche diagnostic</button>
-                        <!-- </div> -->
+                        </div>
                     </form>
                 </div>
             </div>
