@@ -22,10 +22,10 @@
                                         <td><textarea name="comment" multiple="multiple"><t t-esc="sale_diagnostic_line.comment"/></textarea></td>
                                         <td><input type="text" name="next_reminder" t-att-value="sale_diagnostic_line.next_reminder" class="form-control" multiple="multiple"/></td>
                                         <t t-if="sale_diagnostic_line.done == True">
-                                            <td><input type="checkbox" name="done" multiple="multiple" t-if="sale_diagnostic_line.done" checked=""/></td>
+                                            <td><input type="checkbox" name="done" multiple="multiple" checked=""/></td>
                                         </t>
                                         <t t-if="sale_diagnostic_line.done == False">
-                                            <td><input type="checkbox" name="done" multiple="multiple" t-if="sale_diagnostic_line.done"/></td>
+                                            <td><input type="checkbox" name="done" multiple="multiple"/></td>
                                         </t>
                                         
                                     </tr>
