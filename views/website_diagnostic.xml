@@ -20,7 +20,7 @@
                                         <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
                                         <td><input type="text" name="" t-att-value="sale_diagnostic_line.comment" class="form-control"/></td>
                                         <td><input type="text" name="" t-att-value="sale_diagnostic_line.next_reminder" class="form-control"/></td>
-                                        <td><input type="text" name="" t-att-value="sale_diagnostic_line.done" class="form-control"/></td>
+                                        <td><input type="checkbox" name="" t-att-value="sale_diagnostic_line.done" class="form-control"/></td>
                                         
                                     </tr>
                                 </t>
