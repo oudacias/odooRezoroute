@@ -55,7 +55,7 @@
             <form>
                 <group>
                     <field name="diagnostic_id"/>
-                    <field name="sale_id" invisible="1"/>
+                    <field name="sale_id"/>
                 </group>
             </form>
         </field>
