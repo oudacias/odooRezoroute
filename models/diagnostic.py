@@ -42,9 +42,8 @@ class DevisDiagnostic(models.Model):
     def update_diagnostic(self):
         return {
            'type': 'ir.actions.act_url',
-            'url': '/ps_rezoroute/ps_rezoroute',
+            'url': '/ps_rezoroute/ps_rezoroute?dep_id=%s' % self.id,
             'target': 'new',
-            'res_id': self.id,
                 
         }  
 class DiagnosticWizard(models.Model):
