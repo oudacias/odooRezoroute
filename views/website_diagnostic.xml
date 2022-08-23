@@ -6,7 +6,7 @@
                 <div class="oe_structure">
                     <form role="form" action="/update/diagnostic" method="post">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                        <table>
+                        <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
                             <thead>
                                 <th>TÂCHES À EFFECTUER</th>
                                 <th>COMMENTAIRE</th>
