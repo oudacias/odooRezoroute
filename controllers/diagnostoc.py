@@ -15,7 +15,7 @@ class Diagnostic(http.Controller):
     @http.route('/update/diagnostic',type="http", website=True ,auth='public')
     def update_diagnostic(self, **kw):
        
-        print("@@@@ Hello " +str(kw.get('line_id')[1]))
+        print("@@@@ Hello " +str(kw.get('line_id')))
         return http.request.render('ps_rezoroute.update_diagnostic_done', {})
 
     # @http.route('/ps_rezoroute/ps_rezoroute/objects', auth='public')
