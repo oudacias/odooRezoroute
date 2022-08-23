@@ -18,10 +18,10 @@ class Diagnostic(http.Controller):
         line_list = request.httprequest.form.getlist('line_id')
         comment_list = request.httprequest.form.getlist('comment')
         next_reminder_list = request.httprequest.form.getlist('next_reminder')
-        done_list = request.httprequest.form
+        done_list = request.httprequest.form.get(default=None, type=None)
         print("@@@@ Hello ")
         print(str(done_list))
-        print(str(done_list[0]))
+        # print(str(done_list[0]))
         # print(str(done_list[0]))
 
         # for i in range(len(line_list)):
