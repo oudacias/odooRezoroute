@@ -16,11 +16,13 @@
                             </thead>
                             <tbody>
                                 <t t-foreach="sale_id.engin_diagnostic_sale" t-as="sale_diagnostic_line">
-                                    <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
-                                    <td><t t-esc="sale_diagnostic_line.name"/></td>
-                                    <td><t t-esc="sale_diagnostic_line.comment"/></td>
-                                    <td><t t-esc="sale_diagnostic_line.next_reminder"/></td>
-                                    <td><t t-esc="sale_diagnostic_line.done"/></td>
+                                    <tr>
+                                        <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
+                                        <td><t t-esc="sale_diagnostic_line.name"/></td>
+                                        <td><t t-esc="sale_diagnostic_line.comment"/></td>
+                                        <td><t t-esc="sale_diagnostic_line.next_reminder"/></td>
+                                        <td><t t-esc="sale_diagnostic_line.done"/></td>
+                                    </tr>
                                 </t>
                             </tbody>
                         </table>
