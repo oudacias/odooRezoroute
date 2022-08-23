@@ -17,6 +17,7 @@
                             <tbody>
                                 <t t-foreach="sale_id.engin_diagnostic_sale" t-as="sale_diagnostic_line">
                                     <tr>
+                                        <td><input type="hidden" name="line_id" t-att-value="sale_diagnostic_line.id"/></td>
                                         <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
                                         <td><textarea><t t-esc="sale_diagnostic_line.comment"/></textarea></td>
                                         <td><input type="text" name="" t-att-value="sale_diagnostic_line.next_reminder" class="form-control"/></td>
@@ -38,4 +39,22 @@
             </div>
         </t>
     </template>
+    <record id="update_diagnostic_done" model="website.page">
+        <field name="name">Fin de diagnostic</field>
+        <field name="type">qweb</field>
+        <field name="url">/Fin-Diagnostic</field>
+        <field name="website_published">True</field>
+        <field name="key">ps_rezoroute.update_diagnostic_done</field>
+        <field name="arch" type="xml">
+            <t name="Fin" t-name="ps_rezoroute.update_diagnostic_done">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h3>Sauvegarde de votre diagnostic effectuée</h3>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
 </odoo>

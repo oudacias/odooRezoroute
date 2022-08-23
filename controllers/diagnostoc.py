@@ -12,6 +12,12 @@ class Diagnostic(http.Controller):
         print("@@@@ Hello " +str(sale_id))
         return http.request.render('ps_rezoroute.update_diagnostic_template', {'sale_id':sale_id})
 
+    @http.route('/update/diagnostic',type="http", website=True ,auth='public')
+    def update_diagnostic(self, **kw):
+       
+        print("@@@@ Hello " +str(kw.get()))
+        return http.request.render('ps_rezoroute.update_diagnostic_done', {})
+
     # @http.route('/ps_rezoroute/ps_rezoroute/objects', auth='public')
     # def list(self, **kw):
     #     return http.request.render('ps_rezoroute.listing', {
