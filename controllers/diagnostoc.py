@@ -12,16 +12,16 @@ class Diagnostic(http.Controller):
         print("@@@@ Hello " +str(sale_id))
         return http.request.render('ps_rezoroute.update_diagnostic_template', {'sale_id':sale_id})
 
-    @http.route('/update/diagnostic',type="json", website=True ,auth='public')
+    @http.route('/update/diagnostic',type="http", website=True ,auth='public')
     def update_diagnostic(self, **kw):
 
         line_list = request.httprequest.form.getlist('line_id')
         comment_list = request.httprequest.form.getlist('comment')
         next_reminder_list = request.httprequest.form.getlist('next_reminder')
-        done_list = request.httprequest.form
+        done_list = request.httprequest.form.get('done_diagnostic')
         print("@@@@ Hello ")
         print(str(done_list))
-        print(str(request.jsonrequest))
+        print(str(done_list))
 
         # for i in range(len(line_list)):
             # line_diagnostic = request.env['sale.order'].search([('id','=',line_list[i])])
