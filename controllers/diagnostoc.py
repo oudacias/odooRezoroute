@@ -21,11 +21,13 @@ class Diagnostic(http.Controller):
         done_list = request.httprequest.form.getlist('done')
 
         for i in range(len(line_list)):
-            print(line_list[i])
+            line_diagnostic = request.env['sale.order'].search([('id','=',line_list[i])])
+            line_diagnostic.write({'comment':comment_list[i],
+                                    'next_reminder':next_reminder_list[i],
+                                    'done':done_list[i],
+                                    })
 
        
-        print("@@@@ Hello " +str(line_list)[1])
-        print("@@@@ Hello " +str(type(line_list)))
         return http.request.render('ps_rezoroute.update_diagnostic_done', {})
 
     # @http.route('/ps_rezoroute/ps_rezoroute/objects', auth='public')
