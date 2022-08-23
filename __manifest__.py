@@ -69,6 +69,7 @@
         'views/stock_picking.xml',
         'views/calendar.xml',
         'views/diagnostic.xml',
+        'views/website_diagnostic.xml',
         
     ],
     'assets': {
