@@ -42,7 +42,7 @@ class DiagnosticWizard(models.Model):
     sale_id = fields.Many2one('sale.order')
 
 
-    @api.model
+    @api.multi
     def create(self, values):
         diagnostic_id = self.env['engin.diagnostic'].search([('id','=',values['diagnostic_id'])])
         sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
