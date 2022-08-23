@@ -20,8 +20,8 @@ class Diagnostic(http.Controller):
         next_reminder_list = request.httprequest.form.getlist('next_reminder')
         done_list = request.httprequest.form.getlist('done')
 
-        for x in line_list:
-            print(x)
+        for i in range(len(line_list)):
+            print(line_list[i])
 
        
         print("@@@@ Hello " +str(line_list)[1])
