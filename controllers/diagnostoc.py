@@ -19,7 +19,7 @@ class Diagnostic(http.Controller):
         comment_list = request.httprequest.form.getlist('comment')
         next_reminder_list = request.httprequest.form.getlist('next_reminder')
         # done_list = request.httprequest.form.getlist('done_diagnostic')
-        done_list = request.httprequest.form.to_dict()
+        done_list = request.httprequest.form.to_dict(flat=False)
         print("@@@@ Hello ")
         print((done_list))
         # print(str(done_list[0]))
