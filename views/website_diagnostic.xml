@@ -8,7 +8,7 @@
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                         <div class="form-group">
                             <label for="sale_order" class="control-label">Numéro du devis</label>
-                            <input type="text" name="" t-att-value="sale_order" class="form-control"/>
+                            <input type="text" name="" t-att-value="sale_id.name" class="form-control"/>
                         </div>
                         <div class="clearfix oe_login_buttons">
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
