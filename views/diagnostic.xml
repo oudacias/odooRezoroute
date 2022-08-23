@@ -12,7 +12,7 @@
                 </group>
                 <field name="engin_diagnostic_line">
                     <tree editable="botttom">
-                        <!-- <field name="sequence"/> -->
+                        <field name="sequence"/>
                         <field name="name"/>
                         <field name="description"/>
                     </tree>
@@ -37,7 +37,7 @@
                     <button string="Ajouter une fiche diagnostic" type="object" name="add_diagnostic"/>
                     <field name="engin_diagnostic_sale">
                         <tree editable="botttom">
-                            <!-- <field name="sequence"/> -->
+                            <field name="sequence"/>
                             <field name="name"/>
                             <field name="description"/>
                         </tree>
@@ -55,7 +55,7 @@
             <form>
                 <group>
                     <field name="diagnostic_id"/>
-                    <field name="sale_id"/>
+                    <field name="sale_id" invisible="1"/>
                 </group>
             </form>
         </field>

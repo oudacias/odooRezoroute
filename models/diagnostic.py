@@ -14,7 +14,7 @@ class EnginDiagnosticLine(models.Model):
 
     _name = 'engin.diagnostic.line'
     name = fields.Char(string="Fiche diagnostic")
-    # sequence = fields.Integer(string="Séquence")
+    sequence = fields.Integer(string="Séquence")
     description = fields.Text(string="Description de la tâche")
     diagnostic_id = fields.Many2one('engin.diagnostic')
     diagnostic_sale_id = fields.Many2one('sale.order')
@@ -48,13 +48,12 @@ class DiagnosticWizard(models.Model):
         sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
 
         for rec in diagnostic_id.engin_diagnostic_line:
-            print("@@@@ DiagnosticWizard format 1: " + str(values['sale_id']))
-            print("@@@@ DiagnosticWizard format: " + str(sale_id.id))
+            print("@@@@ DiagnosticWizard format: " + str( {'name':rec.name, 'sequence': rec.sequence}))
             sale_id.write({
-                'engin_diagnostic_sale': [(0, 0, {rec})],
+                'engin_diagnostic_sale': [(0, 0, {rec.id})],
             })
 
-            # sale_id.update({'engin_diagnostic_sale': [(0, 0, {'name':rec.name, 'sequence': rec.sequence})]})
+            sale_id.update({'engin_diagnostic_sale': [(0, 0, {'name':rec.name, 'sequence': rec.sequence})]})
             
 
 
