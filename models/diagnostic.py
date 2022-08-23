@@ -53,7 +53,7 @@ class DiagnosticWizard(models.Model):
             #     'engin_diagnostic_sale': [(1, 0, {rec.id})],
             # })
 
-            sale_id.update({'engin_diagnostic_sale': [(1, 0, {'name':rec.name, 'sequence': rec.sequence})]})
+            sale_id.update({'engin_diagnostic_sale': [(0, 0, {'name':rec.name, 'sequence': rec.sequence})]})
             
 
 
