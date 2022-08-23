@@ -6,8 +6,8 @@
                 <div class="oe_structure">
                     <form role="form" action="/update/diagnostic" method="post">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                        <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
-                            <thead>
+                        <table style="border: 0.3px solid black;float:right;width:70%; font-family: Tahoma;position:absolute">
+                            <thead style="background-color:#2C415E">
                                 <th>TÂCHES À EFFECTUER</th>
                                 <th>COMMENTAIRE</th>
                                 <th>RAPPEL DANS</th>
@@ -15,17 +15,17 @@
                             </thead>
                             <tbody>
                                 <t t-foreach="sale_id.engin_diagnostic_sale" t-as="sale_diagnostic_line">
-                                    <td><t t-esc="sale_diagnostic_line.name"/></td>
+                                    <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
                                     <td><t t-esc="sale_diagnostic_line.comment"/></td>
                                     <td><t t-esc="sale_diagnostic_line.next_reminder"/></td>
                                     <td><t t-esc="sale_diagnostic_line.done"/></td>
                                 </t>
                             </tbody>
                         </table>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="sale_order" class="control-label">Numéro du devis</label>
                             <input type="text" name="" t-att-value="sale_id.name" class="form-control"/>
-                        </div>
+                        </div> -->
                         <div class="clearfix oe_login_buttons">
                             <button type="submit" class="btn btn-primary">Sauvegarder la fiche diagnostic</button>
                         </div>
