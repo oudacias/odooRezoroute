@@ -23,7 +23,6 @@ class Diagnostic(http.Controller):
         
         done_list_dict = list(done_list.values())[4]
 
-        print("@@@@####### Reminder " +str(next_reminder_list))
        
 
         for i in range(len(line_list)):
@@ -31,6 +30,9 @@ class Diagnostic(http.Controller):
             is_done = False
             if(line_list[i] in done_list_dict):
                 is_done = True
+
+            print("@@@@####### Reminder " +str(next_reminder_list[i][0]))
+
 
             line_diagnostic.write({'comment':comment_list[i],
                                     'next_reminder':next_reminder_list[i],
