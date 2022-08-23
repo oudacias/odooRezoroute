@@ -20,6 +20,7 @@ class EnginDiagnosticLine(models.Model):
     diagnostic_sale_id = fields.Many2one('sale.order')
 
 
+
 class DevisDiagnostic(models.Model):
 
     _inherit = 'sale.order'
@@ -48,13 +49,11 @@ class DiagnosticWizard(models.Model):
         sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
 
         for rec in diagnostic_id.engin_diagnostic_line:
-            print("@@@@ DiagnosticWizard format: " + str( {'name':rec.name, 'sequence': rec.sequence}))
-            # sale_id.write({
-            #     'engin_diagnostic_sale': [(1, 0, {rec.id})],
-            # })
 
-            sale_id.update({'engin_diagnostic_sale': [(0, 0, {'name':rec.name, 'sequence': rec.sequence})]})
-            
+            if(rec.id != sale_id.engin_diagnostic_sale.diagnostic_id.id):
+
+                sale_id.update({'engin_diagnostic_sale': [(0, 0, {'name':rec.name, 'sequence': rec.sequence, 'description': rec.description})]})
+                
 
 
         q= super(DiagnosticWizard, self).create(values) 
