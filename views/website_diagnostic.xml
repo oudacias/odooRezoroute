@@ -23,7 +23,7 @@
                                         <td>
                                             <select class="form-control" name="next_reminder">
                                            
-                                                <option t-attf-value="Jamais">Jamais</option>
+                                                <option t-attf-value="jamais">Jamais</option>
                                                 <option t-attf-value="immediat">Immediat</option>
                                                 <option t-attf-value="1 mois">1 mois</option>
                                                 <option t-attf-value="2 mois">2 mois</option>
