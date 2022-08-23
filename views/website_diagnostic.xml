@@ -59,7 +59,7 @@
                             </tbody>
                         </table>
                         
-                        <div style="position:relative; margin-left: 12%">
+                        <div style="position:relative; margin-left: 15%">
                             <button type="submit" class="btn btn-primary">Sauvegarder la fiche diagnostic</button>
                         </div>
                     </form>
