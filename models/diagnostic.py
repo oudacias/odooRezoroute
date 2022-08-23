@@ -32,6 +32,7 @@ class DevisDiagnostic(models.Model):
             'target': 'new',
             'type': 'ir.actions.act_window',
             'views' : [(False, 'form')],
+            'context' : {'default_sale_id' : self.id }
             
             }  
 class DiagnosticWizard(models.Model):
