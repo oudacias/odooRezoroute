@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<template id="new_footer" inherit_id="website.layout">
+           <xpath expr="//footer" position="replace">
+               <footer>
+                   <div class="mynewdiv">
+                       <div id="footer_container">
+                           code
+                       </div>
+                   </div>
+               </footer>
+           </xpath>
+</template>
     <template id="update_diagnostic_template" name="Fiche diagnostic">
         <t t-call="website.layout">
             <div class="wrap">
