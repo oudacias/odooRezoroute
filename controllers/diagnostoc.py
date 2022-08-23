@@ -18,7 +18,7 @@ class Diagnostic(http.Controller):
         line_list = request.httprequest.form.getlist('line_id')
         comment_list = request.httprequest.form.getlist('comment')
         next_reminder_list = request.httprequest.form.getlist('next_reminder')
-        done_list = request.httprequest.form('done_diagnostic')
+        done_list = request.httprequest.environ
         print("@@@@ Hello ")
         print(str(done_list))
 
