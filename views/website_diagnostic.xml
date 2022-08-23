@@ -6,12 +6,24 @@
                 <div class="oe_structure">
                     <form role="form" action="/update/diagnostic" method="post">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <table>
+                        <thead>
+                            <th>TÂCHES À EFFECTUER</th>
+                            <th>COMMENTAIRE</th>
+                            <th>RAPPEL DANS</th>
+                            <th>FAIT</th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="sale_id.engin_diagnostic_sale" t-as="sale_diagnostic_line">
+                                <td><t t-esc="sale_diagnostic_line.name"/></td>
+                            </t>
+                        </tbody>
                         <div class="form-group">
                             <label for="sale_order" class="control-label">Numéro du devis</label>
                             <input type="text" name="" t-att-value="sale_id.name" class="form-control"/>
                         </div>
                         <div class="clearfix oe_login_buttons">
-                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <button type="submit" class="btn btn-primary">Sauvegarder la fiche diagnostic</button>
                         </div>
                     </form>
                 </div>
