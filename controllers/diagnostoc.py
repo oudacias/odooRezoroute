@@ -20,7 +20,7 @@ class Diagnostic(http.Controller):
         next_reminder_list = request.httprequest.form.getlist('next_reminder')
         done_list = request.httprequest.form.getlist('done_diagnostic')
         print("@@@@ Hello ")
-        print(str(kw.get('done_diagnostic')))
+        print(len(done_list))
 
         # for i in range(len(line_list)):
             # line_diagnostic = request.env['sale.order'].search([('id','=',line_list[i])])
