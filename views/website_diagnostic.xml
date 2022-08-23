@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 <template id="new_footer" inherit_id="website.layout">
-           <xpath expr="//footer" position="replace">
-               <footer>
-                   
-               </footer>
-           </xpath>
-           <xpath expr="//header" position="replace">
-               <header>
-                   
-               </header>
-           </xpath>
+    <xpath expr="//footer" position="replace">
+        <footer>
+            
+        </footer>
+    </xpath>
+    <xpath expr="//header" position="replace">
+        <header>
+            
+        </header>
+    </xpath>
 </template>
     <template id="update_diagnostic_template" name="Fiche diagnostic">
         <t t-call="website.layout">
@@ -18,7 +18,7 @@
                 <div class="oe_structure">
                     <form role="form" action="/update/diagnostic" method="post">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                        <table style="width:70%; font-family: Tahoma;position:absolute;margin-left: auto;margin-right: auto" class="table table-bordered">
+                        <table style="width:70%; font-family: Tahoma;position:relative;margin-left: auto;margin-right: auto" class="table table-bordered">
                             <thead style="background-color:#557EB5;color:white">
                                 <th>TÂCHES À EFFECTUER</th>
                                 <th>COMMENTAIRE</th>
@@ -30,8 +30,7 @@
                                     <tr>
                                         <input type="hidden" name="line_id" t-att-value="sale_diagnostic_line.id" multiple="multiple"/>
                                         <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
-                                        
-                                        <td><input type="text" name="comment" t-att-value="sale_diagnostic_line.comment" multiple="multiple" style="width:70%"/></td>
+                                        <td><textarea name="comment" multiple="multiple"><t t-esc="sale_diagnostic_line.comment"  style="width:90%"/></textarea></td>
                                         <td>
                                             <select class="form-control" name="next_reminder">
                                            
@@ -60,7 +59,7 @@
                             </tbody>
                         </table>
                         
-                        <div class="clearfix oe_login_buttons" style="position: relative;">
+                        <div class="clearfix oe_login_buttons" style="position: ;">
                             <button type="submit" class="btn btn-primary">Sauvegarder la fiche diagnostic</button>
                         </div>
                     </form>
