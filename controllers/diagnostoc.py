@@ -14,7 +14,11 @@ class Diagnostic(http.Controller):
 
     @http.route('/update/diagnostic',type="http", website=True ,auth='public')
     def update_diagnostic(self, **kw):
+
+        selected_list = request.httprequest.form.getlist('line_id')
+
        
+        print("@@@@ Hello " +str(selected_list))
         print("@@@@ Hello " +str(kw.get('line_id')))
         return http.request.render('ps_rezoroute.update_diagnostic_done', {})
 
