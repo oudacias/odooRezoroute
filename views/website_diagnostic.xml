@@ -30,7 +30,8 @@
                                     <tr>
                                         <input type="hidden" name="line_id" t-att-value="sale_diagnostic_line.id" multiple="multiple"/>
                                         <td style="height:70px"><t t-esc="sale_diagnostic_line.name"/></td>
-                                        <td><textarea name="comment" multiple="multiple"><t t-esc="sale_diagnostic_line.comment"/></textarea></td>
+                                        
+                                        <td><input type="text" name="comment" t-att-value="sale_diagnostic_line.comment" multiple="multiple"/></td>
                                         <td>
                                             <select class="form-control" name="next_reminder">
                                            
