@@ -16,11 +16,13 @@
         <t t-call="website.layout">
             <div class="wrap">
                 <div class="oe_structure" style="font-family: Tahoma">
-                    <h4>N° OR : <span t-field="sale_id.name"/></h4>
-                    <br/>
-                    <h6>Client : <span t-field="sale_id.partner_id.name"/></h6>
-                    <br/>
-                    <h6>Véhicule :<span t-field="sale_id.engin_id.name"/> </h6>
+                    <div style="position:relative;margin-left: auto;margin-right: auto">
+                        <h4>N° OR : <span t-field="sale_id.name"/></h4>
+                        <br/>
+                        <h6>Client : <span t-field="sale_id.partner_id.name"/></h6>
+                        <br/>
+                        <h6>Véhicule : <span t-field="sale_id.engin_id.name"/> </h6>
+                    </div>
                     <form role="form" action="/update/diagnostic" method="post">
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                         <table style="width:70%; font-family: Tahoma;position:relative;margin-left: auto;margin-right: auto" class="table table-bordered">
