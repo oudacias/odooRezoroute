@@ -43,7 +43,7 @@ class DevisDiagnostic(models.Model):
         return {
            'type': 'ir.actions.act_url',
             'url': '/ps_rezoroute/ps_rezoroute',
-            'target': 'self',
+            'target': 'new',
                 
         }  
 class DiagnosticWizard(models.Model):
