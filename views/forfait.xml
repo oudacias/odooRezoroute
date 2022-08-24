@@ -16,8 +16,8 @@
                     </group>
                     <field name="line_ids">
                         <tree editable="botttom">
-                            <field name="product_id"  width="100"/>
-                            <field name="prix_product"/>
+                            <field name="product_id"  width="10"/>
+                            <field name="prix_product" width="100"/>
                             <field name="facultatif"/>
                             <field name="prix_forfait"/>
                             <field name="quantity"/>
