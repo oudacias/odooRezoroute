@@ -63,9 +63,9 @@
         </field>
     </record>
 
-    <record id="action_view_diagnostic_wizard" model="ir.actions.act_window">
-        <field name="name">Diagnostic Devis</field>
-        <field name="res_model">engin.diagnostic.wizard</field>
+    <record id="action_view_forfait_wizard" model="ir.actions.act_window">
+        <field name="name">Forfait Devis</field>
+        <field name="res_model">forfait.wizard</field>
         <field name="view_mode">tree,form</field>
     </record>
 
