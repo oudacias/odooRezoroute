@@ -14,7 +14,6 @@ class PurchaseForfait(models.Model):
 
     def _get_total(self):
         self.total_forfait = 0
-        print("OoooooOOOOo Forfait Lines " +str(self.line_ids))
         for rec in self:
             for line in rec.line_ids:
                 rec.total_forfait += line.prix_forfait
@@ -92,6 +91,9 @@ class ForfaitWizard(models.Model):
     def create(self, values):
         forfait_id = self.env['purchase.forfait'].search([('id','=',values['forfait_id'])])
         sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
+
+        print("OoooooOOOOo Forfait Lines " +str(forfait_id))
+
 
         for rec in forfait_id.line_ids:
             sale_id.order_line.update({'product_id':rec.product_id.id})
