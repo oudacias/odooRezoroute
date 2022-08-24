@@ -2,6 +2,8 @@ from nis import cat
 from xmlrpc.client import Boolean
 from odoo import fields, models,api
 from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
+
 
 
 class Devis(models.Model):
@@ -144,10 +146,16 @@ class SaleLine(models.Model):
         for rec in self:
             
             rec.qty_location = rec.product_id.qty_location
+    # @api.ondelete(at_uninstall=False)
+    # def unlink(self):
+    #     print("I am here. Now I am Gone")
+    #     print("Bazinga")
+
     @api.ondelete(at_uninstall=False)
-    def unlink(self):
+    def _unlink_except_confirmed(self):
         print("I am here. Now I am Gone")
-        print("Bazinga")
+        if self._check_line_unlink():
+            raise UserError(_('You can not remove an order line once the sales order is confirmed.\nYou should rather set the quantity to 0.'))
 
     @api.onchange('product_id')
     def additional_info(self):
