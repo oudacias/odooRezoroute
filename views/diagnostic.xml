@@ -69,15 +69,8 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="action_view_test" model="ir.actions.act_window">
-        <field name="name">Forfaits</field>
-        <field name="res_model">purchase.forfait</field>
-        <field name="view_mode">tree,form</field>
     
-    
-    </record>
     
     <menuitem id="sub_menu_diagnostic" action="action_view_diagnostic" name="Diagnostic" parent="purchase.menu_purchase_products" sequence="23"/>
-    <menuitem id="sub_menu_forfait" action="action_view_test" name="Forfaits" parent="purchase.menu_purchase_products" sequence="30"/>
 
 </odoo>
