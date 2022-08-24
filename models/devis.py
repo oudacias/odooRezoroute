@@ -154,6 +154,8 @@ class SaleLine(models.Model):
 
     def unlink(self):
        for rec in self:
+            print("I am here. Now I am Gone")
+            print("Bazinga")
             if(rec.facultatif == False):
                 raise UserError('Vous ne pouvez pas supprimer cette ligne du forfait')
             else:
