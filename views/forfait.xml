@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+
+        <record id="action_view_forfaits" model="ir.actions.act_window">
+            <field name="name">Forfaits</field>
+            <field name="res_model">product.forfait</field>
+            <field name="view_mode">tree,form</field>
+        
+        
+        </record>
+        <!-- <menuitem id="sub_menu_golda_category_2" action="action_view_golda_category" name="Categorie Golda 2" parent="sale_order_menu_golda"/> -->
+
+        <menuitem id="forfait_menu_sale"
+            name="Forfait"
+            parent="sale.menu_sale_config"
+            sequence="3"/>
+
+    </odoo>

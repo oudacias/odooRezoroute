@@ -69,7 +69,7 @@
         'views/calendar.xml',
         'views/diagnostic.xml',
         'views/website_diagnostic.xml',
-        'views/forfaits.xml',
+        'views/forfait.xml',
 
         
     ],
