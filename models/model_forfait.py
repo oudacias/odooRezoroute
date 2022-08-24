@@ -37,6 +37,8 @@ class ProductForfaitLine(models.Model):
     # pricelist_id = fields.Many2one('product.pricelist',string="Liste de prix")
     forfait_line_ids = fields.Many2one('purchase.forfait')
 
+    forfait_sale_id = fields.Many2one('sale.order')
+
     # def _get_prix_product(self):
     #     self.prix_product = self.product_id.list_price
 
