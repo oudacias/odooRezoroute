@@ -15,7 +15,7 @@ class ProductForfaitLine(models.Model):
 
     _name = 'product.forfait.line'
 
-    # product_id = fields.Many2one('product.product',string="Article")
+    product_id = fields.Many2one('product.product',string="Article")
     prix_product = fields.Float(string="Prix du Produit")
     facultatif = fields.Boolean(string="Facultatif")
     prix_forfait = fields.Float(string="Prix Forfait")
@@ -26,7 +26,7 @@ class ProductForfaitLine(models.Model):
     quantity = fields.Float(string="Quantité")
     # is_price_zero = fields.Boolean(string="Inclus/Offert")
     # pricelist_id = fields.Many2one('product.pricelist',string="Liste de prix")
-    forfait_line_ids = fields.Many2one('product.forfait')
+    forfait_line_ids = fields.Many2one('purchase.forfait')
 
     # def _get_prix_product(self):
     #     self.prix_product = self.product_id.list_price
