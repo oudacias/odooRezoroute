@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
 
-        <record id="action_view_test" model="ir.actions.act_window">
+        <record id="action_view_forfait_form" model="ir.actions.act_window">
+            <field name="name">Forfaits</field>
+            <field name="res_model">purchase.forfait</field>
+            <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="code"/>
+                    <field name="nom"/>
+                </group>
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                <field name="line_ids">
+                    <tree editable="botttom">
+                        <field name="product_id"/>
+                        <field name="prix_product"/>
+                        <field name="facultatif"/>
+                        <field name="prix_forfait"/>
+                        <field name="quantity"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    
+        </record>
+
+        <record id="action_view_forfait" model="ir.actions.act_window">
             <field name="name">Forfaits</field>
             <field name="res_model">purchase.forfait</field>
             <field name="view_mode">tree,form</field>

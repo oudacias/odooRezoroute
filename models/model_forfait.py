@@ -23,10 +23,10 @@ class ProductForfaitLine(models.Model):
     # gen_art_id = fields.Many2one('tecdoc.generic.article',string="Piece")
     # categ_id = fields.Many2one('product.category',string="Categorie")
     # brand_ids = fields.Many2many("ps.product.engine","forfait_line_engine_rel","engine_id","forfait_line_id",string="",default_order="name asc")
-    quantity = fields.Float(string="Quantite")
+    quantity = fields.Float(string="Quantité")
     # is_price_zero = fields.Boolean(string="Inclus/Offert")
     # pricelist_id = fields.Many2one('product.pricelist',string="Liste de prix")
-    forfait_line_ids = fields.Many2one('product.forfait')
+    # forfait_line_ids = fields.Many2one('product.forfait')
 
     def _get_prix_product(self):
         self.prix_product = self.product_id.list_price
