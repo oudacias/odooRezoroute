@@ -24,12 +24,12 @@
                     <br/>
                     <h4>Valeur du bon</h4>
                     <br/>
-                    <group>
+                    <!-- <group> -->
                         <field name="sale_id" attrs="{'invisible':[('sale_id','=',False)]}" string="Commande client" modifiers="{'invisible': [['sale_id', '=', false]], 'readonly': true}"/>
                         <field name="purchase_id" attrs="{'invisible':[('purchase_id','=',False)]}" string="Commande fournisseur" modifiers="{'invisible': [['purchase_id', '=', false]], 'readonly': true}"/>
-                        <!-- <field name="amount_product_ht" string="Marchandises HT" modifiers="{'readonly': true}"/>
-                        <field name="amount_service_ht" string="Services HT" modifiers="{'readonly': true}"/> -->
-                    </group>
+                        <field name="amount_product_ht" string="Marchandises HT" modifiers="{'readonly': true}"/>
+                        <field name="amount_service_ht" string="Services HT" modifiers="{'readonly': true}"/>
+                    <!-- </group> -->
 
                 </xpath>
             </field>

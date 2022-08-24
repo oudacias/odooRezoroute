@@ -38,12 +38,25 @@ class StockPickingExtra(models.Model):
     session_id = fields.Many2one('pos.session',string="Session id")
     engin_id = fields.Many2one('fleet.vehicle',string="Véhicule")
     frais_appro_costs = fields.Float(string="Frais d'approche (Utilisé)", default=1.00000)
-    # sale_order = fields.Many2one('sale.order', compute="get_sale_order")
-    # purchase_order = fields.Many2one('purchase.order', compute="get_purchase_order")
+    amount_product_ht = fields.Float(compute="_amount_product_ht" , string="Marchandises HT")
+    amount_service_ht = fields.Float(compute="_amount_service_ht", string="Services HT")
 
-    # def get_sale_order(self):
-    #     self.sale_order = self.sale_id.name
+    def _amount_service_ht(self):
+        self.amount_product_ht = 0
+        if(self.sale_id.id):
+            for rec in self.sale_id.order_line:
+                if(rec.product_id.detailed_type == "Service"):
+                    self.amount_service_ht += rec.price_subtotal
+                if(rec.product_id.detailed_type == "product"):
+                    self.amount_product_ht += rec.price_subtotal
+                
 
+        elif(self.purchase_id.id):
+            for rec in self.purchase_id.order_line:
+                if(rec.product_id.detailed_type == "Service"):
+                    self.amount_service_ht += rec.price_subtotal
+                if(rec.product_id.detailed_type == "product"):
+                    self.amount_product_ht += rec.price_subtotal
     # def get_purchase_order(self):
     #     self.puchase_order = self.purchase_id.name
 
