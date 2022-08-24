@@ -12,6 +12,6 @@
 
         <menuitem id="sale_order_menu_forfaits"
             name="Forfaits"
-            parent="sale.product_menu_catalog"
+            parent="sale.menu_sale_config"
             action="action_view_forfaits" sequence="3"/>
     </odoo>
