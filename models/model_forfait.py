@@ -93,9 +93,12 @@ class ForfaitWizard(models.Model):
         sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
 
         print("@@@@@@@@@@@  OoooooOOOOo Forfait Lines " +str(forfait_id))
+        print("@@@@@@@@@@@  OoooooOOOOo Forfait Lines Sale" +str(sale_id))
 
 
         for rec in forfait_id.line_ids:
+            print("@@@@@@@@@@@  OoooooOOOOo Forfait Lines Sale" +str(rec.product_id.id))
+
             sale_id.order_line.update({'product_id':rec.product_id.id})
 
             # sale_id.update({'forfait_sale': [(0, 0, {'product_id':rec.name, 'sequence': rec.sequence, 'description': rec.description})]})
