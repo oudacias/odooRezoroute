@@ -15,7 +15,7 @@ class ProductForfaitLine(models.Model):
 
     _name = 'product.forfait.line'
 
-    product_id = fields.Many2one('product.product',string="Article")
+    # product_id = fields.Many2one('product.product',string="Article")
     prix_product = fields.Float(string="Prix du Produit")
     facultatif = fields.Boolean(string="Facultatif")
     prix_forfait = fields.Float(string="Prix Forfait")
