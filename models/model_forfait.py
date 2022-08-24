@@ -31,6 +31,12 @@ class ProductForfaitLine(models.Model):
     # def _get_prix_product(self):
     #     self.prix_product = self.product_id.list_price
 
+    @api.onchange('product_id')
+    def _get_price(self):
+        if(self.product_id.id):
+            self.prix_product = self.product_id.list_price
+
+
 
 
 # class TecdocGenericArticle(models.Model):
