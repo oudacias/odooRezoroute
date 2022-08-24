@@ -8,7 +8,15 @@ class PurchaseForfait(models.Model):
     nom = fields.Char(string="Nom")
     start_date = fields.Date(string="Date de début")
     end_date = fields.Date(string="Date de fin")
+    total_forfait = fields.Float(string="Total", compute="_get_total")
     line_ids = fields.One2many('product.forfait.line','forfait_line_ids')
+
+
+    def _get_total(self):
+        self.total_forfait = 0
+        for rec in self.line_ids:
+            self.total_forfait += rec.prix_forfait
+
 
 
 class ProductForfaitLine(models.Model):

@@ -27,6 +27,22 @@
             </field>
         </record>
 
+        <record id="action_view_forfait_tree" model="ir.ui.view">
+            <field name="name">Forfaits</field>
+            <field name="model">purchase.forfait</field>
+            <field name="arch" type="xml">
+                <tree>
+                    
+                        <field name="code"/>
+                        <field name="nom"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="total_forfait"/>
+                    
+                </tree>
+            </field>
+        </record>
+
         <record id="action_view_forfait" model="ir.actions.act_window">
             <field name="name">Forfaits</field>
             <field name="res_model">purchase.forfait</field>
