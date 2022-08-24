@@ -38,6 +38,14 @@ class StockPickingExtra(models.Model):
     session_id = fields.Many2one('pos.session',string="Session id")
     engin_id = fields.Many2one('fleet.vehicle',string="Véhicule")
     frais_appro_costs = fields.Float(string="Frais d'approche (Utilisé)", default=1.00000)
+    # sale_order = fields.Many2one('sale.order', compute="get_sale_order")
+    # purchase_order = fields.Many2one('purchase.order', compute="get_purchase_order")
+
+    # def get_sale_order(self):
+    #     self.sale_order = self.sale_id.name
+
+    # def get_purchase_order(self):
+    #     self.puchase_order = self.purchase_id.name
 
 
     @api.model
