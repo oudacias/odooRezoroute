@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
 
-        <!-- <record id="action_view_forfait_form" model="ir.ui.view">
+        <record id="action_view_forfait_form" model="ir.ui.view">
             <field name="name">Forfaits</field>
             <field name="model">purchase.forfait</field>
             <field name="arch" type="xml">
@@ -25,7 +25,7 @@
                     </field>
                 </form>
             </field>
-        </record> -->
+        </record>
 
         <record id="action_view_forfait" model="ir.actions.act_window">
             <field name="name">Forfaits</field>
@@ -33,7 +33,7 @@
             <field name="view_mode">tree,form</field>
     
         </record>
-        <menuitem id="sub_menu_forfait" action="action_view_test" name="Forfaits" parent="purchase.menu_purchase_products" sequence="30"/>
+        <menuitem id="sub_menu_forfait" action="action_view_forfait" name="Forfaits" parent="purchase.menu_purchase_products" sequence="30"/>
 
 
 
