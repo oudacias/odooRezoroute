@@ -138,11 +138,6 @@ class SaleLine(models.Model):
 
     qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
     type_remise = fields.Boolean(related='order_id.partner_id.is_cheque_flotte')
-    # marge = fields.Float()
-
-
-
-
 
     def _get_qty_location(self):
        
@@ -150,7 +145,9 @@ class SaleLine(models.Model):
             
             rec.qty_location = rec.product_id.qty_location
 
-
+    def unlink(self):
+        print("I am here. Now I am Gone")
+        print("Bazinga")
 
     @api.onchange('product_id')
     def additional_info(self):
