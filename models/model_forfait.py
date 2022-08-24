@@ -15,7 +15,8 @@ class PurchaseForfait(models.Model):
     def _get_total(self):
         self.total_forfait = 0
         print("OoooooOOOOo Forfait Lines " +str(self.line_ids))
-        # for rec in self.line_ids:
+        for rec in self.line_ids:
+            print("OoooooOOOOo Forfait Lines " +str(rec.id))
             # self.total_forfait += rec.prix_forfait
 
 
