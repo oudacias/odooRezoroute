@@ -32,14 +32,35 @@
             <field name="model">purchase.forfait</field>
             <field name="arch" type="xml">
                 <tree>
-                    
-                        <field name="code"/>
-                        <field name="nom"/>
-                        <field name="start_date"/>
-                        <field name="end_date"/>
-                        <field name="total_forfait"/>
-                    
+                    <field name="code"/>
+                    <field name="nom"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="total_forfait"/>
                 </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ps_rezoroute.sale_order_diagnostic_view">
+            <field name="name">ps_rezoroute Sale Order Forfait</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">    
+                <xpath expr="//page[@name='other_information']" position="after">
+                    <page string="Fiche diagnostic" name="fiche_diagnostic">
+                        <button string="Forfaits" type="object" name="add_forfait"/>
+                        <!-- <button string="Ajouter une fiche diagnostic" type="object" name="add_diagnostic"/> -->
+                        <!-- <field name="engin_diagnostic_sale">
+                            <tree editable="botttom">
+                                <field name="name"/>
+                                <field name="comment"/>
+                                <field name="next_reminder"/>
+                                <field name="done"/>
+                            </tree>
+                        </field> -->
+
+                    </page>
+                </xpath>
             </field>
         </record>
 

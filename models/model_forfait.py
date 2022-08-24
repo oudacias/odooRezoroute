@@ -14,8 +14,9 @@ class PurchaseForfait(models.Model):
 
     def _get_total(self):
         self.total_forfait = 0
-        for rec in self.line_ids:
-            self.total_forfait += rec.prix_forfait
+        print("OoooooOOOOo Forfait Lines " +str(self.line_ids))
+        # for rec in self.line_ids:
+            # self.total_forfait += rec.prix_forfait
 
 
 
@@ -56,4 +57,14 @@ class ProductForfaitLine(models.Model):
 #     pl = fields.Boolean(string="PL")
 #     universel = fields.Boolean(string="Universel")
 #     reference_tecdoc = fields.Integer(string="Reference TecDoc")
+
+
+
+class DevisForfait(models.Model):
+
+    _inherit = 'sale.order'
+    forfait_sale = fields.One2many('product.forfait.line','forfait_sale_id')
+
+    def add_forfait(self):
+        print("HEllo")
 
