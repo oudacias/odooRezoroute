@@ -144,7 +144,7 @@ class SaleLine(models.Model):
         for rec in self:
             
             rec.qty_location = rec.product_id.qty_location
-
+    @api.ondelete(at_uninstall=False)
     def unlink(self):
         print("I am here. Now I am Gone")
         print("Bazinga")
