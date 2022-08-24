@@ -34,7 +34,6 @@
         'views/vehicules.xml',
         'views/devis.xml',
         'views/type_paiement.xml',
-        'views/forfaits.xml',
         'views/ligne_commande.xml',
         'views/pos_view.xml',
         'views/pos_user_view.xml',
@@ -70,6 +69,8 @@
         'views/calendar.xml',
         'views/diagnostic.xml',
         'views/website_diagnostic.xml',
+        'views/forfaits.xml',
+
         
     ],
     'assets': {
