@@ -140,6 +140,7 @@ class SaleLine(models.Model):
 
     qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
     type_remise = fields.Boolean(related='order_id.partner_id.is_cheque_flotte')
+    facultatif = fields.Boolean(default=True)
 
     def _get_qty_location(self):
        
@@ -152,24 +153,12 @@ class SaleLine(models.Model):
     #     print("Bazinga")
 
     def unlink(self):
-        """
-        Check wether a line can be deleted or not.
-        Lines cannot be deleted if the order is confirmed; downpayment
-        lines who have not yet been invoiced bypass that exception.
-        Also, allow deleting UX lines (notes/sections).
-        :rtype: recordset sale.order.line
-        :returns: set of lines that cannot be deleted
-        """
-
-        print("@@@@@@@@ I am here. Now I am Gone")
-        # return self.filtered(lambda line: line.state in ('sale', 'done') and (line.invoice_lines or not line.is_downpayment) and not line.display_type)
-
-
-    # @api.ondelete(at_uninstall=False)
-    # def _unlink_except_confirmed(self):
-    #     print("I am here. Now I am Gone")
-    #     if self._check_line_unlink():
-    #         raise UserError(_('You can not remove an order line once the sales order is confirmed.\nYou should rather set the quantity to 0.'))
+       for rec in self:
+            if(rec.facultatif == False):
+                raise UserError('Vous ne pouvez pas supprimer cette ligne du forfait')
+            else:
+                self.unlink()
+                
 
     @api.onchange('product_id')
     def additional_info(self):
