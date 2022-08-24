@@ -151,11 +151,25 @@ class SaleLine(models.Model):
     #     print("I am here. Now I am Gone")
     #     print("Bazinga")
 
-    @api.ondelete(at_uninstall=False)
-    def _unlink_except_confirmed(self):
-        print("I am here. Now I am Gone")
-        if self._check_line_unlink():
-            raise UserError(_('You can not remove an order line once the sales order is confirmed.\nYou should rather set the quantity to 0.'))
+    def _check_line_unlink(self):
+        """
+        Check wether a line can be deleted or not.
+        Lines cannot be deleted if the order is confirmed; downpayment
+        lines who have not yet been invoiced bypass that exception.
+        Also, allow deleting UX lines (notes/sections).
+        :rtype: recordset sale.order.line
+        :returns: set of lines that cannot be deleted
+        """
+
+        print("@@@@@@@@ I am here. Now I am Gone")
+        return self.filtered(lambda line: line.state in ('sale', 'done') and (line.invoice_lines or not line.is_downpayment) and not line.display_type)
+
+
+    # @api.ondelete(at_uninstall=False)
+    # def _unlink_except_confirmed(self):
+    #     print("I am here. Now I am Gone")
+    #     if self._check_line_unlink():
+    #         raise UserError(_('You can not remove an order line once the sales order is confirmed.\nYou should rather set the quantity to 0.'))
 
     @api.onchange('product_id')
     def additional_info(self):
