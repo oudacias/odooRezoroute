@@ -140,6 +140,9 @@
                     <field name="hide_action_invoice" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     <field name="customer_invoice_type"/>
                 </xpath>
+                <xpath expr="//field[@name='order_line']//tree/field[@name='price_unit']" position="after"> 
+                    <field name="is_forfait" invisible="1"/> 
+                </xpath>
                 <xpath expr="//field[@name='order_line']//tree/field[@name='product_id']" position="attributes">
                     <attribute name="attrs">{
                                                 'readonly': [('product_updatable', '=', True),('is_forfait', '=', True)],
