@@ -71,7 +71,7 @@
 
     <record id="action_view_test" model="ir.actions.act_window">
         <field name="name">Forfaits</field>
-        <field name="res_model">engin.diagnostic.wizard</field>
+        <field name="res_model">purchase.forfait</field>
         <field name="view_mode">tree,form</field>
     
     
