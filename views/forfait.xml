@@ -3,7 +3,7 @@
 
         <record id="action_view_forfait_form" model="ir.ui.view">
             <field name="name">Forfaits</field>
-            <field name="res_model">purchase.forfait</field>
+            <field name="model">purchase.forfait</field>
             <field name="arch" type="xml">
                 <form>
                     <group>
