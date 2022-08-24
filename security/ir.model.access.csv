@@ -21,6 +21,7 @@ sequence_engin_diagnostic_line,engin.diagnostic.line,model_engin_diagnostic_line
 sequence_engin_diagnostic_wizard,engin.diagnostic.wizard,model_engin_diagnostic_wizard,group_gestionnaire,1,1,1,1
 sequence_engin_diagnostic,engin.diagnostic,model_engin_diagnostic,group_gestionnaire,1,1,1,1
 purchase_forfait_id,purchase.forfait,model_purchase_forfait,group_gestionnaire,1,1,1,1
+purchase_forfait_line_id,product.forfait.line,model_product_forfait_line,group_gestionnaire,1,1,1,1
 
 
 
@@ -54,6 +55,8 @@ product_fullimage_group_achat,ps.product.fullimage,model_ps_product_fullimage,gr
 product_manufacturer_group_achat,ps.product.manufacturer,model_ps_product_manufacturer,group_achat,1,1,1,1
 engine_manufacturer_group_achat,engine.manufacturer,model_engine_manufacturer,group_achat,1,1,1,1
 engine_type_group_achat,engine.type,model_engine_type,group_achat,1,1,1,1
+product_forfait_line_id,product.forfait.line,model_product_forfait_line,group_achat,1,1,1,1
+
 
 
 
