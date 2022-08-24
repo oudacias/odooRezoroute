@@ -37,7 +37,7 @@ class StockPickingExtra(models.Model):
     _inherit = 'stock.picking'
     session_id = fields.Many2one('pos.session',string="Session id")
     engin_id = fields.Many2one('fleet.vehicle',string="Véhicule")
-    frais_appro_costs = fields.Float(string="Frais d'approche (Utilisé)", default=1.000)
+    frais_appro_costs = fields.Float(string="Frais d'approche (Utilisé)", default=1.00000)
 
 
     @api.model
