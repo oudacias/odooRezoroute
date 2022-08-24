@@ -72,11 +72,11 @@ class ProductTemplateExtraa(models.Model):
     weight_net = fields.Float(string="Poids net")
 
 
-    sale_line_warn = fields.Selection([('no-message','Aucun Message'),('warning','Avertissement'),('block','Message Bloquant')],string="Ligne de commande de vente")
-    sale_line_warn_msg = fields.Text(string="Message a la ligne de commande de vente")
+    # sale_line_warn = fields.Selection([('no-message','Aucun Message'),('warning','Avertissement'),('block','Message Bloquant')],string="Ligne de commande de vente")
+    # sale_line_warn_msg = fields.Text(string="Message a la ligne de commande de vente")
 
-    purchase_line_warn = fields.Selection([('no-message','Aucun Message'),('warning','Avertissement'),('block','Message Bloquant')],string="Ligne de commande d'achat")
-    purchase_line_warn_msg = fields.Text(string="Message a la ligne de commande")
+    # purchase_line_warn = fields.Selection([('no-message','Aucun Message'),('warning','Avertissement'),('block','Message Bloquant')],string="Ligne de commande d'achat")
+    # purchase_line_warn_msg = fields.Text(string="Message a la ligne de commande")
 
 
     golda_price_init = fields.Float(string="Golda price init")
