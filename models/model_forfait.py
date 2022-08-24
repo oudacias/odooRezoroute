@@ -98,8 +98,13 @@ class ForfaitWizard(models.Model):
 
         for rec in forfait_id.line_ids:
             print("@@@@@@@@@@@  OoooooOOOOo Forfait Lines Sale" +str(rec.product_id.id))
+            sale_id.create({
+                            'product_id': rec.product_id.id,
+                            'name': rec.product_id.name,
+                            'order_id': sale_id.id,
+                            'product_uom' : rec.product_id.uom_id.id})    
 
-            sale_id.order_line.update({'product_id':rec.product_id.id})
+            # sale_id.order_line.update({'product_id':rec.product_id.id})
 
             # sale_id.update({'forfait_sale': [(0, 0, {'product_id':rec.name, 'sequence': rec.sequence, 'description': rec.description})]})
                 
