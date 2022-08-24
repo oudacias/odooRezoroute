@@ -6,11 +6,11 @@
             <field name="model">purchase.forfait</field>
             <field name="arch" type="xml">
                 <form>
-                    <group>
+                    <group col="4">
                         <field name="code"/>
                         <field name="nom"/>
                     </group>
-                    <group>
+                    <group col="4">
                         <field name="start_date"/>
                         <field name="end_date"/>
                     </group>
