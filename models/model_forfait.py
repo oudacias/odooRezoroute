@@ -69,5 +69,37 @@ class DevisForfait(models.Model):
     forfait_sale = fields.One2many('product.forfait.line','forfait_sale_id')
 
     def add_forfait(self):
-        print("HEllo")
+        return {
 
+            'res_model': 'forfait.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'type': 'ir.actions.act_window',
+            'views' : [(False, 'form')],
+            'context' : {'default_sale_id' : self.id }
+            
+        }  
+
+
+class ForfaitWizard(models.Model):
+
+    _name = 'forfait.wizard'
+    forfait_id = fields.Many2one('purchase.forfait', string="Fiche Forfait")
+    sale_id = fields.Many2one('sale.order')
+
+
+    @api.model
+    def create(self, values):
+        forfait_id = self.env['purchase.forfait'].search([('id','=',values['forfait_id'])])
+        sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
+
+        for rec in forfait_id.line_ids:
+            sale_id.order_line.update({'product_id':rec.product_id.id})
+
+            # sale_id.update({'forfait_sale': [(0, 0, {'product_id':rec.name, 'sequence': rec.sequence, 'description': rec.description})]})
+                
+
+
+        q= super(ForfaitWizard, self).create(values) 
+        return q
+        

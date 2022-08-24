@@ -46,23 +46,30 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">    
-                <xpath expr="//page[@name='other_information']" position="after">
-                    <page string="Fiche diagnostic" name="fiche_diagnostic">
-                        <button string="Forfaits" type="object" name="add_forfait"/>
-                        <!-- <button string="Ajouter une fiche diagnostic" type="object" name="add_diagnostic"/> -->
-                        <!-- <field name="engin_diagnostic_sale">
-                            <tree editable="botttom">
-                                <field name="name"/>
-                                <field name="comment"/>
-                                <field name="next_reminder"/>
-                                <field name="done"/>
-                            </tree>
-                        </field> -->
-
-                    </page>
+                <xpath expr="//page[@name='order_lines']" position="inside">
+                    <button string="Forfaits" type="object" name="add_forfait"/>
                 </xpath>
             </field>
         </record>
+        <record id="action_view_diagnostic_wizard_form" model="ir.ui.view">
+            <field name="name">engin.diagnostic.wizard</field>
+            <field name="model">engin.diagnostic.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="diagnostic_id"/>
+                        <field name="sale_id" invisible="1"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_diagnostic_wizard" model="ir.actions.act_window">
+            <field name="name">Diagnostic Devis</field>
+            <field name="res_model">engin.diagnostic.wizard</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
 
         <record id="action_view_forfait" model="ir.actions.act_window">
             <field name="name">Forfaits</field>
