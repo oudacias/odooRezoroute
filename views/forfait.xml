@@ -15,13 +15,13 @@
                         <field name="end_date"/>
                     </group>
                     <field name="line_ids">
-                        <!-- <tree editable="botttom"> -->
+                        <tree editable="botttom">
                             <!-- <field name="product_id"/> -->
                             <field name="prix_product"/>
                             <field name="facultatif"/>
                             <field name="prix_forfait"/>
                             <field name="quantity"/>
-                        <!-- </tree> -->
+                        </tree>
                     </field>
                 </form>
             </field>
