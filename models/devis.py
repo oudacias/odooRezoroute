@@ -151,7 +151,7 @@ class SaleLine(models.Model):
     #     print("I am here. Now I am Gone")
     #     print("Bazinga")
 
-    def write(self):
+    def unlink(self):
         """
         Check wether a line can be deleted or not.
         Lines cannot be deleted if the order is confirmed; downpayment
