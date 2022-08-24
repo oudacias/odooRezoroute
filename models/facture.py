@@ -39,10 +39,11 @@ class StockPickingExtra(models.Model):
     engin_id = fields.Many2one('fleet.vehicle',string="Véhicule")
     frais_appro_costs = fields.Float(string="Frais d'approche (Utilisé)", default=1.00000)
     amount_product_ht = fields.Float(compute="_amount_product_ht" , string="Marchandises HT")
-    amount_service_ht = fields.Float(compute="_amount_service_ht", string="Services HT")
+    amount_service_ht = fields.Float(compute="_amount_product_ht", string="Services HT")
 
-    def _amount_service_ht(self):
+    def _amount_product_ht(self):
         self.amount_product_ht = 0
+        self.amount_service_ht = 0
         if(self.sale_id.id):
             for rec in self.sale_id.order_line:
                 if(rec.product_id.detailed_type == "Service"):
