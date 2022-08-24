@@ -8,7 +8,7 @@
         
         
         </record> -->
-        <menuitem id="sale_order_menu_forfaits1" action="action_view_forfaits" name="Forfaits" parent="purchase1.menu_purchase_products" sequence="24"/>
+        <menuitem id="sale_order_menu_forfaits1" action="action_view_forfaits" name="Forfaits" parent="purchase.menu_purchase_products" sequence="24"/>
 
         <!-- <menuitem id="sale_order_menu_forfaits"
             name="Forfaits"
