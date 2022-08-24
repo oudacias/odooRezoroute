@@ -100,6 +100,7 @@ class ForfaitWizard(models.Model):
                                         'product_uom_qty' : rec.quantity,
                                         'price_unit' : rec.prix_forfait,
                                         'facultatif':  rec.facultatif,
+                                        'is_forfait':  True,
                                     })    
 
             # sale_id.order_line.update({'product_id':rec.product_id.id})

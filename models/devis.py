@@ -141,6 +141,7 @@ class SaleLine(models.Model):
     qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
     type_remise = fields.Boolean(related='order_id.partner_id.is_cheque_flotte')
     facultatif = fields.Boolean(default=True)
+    is_forfait = fields.Boolean(default=False)
 
     def _get_qty_location(self):
        
