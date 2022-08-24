@@ -20,6 +20,7 @@ sequence_product_id,sequence.product,model_sequence_product,group_gestionnaire,1
 sequence_engin_diagnostic_line,engin.diagnostic.line,model_engin_diagnostic_line,group_gestionnaire,1,1,1,1
 sequence_engin_diagnostic_wizard,engin.diagnostic.wizard,model_engin_diagnostic_wizard,group_gestionnaire,1,1,1,1
 sequence_engin_diagnostic,engin.diagnostic,model_engin_diagnostic,group_gestionnaire,1,1,1,1
+purchase_forfait_id,purchase.forfait,model_purchase_forfait,group_gestionnaire,1,1,1,1
 
 
 
