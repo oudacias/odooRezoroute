@@ -53,8 +53,11 @@
                         <group>
                             <!-- <h1>Avertissement sur les commandes de vente</h1> -->
                                 <field name="sale_warn"/>
+                                <field name="sale_warn_msg" colspan="3" nolabel="1"
+                                    attrs="{'required':[('sale_warn','!=', False), ('sale_warn','!=','no-message')], 'invisible':[('sale_warn','in',(False,'no-message'))]}"/>
                             <!-- <h1>Avertissement sur les commandes d'achat</h1> -->
                                 <field name="purchase_warn"/>
+                                
                             <!-- <h1>Avertissement sur les Colisages</h1> -->
                                 <field name="picking_warn"/>
                             <!-- <h1>Avertissement sur la Facture</h1> -->
