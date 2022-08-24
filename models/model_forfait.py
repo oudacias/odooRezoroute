@@ -17,7 +17,7 @@ class PurchaseForfait(models.Model):
         print("OoooooOOOOo Forfait Lines " +str(self.line_ids))
         for rec in self.line_ids:
             print("OoooooOOOOo Forfait Lines " +str(rec.prix_forfait))
-            # self.total_forfait += rec.prix_forfait
+            self.total_forfait += rec.prix_forfait
 
 
 
