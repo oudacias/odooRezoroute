@@ -20,16 +20,12 @@
                     <!-- <field name="partner_id" on_change="onchange_partner_in(partner_id)" options="{'no_create' : True, 'always_reload' : True}" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/> -->
                     <field name="engin_id" domain="[('partner_id', '=', partner_id)]" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
                     <field name="frais_appro_costs"/>
-                    <br/>
-                    <br/>
+                   
                     <h4>Valeur du bon</h4>
-                    <br/>
-                    <!-- <group> -->
                         <field name="sale_id" attrs="{'invisible':[('sale_id','=',False)]}" string="Commande client" modifiers="{'invisible': [['sale_id', '=', false]], 'readonly': true}"/>
                         <field name="purchase_id" attrs="{'invisible':[('purchase_id','=',False)]}" string="Commande fournisseur" modifiers="{'invisible': [['purchase_id', '=', false]], 'readonly': true}"/>
                         <field name="amount_product_ht" string="Marchandises HT" modifiers="{'readonly': true}"/>
                         <field name="amount_service_ht" string="Services HT" modifiers="{'readonly': true}"/>
-                    <!-- </group> -->
 
                 </xpath>
             </field>

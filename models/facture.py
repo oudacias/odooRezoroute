@@ -40,11 +40,17 @@ class StockPickingExtra(models.Model):
     frais_appro_costs = fields.Float(string="Frais d'approche (Utilisé)", default=1.00000)
     amount_product_ht = fields.Float(compute="_amount_product_ht" , string="Marchandises HT")
     amount_service_ht = fields.Float(compute="_amount_product_ht", string="Services HT")
+    amount_ht = fields.Float(compute="_amount_product_ht" , string="Marchandises HT")
+    amount_ttc = fields.Float(compute="_amount_product_ht", string="Services HT")
 
     def _amount_product_ht(self):
         self.amount_product_ht = 0
         self.amount_service_ht = 0
+        self.amount_ht = 0
+        self.amount_ttc = 0
         if(self.sale_id.id):
+            self.amount_ht = self.sale_id.amount_untaxed
+            self.amount_ttc = self.sale_id.amount_total
             for rec in self.sale_id.order_line:
                 if(rec.product_id.detailed_type == "Service"):
                     self.amount_service_ht += rec.price_subtotal
@@ -53,6 +59,9 @@ class StockPickingExtra(models.Model):
                 
 
         elif(self.purchase_id.id):
+            self.amount_ht = self.purchase_id.amount_untaxed
+            self.amount_ttc = self.purchase_id.amount_total
+
             for rec in self.purchase_id.order_line:
                 if(rec.product_id.detailed_type == "Service"):
                     self.amount_service_ht += rec.price_subtotal
