@@ -68,6 +68,7 @@
         <field name="res_model">engin.diagnostic.wizard</field>
         <field name="view_mode">tree,form</field>
     </record>
+    
     <record id="action_view_forfaits" model="ir.actions.act_window">
         <field name="name">Forfaits</field>
         <field name="res_model">product.forfait</field>
