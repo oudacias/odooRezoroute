@@ -48,6 +48,7 @@
             <field name="arch" type="xml">    
                 <xpath expr="//field[@name='order_line']" position="before">
                     <button string="Forfaits" type="object" name="add_forfait" style="position:relative;top:0;left:0"/>
+                    <br/>
                 </xpath>
             </field>
         </record>
