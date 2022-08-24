@@ -16,11 +16,11 @@
                     </group>
                     <field name="line_ids">
                         <tree editable="botttom">
-                            <field name="product_id"  width="10"/>
-                            <field name="prix_product" width="100"/>
-                            <field name="facultatif"/>
-                            <field name="prix_forfait"/>
-                            <field name="quantity"/>
+                            <field name="product_id"  width="25"/>
+                            <field name="prix_product" width="25"/>
+                            <field name="facultatif" width="25"/>
+                            <field name="prix_forfait" width="25"/>
+                            <field name="quantity" width="25"/>
                         </tree>
                     </field>
                 </form>
