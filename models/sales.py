@@ -152,6 +152,7 @@ class SaleOrderExtra(models.Model):
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
         location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         picking_id.write({'location_id':location_id.location_id.id})
+        picking_id.write({'engin_id':self.engin_id.id})
 
         stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
         stock_move.write({'location_id':location_id.location_id.id})
@@ -366,6 +367,8 @@ class ConfirmRepairOrder(models.Model):
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
         location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         picking_id.write({'location_id':location_id.location_id.id})
+        picking_id.write({'engin_id':self.sale_order_id.engin_id.id})
+
 
         stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
         stock_move.write({'location_id':location_id.location_id.id})
