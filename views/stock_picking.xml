@@ -18,7 +18,7 @@
                 </xpath>
                 <xpath expr="//field[@name='location_id']" position="after">
                     <field name="partner_id" on_change="onchange_partner_in(partner_id)" options="{'no_create' : True, 'always_reload' : True}" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
-                    <field name="engin_id" domain="[('partner_id', '=', partner_id)]" context="{'default_partner_id': partner_id'}" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+                    <!-- <field name="engin_id" domain="[('partner_id', '=', partner_id)]" context="{'default_partner_id': partner_id'}" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/> -->
                     <field name="frais_appro_costs"/>
                 </xpath>
             </field>
