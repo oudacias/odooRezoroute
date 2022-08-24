@@ -50,6 +50,7 @@
     <menuitem id="sub_menu_golda" action="action_view_golda" name="Golda" parent="sale_order_menu_golda"/>
     <menuitem id="sub_menu_golda_discount" action="action_view_golda_discount" name="Remise Golda" parent="sale_order_menu_golda"/>
     <menuitem id="sub_menu_golda_category" action="action_view_golda_category" name="Categorie Golda" parent="sale_order_menu_golda"/>
+    <menuitem id="sub_menu_golda_category_2" action="action_view_golda_category" name="Categorie Golda 2" parent="sale_order_menu_golda"/>
 
     
 

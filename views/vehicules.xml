@@ -80,9 +80,4 @@
             parent="sale.sale_menu_root"
             sequence="2"/>
 
-        <menuitem id="sale_order_menu_or_1"
-            name="Ordre de réparation rwts"
-            parent="sale.sale_menu_root"
-            sequence="3"/>
-
     </odoo>
