@@ -68,8 +68,15 @@
         <field name="res_model">engin.diagnostic.wizard</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record id="action_view_forfaits" model="ir.actions.act_window">
+        <field name="name">Forfaits</field>
+        <field name="res_model">product.forfait</field>
+        <field name="view_mode">tree,form</field>
+    
+    
+    </record>
     
     <menuitem id="sub_menu_diagnostic" action="action_view_diagnostic" name="Diagnostic" parent="purchase.menu_purchase_products" sequence="23"/>
-    <menuitem id="sub_menu_forfait" action="action_view_diagnostic" name="Forfaits" parent="purchase.menu_purchase_products" sequence="30"/>
+    <menuitem id="sub_menu_forfait" action="action_view_forfaits" name="Forfaits" parent="purchase.menu_purchase_products" sequence="30"/>
 
 </odoo>
