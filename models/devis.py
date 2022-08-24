@@ -159,7 +159,8 @@ class SaleLine(models.Model):
             if(rec.facultatif == False):
                 raise UserError('Vous ne pouvez pas supprimer cette ligne du forfait')
             else:
-                self.unlink()
+                q= super(SaleLine, self).unlink() 
+                return q
                 
 
     @api.onchange('product_id')
