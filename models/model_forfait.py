@@ -1,8 +1,8 @@
 from odoo import fields, models, api
 
-class ProductForfait(models.Model):
+class PurchaseForfait(models.Model):
 
-    _name = 'product.forfait'
+    _name = 'purchase.forfait'
 
     code = fields.Char(string="Code")
     nom = fields.Char(string="Nom")

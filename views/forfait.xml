@@ -3,7 +3,7 @@
 
         <record id="action_view_forfaits" model="ir.actions.act_window">
             <field name="name">Forfaits</field>
-            <field name="res_model">product.forfait</field>
+            <field name="res_model">purchase.forfait</field>
             <field name="view_mode">tree,form</field>
         
         
