@@ -9,9 +9,14 @@
         
         </record>
         <!-- <menuitem id="sale_order_menu_forfaits1" action="action_view_forfaits" name="Forfaits" parent="purchase.menu_purchase_products" sequence="24"/> -->
+    <menuitem id="sale_order_menu_golda1"
+        name="Golda1"
+        parent="sale.menu_sale_config"
+        sequence="1" action="action_view_forfaits"/>
 
-        <menuitem id="sale_order_menu_forfaits"
+    <menuitem id="sub_menu_golda1" action="action_view_forfaits" name="Golda1" parent="sale_order_menu_golda1"/>
+        <!-- <menuitem id="sale_order_menu_forfaits"
             name="Forfaits"
             parent="sale.menu_sale_config"
-            action="action_view_forfaits" sequence="3"/>
+            action="action_view_forfaits" sequence="3"/> -->
     </odoo>
