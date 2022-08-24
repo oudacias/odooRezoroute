@@ -98,7 +98,7 @@ class ForfaitWizard(models.Model):
 
         for rec in forfait_id.line_ids:
             print("@@@@@@@@@@@  OoooooOOOOo Forfait Lines Sale" +str(rec.product_id.id))
-            sale_id.create({
+            sale_id.order_line.create({
                             'product_id': rec.product_id.id,
                             'name': rec.product_id.name,
                             'order_id': sale_id.id,
