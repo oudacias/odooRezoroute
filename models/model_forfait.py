@@ -91,13 +91,7 @@ class ForfaitWizard(models.Model):
     def create(self, values):
         forfait_id = self.env['purchase.forfait'].search([('id','=',values['forfait_id'])])
         sale_id = self.env['sale.order'].search([('id','=',values['sale_id'])])
-
-        print("@@@@@@@@@@@  OoooooOOOOo Forfait Lines " +str(forfait_id))
-        print("@@@@@@@@@@@  OoooooOOOOo Forfait Lines Sale" +str(sale_id))
-
-
         for rec in forfait_id.line_ids:
-            print("@@@@@@@@@@@  OoooooOOOOo Forfait Lines Sale" +str(rec.product_id.id))
             sale_id.order_line.create({
                                         'product_id': rec.product_id.id,
                                         'name': rec.product_id.name,

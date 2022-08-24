@@ -151,7 +151,7 @@ class SaleLine(models.Model):
     #     print("I am here. Now I am Gone")
     #     print("Bazinga")
 
-    def _check_line_unlink(self):
+    def write(self):
         """
         Check wether a line can be deleted or not.
         Lines cannot be deleted if the order is confirmed; downpayment
@@ -162,7 +162,7 @@ class SaleLine(models.Model):
         """
 
         print("@@@@@@@@ I am here. Now I am Gone")
-        return self.filtered(lambda line: line.state in ('sale', 'done') and (line.invoice_lines or not line.is_downpayment) and not line.display_type)
+        # return self.filtered(lambda line: line.state in ('sale', 'done') and (line.invoice_lines or not line.is_downpayment) and not line.display_type)
 
 
     # @api.ondelete(at_uninstall=False)
