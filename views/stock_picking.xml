@@ -26,6 +26,8 @@
                         <field name="purchase_id" attrs="{'invisible':[('purchase_id','=',False)]}" string="Commande fournisseur" modifiers="{'invisible': [['purchase_id', '=', false]], 'readonly': true}"/>
                         <field name="amount_product_ht" string="Marchandises HT" modifiers="{'readonly': true}"/>
                         <field name="amount_service_ht" string="Services HT" modifiers="{'readonly': true}"/>
+                        <field name="amount_ht" string="Total HT" modifiers="{'readonly': true}"/>
+				        <field name="amount_ttc" string="Total TTC" modifiers="{'readonly': true}"/>
 
                 </xpath>
             </field>
