@@ -47,7 +47,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">    
                 <xpath expr="//page[@name='order_lines']" position="inside">
-                    <button string="Forfaits" type="object" name="add_forfait" style="position:absolute;top:0;left:0"/>
+                    <button string="Forfaits" type="object" name="add_forfait" style="position:relative;top:0;left:0"/>
                 </xpath>
             </field>
         </record>
