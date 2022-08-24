@@ -1,3 +1,4 @@
+from email.policy import default
 from odoo import fields, models,api
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
@@ -35,6 +36,8 @@ class StockPickingExtra(models.Model):
 
     _inherit = 'stock.picking'
     session_id = fields.Many2one('pos.session',string="Session id")
+    engin_id = fields.Many2one('fleet.vehicle',string="Véhicule")
+    frais_appro_costs = fields.Float(string="Frais d'approche (Utilisé)", default=1.000)
 
 
     @api.model
