@@ -101,7 +101,9 @@ class SaleOrderExtra(models.Model):
     @api.model
     def write(self,vals):
 
-        self.partner_id.write({'mobile': self.mobile})
+        # self.partner_id.write({'mobile': self.mobile,'phone':self.phone})
+
+
         q= super(SaleOrderExtra, self).write(vals) 
         return q
 
