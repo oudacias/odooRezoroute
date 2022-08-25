@@ -29,9 +29,11 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='user_id']" position="after">
-                <field name="sale_person_signature" widget="signature"/>
-                <field name="check_signature" invisible="1"/>
+            <xpath expr="//page[@name='customer_signature']" position="replace">
+                <page>
+                    <field name="sale_person_signature" widget="signature"/>
+                    <field name="check_signature" invisible="1"/>
+                </page>
             </xpath>
             <xpath expr="//button[7]" position="attributes">
                 <attribute name="attrs">{'invisible': ['|',('state', 'not in', ['sent']),('check_signature','=',False)]}
@@ -40,6 +42,7 @@
             <xpath expr="//button[8]" position="attributes">
                 <attribute name="attrs">{'invisible':['|',('state', 'not in', ['draft']),('check_signature','=',False)]}
                 </attribute>
+
             </xpath>
         </field>
     </record>
