@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','pos_sale','purchase_requisition','sale','purchase','account','fleet','stock','website'],
+    'depends': ['base','pos_sale','purchase_requisition','sale','purchase','account','fleet','stock','website','sale_management'],
 
     # always loaded
     'data': [
@@ -70,6 +70,7 @@
         'views/diagnostic.xml',
         'views/website_diagnostic.xml',
         'views/forfait.xml',
+        'views/signature.xml',
 
         
     ],
