@@ -99,14 +99,9 @@ class SaleOrderExtra(models.Model):
             raise ValidationError('Vous devez ouvrir une nouvelle session !!!!')
 
     @api.model
-    def write(self,vals):
-
-        # self.partner_id.write({'mobile': self.mobile,'phone':self.phone})
-
-        print("@@@@ Hello " +str(self))
-
-        # q= super(SaleOrderExtra, self).write(vals) 
-        # return q
+    def write(self, vals):
+        record = super(SaleOrderExtra, self).write(vals)
+        return record
 
 
 
