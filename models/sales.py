@@ -102,8 +102,6 @@ class SaleOrderExtra(models.Model):
     def write(self,vals):
 
         self.partner_id.write({'mobile': self.mobile})
-
-
         q= super(SaleOrderExtra, self).write(vals) 
         return q
 
