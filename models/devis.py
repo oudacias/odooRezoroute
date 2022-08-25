@@ -151,7 +151,7 @@ class SaleLine(models.Model):
 
 
     @api.ondelete(at_uninstall=True)
-    def check(self):
+    def _unlink_check(self):
         print("@@@@@@@ Product Informations Unlink ID")
 
     def unlink(self):

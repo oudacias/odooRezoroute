@@ -5,7 +5,7 @@ class PurchaseForfait(models.Model):
     _name = 'purchase.forfait'
 
     code = fields.Char(string="Code")
-    nom = fields.Char(string="Nom")
+    name = fields.Char(string="Nom")
     start_date = fields.Date(string="Date de début")
     end_date = fields.Date(string="Date de fin")
     total_forfait = fields.Float(string="Total", compute="_get_total")
