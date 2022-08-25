@@ -105,8 +105,8 @@ class SaleOrderExtra(models.Model):
 
         print("@@@@ Hello " +str(self))
 
-        q= super(SaleOrderExtra, self).write(vals) 
-        return q
+        # q= super(SaleOrderExtra, self).write(vals) 
+        # return q
 
 
 
