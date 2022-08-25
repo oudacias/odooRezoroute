@@ -98,7 +98,6 @@ class SaleOrderExtra(models.Model):
         else:
             raise ValidationError('Vous devez ouvrir une nouvelle session !!!!')
 
-    @api.multi
     def write(self, vals):
         record = super(SaleOrderExtra, self).write(vals)
         return record
