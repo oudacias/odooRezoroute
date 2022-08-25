@@ -31,8 +31,10 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='customer_signature']" position="replace">
                 <page name="signature" string="Signature du client">
-                    <field name="sale_person_signature" widget="signature"/>
-                    <field name="check_signature" invisible="1"/>
+                    <group>
+                        <field name="sale_person_signature" widget="signature"/>
+                        <field name="check_signature" invisible="1"/>
+                    </group>
                 </page>
             </xpath>
             <xpath expr="//button[7]" position="attributes">
