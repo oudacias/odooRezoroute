@@ -150,6 +150,9 @@ class SaleLine(models.Model):
             rec.qty_location = rec.product_id.qty_location
 
 
+    
+
+
     @api.ondelete(at_uninstall=True)
     def _unlink_check(self):
         print("@@@@@@@ Product Informations Unlink ID")

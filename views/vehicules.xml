@@ -58,12 +58,12 @@
                     </button>
                 </xpath>
                
-                <!-- <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
-                    <button class="oe_stat_button" type="object" name="sale_history" icon="fa-file-text" context="{'engin_id': active_id}">
-                        <field name="sale_count" widget="statinfo" string="Livraison"/>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" type="object" name="picking_history" icon="fa-truck" context="{'engin_id': active_id}">
+                        <field name="picking_count" widget="statinfo" string="Livraison"/>
                     </button>
                 </xpath>
-                -->
+               
 
                 <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
                     <button class="oe_stat_button" type="object" name="schedule_meeting" icon="fa-calendar" context="{'engin_id': active_id}">

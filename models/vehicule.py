@@ -22,6 +22,7 @@ class Vehicle(models.Model):
     engine_maintenance_variant = fields.Many2one('engine.maintenance.variant')
     calendar_count = fields.Integer(compute="_compute_calendar")
     sale_count = fields.Integer(compute="_compute_sale")
+    picking_count = fields.Integer(compute="_compute_picking")
 
     def _compute_calendar(self):
         Calendar = self.env['calendar.event']
@@ -42,6 +43,20 @@ class Vehicle(models.Model):
             record.sale_count = Sale.search_count([('engin_id', '=', record.id)])
 
     def sale_history(self):
+        self.ensure_one()
+        action = self.env["ir.actions.actions"]._for_xml_id("sale.action_orders")
+        action['context'] = {
+            'default_engin_id': self.id,
+        }
+        action['domain'] = [('engin_id', '=', self.id)]
+        return action
+
+    def _compute_picking(self):
+        Sale = self.env['stock.picking']
+        for record in self:
+            record.sale_count = Sale.search_count([('engin_id', '=', record.id)])
+
+    def picking_history(self):
         self.ensure_one()
         action = self.env["ir.actions.actions"]._for_xml_id("sale.action_orders")
         action['context'] = {
