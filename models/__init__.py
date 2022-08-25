@@ -17,4 +17,4 @@ from . import validatepos
 from . import calendar
 from . import diagnostic
 from . import model_forfait
-from . import signture
+from . import signature
