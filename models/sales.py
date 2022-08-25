@@ -89,6 +89,8 @@ class SaleOrderExtra(models.Model):
         session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
         if(len(session) == 1):
 
+            self.partner_id.write({'mobile': self.mobile,'phone':self.phone})
+
             vals['session_id'] = session.id
 
             q= super(SaleOrderExtra, self).create(vals) 
