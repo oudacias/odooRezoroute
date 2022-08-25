@@ -58,7 +58,7 @@ class Vehicle(models.Model):
 
     def picking_history(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id("sale.action_orders")
+        action = self.env["ir.actions.actions"]._for_xml_id("stock.action_picking_tree_all")
         action['context'] = {
             'default_engin_id': self.id,
         }
