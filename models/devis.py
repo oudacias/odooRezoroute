@@ -75,7 +75,7 @@ class Devis(models.Model):
     def check_mobile(self):
         if(self.mobile):
             if(len(self.mobile) != 10):
-                raise UserError('Le numéro du téléphone doit contenir 10 chiffres')
+                raise ValidationError('Le numéro du téléphone doit contenir 10 chiffres')
 
 
 
