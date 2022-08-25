@@ -148,10 +148,7 @@ class SaleLine(models.Model):
         for rec in self:
             
             rec.qty_location = rec.product_id.qty_location
-    # @api.ondelete(at_uninstall=False)
-    # def unlink(self):
-    #     print("I am here. Now I am Gone")
-    #     print("Bazinga")
+  
 
     def unlink(self):
        for rec in self:
@@ -166,6 +163,7 @@ class SaleLine(models.Model):
 
     @api.onchange('product_id')
     def additional_info(self):
+        print("@@@@@@@ Product Informations Unlink")
         if(self.product_id):
             for rec in self:
                 product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
