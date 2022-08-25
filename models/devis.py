@@ -148,12 +148,14 @@ class SaleLine(models.Model):
         for rec in self:
             
             rec.qty_location = rec.product_id.qty_location
-  
+
+
+    @api.onchange('id')
+    def check(self):
+        print("@@@@@@@ Product Informations Unlink ID")
 
     def unlink(self):
        for rec in self:
-            print("I am here. Now I am Gone")
-            print("@@@@@ Bazinga   " +str(rec.facultatif))
             if(rec.facultatif == False):
                 raise UserError('Vous ne pouvez pas supprimer cette ligne du forfait')
             else:
@@ -163,7 +165,6 @@ class SaleLine(models.Model):
 
     @api.onchange('product_id')
     def additional_info(self):
-        print("@@@@@@@ Product Informations Unlink")
         if(self.product_id):
             for rec in self:
                 product = rec.env['product.product'].search([('id','=',rec.product_id.id)])
