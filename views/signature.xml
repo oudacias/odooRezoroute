@@ -30,7 +30,7 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//page[@name='customer_signature']" position="replace">
-                <page>
+                <page name="signature" string="Signature du client">
                     <field name="sale_person_signature" widget="signature"/>
                     <field name="check_signature" invisible="1"/>
                 </page>
