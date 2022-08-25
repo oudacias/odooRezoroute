@@ -97,15 +97,19 @@ class SaleOrderExtra(models.Model):
             return q
         else:
             raise ValidationError('Vous devez ouvrir une nouvelle session !!!!')
-            
+
     @api.model
     def write(self,vals):
 
-        self.partner_id.write({'mobile': self.mobile,'phone':self.phone})
+        self.partner_id.write({'mobile': self.mobile})
 
 
         q= super(SaleOrderExtra, self).write(vals) 
         return q
+
+
+
+    
 
 
     @api.onchange('partner_id')
