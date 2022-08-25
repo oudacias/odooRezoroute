@@ -52,9 +52,9 @@ class Vehicle(models.Model):
         return action
 
     def _compute_picking(self):
-        Sale = self.env['stock.picking']
+        Picking = self.env['stock.picking']
         for record in self:
-            record.sale_count = Sale.search_count([('engin_id', '=', record.id)])
+            record.picking_count = Picking.search_count([('engin_id', '=', record.id)])
 
     def picking_history(self):
         self.ensure_one()
