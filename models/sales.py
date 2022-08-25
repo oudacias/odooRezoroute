@@ -98,11 +98,13 @@ class SaleOrderExtra(models.Model):
         else:
             raise ValidationError('Vous devez ouvrir une nouvelle session !!!!')
 
-    def write(self, vals):
-        print("@@@@ Hello " +str(self))
+    def write(self,vals):
 
-        record = super(SaleOrderExtra, self).write(vals)
-        return record
+        self.partner_id.write({'mobile': self.mobile,'phone':self.phone})
+
+
+        q= super(SaleOrderExtra, self).write(vals) 
+        return q
 
 
 
