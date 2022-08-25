@@ -103,6 +103,7 @@ class SaleOrderExtra(models.Model):
 
         # self.partner_id.write({'mobile': self.mobile,'phone':self.phone})
 
+        print("@@@@ Hello " +str(self))
 
         q= super(SaleOrderExtra, self).write(vals) 
         return q
