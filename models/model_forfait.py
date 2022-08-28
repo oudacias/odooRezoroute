@@ -66,7 +66,7 @@ class ProductForfaitLine(models.Model):
 class DevisForfait(models.Model):
 
     _inherit = 'sale.order'
-    forfait_sale = fields.One2many('product.forfait.line','forfait_sale_id',domain="[('prix_forfait','=',0)]")
+    forfait_sale = fields.One2many('product.forfait.line','forfait_sale_id')
 
     def add_forfait(self):
         return {
@@ -77,7 +77,7 @@ class DevisForfait(models.Model):
             'type': 'ir.actions.act_window',
             'views' : [(False, 'form')],
             'context' : {'default_sale_id' : self.id },
-            # "domain" : [('date_due', '<', context_today().strftime('%Y-%m-%d'))]
+            "domain" : [('prix_forfait', '=', 0)]
             
         }  
 
