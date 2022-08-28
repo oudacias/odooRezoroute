@@ -100,7 +100,7 @@ class SaleOrderExtra(models.Model):
 
     def write(self,vals):
 
-        self.partner_id.write({'mobile': vals['mobile'],'phone':vals['phone']})
+        self.partner_id.write({'mobile': vals['mobile']})
 
 
         q= super(SaleOrderExtra, self).write(vals) 

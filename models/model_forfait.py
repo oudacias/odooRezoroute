@@ -1,13 +1,14 @@
+from email.policy import default
 from odoo import fields, models, api
 
 class PurchaseForfait(models.Model):
 
     _name = 'purchase.forfait'
 
-    code = fields.Char(string="Code")
-    name = fields.Char(string="Nom")
-    start_date = fields.Date(string="Date de début")
-    end_date = fields.Date(string="Date de fin")
+    code = fields.Char(string="Code",required=True)
+    name = fields.Char(string="Nom",required=True)
+    start_date = fields.Date(string="Date de début",required=True)
+    end_date = fields.Date(string="Date de fin",required=True)
     total_forfait = fields.Float(string="Total", compute="_get_total")
     line_ids = fields.One2many('product.forfait.line','forfait_line_ids')
 
@@ -24,15 +25,15 @@ class ProductForfaitLine(models.Model):
 
     _name = 'product.forfait.line'
 
-    product_id = fields.Many2one('product.product',string="Article")
+    product_id = fields.Many2one('product.product',string="Article",required=True)
     prix_product = fields.Float(string="Prix du Produit")
-    facultatif = fields.Boolean(string="Facultatif")
-    prix_forfait = fields.Float(string="Prix Forfait")
+    facultatif = fields.Boolean(string="Facultatif",required=True)
+    prix_forfait = fields.Float(string="Prix Forfait",required=True)
     # is_tecdoc = fields.Boolean(string="TecDoc")
     # gen_art_id = fields.Many2one('tecdoc.generic.article',string="Piece")
     # categ_id = fields.Many2one('product.category',string="Categorie")
     # brand_ids = fields.Many2many("ps.product.engine","forfait_line_engine_rel","engine_id","forfait_line_id",string="",default_order="name asc")
-    quantity = fields.Float(string="Quantité")
+    quantity = fields.Float(string="Quantité",default=1,required=True)
     # is_price_zero = fields.Boolean(string="Inclus/Offert")
     # pricelist_id = fields.Many2one('product.pricelist',string="Liste de prix")
     forfait_line_ids = fields.Many2one('purchase.forfait')
@@ -65,7 +66,7 @@ class ProductForfaitLine(models.Model):
 class DevisForfait(models.Model):
 
     _inherit = 'sale.order'
-    forfait_sale = fields.One2many('product.forfait.line','forfait_sale_id')
+    forfait_sale = fields.One2many('product.forfait.line','forfait_sale_id',domain="[('prix_forfait','=',0)]")
 
     def add_forfait(self):
         return {
@@ -75,7 +76,8 @@ class DevisForfait(models.Model):
             'target': 'new',
             'type': 'ir.actions.act_window',
             'views' : [(False, 'form')],
-            'context' : {'default_sale_id' : self.id }
+            'context' : {'default_sale_id' : self.id },
+            # "domain" : [('date_due', '<', context_today().strftime('%Y-%m-%d'))]
             
         }  
 
@@ -83,7 +85,7 @@ class DevisForfait(models.Model):
 class ForfaitWizard(models.Model):
 
     _name = 'forfait.wizard'
-    forfait_id = fields.Many2one('purchase.forfait', string="Fiche Forfait")
+    forfait_id = fields.Many2one('purchase.forfait', string="Fiche Forfait",required=True)
     sale_id = fields.Many2one('sale.order')
 
 
