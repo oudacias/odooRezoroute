@@ -71,7 +71,7 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
 
-    @api.onchange('order_line')
+    @api.depends('order_line')
     def check_line(self):
         print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.product_id))
         ctx_lines = self._origin.order_line.mapped('id')
