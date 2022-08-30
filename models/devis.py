@@ -74,7 +74,7 @@ class Devis(models.Model):
     is_confirm = fields.Boolean(compute="_isconfirmed")
 
     @api.onchange('order_line')
-    def onchange_many_lines(self, xstate):
+    def onchange_many_lines(self):
         xstate = json.loads(xstate)
         lines = []
         xlast = False
