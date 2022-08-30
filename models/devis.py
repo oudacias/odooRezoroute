@@ -73,7 +73,8 @@ class Devis(models.Model):
 
     @api.onchange('order_line')
     def check_line(self):
-        print("@@@@@@@ ######## Check Order Line #####")
+        print("@@@@@@@ ######## Check Order Line #####" + str(self))
+        raise ValidationError('Le numéro du téléphone doit contenir 10 chiffres')
 
 
     
