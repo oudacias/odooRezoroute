@@ -71,16 +71,17 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
 
-    @api.depends('order_line')
-    def check_line(self):
+    @api.onchange('order_line')
+    def onchange_many_lines(self, cr, uid, ids, xmany_ids, xstate, **kwargs):
         print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.product_id))
         ctx_lines = self._origin.order_line.mapped('id')
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
-        # for ctx_line in ctx_lines:
+        for ctx_line in  self.order_line:
+             self.order_line
         print("@@@ ######## Check Order Line #####")
-        print(str(ctx_lines))
-        print(str(ctx_lines1))
+        print(str(xstate))
+        # print(str(ctx_lines1))
     
         # if(self.sale_order.)
         raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
