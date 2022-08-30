@@ -74,7 +74,7 @@ class Devis(models.Model):
     @api.onchange('order_line')
     def check_line(self):
         print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.product_id))
-        ctx_lines = self.env.context.get()
+        ctx_lines = self.invoice_line_ids.mapped('order_line')
         # for ctx_line in ctx_lines:
         print("@@@ ######## Check Order Line #####")
         print(str(ctx_lines))
