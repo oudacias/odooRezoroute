@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
     <odoo>
-    <style>
-                            .fancy {
-    color:#fff;
-    display:inline-block;
-    position:relative;
-    font-size:2em;
-    line-height:2em;
-    padding:0.5em 1em;
-    z-index:0;
-  }
-  </style>
+    
         <record model="ir.ui.view" id="ps_rezoroute.line_order">
             <field name="name">ps_rezoroute list</field>
             <field name="model">sale.order</field>

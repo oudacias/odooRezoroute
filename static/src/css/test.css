@@ -26,3 +26,6 @@
   .fancy.red::before {
     background-color:red;
   }
+  .o_list_record_remove{
+    visibility: hidden;
+  }
