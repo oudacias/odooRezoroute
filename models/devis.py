@@ -71,6 +71,9 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
 
+    @api.onchange('order_line')
+    def check_line(self):
+        print("@@@@@@@ ######## Check Order Line #####")
 
 
     
@@ -158,9 +161,7 @@ class SaleLine(models.Model):
 
 
     
-    @api.model
-    def delete(self):
-        print("@@@@@@@ Product Informations Unlink ID")
+    
 
 
     @api.ondelete(at_uninstall=True)
