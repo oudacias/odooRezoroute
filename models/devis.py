@@ -3,6 +3,8 @@ from xmlrpc.client import Boolean
 from odoo import fields, models,api
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
+import json
+
 
 
 
@@ -73,6 +75,11 @@ class Devis(models.Model):
 
     @api.onchange('order_line')
     def onchange_many_lines(self, cr, uid, ids, xmany_ids, xstate, **kwargs):
+        xstate = json.loads(xstate)
+        lines = []
+        xlast = False
+        #for identify non saved lines
+        index = 0
         print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.product_id))
         ctx_lines = self._origin.order_line.mapped('id')
         ctx_lines1 = self.order_line.mapped('id')
