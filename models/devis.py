@@ -80,7 +80,7 @@ class Devis(models.Model):
         xlast = False
         #for identify non saved lines
         index = 0
-        print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.product_id))
+        print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.id))
         ctx_lines = self._origin.order_line.mapped('id')
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
