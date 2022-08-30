@@ -73,9 +73,7 @@ class Devis(models.Model):
 
 
 
-    def delete(self):
-        print("@@@@@@@ Product Informations Unlink ID")
-
+    
     @api.onchange('mobile')
     def check_mobile(self):
         if(self.mobile):
@@ -160,7 +158,7 @@ class SaleLine(models.Model):
 
 
     
-
+    @api.model
     def delete(self):
         print("@@@@@@@ Product Informations Unlink ID")
 
