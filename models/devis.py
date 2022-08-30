@@ -73,7 +73,7 @@ class Devis(models.Model):
 
     @api.onchange('order_line')
     def check_line(self):
-        print("@@@@@@@ ######## Check Order Line #####" + str(self.sale_order.product_id))
+        print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.product_id))
         # if(self.sale_order.)
         raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
