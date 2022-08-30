@@ -75,7 +75,7 @@ class Devis(models.Model):
 
     @api.onchange('order_line')
     def onchange_many_lines(self):
-        xstate = json.loads(xstate)
+        # xstate = json.loads(xstate)
         lines = []
         xlast = False
         #for identify non saved lines
@@ -85,9 +85,9 @@ class Devis(models.Model):
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
         for ctx_line in  self.order_line:
-             self.order_line
-        print("@@@ ######## Check Order Line #####")
-        print(str(xstate))
+            # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
+            print("@@@ ######## Check Order Line #####" + str(ctx_line[0]) + " #####")
+        # print(str(xstate))
         # print(str(ctx_lines1))
     
         # if(self.sale_order.)
