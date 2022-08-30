@@ -74,7 +74,7 @@ class Devis(models.Model):
     @api.onchange('order_line')
     def check_line(self):
         print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.product_id))
-        ctx_lines = self.order_line._origin.mapped('id')
+        ctx_lines = self._origin.order_line.mapped('id')
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
         # for ctx_line in ctx_lines:
