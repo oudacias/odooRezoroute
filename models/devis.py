@@ -94,7 +94,7 @@ class Devis(models.Model):
             if(ctx_line.id):
                 print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
             # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
-            print(ctx_line)
+            print(ctx_line[0])
         for ctx_line in  self._origin.order_line:
             # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
             print("111 @@@ ######## Check Order Line #####" + str(ctx_line[0]) + " #####")
