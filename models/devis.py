@@ -73,19 +73,26 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
 
+    
+
     @api.onchange('order_line')
    
     def onchange_many_lines(self):
-        # xstate = json.loads(xstate)
-        lines = []
-        xlast = False
-        #for identify non saved lines
-        index = 0
+        old_lines = self.order_line
+        # for ctx_line in  self.order_line:
+        #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
+        #     print(ctx_line)
+        # dict_new_lines[]
+        # if self.order_line:
+        #     if()
+        
         print("@@@@@@@ ######## Check Order Line #####" + str(self.env.context.get('id')))
         ctx_lines = self._origin.order_line.mapped('id')
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
         for ctx_line in  self.order_line:
+            if(ctx_line.NewId):
+                print("@@@@@@ I AM VERY TIRED")
             # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
             print(ctx_line)
         for ctx_line in  self._origin.order_line:
