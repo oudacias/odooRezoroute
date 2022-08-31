@@ -86,7 +86,7 @@ class Devis(models.Model):
         # if self.order_line:
         #     if()
         
-        print("@@@@@@@ ######## Check Order Line #####" + str(self._ids))
+        print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line._ids))
         ctx_lines = self._origin.order_line.mapped('id')
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
