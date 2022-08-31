@@ -92,7 +92,7 @@ class Devis(models.Model):
         # if(len(ctx_lines) < len(ctx_lines1)):
         for ctx_line in  self.order_line:
             if(ctx_line.id):
-                print("@@@@@@ I AM VERY TIRED  " +str(self._ids))
+                print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
             # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
             print(ctx_line)
         for ctx_line in  self._origin.order_line:
