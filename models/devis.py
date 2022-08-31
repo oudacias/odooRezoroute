@@ -73,7 +73,7 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
 
-    @api.onchange('order_line')
+    @api.onchange('order_line','order_line.product_id')
     def onchange_many_lines(self):
         # xstate = json.loads(xstate)
         lines = []
