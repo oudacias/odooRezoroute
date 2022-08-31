@@ -92,7 +92,7 @@ class Devis(models.Model):
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
         for ctx_line in  self.order_line:
-            record = self.browse([ctx_line.NewId(ctx_line.origin, ctx_line.ref)])
+            record = self.browse([models.NewId(models.origin, models.ref)])
 
         #     if(ctx_line.id):
         #         print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
