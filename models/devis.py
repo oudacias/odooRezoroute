@@ -86,8 +86,8 @@ class Devis(models.Model):
         dict_virtual_lines = {}
         virtual = 0
 
-        # for old_line in self._origin.order_line:
-        #     dict_old_lines[old_line.id] = old_line.facultatif
+        for old_line in self._origin.order_line:
+            print(old_line.id)
 
         for ctx_line in  self.order_line:
             if('virtual' not in str(ctx_line.id)):
@@ -114,6 +114,7 @@ class Devis(models.Model):
 
         else:
             # dict_check_lines[]
+            print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(set(dict_old_lines.keys()).difference(dict_old_lines)))
             print("@@@ $$$$$$$$$ CHECKING multiple  lines from  " + str(dict_old_lines))
 
 
