@@ -114,7 +114,8 @@ class Devis(models.Model):
 
         else:
             # dict_check_lines[]
-            print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(set(dict_check_lines.keys()).difference(dict_old_lines)))
+            # print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(set(dict_check_lines.keys()).difference(dict_old_lines)))
+            print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(set(dict_old_lines.keys()).difference(dict_check_lines)))
             # print("@@@ $$$$$$$$$ CHECKING multiple  lines from  " + str(dict_old_lines))
 
 
