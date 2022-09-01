@@ -115,7 +115,8 @@ class Devis(models.Model):
 
         elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
             
-            print(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))
+            print(set(self.dict_new_lines.keys()).difference(dict_virtual_lines)[0])
+
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
         # for ctx_line in  self._origin.order_line:
