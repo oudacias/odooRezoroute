@@ -93,7 +93,7 @@ class Devis(models.Model):
 
         for ctx_line in  self.order_line:
             if('virtual' not in str(ctx_line.id)):
-                dict_old_lines[ctx_line.id] = ctx_line.facultatif
+                dict_old_lines["'"+str(ctx_line.id)+"'"] = ctx_line.facultatif
 
 
         print("@@@@@@@@@@@@@@@@ ")
