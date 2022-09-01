@@ -91,7 +91,7 @@ class Devis(models.Model):
 
         dict_new_lines = {}
         for old_line in self.order_line:
-            dict_old_lines['old' + old_line.id] = old_line.facultatif
+            dict_old_lines[old_line.id] = old_line.facultatif
         
         print(str(self.dict_old_lines))
        
