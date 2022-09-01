@@ -121,7 +121,11 @@ class Devis(models.Model):
 
             
             if(self.dict_new_lines[list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0]] == True):
+                print(str(self.dict_new_lines))
+                print("@@@@@ ££££££££")
+
                 self.dict_new_lines.pop(list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0])  
+                print(str(self.dict_new_lines))
             else:
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
