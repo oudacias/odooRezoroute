@@ -100,8 +100,9 @@ class Devis(models.Model):
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
         for ctx_line in  self.order_line:
+            if('virtual' in str(ctx_line.id)):
         #     if(ctx_line.id):
-            print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
+                print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
         # for ctx_line in  self._origin.order_line:
