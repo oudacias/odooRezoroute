@@ -121,8 +121,11 @@ class Devis(models.Model):
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
         else:
+            if(dict_check_lines[list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]] == True):
             # dict_check_lines[]
-            print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]))
+                print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]))
+            else:
+                raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
             # print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(set(dict_old_lines.keys()).difference(dict_check_lines.keys())))
             # print("@@@ $$$$$$$$$ CHECKING multiple  lines from  old" + str(len(dict_check_lines)))
             # print("@@@ $$$$$$$$$ CHECKING multiple  lines from  " + str(len(dict_old_lines)))
