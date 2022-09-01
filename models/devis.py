@@ -76,7 +76,6 @@ class Devis(models.Model):
     
 
     @api.onchange('order_line')
-   
     def onchange_many_lines(self):
 
         dict_old_lines = {}
@@ -199,14 +198,6 @@ class SaleLine(models.Model):
             rec.qty_location = rec.product_id.qty_location
 
 
-    
-    
-
-
-    @api.ondelete(at_uninstall=True)
-    def _unlink_check(self):
-        print("@@@@@@@ Product Informations Unlink ID")
-
     # def unlink(self):
     #    for rec in self:
     #         if(rec.facultatif == False):
@@ -215,6 +206,10 @@ class SaleLine(models.Model):
     #             q= super(SaleLine, self).unlink() 
     #             return q
                 
+    @api.onchange('id')
+    def additional_info(self):
+        print('Vous ne pouvez pas supprimer cette ligne du forfait')
+
 
     @api.onchange('product_id')
     def additional_info(self):
