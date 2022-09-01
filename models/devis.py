@@ -82,6 +82,9 @@ class Devis(models.Model):
         dict_old_lines = {}
         for old_line in self._origin.order_line:
             dict_old_lines[old_line.id] = old_line.facultatif
+
+        dict_new_lines = {}
+        
         
 
 
@@ -97,9 +100,9 @@ class Devis(models.Model):
         ctx_lines = self._origin.order_line.mapped('id')
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
-        # for ctx_line in  self.order_line:
+        for ctx_line in  self.order_line:
         #     if(ctx_line.id):
-        #         print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
+            print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
         # for ctx_line in  self._origin.order_line:
@@ -117,7 +120,7 @@ class Devis(models.Model):
     def check_mobile(self):
         if(self.mobile):
             if(len(self.mobile) != 10):
-                self.mobile = self.partner_id.mobile
+                # self.mobile = self.partner_id.mobile
                 raise ValidationError('Le numéro du téléphone doit contenir 10 chiffres')
 
 
@@ -204,13 +207,13 @@ class SaleLine(models.Model):
     def _unlink_check(self):
         print("@@@@@@@ Product Informations Unlink ID")
 
-    def unlink(self):
-       for rec in self:
-            if(rec.facultatif == False):
-                raise UserError('Vous ne pouvez pas supprimer cette ligne du forfait')
-            else:
-                q= super(SaleLine, self).unlink() 
-                return q
+    # def unlink(self):
+    #    for rec in self:
+    #         if(rec.facultatif == False):
+    #             raise UserError('Vous ne pouvez pas supprimer cette ligne du forfait')
+    #         else:
+    #             q= super(SaleLine, self).unlink() 
+    #             return q
                 
 
     @api.onchange('product_id')
