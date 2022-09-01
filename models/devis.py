@@ -72,40 +72,29 @@ class Devis(models.Model):
 
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
-    dict_check = fields.Boolean(compute="_oldlines")
-    
-    def _oldlines(self):
-        
-        
 
-        self.dict_check = True
-
-    dict_new_lines = {}
     
 
     @api.onchange('order_line')
     def onchange_many_lines(self):
 
         dict_old_lines = {}
+        dict_check_lines = {}
         dict_virtual_lines = {}
         virtual = 0
 
-        
+        # for old_line in self._origin.order_line:
+        #     dict_old_lines[old_line.id] = old_line.facultatif
 
+        for ctx_line in  self.order_line:
+            if('virtual' not in str(ctx_line.id)):
+                dict_old_lines[ctx_line.id] = ctx_line.facultatif
 
-        
-        for old_line in self._origin.order_line:
-            dict_old_lines[old_line.id] = old_line.facultatif
-        
-        print(str(self.order_line))
-
-        # print("@@@@@@ I AM VERY TIRED  " +str(len(self.dict_new_lines)))
-        # print("@@@@@@ I AM VERY TIRED Line " +str(len(self.order_line)))
-        # print("@@@@@@ I AM VERY TIRED Line " +str(len(list(filter(lambda x: str(self.order_line.id) in 'virtual', self.order_line)))))
-        # print("@@@@@@ I AM VERY TIRED Line " +str(len([x for x in self.order_line if str(self.order_line.id) in 'virtual'])))
+                
         for ctx_line in  self.order_line:
             if('virtual' in str(ctx_line.id)):
                 dict_virtual_lines[ctx_line.id] = ctx_line.facultatif
+        
 
         if(len(dict_virtual_lines) > len(self.dict_new_lines)):        
             for ctx_line in  self.order_line:
@@ -113,21 +102,17 @@ class Devis(models.Model):
                     if(ctx_line.id not in self.dict_new_lines.keys()):
                         self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
 
-        
-
         elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
-
-            print("111 @@@ ######## Check Order Line #####" + str(self.dict_new_lines[list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0]]) + " #####")
-
             
             if(self.dict_new_lines[list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0]] == True):
-                print(str(self.dict_new_lines))
-                print("@@@@@ ££££££££")
-
                 self.dict_new_lines.pop(list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0])  
-                print(str(self.dict_new_lines))
             else:
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
+
+        else:
+            # dict_check_lines[]
+            print("@@@ $$$$$$$$$ CHECKING multiple  lines from  " + str(dict_old_lines))
+
 
 
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
