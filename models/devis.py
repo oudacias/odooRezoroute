@@ -87,20 +87,25 @@ class Devis(models.Model):
     def onchange_many_lines(self):
 
         dict_old_lines = {}
+        dict_virtual_lines = {}
+        virtual = 0
 
 
         
-        # for old_line in self._origin.order_line:
-        #     dict_old_lines[old_line.id] = old_line.facultatif
+        for old_line in self._origin.order_line:
+            dict_old_lines[old_line.id] = old_line.facultatif
         
-        print(str(self))
+        print(str(self.order_line))
 
         # print("@@@@@@ I AM VERY TIRED  " +str(len(self.dict_new_lines)))
         # print("@@@@@@ I AM VERY TIRED Line " +str(len(self.order_line)))
         # print("@@@@@@ I AM VERY TIRED Line " +str(len(list(filter(lambda x: str(self.order_line.id) in 'virtual', self.order_line)))))
         # print("@@@@@@ I AM VERY TIRED Line " +str(len([x for x in self.order_line if str(self.order_line.id) in 'virtual'])))
+        for ctx_line in  self.order_line:
+            if('virtual' in str(ctx_line.id)):
+                dict_virtual_lines[ctx_line.id] = ctx_line.facultatif
 
-        if(len(self.order_line) > len(self.dict_new_lines)):        
+        if(len(dict_virtual_lines) > len(self.dict_new_lines)):        
             for ctx_line in  self.order_line:
                 if('virtual' in str(ctx_line.id)):
                     if(ctx_line.id not in self.dict_new_lines.keys()):
@@ -108,9 +113,9 @@ class Devis(models.Model):
 
         
 
-        elif(len(self.order_line) < len(self.dict_new_lines)):
+        elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
             
-            print(set(self.dict_new_lines.keys()).difference(self.order_line))
+            print(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
         # for ctx_line in  self._origin.order_line:
