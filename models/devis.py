@@ -77,7 +77,7 @@ class Devis(models.Model):
 
     def _oldlines(self):
         
-        for old_line in self._origin.order_line:
+        for old_line in self.order_line:
             self.dict_old_lines[old_line.id] = old_line.facultatif
 
         self.dict_check = True
