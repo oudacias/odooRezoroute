@@ -73,12 +73,10 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
     dict_check = fields.Boolean(compute="_oldlines")
-    dict_old_lines = {}
-
+    
     def _oldlines(self):
         
-        for old_line in self.order_line:
-            self.dict_old_lines[old_line.id] = old_line.facultatif
+        
 
         self.dict_check = True
 
@@ -88,13 +86,13 @@ class Devis(models.Model):
     @api.onchange('order_line')
     def onchange_many_lines(self):
 
-        
+        dict_old_lines = {}
+
 
         dict_new_lines = {}
+        for old_line in self.order_line:
+            dict_old_lines['old' + old_line.id] = old_line.facultatif
         
-        
-
-
         print(str(self.dict_old_lines))
        
         
@@ -104,7 +102,10 @@ class Devis(models.Model):
         # if(len(ctx_lines) < len(ctx_lines1)):
         for ctx_line in  self.order_line:
             if('virtual' in str(ctx_line.id)):
-                print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
+                if(ctx_line.id not in dict_new_lines.keys()):
+                    dict_new_lines[ctx_line.id] = ctx_line.facultatif
+
+        print("@@@@@@ I AM VERY TIRED  " +str(dict_new_lines))
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
         # for ctx_line in  self._origin.order_line:
