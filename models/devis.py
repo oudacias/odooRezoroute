@@ -72,13 +72,15 @@ class Devis(models.Model):
 
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
-    dict_old_lines = fields.Boolean(compute="_oldlines")
+    dict_check = fields.Boolean(compute="_oldlines")
+    dict_old_lines = {}
 
     def _oldlines(self):
         
         for old_line in self._origin.order_line:
             self.dict_old_lines[old_line.id] = old_line.facultatif
-        return True
+
+        self.dict_check = True
 
 
     
