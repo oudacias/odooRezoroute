@@ -78,22 +78,26 @@ class Devis(models.Model):
     @api.onchange('order_line')
    
     def onchange_many_lines(self):
-        old_lines = self.order_line
+
+        dict_old_lines = {}
+        for old_line in self._origin.order_line:
+            dict_old_lines[old_line.id] = old_line.facultatif
+        
+
+
+        print(str(dict_old_lines))
         # for ctx_line in  self.order_line:
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(ctx_line)
         # dict_new_lines[]
         # if self.order_line:
         #     if()
-
         
-        print("@@@@@@@ ######## Check Order Line #####" + str(models.NewId))
+        print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.new()))
         ctx_lines = self._origin.order_line.mapped('id')
         ctx_lines1 = self.order_line.mapped('id')
         # if(len(ctx_lines) < len(ctx_lines1)):
-        for ctx_line in  self.order_line:
-            record = self.browse([models.NewId(models.origin, models.ref)])
-
+        # for ctx_line in  self.order_line:
         #     if(ctx_line.id):
         #         print("@@@@@@ I AM VERY TIRED  " +str(ctx_line.id))
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
