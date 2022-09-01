@@ -80,7 +80,7 @@ class Devis(models.Model):
 
         self.dict_check = True
 
-
+    dict_new_lines = {}
     
 
     @api.onchange('order_line')
@@ -89,7 +89,7 @@ class Devis(models.Model):
         dict_old_lines = {}
 
 
-        dict_new_lines = {}
+        
         for old_line in self._origin.order_line:
             dict_old_lines[old_line.id] = old_line.facultatif
         
@@ -102,10 +102,10 @@ class Devis(models.Model):
         # if(len(ctx_lines) < len(ctx_lines1)):
         for ctx_line in  self.order_line:
             if('virtual' in str(ctx_line.id)):
-                if(ctx_line.id not in dict_new_lines.keys()):
-                    dict_new_lines[ctx_line.id] = ctx_line.facultatif
+                if(ctx_line.id not in self.dict_new_lines.keys()):
+                    self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
 
-        print("@@@@@@ I AM VERY TIRED  " +str(dict_new_lines))
+        print("@@@@@@ I AM VERY TIRED  " +str(self.dict_new_lines))
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
         # for ctx_line in  self._origin.order_line:
