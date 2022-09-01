@@ -72,7 +72,10 @@ class Devis(models.Model):
 
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
+    dict_check = fields.Boolean(compute="_oldlines")
+    
 
+    dict_new_lines = {}
     
 
     @api.onchange('order_line')
