@@ -116,6 +116,9 @@ class Devis(models.Model):
         
 
         elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
+
+            print("111 @@@ ######## Check Order Line #####" + str(self.dict_new_lines[list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0]]) + " #####")
+
             
             if(self.dict_new_lines[list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0]] == True):
                 self.dict_new_lines.pop(list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0])  
