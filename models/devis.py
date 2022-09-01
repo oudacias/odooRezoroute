@@ -95,6 +95,9 @@ class Devis(models.Model):
         
         print(str(dict_old_lines))
 
+        print("@@@@@@ I AM VERY TIRED  " +str(len(self.dict_new_lines)))
+        print("@@@@@@ I AM VERY TIRED Line " +str(len(self.order_line)))
+
         if(len(self.order_line) > len(self.dict_new_lines)):        
             for ctx_line in  self.order_line:
                 if('virtual' in str(ctx_line.id)):
@@ -104,7 +107,7 @@ class Devis(models.Model):
         
 
         elif(len(self.order_line) < len(self.dict_new_lines)):
-            print("@@@@@@ I AM VERY TIRED  " +str(self.dict_new_lines))
+            
             print(set(self.dict_new_lines.keys()).difference(self.order_line))
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
