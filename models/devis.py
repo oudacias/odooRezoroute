@@ -94,18 +94,18 @@ class Devis(models.Model):
             dict_old_lines[old_line.id] = old_line.facultatif
         
         print(str(dict_old_lines))
-       
-        
-        print("@@@@@@@ ######## Check Order Line #####" + str(self.order_line.new()))
-        ctx_lines = self._origin.order_line.mapped('id')
-        ctx_lines1 = self.order_line.mapped('id')
-        # if(len(ctx_lines) < len(ctx_lines1)):
-        for ctx_line in  self.order_line:
-            if('virtual' in str(ctx_line.id)):
-                if(ctx_line.id not in self.dict_new_lines.keys()):
-                    self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
 
-        print("@@@@@@ I AM VERY TIRED  " +str(self.dict_new_lines))
+        if(len(self.order_line) > len(self.dict_new_lines)):        
+            for ctx_line in  self.order_line:
+                if('virtual' in str(ctx_line.id)):
+                    if(ctx_line.id not in self.dict_new_lines.keys()):
+                        self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
+
+        
+
+        elif(len(self.order_line) < len(self.dict_new_lines)):
+            print("@@@@@@ I AM VERY TIRED  " +str(self.dict_new_lines))
+            print(set(self.dict_new_lines.keys()).difference(self.order_line))
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
         # for ctx_line in  self._origin.order_line:
