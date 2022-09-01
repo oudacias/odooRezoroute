@@ -89,9 +89,17 @@ class Devis(models.Model):
         for old_line in self._origin.order_line:
             dict_check_lines['<NewId origin='+str(old_line.id)+'>'] = old_line.facultatif
 
+        print("111 @@@ ######## Check Order Line #####" + str(dict_check_lines))
+
         for ctx_line in  self.order_line:
             if('virtual' not in str(ctx_line.id)):
                 dict_old_lines[ctx_line.id] = ctx_line.facultatif
+
+
+        print("@@@@@@@@@@@@@@@@ ")
+
+        print("111 @@@ ######## Check Order Line #####" + str(dict_old_lines))
+
 
                 
         for ctx_line in  self.order_line:
