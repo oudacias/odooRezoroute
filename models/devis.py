@@ -115,7 +115,7 @@ class Devis(models.Model):
 
         elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
             
-            print(list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0])
+            print(list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0].product_id)
 
         #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
         #     print(str(ctx_line.NewId()))
