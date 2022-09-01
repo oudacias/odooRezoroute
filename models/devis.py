@@ -97,7 +97,8 @@ class Devis(models.Model):
 
         print("@@@@@@ I AM VERY TIRED  " +str(len(self.dict_new_lines)))
         print("@@@@@@ I AM VERY TIRED Line " +str(len(self.order_line)))
-        print("@@@@@@ I AM VERY TIRED Line " +str(len(list(filter(lambda x: str(ctx_line.id) in 'virtual', self.order_line)))))
+        print("@@@@@@ I AM VERY TIRED Line " +str(len(list(filter(lambda x: str(self.order_line.id) in 'virtual', self.order_line)))))
+        print("@@@@@@ I AM VERY TIRED Line " +str(len([x for x in self.order_line if str(self.order_line.id) in 'virtual'])))
 
         if(len(self.order_line) > len(self.dict_new_lines)):        
             for ctx_line in  self.order_line:
