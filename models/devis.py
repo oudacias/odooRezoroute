@@ -133,6 +133,7 @@ class Devis(models.Model):
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
         else:
+            print("New @@@ ######## Check Order Line #####" + str(list(set(dict_check_lines.keys()).difference(self.dict_old_lines))))
             if(dict_check_lines[list(set(dict_check_lines.keys()).difference(self.dict_old_lines))[-1]] == False):
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
            
