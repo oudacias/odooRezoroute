@@ -76,12 +76,13 @@ class Devis(models.Model):
     
 
     dict_new_lines = {}
+    dict_old_lines = {}
     
 
     @api.onchange('order_line')
     def onchange_many_lines(self):
 
-        dict_old_lines = {}
+        
         dict_check_lines = {}
         dict_virtual_lines = {}
         virtual = 0
@@ -93,14 +94,14 @@ class Devis(models.Model):
 
         for ctx_line in  self.order_line:
             if('virtual' not in str(ctx_line.id)):
-                dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
+                self.dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
 
         print("Check @@@ ######## Check Order Line #####" + str(dict_check_lines))
 
 
         print("@@@@@@@@@@@@@@@@ ")
 
-        print("Old @@@ ######## Check Order Line #####" + str(dict_old_lines))
+        print("Old @@@ ######## Check Order Line #####" + str(self.dict_old_lines))
 
 
                 
@@ -133,7 +134,7 @@ class Devis(models.Model):
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
         else:
-            if(dict_check_lines[list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]] == False):
+            if(dict_check_lines[list(set(dict_check_lines.keys()).difference(self.dict_old_lines))[-1]] == False):
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
                 
                 
@@ -157,6 +158,14 @@ class Devis(models.Model):
     
         # if(self.sale_order.)
         # raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
+
+    def write(self,vals):
+
+        # self.partner_id.write({'mobile': vals['mobile']})
+        self.dict_old_lines = {}
+
+        q= super(Devis, self).write(vals) 
+        return q
 
 
     
