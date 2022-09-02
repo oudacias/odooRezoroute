@@ -120,9 +120,9 @@ class Devis(models.Model):
                     if(ctx_line.id not in self.dict_new_lines.keys()):
                         self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
 
-        print("@@@@@@@@@@@@@@@@ ")
+            print("@@@@@@@@@@@@@@@@ ")
 
-        print("New @@@ ######## Check Order Line #####" + str(self.dict_new_lines))
+            print("New @@@ ######## Check Order Line #####" + str(self.dict_new_lines))
 
 
         elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
