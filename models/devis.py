@@ -94,14 +94,14 @@ class Devis(models.Model):
 
         for ctx_line in  self.order_line:
             if('virtual' not in str(ctx_line.id)):
-                self.dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
+                dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
 
         print("Check @@@ ######## Check Order Line #####" + str(dict_check_lines))
 
 
         print("@@@@@@@@@@@@@@@@ ")
 
-        print("Old @@@ ######## Check Order Line #####" + str(self.dict_old_lines))
+        print("Old @@@ ######## Check Order Line #####" + str(dict_old_lines))
         print("Old @@@ ######## Check Order Line #####" + str(self.order_line))
 
 
