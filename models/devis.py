@@ -143,7 +143,7 @@ class Devis(models.Model):
         
 
         q= super(Devis, self).write(vals) 
-        self.dict_old_lines = {}
+        self.dict_old_lines['www'] = 'pp'
         return q
 
 
