@@ -76,7 +76,7 @@ class Devis(models.Model):
     
 
     dict_new_lines = {}
-    dict_old_lines = {}
+   
     
 
     @api.onchange('order_line')
@@ -85,6 +85,7 @@ class Devis(models.Model):
         
         dict_check_lines = {}
         dict_virtual_lines = {}
+        dict_old_lines = {}
 
         for old_line in self._origin.order_line:
             dict_check_lines["NewId_"+str(old_line.id)] = old_line.facultatif
@@ -134,9 +135,9 @@ class Devis(models.Model):
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
         else:
-            print("New @@@ ######## Check Order Line #####" + str(list(set(dict_check_lines.keys()).difference(self.dict_old_lines))))
-            print("New @@@ ######## Check Order Line #####" + str(list(set(self.dict_old_lines.keys()).difference(dict_check_lines))))
-            if(dict_check_lines[list(set(dict_check_lines.keys()).difference(self.dict_old_lines))[-1]] == False):
+            print("New @@@ ######## Check Order Line #####" + str(list(set(dict_check_lines.keys()).difference(dict_old_lines))))
+            print("New @@@ ######## Check Order Line #####" + str(list(set(dict_old_lines.keys()).difference(dict_check_lines))))
+            if(dict_check_lines[list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]] == False):
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
            
 
