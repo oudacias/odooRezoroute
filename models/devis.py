@@ -101,6 +101,7 @@ class Devis(models.Model):
         print("@@@@@@@@@@@@@@@@ ")
 
         print("Old @@@ ######## Check Order Line #####" + str(self.dict_old_lines))
+        print("Old @@@ ######## Check Order Line #####" + str(self.order_lines))
 
 
                 
