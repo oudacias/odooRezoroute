@@ -86,59 +86,60 @@ class Devis(models.Model):
         dict_check_lines = {}
         dict_virtual_lines = {}
         dict_old_lines = {}
+        if(self.order_line):
 
-        for old_line in self._origin.order_line:
-            dict_check_lines["NewId_"+str(old_line.id)] = old_line.facultatif
+            for old_line in self._origin.order_line:
+                dict_check_lines["NewId_"+str(old_line.id)] = old_line.facultatif
 
-        print("111 @@@ ######## Check Order Line #####" + str(dict_check_lines))
+            print("111 @@@ ######## Check Order Line #####" + str(dict_check_lines))
 
-        for ctx_line in  self.order_line:
-            if('virtual' not in str(ctx_line.id)):
-                dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
-
-        print("Check @@@ ######## Check Order Line #####" + str(dict_check_lines))
-
-
-        print("@@@@@@@@@@@@@@@@ ")
-
-        print("Old @@@ ######## Check Order Line #####" + str(dict_old_lines))
-        print("Old @@@ ######## Check Order Line #####" + str(self.order_line))
-
-
-                
-        for ctx_line in  self.order_line:
-            if('virtual' in str(ctx_line.id)):
-                dict_virtual_lines[ctx_line.id] = ctx_line.facultatif
-
-        print("@@@@@@@@@@@@@@@@ ")
-
-        print("Virtual @@@ ######## Check Order Line #####" + str(dict_virtual_lines))
-
-        
-
-        if(len(dict_virtual_lines) > len(self.dict_new_lines)):        
             for ctx_line in  self.order_line:
-                if('virtual' in str(ctx_line.id)):
-                    if(ctx_line.id not in self.dict_new_lines.keys()):
-                        self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
+                if('virtual' not in str(ctx_line.id)):
+                    dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
+
+            print("Check @@@ ######## Check Order Line #####" + str(dict_check_lines))
+
 
             print("@@@@@@@@@@@@@@@@ ")
 
-            print("New @@@ ######## Check Order Line #####" + str(self.dict_new_lines))
+            print("Old @@@ ######## Check Order Line #####" + str(dict_old_lines))
+            print("Old @@@ ######## Check Order Line #####" + str(self.order_line))
 
 
-        elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
+                    
+            for ctx_line in  self.order_line:
+                if('virtual' in str(ctx_line.id)):
+                    dict_virtual_lines[ctx_line.id] = ctx_line.facultatif
+
+            print("@@@@@@@@@@@@@@@@ ")
+
+            print("Virtual @@@ ######## Check Order Line #####" + str(dict_virtual_lines))
+
             
-            if(self.dict_new_lines[list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0]] == True):
-                self.dict_new_lines.pop(list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0])  
-            else:
-                raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
-        else:
-            print("New @@@ ######## Check Order Line #####" + str(list(set(dict_check_lines.keys()).difference(dict_old_lines))))
-            print("New @@@ ######## Check Order Line #####" + str(list(set(dict_old_lines.keys()).difference(dict_check_lines))))
-            if(dict_check_lines[list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]] == False):
-                raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
+            if(len(dict_virtual_lines) > len(self.dict_new_lines)):        
+                for ctx_line in  self.order_line:
+                    if('virtual' in str(ctx_line.id)):
+                        if(ctx_line.id not in self.dict_new_lines.keys()):
+                            self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
+
+                print("@@@@@@@@@@@@@@@@ ")
+
+                print("New @@@ ######## Check Order Line #####" + str(self.dict_new_lines))
+
+
+            elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
+                
+                if(self.dict_new_lines[list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0]] == True):
+                    self.dict_new_lines.pop(list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0])  
+                else:
+                    raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
+
+            else:
+                print("New @@@ ######## Check Order Line #####" + str(list(set(dict_check_lines.keys()).difference(dict_old_lines))))
+                print("New @@@ ######## Check Order Line #####" + str(list(set(dict_old_lines.keys()).difference(dict_check_lines))))
+                if(dict_check_lines[list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]] == False):
+                    raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
            
 
     def write(self,vals):
