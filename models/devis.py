@@ -85,7 +85,6 @@ class Devis(models.Model):
         
         dict_check_lines = {}
         dict_virtual_lines = {}
-        virtual = 0
 
         for old_line in self._origin.order_line:
             dict_check_lines["NewId_"+str(old_line.id)] = old_line.facultatif
@@ -136,35 +135,15 @@ class Devis(models.Model):
         else:
             if(dict_check_lines[list(set(dict_check_lines.keys()).difference(self.dict_old_lines))[-1]] == False):
                 raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
-                
-                
-            # dict_check_lines[]
-                # print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]))
-            # else:
-            #     raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
-            # print("@@@ $$$$$$$$$ CHECKING multiple  lines from111  " + str(set(dict_old_lines.keys()).difference(dict_check_lines.keys())))
-            # print("@@@ $$$$$$$$$ CHECKING multiple  lines from  old" + str(len(dict_check_lines)))
-            # print("@@@ $$$$$$$$$ CHECKING multiple  lines from  " + str(len(dict_old_lines)))
-
-
-
-        #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
-        #     print(str(ctx_line.NewId()))
-        # for ctx_line in  self._origin.order_line:
-        #     # if ctx_line[0] in (0,1) and ctx_line[2].get('xvalue', False):
-        #     print("111 @@@ ######## Check Order Line #####" + str(ctx_line[0]) + " #####")
-        # print(str(xstate))
-        # print(str(ctx_lines1))
-    
-        # if(self.sale_order.)
-        # raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
+           
 
     def write(self,vals):
 
         # self.partner_id.write({'mobile': vals['mobile']})
-        self.dict_old_lines = {}
+        
 
         q= super(Devis, self).write(vals) 
+        self.dict_old_lines = {}
         return q
 
 
