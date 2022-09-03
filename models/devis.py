@@ -131,11 +131,10 @@ class Devis(models.Model):
                 diff_list = list(set(dict_check_lines.keys()).difference(dict_old_lines))
                 for d in diff_list:
                     if d not in self.dict_diff_lines:
-                        print(d)
                         self.dict_diff_lines[d] = dict_check_lines[d]
 
                 print('££££££ !!!!!! Diff Dictionary    ' +str(self.dict_diff_lines))
-                print('££££££ !!!!!! Diff Dictionary    ' +str(list(self.dict_diff_lines.items()))[-1])
+                print(list(self.dict_diff_lines.items())[-1])
 
                 if(dict_check_lines[list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]] == False):
                     raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
