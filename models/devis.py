@@ -104,6 +104,8 @@ class Devis(models.Model):
             for ctx_line in  self.order_line:
                 if('virtual' not in str(ctx_line.id)):
                     dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
+            if len(dict_old_lines) == 0:
+                self.dict_diff_lines.clear()
 
                     
             for ctx_line in  self.order_line:
