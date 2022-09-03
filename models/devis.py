@@ -155,6 +155,16 @@ class Devis(models.Model):
                 self.is_confirm = False
         else:
             self.is_confirm = True
+            
+    @api.onchange('is_repair_order')
+    def _isconfirmed2(self):
+        if(self.state == "draft"):
+            if(self.is_repair_order == True):
+                self.is_confirm = True
+            else:
+                self.is_confirm = False
+        else:
+            self.is_confirm = True
 
 
 
