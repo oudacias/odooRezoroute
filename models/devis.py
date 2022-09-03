@@ -116,8 +116,10 @@ class Devis(models.Model):
             for ctx_line in  self.order_line:
                 if('virtual' in str(ctx_line.id)):
                     dict_virtual_lines[ctx_line.id] = ctx_line.facultatif
+            if len(dict_virtual_lines == 0):
 
-            print("@@@@@@@@@@@@@@@@ ")
+
+                print("@@@@@@@@@@@@@@@@ NOTHING TO SEE HEREE")
 
             print("Virtual @@@ ######## Check Order Line #####" + str(dict_virtual_lines))
 
