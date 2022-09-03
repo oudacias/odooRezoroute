@@ -117,6 +117,7 @@ class Devis(models.Model):
                 if('virtual' in str(ctx_line.id)):
                     dict_virtual_lines[ctx_line.id] = ctx_line.facultatif
             if len(dict_virtual_lines) == 0:
+                self.dict_new_lines = {}
 
 
                 print("@@@@@@@@@@@@@@@@ NOTHING TO SEE HEREE")
