@@ -128,7 +128,7 @@ class Devis(models.Model):
 
             else:
 
-                diff_list = list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1] 
+                diff_list = list(set(dict_check_lines.keys()).difference(dict_old_lines))
                 for d in diff_list:
                     if d not in self.dict_diff_lines:
                         print(d)
