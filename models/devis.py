@@ -87,6 +87,13 @@ class Devis(models.Model):
         dict_virtual_lines = {}
         dict_old_lines = {}
         if(self.order_line):
+            # if 'virtual' in dict_virtual_lines:
+            #     print("@@@@@@@  blah")
+
+            print(dict_virtual_lines.keys())
+            dict_virtual_lines
+            if any("abc" in s for s in dict_virtual_lines.keys()):
+                print("@@@@@@@  blah")
 
             for old_line in self._origin.order_line:
                 dict_check_lines["NewId_"+str(old_line.id)] = old_line.facultatif
