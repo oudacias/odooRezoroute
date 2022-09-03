@@ -118,12 +118,6 @@ class Devis(models.Model):
                     dict_virtual_lines[ctx_line.id] = ctx_line.facultatif
             if len(dict_virtual_lines) == 0:
                 self.dict_new_lines.clear()
-
-
-                print("@@@@@@@@@@@@@@@@ NOTHING TO SEE HEREE")
-
-            print("Virtual @@@ ######## Check Order Line #####" + str(dict_virtual_lines))
-
             
 
             if(len(dict_virtual_lines) > len(self.dict_new_lines)):        
@@ -131,11 +125,6 @@ class Devis(models.Model):
                     if('virtual' in str(ctx_line.id)):
                         if(ctx_line.id not in self.dict_new_lines.keys()):
                             self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
-
-                print("@@@@@@@@@@@@@@@@ ")
-
-                print("New @@@ ######## Check Order Line #####" + str(self.dict_new_lines))
-
 
             elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
                 
@@ -145,8 +134,6 @@ class Devis(models.Model):
                     raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
             else:
-                print("New @@@ ######## Check Order Line #####" + str(list(set(dict_check_lines.keys()).difference(dict_old_lines))))
-                print("New @@@ ######## Check Order Line #####" + str(list(set(dict_old_lines.keys()).difference(dict_check_lines))))
                 if(dict_check_lines[list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]] == False):
                     raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
            
@@ -154,7 +141,7 @@ class Devis(models.Model):
     def write(self,vals):
 
         # self.partner_id.write({'mobile': vals['mobile']})
-        
+        self.dict_new_lines.clear()
 
         q= super(Devis, self).write(vals) 
         # self.dict_old_lines['www'] = 'pp'
