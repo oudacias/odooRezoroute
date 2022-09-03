@@ -91,8 +91,7 @@ class Devis(models.Model):
             #     print("@@@@@@@  blah")
 
             print(dict_virtual_lines.keys())
-            dict_virtual_lines
-            if any("abc" in s for s in dict_virtual_lines.keys()):
+            if any("virtual" in s for s in dict_virtual_lines.keys()):
                 print("@@@@@@@  blah")
 
             for old_line in self._origin.order_line:
