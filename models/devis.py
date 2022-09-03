@@ -89,17 +89,8 @@ class Devis(models.Model):
         dict_old_lines = {}
         
         if(self.order_line):
-            # if 'virtual' in dict_virtual_lines:
-            #     print("@@@@@@@  blah")
-
-            print(dict_virtual_lines.keys())
-            if any("virtual" in s for s in self.order_line):
-                print("@@@@@@@  blah")
-
             for old_line in self._origin.order_line:
                 dict_check_lines["NewId_"+str(old_line.id)] = old_line.facultatif
-
-            print("111 @@@ ######## Check Order Line #####" + str(dict_check_lines))
 
             for ctx_line in  self.order_line:
                 if('virtual' not in str(ctx_line.id)):
@@ -129,21 +120,12 @@ class Devis(models.Model):
                     raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
             else:
-
                 diff_list = list(set(dict_check_lines.keys()).difference(dict_old_lines))
                 for d in diff_list:
                     if d not in self.dict_diff_lines:
                         self.dict_diff_lines[d] = dict_check_lines[d]
-
-                print('££££££ !!!!!! Diff Dictionary    ' +str(self.dict_diff_lines))
-                print(type(list(self.dict_diff_lines.items())[-1][1]))
-
                 if(list(self.dict_diff_lines.items())[-1][1] == False):
                     raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
-                # else:
-                    # dict_diff_lines[]
-
-           
 
     def write(self,vals):
 
