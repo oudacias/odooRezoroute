@@ -76,6 +76,7 @@ class Devis(models.Model):
     
 
     dict_new_lines = {}
+    dict_diff_lines = {}
    
     
 
@@ -86,6 +87,7 @@ class Devis(models.Model):
         dict_check_lines = {}
         dict_virtual_lines = {}
         dict_old_lines = {}
+        
         if(self.order_line):
             # if 'virtual' in dict_virtual_lines:
             #     print("@@@@@@@  blah")
@@ -102,15 +104,6 @@ class Devis(models.Model):
             for ctx_line in  self.order_line:
                 if('virtual' not in str(ctx_line.id)):
                     dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
-
-            print("Check @@@ ######## Check Order Line #####" + str(dict_check_lines))
-
-
-            print("@@@@@@@@@@@@@@@@ ")
-
-            print("Old @@@ ######## Check Order Line #####" + str(dict_old_lines))
-            print("Old @@@ ######## Check Order Line #####" + str(self.order_line))
-
 
                     
             for ctx_line in  self.order_line:
@@ -134,17 +127,27 @@ class Devis(models.Model):
                     raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
             else:
+
+                diff_list = list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1] 
+                for d in diff_list:
+                    if d not in self.dict_diff_lines:
+                        self.dict_diff_lines[d] = dict_check_lines[d]
+
+                print('££££££ !!!!!! Diff Dictionary    ' +str(self.dict_diff_lines))
+
                 if(dict_check_lines[list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1]] == False):
                     raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
+                # else:
+                    # dict_diff_lines[]
+
            
 
     def write(self,vals):
 
         # self.partner_id.write({'mobile': vals['mobile']})
-        self.dict_new_lines.clear()
+        # self.dict_new_lines.clear()
 
         q= super(Devis, self).write(vals) 
-        # self.dict_old_lines['www'] = 'pp'
         return q
 
 
