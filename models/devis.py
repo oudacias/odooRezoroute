@@ -131,6 +131,7 @@ class Devis(models.Model):
                 diff_list = list(set(dict_check_lines.keys()).difference(dict_old_lines))[-1] 
                 for d in diff_list:
                     if d not in self.dict_diff_lines:
+                        print(d)
                         self.dict_diff_lines[d] = dict_check_lines[d]
 
                 print('££££££ !!!!!! Diff Dictionary    ' +str(self.dict_diff_lines))
