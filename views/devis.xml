@@ -208,7 +208,7 @@
                         
                     </group>
                     <footer>
-                        <button name="confirm_order1" string="Confirmer Réparation" type="object" class="oe_highlight"/>
+                        <button name="confirm_order" string="Confirmer Réparation" type="object" class="oe_highlight"/>
                     </footer>
                 </form>
             </field>
