@@ -403,6 +403,7 @@ class ConfirmRepairOrder(models.Model):
         for line in stock_move.move_line_ids:
             line.write({'location_id':location_id.location_id.id})
         # Change stock location -- END
+        print("@@@@@   # Change stock location -- END")
 
         
         for rec in picking_id.move_ids_without_package:
