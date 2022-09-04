@@ -365,6 +365,8 @@ class ConfirmRepairOrder(models.Model):
     repair_order_note = fields.Text(string="Note de réparation")
 
     def confirm_order(self):
+
+        print("@@@@@ &&&&&&&  # Change stock location -- END")
         for rec in self.sale_order_id.order_line:
             if(rec.product_id.qty_location <= 0):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
