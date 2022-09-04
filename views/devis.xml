@@ -242,7 +242,7 @@
             <field name="name">Quotations OR</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
-            <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or_end"/>
+            <!-- <field name="search_view_id" ref="ps_rezoroute.sale_order_view_search_inherit_quotation_or_end"/> -->
             <field name="view_mode">tree</field>
         </record>
        
