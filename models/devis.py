@@ -124,8 +124,9 @@ class Devis(models.Model):
                 for d in diff_list:
                     if d not in self.dict_diff_lines:
                         self.dict_diff_lines[d] = dict_check_lines[d]
-                if(list(self.dict_diff_lines.items())[-1][1] == False):
-                    raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
+                if(len(self.dict_diff_lines)>0):
+                    if(list(self.dict_diff_lines.items())[-1][1] == False):
+                        raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
     def write(self,vals):
 
