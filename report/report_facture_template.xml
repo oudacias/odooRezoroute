@@ -131,8 +131,9 @@
                                                         Bon de livraison 
                                                         <span t-field="s.name" />
                                                         du <t t-esc="s.date_done"/> 
+                                                        <br/>
                                                     </t>
-                                                    <br/>
+                                                    
                                                 </t>
                                                     <!-- <t t-foreach="inv.purchase_id" t-as="o">  -->
                                                         <!-- <span t-field="inv.invoice_origin" />  -->
