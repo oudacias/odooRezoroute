@@ -366,7 +366,6 @@ class ConfirmRepairOrder(models.Model):
 
     def confirm_order(self):
 
-        print("@@@@@ &&&&&&&  # Change stock location -- END")
         for rec in self.sale_order_id.order_line:
             if(rec.product_id.qty_location <= 0):
                 print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
@@ -381,7 +380,6 @@ class ConfirmRepairOrder(models.Model):
             order.message_subscribe([order.partner_id.id])
         self.sale_order_id.write(self.sale_order_id._prepare_confirmation_values())
         
-        print("@@@@@ &&&&&&&  # Change stock location -- END")
         # Context key 'default_name' is sometimes propagated up to here.
         # We don't need it and it creates issues in the creation of linked records.
         context = self.sale_order_id._context.copy()
@@ -395,8 +393,9 @@ class ConfirmRepairOrder(models.Model):
 
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
         location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        print("@@@@@ ££££  # Change stock location -- END  "  +str(location_id.id))
         picking_id.write({'location_id':location_id.location_id.id})
-        print("@@@@@ ££££  # Change stock location -- END")
+       
 
         picking_id.write({'engin_id':self.sale_order_id.engin_id.id})
 
