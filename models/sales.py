@@ -378,7 +378,8 @@ class ConfirmRepairOrder(models.Model):
         for order in self.sale_order_id.filtered(lambda order: order.partner_id not in order.message_partner_ids):
             order.message_subscribe([order.partner_id.id])
         self.sale_order_id.write(self.sale_order_id._prepare_confirmation_values())
-
+        
+        print("@@@@@ &&&&&&&  # Change stock location -- END")
         # Context key 'default_name' is sometimes propagated up to here.
         # We don't need it and it creates issues in the creation of linked records.
         context = self.sale_order_id._context.copy()
