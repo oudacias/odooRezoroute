@@ -127,7 +127,7 @@
                                                 <t t-set="stock" t-value="inv.get_info()"/>
                                                 <!-- <t t-esc="stock.name"/> -->
                                                 <t t-foreach="stock" t-as="s">
-                                                    <t t-if="s.state" == "done">
+                                                    <t t-if='s.state == "done"'>
                                                         Bon de livraison 
                                                         <span t-field="s.name" />
                                                         du <t t-esc="s.date_done"/> 
