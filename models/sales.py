@@ -114,6 +114,24 @@ class SaleOrderExtra(models.Model):
 
 
     def sale_order_to_repair_order(self):
+        for rec in self.order_line:
+            if(rec.product_id.qty_location <= 0):
+                print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+                raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
+
+        for rec in self.order_line:
+            if(rec.margin_percent * 100 < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):   
+                print("Margin Percentage: " + str(rec.margin_percent * 100))                
+                print("Margin Percentage Product: %d" % rec.product_id.product_tmpl_id.categ_id.marge)                 
+                raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
+
+        for rec in self.order_line:
+            if(rec.margin_percent < 0):                    
+                raise ValidationError('La marge du prix pour le produit ' + str(rec.product_id.name) + ' ne peut pas être négative')
+
+        for rec in self.order_line:
+            if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil and rec.product_id.product_tmpl_id.categ_id.seuil > 0):                    
+                raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
         self.write({'state':'repair_order'})
 
 
