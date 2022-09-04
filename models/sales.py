@@ -367,66 +367,66 @@ class ConfirmRepairOrder(models.Model):
     def confirm_order(self):
 
         print("@@@@@ &&&&&&&  # Change stock location -- END")
-        for rec in self.sale_order_id.order_line:
-            if(rec.product_id.qty_location <= 0):
-                print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
-                raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
+        # for rec in self.sale_order_id.order_line:
+        #     if(rec.product_id.qty_location <= 0):
+        #         print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+        #         raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
             
-        if self.sale_order_id._get_forbidden_state_confirm() & set(self.sale_order_id.mapped('state')):
-            raise UserError(_(
-                'It is not allowed to confirm an order in the following states: %s'
-            ) % (', '.join(self.sale_order_id._get_forbidden_state_confirm())))
+        # if self.sale_order_id._get_forbidden_state_confirm() & set(self.sale_order_id.mapped('state')):
+        #     raise UserError(_(
+        #         'It is not allowed to confirm an order in the following states: %s'
+        #     ) % (', '.join(self.sale_order_id._get_forbidden_state_confirm())))
 
-        for order in self.sale_order_id.filtered(lambda order: order.partner_id not in order.message_partner_ids):
-            order.message_subscribe([order.partner_id.id])
-        self.sale_order_id.write(self.sale_order_id._prepare_confirmation_values())
+        # for order in self.sale_order_id.filtered(lambda order: order.partner_id not in order.message_partner_ids):
+        #     order.message_subscribe([order.partner_id.id])
+        # self.sale_order_id.write(self.sale_order_id._prepare_confirmation_values())
         
-        print("@@@@@ &&&&&&&  # Change stock location -- END")
-        # Context key 'default_name' is sometimes propagated up to here.
-        # We don't need it and it creates issues in the creation of linked records.
-        context = self.sale_order_id._context.copy()
-        context.pop('default_name', None)
-
-        
-        self.sale_order_id.with_context(context)._action_confirm()
-        if self.sale_order_id.env.user.has_group('sale.group_auto_done_setting'):
-            self.sale_order_id.action_done()
-        # Change stock location
-
-        picking_id = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
-        location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        picking_id.write({'location_id':location_id.location_id.id})
-        print("@@@@@ ££££  # Change stock location -- END")
-
-        picking_id.write({'engin_id':self.sale_order_id.engin_id.id})
-
-
-        stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
-        stock_move.write({'location_id':location_id.location_id.id})
+        # print("@@@@@ &&&&&&&  # Change stock location -- END")
+        # # Context key 'default_name' is sometimes propagated up to here.
+        # # We don't need it and it creates issues in the creation of linked records.
+        # context = self.sale_order_id._context.copy()
+        # context.pop('default_name', None)
 
         
-        for line in stock_move.move_line_ids:
-            line.write({'location_id':location_id.location_id.id})
-        # Change stock location -- END
-        print("@@@@@   # Change stock location -- END")
+        # self.sale_order_id.with_context(context)._action_confirm()
+        # if self.sale_order_id.env.user.has_group('sale.group_auto_done_setting'):
+        #     self.sale_order_id.action_done()
+        # # Change stock location
+
+        # picking_id = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
+        # location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        # picking_id.write({'location_id':location_id.location_id.id})
+        # print("@@@@@ ££££  # Change stock location -- END")
+
+        # picking_id.write({'engin_id':self.sale_order_id.engin_id.id})
+
+
+        # stock_move = self.env['stock.move'].search([('picking_id','=',picking_id.id)])
+        # stock_move.write({'location_id':location_id.location_id.id})
 
         
-        for rec in picking_id.move_ids_without_package:
-            rec.write({'quantity_done':rec.product_uom_qty})
+        # for line in stock_move.move_line_ids:
+        #     line.write({'location_id':location_id.location_id.id})
+        # # Change stock location -- END
+        # print("@@@@@   # Change stock location -- END")
 
-        # Update Odometer value
+        
+        # for rec in picking_id.move_ids_without_package:
+        #     rec.write({'quantity_done':rec.product_uom_qty})
 
-        for record in self:
+        # # Update Odometer value
+
+        # for record in self:
             
-            date = fields.Date.context_today(record)
-            data = {'value': record.odometer, 'date': date, 'vehicle_id': record.engin_order_id.id}
-            self.env['fleet.vehicle.odometer'].create(data)
+        #     date = fields.Date.context_today(record)
+        #     data = {'value': record.odometer, 'date': date, 'vehicle_id': record.engin_order_id.id}
+        #     self.env['fleet.vehicle.odometer'].create(data)
 
-            self.sale_order_id.odometer = record.odometer
+        #     self.sale_order_id.odometer = record.odometer
 
-            self.sale_order_id.write({'odometer': record.odometer})
+        #     self.sale_order_id.write({'odometer': record.odometer})
 
-        return self.sale_order_id.create_payment_move()
+        # return self.sale_order_id.create_payment_move()
 
 class PaymentRegister(models.TransientModel):
 
