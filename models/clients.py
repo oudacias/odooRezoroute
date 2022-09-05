@@ -5,7 +5,7 @@ from datetime import date
 class PartnerExtra(models.Model):
 
     _inherit = 'res.partner'
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    # _inherit = ['mail.thread', 'mail.activity.mixin']
 
 
     partner_ref = fields.Char(string="Code Client")
