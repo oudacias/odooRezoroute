@@ -12,13 +12,57 @@
                 <div style="margin: 0px; padding: 0px;">
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
                         Dear <t t-out="object.name" />,
-
+                        <br/>
                         A l'examen de votre compte, nous constatons que sauf erreur ou omission de notre part, nous n'avons toujours pas reçu à ce jour de règlement des factures reprises sur le relevé ci-dessous. Nous vous remercions de bien vouloir régulariser cette situation sous huitaine. Au cas où votre règlement se serait croisé avec ce courriel, nous vous prions de ne pas en tenir compte. N'hésitez pas à contacter notre service comptable.
-
+                        <br/>
+                        <br/>
 
                         Veuillez agréer nos salutations distinguées,
+                        <br/>
+                        <t t-out="object.name" />
+                        <br/>
+                        <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
+                            <tr>
+                                <td rowspan="2" style="width:40%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
+                                    <strong>Date de facturation</strong>
+                                    <!-- <span t-esc="lang" /> -->
+                                </td>
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong>Description </strong>
+                                </td>
+                                
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong>Référence </strong>
+                                </td>
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong>Date d'échéance </strong>
+                                </td>
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong>Montant (DHS) </strong>
+                                </td>
+                                
+                            </tr>
+                            <tr t-foreach="object.unpaid_invoices" t-as="invoices" >
 
-                        01 - RAPIDAUTO OASIS
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong><t t-out="invoices.invoice_date" /></strong>
+                                </td>
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong><t t-out="invoices.name" /></strong>
+                                </td>
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong><t t-out="invoices.payment_reference" /></strong>
+                                </td>
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong><t t-out="invoices.invoice_payment_term_id" /></strong>
+                                </td>
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
+                                        <strong><t t-out="invoices.amount_residual" /></strong>
+                                </td>
+                                
+                            </tr>
+                        </table>
+
                      
                     </p>
                 </div>
