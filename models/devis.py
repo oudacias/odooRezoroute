@@ -130,7 +130,9 @@ class Devis(models.Model):
 
     def write(self,vals):
 
-        # self.partner_id.write({'mobile': vals['mobile']})
+        if(len(vals['mobile']) == 10):
+
+            self.partner_id.write({'mobile': vals['mobile']})
         # self.dict_new_lines.clear()
 
         q= super(Devis, self).write(vals) 
