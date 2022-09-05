@@ -18,6 +18,8 @@ class PartnerExtra(models.Model):
 
     is_repair_user = fields.Boolean(string='Mécanicien ?')
 
+
+
     def get_report(self):
         data = {
             'model': self._name,

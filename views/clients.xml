@@ -48,6 +48,11 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']" position="after">
+                    <page name="relance_paiement" string="Relance de paiement">
+                        <field name="invoice_ids"/>
+                    </page>
+                </xpath>
                 <xpath expr="//page[last()]" position="after">
                     <page string="Avertissement" name="Avertissement">
                         <group>
