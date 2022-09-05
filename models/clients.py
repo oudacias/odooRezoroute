@@ -1,4 +1,6 @@
 from odoo import fields, models,api
+from datetime import date
+
 
 class PartnerExtra(models.Model):
 
@@ -18,7 +20,7 @@ class PartnerExtra(models.Model):
 
     is_repair_user = fields.Boolean(string='Mécanicien ?')
 
-    o_2_m = fields.One2many('account.move', 'partner_id',domain=[('amount_total_signed','=',100)] )
+    o_2_m = fields.One2many('account.move', 'partner_id',domain=[('invoice_date_due', '>', date.today()), ('state', '=', 'posted'), ('payment_state', '=', 'not_paid')])
 
     def get_report(self):
         data = {
