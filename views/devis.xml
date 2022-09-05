@@ -263,7 +263,7 @@
             <field name="name">Quotations OR</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
-            <field name="view_mode">tree</field>
+            <field name="view_mode">tree,form</field>
             <field name="domain">[('state','=','repair_order')]</field>
 
 
