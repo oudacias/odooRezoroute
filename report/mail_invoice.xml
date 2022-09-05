@@ -21,9 +21,9 @@
                         <br/>
                         <t t-out="object.name" />
                         <br/>
-                        <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
+                        <table style="border: 1px solid black;float:right;width:100%; font-family: Tahoma">
                             <tr>
-                                <td rowspan="2" style="width:40%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
+                                <td style="white-space:nowrap; padding:5pt; font-size:11pt">
                                     <strong>Date de facturation</strong>
                                     <!-- <span t-esc="lang" /> -->
                                 </td>
@@ -42,7 +42,7 @@
                                 </td>
                                 
                             </tr>
-                            <!-- <tr t-foreach="object.unpaid_invoices" t-as="invoices" >
+                            <tr t-foreach="object.unpaid_invoices" t-as="invoices" >
 
                                 <td style="white-space:nowrap; padding:5pt; font-size:11pt">
                                         <strong><t t-out="invoices.invoice_date" /></strong>
@@ -60,7 +60,7 @@
                                         <strong><t t-out="invoices.amount_residual" /></strong>
                                 </td>
                                 
-                            </tr> -->
+                            </tr>
                         </table>
 
                      
