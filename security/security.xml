@@ -114,7 +114,7 @@
 
 
     <record id="group_admin" model="res.groups">
-        <field name="name">Siège Group</field>
+        <field name="name">Admin Group</field>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('account.group_account_manager'))]"/>
         <field name="implied_ids" eval="[(4,ref('purchase.group_purchase_manager'))]"/>
