@@ -18,7 +18,7 @@ class PartnerExtra(models.Model):
 
     is_repair_user = fields.Boolean(string='Mécanicien ?')
 
-    o_2_m = fields.One2many('account.move', 'partner_id',domain=[('amount_total_signed','=',0)] )
+    o_2_m = fields.One2many('account.move', 'partner_id',domain=[('amount_total_signed','=',100)] )
 
     def get_report(self):
         data = {
