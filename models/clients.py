@@ -103,22 +103,21 @@ class PartnerExtra(models.Model):
     def mail_partner_invoice(self):
         print("@@@@@@ MAil  " +str(self.user_id))
 
-        vals = {
-            'subject': 'Foo',
-            'body_html': 'Hello',
-            'email_to': 'houdalemkiri@gmail.com',
-            'email_cc': 'qux@example.com',
-            'auto_delete': False,
-            'email_from': 'houdalemkiri@gmail.com',
-        }
+        # vals = {
+        #     'subject': 'Foo',
+        #     'body_html': 'Hello',
+        #     'email_to': 'houdalemkiri@gmail.com',
+        #     'auto_delete': False,
+        #     'email_from': 'houdalemkiri@gmail.com',
+        # }
 
-        mail_id = self.env['mail.mail'].sudo().create(vals)
-        mail_id.sudo().send()
+        # mail_id = self.env['mail.mail'].sudo().create(vals)
+        # mail_id.sudo().send()
 
 
-        # template_id = self.env.ref('ps_rezoroute.email_template_name').id
-        # template = self.env['mail.template'].browse(template_id)
-        # template.send_mail(self.id, force_send=True)
+        template_id = self.env.ref('ps_rezoroute.email_template_name').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
        
 
 class SequencePartner(models.Model):
