@@ -51,6 +51,7 @@
                 <xpath expr="//page[@name='sales_purchases']" position="after">
                     <page name="relance_paiement" string="Relance de paiement">
                         <field name="o_2_m"/>
+                        <field name="unpaid_invoices"/>
                     </page>
                 </xpath>
                 <xpath expr="//page[last()]" position="after">
