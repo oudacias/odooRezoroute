@@ -50,7 +50,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='sales_purchases']" position="after">
                     <page name="relance_paiement" string="Relance de paiement">
-                        <field name="unpaid_invoices"/>
+                        <field name="o_2_m"/>
                     </page>
                 </xpath>
                 <xpath expr="//page[last()]" position="after">
