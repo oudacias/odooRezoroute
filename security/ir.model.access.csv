@@ -77,7 +77,12 @@ sequence_engin_diagnostic1,engin.diagnostic,model_engin_diagnostic,group_admin,1
 purchase_forfait_id1,purchase.forfait,model_purchase_forfait,group_admin,1,1,1,1
 purchase_forfait_line_id1,product.forfait.line,model_product_forfait_line,group_admin,1,1,1,1
 forfait_wizard1,forfait.wizard,model_forfait_wizard,group_admin,1,1,1,1
+product_manufacturer1,ps.product.manufacturer,model_ps_product_manufacturer,group_admin,1,1,1,1
+engine_manufacturer1,engine.manufacturer,model_engine_manufacturer,group_admin,1,1,1,1
+engine_type1,engine.type,model_engine_type,group_admin,1,1,1,1
 
+
+product_fullimage1,ps.product.fullimage,model_ps_product_fullimage,group_admin,1,1,1,1
 
 
 
