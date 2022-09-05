@@ -54,7 +54,7 @@
                                         <strong><t t-out="invoices.payment_reference" /></strong>
                                 </td>
                                 <td style="white-space:nowrap; padding:5pt; font-size:11pt">
-                                        <strong><t t-out="invoices.invoice_payment_term_id" /></strong>
+                                        <strong><t t-out="invoices.invoice_date_due" /></strong>
                                 </td>
                                 <td style="white-space:nowrap; padding:5pt; font-size:11pt">
                                         <strong><t t-out="invoices.amount_residual" /></strong>
