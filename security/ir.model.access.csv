@@ -67,4 +67,18 @@ sequence_partner_id,sequence.partner,model_sequence_partner,group_admin,1,1,1,1
 
 
 
+product_product_id1,product.product,model_product_product,group_admin,0,0,0,0
+product_template_id1,product.template,model_product_template,group_admin,0,0,0,0
+order_repair_confirm_id1,order.repair.confirm,model_order_repair_confirm,group_admin,1,1,1,1
+sequence_product_id1,sequence.product,model_sequence_product,group_admin,1,1,1,1
+sequence_engin_diagnostic_line1,engin.diagnostic.line,model_engin_diagnostic_line,group_admin,1,1,1,1
+sequence_engin_diagnostic_wizard1,engin.diagnostic.wizard,model_engin_diagnostic_wizard,group_admin,1,1,1,1
+sequence_engin_diagnostic1,engin.diagnostic,model_engin_diagnostic,group_admin,1,1,1,1
+purchase_forfait_id1,purchase.forfait,model_purchase_forfait,group_admin,1,1,1,1
+purchase_forfait_line_id1,product.forfait.line,model_product_forfait_line,group_admin,1,1,1,1
+forfait_wizard1,forfait.wizard,model_forfait_wizard,group_admin,1,1,1,1
+
+
+
+
 
