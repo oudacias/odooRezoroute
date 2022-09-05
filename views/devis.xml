@@ -264,7 +264,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">sale.order</field>
             <field name="view_mode">tree</field>
-            <field name="domain">[('state','in',('repair_order'))]</field>
+            <field name="domain">[('state','=','repair_order')]</field>
 
 
         </record>
