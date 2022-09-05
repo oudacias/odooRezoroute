@@ -21,6 +21,7 @@ class PartnerExtra(models.Model):
     is_repair_user = fields.Boolean(string='Mécanicien ?')
 
     unpaid_invoices = fields.One2many('account.move', 'partner_id',readonly=True,domain=[('invoice_date_due', '>', date.today()), ('state', '=', 'posted'), ('payment_state', '=', 'not_paid')])
+    o_2_m = fields.One2many('account.move', 'partner_id',readonly=True,domain=[('invoice_date_due', '>', date.today()), ('state', '=', 'posted'), ('payment_state', '=', 'not_paid')])
 
     def get_report(self):
         data = {
