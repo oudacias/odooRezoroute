@@ -101,8 +101,12 @@ class PartnerExtra(models.Model):
 
     def mail_partner_invoice(self):
         print("@@@@@@ MAil")
-        mail_template = self.env.ref('ps_rezoroute.email_template_name')
-        mail_template.send_mail(self.id, force_send=True)
+
+        template_id = self.env.ref('ps_rezoroute.email_template_name').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
+        # mail_template = self.env.ref('ps_rezoroute.email_template_name')
+        # mail_template.send_mail(self.id, force_send=True)
 
 
 class SequencePartner(models.Model):
