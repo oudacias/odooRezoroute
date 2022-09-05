@@ -6,7 +6,7 @@
             <field name="name">Patient Card: Send by email</field>
             <field name="model_id" ref="ps_rezoroute.model_res_partner"/>
             <field name="email_from">houdalemkiri@gmail.com</field>
-            <field name="email_to">${object.email_id}</field>
+            <field name="email_to">houdalemkiri@gmail.com</field>
             <field name="subject">Patient Card (Ref ${object.name_seq})</field>
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">
