@@ -393,7 +393,6 @@ class ConfirmRepairOrder(models.Model):
 
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
         location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-        print("@@@@@ ££££  # Change stock location -- END  "  +str(location_id.id))
         picking_id.write({'location_id':location_id.location_id.id})
        
 
@@ -424,6 +423,8 @@ class ConfirmRepairOrder(models.Model):
             self.sale_order_id.odometer = record.odometer
 
             self.sale_order_id.write({'odometer': record.odometer})
+
+        self.sale_order_id.write({'user_repair_id' : self.user_repair_id})
 
         return self.sale_order_id.create_payment_move()
 
