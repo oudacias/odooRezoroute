@@ -6,7 +6,7 @@
         <field name="name">group_gestionnaire</field>
         <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_manager'))]"/>
-        <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
+        <!-- <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/> -->
         <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
         <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
