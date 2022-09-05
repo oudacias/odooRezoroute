@@ -50,7 +50,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='sales_purchases']" position="after">
                     <page name="relance_paiement" string="Relance de paiement">
-                        <field name="invoice_ids" domain="['&amp;', ('state', '=', 'posted'), ('payment_state', '=', 'not_paid')]"/>
+                        <!-- <field name="invoice_ids" domain="['&amp;', ('invoice_date_due', '&lt;', time.strftime('%%Y-%%m-%%d')), ('state', '=', 'posted'), ('payment_state', '=', 'not_paid')]"/> -->
+                        <field name="invoice_ids" domain="[('amount_total_signed', '=', 0)]"/>
                     </page>
                 </xpath>
                 <xpath expr="//page[last()]" position="after">
