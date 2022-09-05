@@ -71,6 +71,7 @@
         'views/website_diagnostic.xml',
         'views/forfait.xml',
         'views/signature.xml',
+        'report/mail_invoice.xml',
 
         
     ],

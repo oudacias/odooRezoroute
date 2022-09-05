@@ -99,6 +99,10 @@ class PartnerExtra(models.Model):
         
     }
 
+    def mail_partner_invoice(self):
+        mail_template = self.env.ref('ps_rezoroute.email_template_name')
+        mail_template.send_mail(self.id, force_send=True)
+
 
 class SequencePartner(models.Model):
 
