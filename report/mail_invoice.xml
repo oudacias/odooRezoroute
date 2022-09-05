@@ -42,7 +42,8 @@
                                 </td>
                                 
                             </tr>
-                            <tr t-foreach="object.invoice_ids" t-as="invoices" >
+                            <!-- <tr t-foreach="object.invoice_ids" t-as="invoices" > -->
+                            <tr t-foreach="object.unpaid_invoices" t-as="invoices" >
 
                                 <td style="white-space:nowrap; padding:5pt; font-size:11pt">
                                         <strong><t t-out="invoices.invoice_date" /></strong>
