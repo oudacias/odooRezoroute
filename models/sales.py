@@ -90,6 +90,7 @@ class SaleOrderExtra(models.Model):
         if(len(session) == 1):
 
             self.partner_id.write({'mobile': self.mobile,'phone':self.phone})
+            print("@@@@ Write New Phone")
 
             vals['session_id'] = session.id
 
