@@ -50,7 +50,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='sales_purchases']" position="after">
                     <page name="relance_paiement" string="Relance de paiement">
-                        <button string="Envoyer les courriers en retard" name="mail_partner_invoice"/>
+                        <button string="Envoyer les courriers en retard" type="object"  name="mail_partner_invoice"/>
                         <field name="unpaid_invoices"/>
                     </page>
                 </xpath>
