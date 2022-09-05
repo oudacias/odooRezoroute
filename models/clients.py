@@ -101,7 +101,7 @@ class PartnerExtra(models.Model):
     }
 
     def mail_partner_invoice(self):
-        print("@@@@@@ MAil")
+        print("@@@@@@ MAil  " +str(self.user_id.email_formatted))
 
         template_id = self.env.ref('ps_rezoroute.email_template_name').id
         template = self.env['mail.template'].browse(template_id)
