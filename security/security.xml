@@ -11,7 +11,6 @@
         <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
         
-        <!-- <field name="comment">Office Technology Permission Group.</field> -->
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
 
