@@ -195,6 +195,7 @@ class ProductExtra(models.Model):
 
     @api.model
     def create(self, vals):
+        print("@@@@ Group UserError  - create "  +str(self.env.user.has_group('ps_rezorout.group_gestionnaire')))
         if self.env.user.has_group('ps_rezorout.group_gestionnaire'):
             raise Warning(
                 ('Vous ne pouvez pas créer un nouveau produit'),
