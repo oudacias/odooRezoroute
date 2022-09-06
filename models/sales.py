@@ -126,9 +126,9 @@ class SaleOrderExtra(models.Model):
                 print("Margin Percentage Product: %d" % rec.product_id.product_tmpl_id.categ_id.marge)                 
                 raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
 
-        for rec in self.order_line:
-            if(rec.margin_percent < 0):                    
-                raise ValidationError('La marge du prix pour le produit ' + str(rec.product_id.name) + ' ne peut pas être négative')
+        # for rec in self.order_line:
+        #     if(rec.margin_percent < 0):                    
+        #         raise ValidationError('La marge du prix pour le produit ' + str(rec.product_id.name) + ' ne peut pas être négative')
 
         for rec in self.order_line:
             if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil and rec.product_id.product_tmpl_id.categ_id.seuil > 0):                    
@@ -149,9 +149,9 @@ class SaleOrderExtra(models.Model):
                 print("Margin Percentage Product: %d" % rec.product_id.product_tmpl_id.categ_id.marge)                 
                 raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
 
-        for rec in self.order_line:
-            if(rec.margin_percent < 0):                    
-                raise ValidationError('La marge du prix pour le produit ' + str(rec.product_id.name) + ' ne peut pas être négative')
+        # for rec in self.order_line:
+        #     if(rec.margin_percent < 0):                    
+        #         raise ValidationError('La marge du prix pour le produit ' + str(rec.product_id.name) + ' ne peut pas être négative')
 
         for rec in self.order_line:
             if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil and rec.product_id.product_tmpl_id.categ_id.seuil > 0):                    
