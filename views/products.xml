@@ -223,6 +223,7 @@
                                 <field name="picture_url"/>
                                 <label for="full_picture_url" class="mt-1"/>
                                 <field name="full_picture_url"/>
+                                <field name="landed_cost_ok"/>
                                 </div>
                             </form>
                         </field>
