@@ -21,7 +21,7 @@ class PartnerExtra(models.Model):
 
     is_repair_user = fields.Boolean(string='Mécanicien ?')
 
-    unpaid_invoices = fields.One2many('account.move', 'partner_id',readonly=True,domain=[('invoice_date_due', '>', date.today()), ('state', '=', 'posted'), ('payment_state', '=', 'not_paid')])
+    unpaid_invoices = fields.One2many('account.move', 'partner_id',readonly=True,domain=[('invoice_date_due', '<', date.today()), ('state', '=', 'posted'), ('payment_state', '=', 'not_paid')])
     # o_2_m = fields.One2many('account.move', 'partner_id',readonly=True,domain=[('invoice_date_due', '>', date.today()), ('state', '=', 'posted'), ('payment_state', '=', 'not_paid')])
 
     def get_report(self):
@@ -101,20 +101,7 @@ class PartnerExtra(models.Model):
     }
 
     def mail_partner_invoice(self):
-        print("@@@@@@ MAil  " +str(self.user_id))
-
-        # vals = {
-        #     'subject': 'Foo',
-        #     'body_html': 'Hello',
-        #     'email_to': 'houdalemkiri@gmail.com',
-        #     'auto_delete': False,
-        #     'email_from': 'houdalemkiri@gmail.com',
-        # }
-
-        # mail_id = self.env['mail.mail'].sudo().create(vals)
-        # mail_id.sudo().send()
-
-
+ 
         template_id = self.env.ref('ps_rezoroute.email_template_name').id
         template = self.env['mail.template'].browse(template_id)
         template.send_mail(self.id, force_send=True)
