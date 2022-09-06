@@ -1,4 +1,6 @@
 from odoo import fields, models, api
+from odoo.exceptions import ValidationError
+
 
 class ProductTemplateExtraa(models.Model):
 
@@ -197,7 +199,7 @@ class ProductExtra(models.Model):
     def create(self, vals):
         print("@@@@ Group UserError  - create "  +str(self.env.user.has_group('ps_rezoroute.group_gestionnaire')))
         if self.env.user.has_group('ps_rezoroute.group_gestionnaire'):
-            raise Warning(
+            raise ValidationError(
                 ('Vous ne pouvez pas créer un nouveau produit'),
             )
         else:
