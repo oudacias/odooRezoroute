@@ -41,7 +41,7 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="ps_rezoroute.sale_order_diagnostic_view">
+        <record model="ir.ui.view" id="ps_rezoroute.sale_order_forfait_view">
             <field name="name">ps_rezoroute Sale Order Forfait</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
