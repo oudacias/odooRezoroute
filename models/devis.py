@@ -129,7 +129,7 @@ class Devis(models.Model):
                         raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
     def write(self,vals):
-        if(vals['mobile']):
+        if('mobile' in vals):
 
             if(len(vals['mobile']) == 10 and self.partner_id !=vals['mobile']):
 
