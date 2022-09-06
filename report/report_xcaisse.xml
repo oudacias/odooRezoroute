@@ -46,7 +46,7 @@
                                                     <span   > Fermeture : </span> <span t-field="o.stop_at"/>
                                                     <br/>
                                                     <span   > Validation : </span> <span t-field="o.date_validation"/>
-
+                                                    <br/>
                                                     <span   > Statut : </span> <span t-field="o.state"/>
                                                 <br/>
                                             </div>
