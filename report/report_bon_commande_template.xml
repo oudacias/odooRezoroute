@@ -31,7 +31,7 @@
                                                     <span t-field="o.company_id.street"/>
                                                     <br/>
                                                     <span>Tel :</span><span t-field="o.company_id.phone"/>
-                                                    Tel <t t-set="location" t-value="o.test()"/><t t-esc="location"/>
+                                                    
                                                     <br/>
                                                 <br/>
                                             </div>
