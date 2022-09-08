@@ -29,7 +29,7 @@ class PosSession(models.Model):
     # cb = fields.Integer(compute='_compute_cb')
     cheque = fields.Integer(compute='_compute_cheque')
     # cheque_flotte = fields.Integer(compute='_compute_cheque_flotte')
-    espece = fields.Integer(compute='_compute_espece')
+    espece = fields.Float(compute='_compute_espece')
     # pe_arfriquia = fields.Integer(compute='_compute_tpe_arfriquia')
     # tpe_bancaire = fields.Integer(compute='_compute_tpe_bancaire')
     total_compute = fields.Float(compute='_total_compute',string="Total")
