@@ -88,6 +88,10 @@ class ProductTemplateExtraa(models.Model):
 
     engine_list = fields.Many2many("ps.product.engine","product_engine_rel","engine_id","template_id",string="",default_order="name asc")
 
+    seuil = fields.Float(string="Seuil de remise")
+    marge = fields.Float(string="Marge")
+
+
     @api.model
     def create(self, values):
 
