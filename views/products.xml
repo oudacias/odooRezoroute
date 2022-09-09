@@ -33,7 +33,7 @@
                         <!-- <label for="image2" string="Image 2 de l'article"/> -->
                         <!-- <div class="d-flex"> -->
                             <field class="o_text_overflow oe_inline" name="image2"/>
-                            <field class="o_text_overflow oe_inline" name="landed_cost_ok"/>
+                            <!-- <field class="o_text_overflow oe_inline" name="landed_cost_ok"/> -->
                         <!-- </div> -->
 
                         <!-- <label for="categ_id" string="Categorie de l'article"/> -->
