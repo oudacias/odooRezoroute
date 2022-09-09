@@ -68,13 +68,13 @@
 
                 </xpath>
 
-                <xpath expr="//field[@name='categ_id']" position="after">
+                <!-- <xpath expr="//field[@name='categ_id']" position="after">
                     <group>
                         <field name="seuil"/>
                         <field name="marge"/>
                     </group>
                    
-                </xpath>
+                </xpath> -->
 
 
                 <xpath expr="//field[@name='detailed_type']" position="before">
