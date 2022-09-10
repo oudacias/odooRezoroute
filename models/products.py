@@ -93,6 +93,13 @@ class ProductTemplateExtraa(models.Model):
     seuil1 = fields.Char(string="Seuil de remise", size=5)
     marge1 = fields.Char(string="Marge", size=5)
 
+    @api.onchange('seuil1')
+    def is_float(self):
+        if self.seuil1 and not isinstance(self.seuil1, float):
+            raise ValidationError(
+                ('Le seuil de remise doit être numérique'),
+            )
+
 
     # @api.model
     # def create(self, values):
