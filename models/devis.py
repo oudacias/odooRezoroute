@@ -282,7 +282,7 @@ class SaleLine(models.Model):
                 print("@@@@@@@@@ Checking Discount Added")
                 print("@@@@@@@@@ Checking Discount Added  " + str(self.product_id.seuil1))
                 if(self.product_id.seuil1):
-                    if(self.product_id.seuil1 < self.discount):
+                    if(float(self.product_id.seuil1) < self.discount):
                         raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
 
                     
