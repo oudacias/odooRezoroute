@@ -90,8 +90,8 @@ class ProductTemplateExtraa(models.Model):
 
     seuil = fields.Float(string="Seuil de remise")
     marge = fields.Float(string="Marge")
-    seuil1 = fields.Char(string="Seuil de remise")
-    marge1 = fields.Char(string="Marge")
+    seuil1 = fields.Char(string="Seuil de remise", size=5)
+    marge1 = fields.Char(string="Marge", size=5)
 
 
     # @api.model
