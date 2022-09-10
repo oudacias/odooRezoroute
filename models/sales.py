@@ -2,6 +2,7 @@ from functools import partial
 from sre_parse import State
 from datetime import datetime, timedelta, date
 import string
+from typing_extensions import Self
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
@@ -121,18 +122,23 @@ class SaleOrderExtra(models.Model):
                 raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
         for rec in self.order_line:
-            if(rec.margin_percent * 100 < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):   
-                print("Margin Percentage: " + str(rec.margin_percent * 100))                
-                print("Margin Percentage Product: %d" % rec.product_id.product_tmpl_id.categ_id.marge)                 
-                raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
 
-        # for rec in self.order_line:
-        #     if(rec.margin_percent < 0):                    
-        #         raise ValidationError('La marge du prix pour le produit ' + str(rec.product_id.name) + ' ne peut pas être négative')
+            if(rec.product_id.marge1):
+                if(rec.margin_percent * 100 < float(rec.product_id.marge1)):
+                    raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
+
+            elif(rec.product_id.product_tmpl_id.categ_id.marge):
+                if(rec.margin_percent * 100 < rec.product_id.product_tmpl_id.categ_id.marge):
+                    raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
+
 
         for rec in self.order_line:
-            if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil and rec.product_id.product_tmpl_id.categ_id.seuil > 0):                    
-                raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
+            if(rec.product_id.seuil1):
+                if(float(rec.product_id.seuil1) < rec.discount):
+                    raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
+            elif(rec.product_id.product_tmpl_id.categ_id.seuil):
+                if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil):
+                    raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
         self.write({'state':'repair_order'})
 
 
@@ -144,18 +150,25 @@ class SaleOrderExtra(models.Model):
                 raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
         for rec in self.order_line:
-            if(rec.margin_percent * 100 < rec.product_id.product_tmpl_id.categ_id.marge and rec.product_id.product_tmpl_id.categ_id.marge > 0):   
-                print("Margin Percentage: " + str(rec.margin_percent * 100))                
-                print("Margin Percentage Product: %d" % rec.product_id.product_tmpl_id.categ_id.marge)                 
-                raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
+            if(rec.product_id.marge1):
+                if(rec.margin_percent * 100 < float(rec.product_id.marge1)):
+                    raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
+
+            elif(rec.product_id.product_tmpl_id.categ_id.marge):
+                if(rec.margin_percent * 100 < rec.product_id.product_tmpl_id.categ_id.marge):
+                    raise ValidationError('Impossible de confirmer la commande, merci de revoir les prix')
 
         # for rec in self.order_line:
         #     if(rec.margin_percent < 0):                    
         #         raise ValidationError('La marge du prix pour le produit ' + str(rec.product_id.name) + ' ne peut pas être négative')
 
         for rec in self.order_line:
-            if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil and rec.product_id.product_tmpl_id.categ_id.seuil > 0):                    
-                raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
+            if(rec.product_id.seuil1):
+                if(float(rec.product_id.seuil1) < rec.discount):
+                    raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
+            elif(rec.product_id.product_tmpl_id.categ_id.seuil):
+                if(rec.discount > rec.product_id.product_tmpl_id.categ_id.seuil):
+                    raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
 
         if self._get_forbidden_state_confirm() & set(self.mapped('state')):
             raise UserError(_(

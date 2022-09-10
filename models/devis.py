@@ -277,34 +277,13 @@ class SaleLine(models.Model):
     def check_discount(self):
         if(self.product_id.id):
             if(self.discount):
-                # for rec in self:
-                #     if(rec.discount):
-                print("@@@@@@@@@ Checking Discount Added")
-                print("@@@@@@@@@ Checking Discount Added  " + str(self.product_id.seuil1))
                 if(self.product_id.seuil1):
                     if(float(self.product_id.seuil1) < self.discount):
                         raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
-
-                    
                 elif(self.product_id.product_tmpl_id.categ_id.seuil):
                     if(self.discount > self.product_id.product_tmpl_id.categ_id.seuil):
                         raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
-                    print("@@@@@@@@@ Discount Added")
-                    # if(rec.discount > self.product_id.product_tmpl_id.categ_id.seuil and self.product_id.product_tmpl_id.categ_id.seuil > 0):                    
-                    #     self.discount = 0
-                    #     raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
-
-            
-    # @api.onchange('discount')
-    # def check_marge(self):
-    #     if(self.product_id):
-    #         if(self.marge):
-    #             for rec in self:
-    #                 if(rec.marge > self.product_id.product_tmpl_id.categ_id.marge and self.product_id.product_tmpl_id.categ_id.marge > 0):                    
-    #                     self.marge = 0
-    #                     raise ValidationError('Vous avez dépassé la marge de la remise   ' )
                     
-
                 
 class DeliveryCarrier(models.Model):
     _name = "delivery.carrier"
