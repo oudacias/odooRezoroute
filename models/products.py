@@ -104,7 +104,7 @@ class ProductTemplateExtraa(models.Model):
         #     )
         if self.seuil1:
             try:
-                float(self.seuil1)
+                float(self.seuil1.replace(',','.'))
             except ValueError:
                 raise ValidationError(('Le seuil de remise doit être numérique'),)
 
