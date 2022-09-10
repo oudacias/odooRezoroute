@@ -69,11 +69,8 @@
                 </xpath>
 
                 <xpath expr="//field[@name='categ_id']" position="after">
-                    <!-- <group> -->
                         <field name="seuil"/>
-                        <field name="marge"/>
-                    <!-- </group> -->
-                   
+                        <field name="marge"/>                   
                 </xpath>
 
 

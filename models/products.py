@@ -92,37 +92,37 @@ class ProductTemplateExtraa(models.Model):
     marge = fields.Float(string="Marge")
 
 
-    @api.model
-    def create(self, values):
+    # @api.model
+    # def create(self, values):
 
-        reference_new = ""
-        type_new = ""
-        maxi_rec = self.env['sequence.product'].search([])
-        last_sequence = len(maxi_rec) + 1
-        category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
-        type_pr = values['detailed_type'].split()
+    #     reference_new = ""
+    #     type_new = ""
+    #     maxi_rec = self.env['sequence.product'].search([])
+    #     last_sequence = len(maxi_rec) + 1
+    #     category_pr = self.env['product.category'].search([('id','=',values['categ_id'])])
+    #     type_pr = values['detailed_type'].split()
 
-        if(len(type_pr) == 1):
-            type_new = values['detailed_type'][0:2].upper()
-        else:
-            for type in type_pr:
-                type = type.lstrip().upper()
-                type_new += type[0:2]
+    #     if(len(type_pr) == 1):
+    #         type_new = values['detailed_type'][0:2].upper()
+    #     else:
+    #         for type in type_pr:
+    #             type = type.lstrip().upper()
+    #             type_new += type[0:2]
 
-        reference = category_pr.complete_name.split('/')
-        for ref in reference:
-            ref = ref.lstrip().upper()
-            reference_new += ref[0:2] + "."
+    #     reference = category_pr.complete_name.split('/')
+    #     for ref in reference:
+    #         ref = ref.lstrip().upper()
+    #         reference_new += ref[0:2] + "."
         
-        reference_new = reference_new[:-1]
+    #     reference_new = reference_new[:-1]
 
        
 
-        values['default_code'] = str(type_new) +"."+ str(reference_new) +"-"+ str(last_sequence)
-        maxi_rec.create({'sequence_id': last_sequence})
+    #     values['default_code'] = str(type_new) +"."+ str(reference_new) +"-"+ str(last_sequence)
+    #     maxi_rec.create({'sequence_id': last_sequence})
 
-        q= super(ProductTemplateExtraa, self).create(values) 
-        return q
+    #     q= super(ProductTemplateExtraa, self).create(values) 
+    #     return q
         
 
 
