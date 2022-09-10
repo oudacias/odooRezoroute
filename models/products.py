@@ -95,7 +95,10 @@ class ProductTemplateExtraa(models.Model):
 
     @api.onchange('seuil1')
     def is_float(self):
+        print("@@@@@@@@@ SEUIL")
+        print(isinstance(self.seuil1, float))
         if self.seuil1 and not isinstance(self.seuil1, float):
+            
             raise ValidationError(
                 ('Le seuil de remise doit être numérique'),
             )
