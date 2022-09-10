@@ -282,8 +282,13 @@ class SaleLine(models.Model):
                 print("@@@@@@@@@ Checking Discount Added")
                 print("@@@@@@@@@ Checking Discount Added  " + str(self.product_id.seuil1))
                 if(self.product_id.seuil1):
-                    print("@@@@@@@@@ NO Discount Added")
-                else:
+                    if(self.product_id.seuil1 < self.discount):
+                        raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
+
+                    
+                elif(self.product_id.product_tmpl_id.categ_id.seuil):
+                    if(self.discount > self.product_id.product_tmpl_id.categ_id.seuil):
+                        raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
                     print("@@@@@@@@@ Discount Added")
                     # if(rec.discount > self.product_id.product_tmpl_id.categ_id.seuil and self.product_id.product_tmpl_id.categ_id.seuil > 0):                    
                     #     self.discount = 0
