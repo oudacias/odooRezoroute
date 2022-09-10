@@ -62,31 +62,31 @@ class purchase_custom(models.Model):
     def button_confirm(self):
         res = super(purchase_custom, self).button_confirm()
 
-        # location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
 
 
 
 
-        # picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
+        picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
 
-        # print("@@@@@  Location destination id: " + str(picking_id))
+        print("@@@@@  Location destination id: " + str(picking_id))
 
-        # for rec in picking_id:
+        for rec in picking_id:
 
             
-        #     rec.write({'location_dest_id':self.location_id})
+            rec.write({'location_dest_id':self.location_id})
 
-        #     stock_move = self.env['stock.move'].search([('picking_id','=',rec.id)])
-        #     stock_move.write({'location_dest_id':self.location_id})
+            stock_move = self.env['stock.move'].search([('picking_id','=',rec.id)])
+            stock_move.write({'location_dest_id':self.location_id})
 
         
-        # for line in stock_move.move_line_ids:
-        #     line.write({'location_dest_id':self.location_id})
+        for line in stock_move.move_line_ids:
+            line.write({'location_dest_id':self.location_id})
 
-        # super(purchase_custom, self).button_unlock()
+        super(purchase_custom, self).button_unlock()
 
 
-        # return res 
+        return res 
 
     # @api.multi
     # def amount_to_text(self, amount, currency='Euro'):
