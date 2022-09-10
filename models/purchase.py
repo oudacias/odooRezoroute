@@ -64,12 +64,16 @@ class purchase_custom(models.Model):
 
         # location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
 
-        print("Location destination id: " + str(self.location_id))
 
 
 
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
+
+        print("@@@@@  Location destination id: " + str(picking_id))
+
         for rec in picking_id:
+
+            
             rec.write({'location_dest_id':self.location_id})
 
             stock_move = self.env['stock.move'].search([('picking_id','=',rec.id)])
