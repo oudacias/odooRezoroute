@@ -280,8 +280,11 @@ class SaleLine(models.Model):
                 # for rec in self:
                 #     if(rec.discount):
                 print("@@@@@@@@@ Checking Discount Added")
-                if(len(self.product_id.seuil1) == 0):
+                print("@@@@@@@@@ Checking Discount Added  " + str(self.product_id.seuil1))
+                if(self.product_id.seuil1):
                     print("@@@@@@@@@ NO Discount Added")
+                else:
+                    print("@@@@@@@@@ Discount Added")
                     # if(rec.discount > self.product_id.product_tmpl_id.categ_id.seuil and self.product_id.product_tmpl_id.categ_id.seuil > 0):                    
                     #     self.discount = 0
                     #     raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
