@@ -69,7 +69,7 @@
                 </xpath>
 
                 <xpath expr="//field[@name='categ_id']" position="after">
-                        <field name="seuil1"/>
+                        <field name="seuil1"  widget="integer"/>
                         <field name="marge1"/>                   
                 </xpath>
 
