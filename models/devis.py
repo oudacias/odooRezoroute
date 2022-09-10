@@ -280,7 +280,7 @@ class SaleLine(models.Model):
                 # for rec in self:
                 #     if(rec.discount):
                 print("@@@@@@@@@ Checking Discount Added")
-                if(self.product_id.seuil1 == ""):
+                if(len(self.product_id.seuil1) == 0):
                     print("@@@@@@@@@ NO Discount Added")
                     # if(rec.discount > self.product_id.product_tmpl_id.categ_id.seuil and self.product_id.product_tmpl_id.categ_id.seuil > 0):                    
                     #     self.discount = 0
