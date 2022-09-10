@@ -71,6 +71,7 @@
                 <xpath expr="//field[@name='categ_id']" position="after">
                         <field name="seuil"/>
                         <field name="marge"/>                   
+                        <field name="marge1"/>                   
                 </xpath>
 
 
