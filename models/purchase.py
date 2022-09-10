@@ -96,7 +96,7 @@ class purchase_custom(models.Model):
         super(purchase_custom, self).button_unlock()
 
 
-        return res 
+        return True 
 
     # @api.multi
     # def amount_to_text(self, amount, currency='Euro'):
