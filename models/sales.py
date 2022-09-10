@@ -2,7 +2,6 @@ from functools import partial
 from sre_parse import State
 from datetime import datetime, timedelta, date
 import string
-from typing_extensions import Self
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
 from odoo.tools.float_utils import float_compare, float_is_zero, float_round
