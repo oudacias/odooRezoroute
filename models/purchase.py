@@ -62,12 +62,10 @@ class purchase_custom(models.Model):
     def button_confirm(self):
         res = super(purchase_custom, self).button_confirm()
 
-        location_dest_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
-
-
 
 
         picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id),('state','!=','cancel')])
+        picking_id = self.env['stock.picking'].search([('purchase_id','=',self.id)])
 
         print("@@@@@  Location destination id: " + str(picking_id))
 
