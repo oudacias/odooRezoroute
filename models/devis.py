@@ -223,7 +223,7 @@ class SaleLine(models.Model):
     price_unit_public = fields.Float(string="P.U. Public")
 
     qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
-    type_remise = fields.Boolean()
+    # type_remise = fields.Boolean()
     facultatif = fields.Boolean(default=True)
     is_forfait = fields.Boolean(default=False)
 
