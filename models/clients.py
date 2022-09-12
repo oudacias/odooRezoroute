@@ -110,7 +110,7 @@ class PartnerExtra(models.Model):
         # 'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
         'context' : {
-            'create' : False,
+            # 'create' : False,
             'default_partner_id' : self.id,  
         },
         # 'domain' : [()]
