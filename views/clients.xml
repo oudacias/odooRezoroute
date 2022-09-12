@@ -15,6 +15,9 @@
                         <button name="creer_ordre_reparation" string="Créer un ordre de réparation" 
                             type="object" class="oe_highlight"/>
 
+                        <button name="get_sale_flotte" string="Devis non facturés" 
+                            type="object" class="oe_highlight"/>
+
                     </header>
                 </xpath>
                 

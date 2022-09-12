@@ -100,6 +100,21 @@ class PartnerExtra(models.Model):
         
     }
 
+    def get_sale_flotte(self):
+        
+        return {
+        'view_mode': 'tree',
+        'res_model': 'sale.order',
+        'target' : 'new',
+        # 'views' : [(False, 'form')],
+        'type': 'ir.actions.act_window',
+        'context' : {
+            'default_partner_id' : self.id, 
+            
+        }
+        
+    }
+
     def mail_partner_invoice(self):
  
         template_id = self.env.ref('ps_rezoroute.email_template_name').id
