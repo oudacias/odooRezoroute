@@ -87,7 +87,7 @@
             <field name="domain">[('is_flotte','=',True)]</field>
         </record>
 
-        <menuitem id="menu_account_customer1" parent="account.menu_finance_receivables" name="Clients Flottes" action="res_partner_action_customer_flotte" sequence="111"/>
+        <menuitem id="menu_account_customer2" parent="account.menu_finance_receivables" name="Clients Flottes" action="res_partner_action_customer_flotte" sequence="111"/>
 
     </data>
 </odoo>
