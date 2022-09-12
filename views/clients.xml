@@ -87,15 +87,6 @@
             <field name="domain">[('is_flotte','=',True)]</field>
         </record>
 
-        <record id="res_partner_action_customer_flotte" model="ir.ui.view">
-            <field name="name">Clients Flottes</field>
-            <field name="model">res.partner</field>
-            <field name="arch" type="xml">
-                <!-- <xpath expr="//field[@name='sales_price']" position="after">
-                    <field name="your_new_field"/>
-                </xpath> -->
-            </field>
-        </record>
         <menuitem id="menu_account_customer1" parent="account.menu_finance_receivables" name="Clients Flottes" action="res_partner_action_customer_flotte" sequence="111"/>
 
     </data>
