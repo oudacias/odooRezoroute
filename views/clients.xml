@@ -34,9 +34,8 @@
 
                     <field name="partner_ref"/>
 
-                    <field name="is_cheque_flotte"/>
+                    <field name="is_flotte"/>
                     
-                    <field name="pourcentage_remise" attrs="{'invisible': [('is_cheque_flotte', '=', False)]}" />
                 
                 </field>
 
