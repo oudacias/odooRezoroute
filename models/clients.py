@@ -113,7 +113,7 @@ class PartnerExtra(models.Model):
             'create' : False,
             'default_partner_id' : self.id,  
         },
-        'domain' : [('partner_id','=',self.id)]
+        'domain' : [('partner_id','=',self.id),('invoice_status','=','to invoice')]
 
         
     }
