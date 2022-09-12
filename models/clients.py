@@ -103,15 +103,16 @@ class PartnerExtra(models.Model):
     def get_sale_flotte(self):
         
         return {
-        'view_mode': 'tree',
+        'view_mode': 'tree,form',
         'res_model': 'sale.order',
         'target' : 'new',
-        'views' : [(False, 'form')],
+        # 'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
         'context' : {
-            'default_partner_id' : self.id, 
-            
-        }
+            'default_partner_id' : self.id,  
+        },
+        'domain' : [()]
+
         
     }
 
