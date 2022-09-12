@@ -41,17 +41,20 @@ class SaleOrderExtra(models.Model):
 
     def _invoice_check(self):
 
-        if(len(self.invoice_ids) > 0 and self.state == "sale"):
-            
-            if(self.invoice_ids.state == 'posted'):
-                self.invoice_check = False
-            else:
-                self.invoice_check = True
-
-        elif(self.state == "sale"):
-            self.invoice_check = True
-        else:
+        if(self.partner_id.is_flotte == True):
             self.invoice_check = False
+        else:
+            if(len(self.invoice_ids) > 0 and self.state == "sale"):
+                
+                if(self.invoice_ids.state == 'posted'):
+                    self.invoice_check = False
+                else:
+                    self.invoice_check = True
+
+            elif(self.state == "sale"):
+                self.invoice_check = True
+            else:
+                self.invoice_check = False
 
 
     def _paid_check(self):
