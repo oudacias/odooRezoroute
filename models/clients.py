@@ -111,7 +111,7 @@ class PartnerExtra(models.Model):
         'context' : {
             'default_partner_id' : self.id,  
         },
-        'domain' : [()]
+        # 'domain' : [()]
 
         
     }
