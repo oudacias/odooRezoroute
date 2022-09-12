@@ -98,5 +98,7 @@
             <field name="view_mode">tree,form</field>
     
         </record>
-        <menuitem id="sub_menu_forfait" action="action_view_forfait" name="Forfaits" parent="purchase.menu_purchase_products" sequence="30"/>
+        <menuitem id="sub_menu_forfait" action="action_view_forfait" name="Forfaits" parent="purchase.menu_purchase_products"
+        groups="ps_rezoroute.group_achat"
+        sequence="30"/>
     </odoo>
