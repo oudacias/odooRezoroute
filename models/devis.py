@@ -223,7 +223,7 @@ class SaleLine(models.Model):
     price_unit_public = fields.Float(string="P.U. Public")
 
     qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
-    type_remise = fields.Boolean(related='order_id.partner_id.is_cheque_flotte')
+    # type_remise = fields.Boolean(related='order_id.partner_id.is_cheque_flotte')
     facultatif = fields.Boolean(default=True)
     is_forfait = fields.Boolean(default=False)
 
@@ -268,8 +268,7 @@ class SaleLine(models.Model):
                 rec.price_unit_public = product.standard_price
 
                 rec.qty_location = product.qty_location
-                if(self.order_id.partner_id.is_cheque_flotte):
-                    rec.discount = self.order_id.partner_id.pourcentage_remise
+                
                 rec.discount = 0
 
 
