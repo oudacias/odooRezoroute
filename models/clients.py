@@ -106,7 +106,7 @@ class PartnerExtra(models.Model):
         'name' : 'Devis non facturés',
         'view_mode': 'tree,form',
         'res_model': 'sale.order',
-        'target' : 'new',
+        # 'target' : 'new',
         # 'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
         'context' : {
