@@ -78,5 +78,7 @@
                 </xpath>
             </field>
         </record>
+        <menuitem id="menu_account_customer1" name="Customers1" action="res_partner_action_customer" sequence="110"/>
+
     </data>
 </odoo>
