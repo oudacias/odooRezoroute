@@ -106,7 +106,7 @@ class PartnerExtra(models.Model):
         'view_mode': 'tree',
         'res_model': 'sale.order',
         'target' : 'new',
-        # 'views' : [(False, 'form')],
+        'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
         'context' : {
             'default_partner_id' : self.id, 
