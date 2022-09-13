@@ -15,7 +15,7 @@
                         <button name="creer_ordre_reparation" string="Créer un ordre de réparation" 
                             type="object" class="oe_highlight"/>
 
-                        <button name="get_sale_flotte" string="Devis non facturés" 
+                        <button name="get_sale_flotte" string="Devis non facturés" attrs="{'invisible': [('is_flotte', '=', False)]}"
                             type="object" class="oe_highlight"/>
 
                     </header>
