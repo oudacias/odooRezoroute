@@ -13,9 +13,9 @@
                     <attribute name="groups">ps_rezoroute.group_siege</attribute>
                 </xpath> 
 
-                <xpath expr="//field[@name='move_ids_without_package']//tree/field[@name='product_uom_qty']" position="after">
+                <!-- <xpath expr="//field[@name='move_ids_without_package']//tree/field[@name='product_uom_qty']" position="after">
                      <field name="confirm_price">1</field>
-                </xpath>
+                </xpath> -->
                 <xpath expr="//field[@name='location_id']" position="after">
                     <!-- <field name="partner_id" on_change="onchange_partner_in(partner_id)" options="{'no_create' : True, 'always_reload' : True}" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/> -->
                     <field name="engin_id" domain="[('partner_id', '=', partner_id)]" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>

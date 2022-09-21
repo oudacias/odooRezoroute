@@ -119,9 +119,11 @@ class SaleOrderExtra(models.Model):
 
     def sale_order_to_repair_order(self):
         for rec in self.order_line:
-            if(rec.product_id.qty_location <= 0):
-                print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
-                raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
+            if(rec.product_id.product_tmpl_id.detailed_type == 'product'):
+                
+                if(rec.product_id.qty_location <= 0):
+                    print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+                    raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
         for rec in self.order_line:
 
@@ -147,9 +149,11 @@ class SaleOrderExtra(models.Model):
 
     def action_confirm(self):
         for rec in self.order_line:
-            if(rec.product_id.qty_location <= 0):
-                print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
-                raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
+            if(rec.product_id.product_tmpl_id.detailed_type == 'product'):
+                
+                if(rec.product_id.qty_location <= 0):
+                    print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+                    raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
         for rec in self.order_line:
             if(rec.product_id.marge1):
@@ -207,6 +211,19 @@ class SaleOrderExtra(models.Model):
         
         for rec in picking_id.move_ids_without_package:
             rec.write({'quantity_done':rec.product_uom_qty})
+
+        stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
+
+
+
+        print("Product prices   ids " +str(stock_picking))
+        stock_picking.move_lines._set_quantities_to_reservation()
+        print("@@@@@@@@ Stock PICKING @@@@@@@")
+        print(stock_picking)
+        stock_picking.button_validate()
+
+
+        
         return True
 
 
@@ -257,15 +274,21 @@ class SaleOrderExtra(models.Model):
     def create_payment_move(self):
 
         print("@@@@@ Payment state      "  +str(self.invoice_ids.payment_state))
-        # self.ensure_one()
         session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
+        journal_id = self.env['account.journal'].search([('name','=','Espèces')], limit =1)
+        if(len(journal_id) == 0):
+            journal_id = self.env['account.journal'].search([], limit =1)
+            
+
 
 
         print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable")
 
         if(len(session) == 1):
             print("ProductTemplateExtra is Available    for ProductTemplateExtra    and ProductTemplateExtra with_context   variable 2")
-            
+            journal_id = self.env['account.journal'].search([('name','=','Espèces')], limit =1)
+            if(len(journal_id) == 0):
+                journal_id = self.env['account.journal'].search([], limit =1)
             data = []
 
             if(len(self.invoice_ids) == 0):
@@ -311,21 +334,17 @@ class SaleOrderExtra(models.Model):
                             "invoice_line_ids":data
                         })
 
-
-
-
-
-
                 a.write({'session_id':  str(session.id)}) 
                 a.write({'state':  'posted'}) 
 
-                stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
+                # stock_picking = self.env['stock.picking'].search([('sale_id','=',self.id)])
 
 
 
-                print("Product prices   ids " +str(stock_picking))
-                stock_picking.move_lines._set_quantities_to_reservation()
-                stock_picking.button_validate()
+                # stock_picking.move_lines._set_quantities_to_reservation()
+                print("@@@@@@@@ Stock PICKING @@@@@@@")
+                # print(stock_picking)
+                # stock_picking.button_validate()
 
                 
                 return {
@@ -335,6 +354,7 @@ class SaleOrderExtra(models.Model):
                         'active_model': 'account.move',
                         'active_ids': a.id,
                         'default_communication' : a.name,
+                        'default_journal_id' : journal_id.id
                     },
                     'target': 'new',
                     'type': 'ir.actions.act_window',
@@ -351,6 +371,7 @@ class SaleOrderExtra(models.Model):
                     'context': {
                         'active_model': 'account.move',
                         'active_ids': self.invoice_ids.id,
+                        'default_journal_id' : journal_id.id
                     },
                     'target': 'new',
                     'type': 'ir.actions.act_window',
@@ -383,10 +404,11 @@ class ConfirmRepairOrder(models.Model):
     def confirm_order(self):
 
         for rec in self.sale_order_id.order_line:
-            if(rec.product_id.qty_location <= 0):
-                print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
-                raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
-            
+            if(rec.product_id.product_tmpl_id.detailed_type == 'product'):
+                if(rec.product_id.qty_location <= 0):
+                    print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+                    raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
+                
         if self.sale_order_id._get_forbidden_state_confirm() & set(self.sale_order_id.mapped('state')):
             raise UserError(_(
                 'It is not allowed to confirm an order in the following states: %s'
@@ -428,6 +450,16 @@ class ConfirmRepairOrder(models.Model):
         for rec in picking_id.move_ids_without_package:
             rec.write({'quantity_done':rec.product_uom_qty})
 
+        stock_picking = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
+
+
+
+        print("Product prices   ids " +str(stock_picking))
+        stock_picking.move_lines._set_quantities_to_reservation()
+        print("@@@@@@@@ Stock PICKING @@@@@@@")
+        print(stock_picking)
+        stock_picking.button_validate()
+
         # Update Odometer value
 
         for record in self:
@@ -442,7 +474,10 @@ class ConfirmRepairOrder(models.Model):
 
         self.sale_order_id.write({'user_repair_id' : self.user_repair_id})
 
-        return self.sale_order_id.create_payment_move()
+        if(self.sale_order_id.partner_id.is_flotte == True):
+            return True
+        else:
+            return self.sale_order_id.create_payment_move()
 
 class PaymentRegister(models.TransientModel):
 

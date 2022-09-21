@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <!-- <record model="ir.ui.view" id="ps_rezoroute.Users_view_id">
+            <field name="name">Auto Utilisateurs</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">  
+                <xpath expr="//button[@name='stock.action_stock_inventory_adjustement_name']" position="attributes">
+                    <attribute name="groups">ps_rezoroute.group_achat</attribute>
+                </xpath> 
+            </field>
+        </record> -->
+
+        <record model="ir.ui.view" id="ps_rezoroute.Users_group_view_id">
+            <field name="name">ps_rezoroute Autogo Utilisateurs</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_simple_form"/>
+            <field name="arch" type="xml"> 
+                <xpath expr="//field[@name='groups_id']" position="attributes">
+                     <attribute name="readonly">0</attribute>
+                     <attribute name="attrs">{'invisible': [('is_mecanic', '=', True)]}</attribute>
+
+                </xpath>     
+
+                <xpath expr="//field[@name='login']" position="after">
+                    <group>
+                        <field name="is_mecanic" />
+                        <field name="pos_location" attrs="{'invisible': [('is_mecanic', '=', False)], 'required':[('is_mecanic','=', True)]}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="ps_rezoroute.Users_mecanic_view_id" model="ir.actions.act_window">
+            <field name="name">Autogo Utilisateurs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{"default_is_mecanic":True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new user
+                </p>
+            </field>
+        </record>
+
+        <record id="ps_rezoroute.Users_view_id" model="ir.actions.act_window">
+            <field name="name">Autogo Utilisateurs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new user
+                </p>
+            </field>
+        </record>
+
+        <record id="ps_rezoroute.Users_mecanic_view_id" model="ir.actions.act_window">
+            <field name="name">Autogo Mécaniciens</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('is_mecanic','=', True)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new user
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="res_users_root_id"
+            name="Administration"
+            action="ps_rezoroute.Users_view_id"
+            sequence="500"/>
+        <menuitem id="res_users_menu_id1"
+            name="Utilisateurs"
+            parent="res_users_root_id"/>
+
+        <menuitem id="res_users_menu_id"
+            name="Utilisateurs"
+            action="ps_rezoroute.Users_view_id"
+            parent="res_users_menu_id1"/>
+
+        <menuitem id="res_users_mecanic_menu_id"
+            name="Mécaniciens"
+            action="ps_rezoroute.Users_mecanic_view_id"
+            parent="res_users_menu_id1"/>
+
+    </odoo>

@@ -10,6 +10,8 @@
         <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
         <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user'))]"/>
         <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('point_of_sale.group_pos_user')), (4, ref('stock.group_stock_user'))]"/>
+
         
         <!-- <field name="category_id" ref="ng_office_technology.module_category_ng_office_technology"/> -->
     </record>
@@ -23,6 +25,11 @@
         <field name="name">My POS</field>
         <field name="model_id" ref="model_pos_session"></field>
         <field name="domain_force">[('user_id','=',user.id)]</field>
+    </record>
+    <record model="ir.rule" id="show_my_pos_user_mecanic_rule1">
+        <field name="name">My Mecanics</field>
+        <field name="model_id" ref="model_res_users"></field>
+        <field name="domain_force">[('pos_location','=',user.pos_config_id.id)]</field>
     </record>
 
     <record model="ir.rule" id="show_my_sale_quotation">
@@ -56,9 +63,15 @@
         <field name="domain_force">['|',('sale_line_id.order_id.user_id', '=', user.id),('purchase_line_id.order_id.user_id', '=', user.id)]</field>
         <field name="groups" eval="[(4, ref('ps_rezoroute.group_gestionnaire'))]"/>
     </record> -->
-    <!-- <record model="ir.rule" id="show_my_stock_picking">
+    <record model="ir.rule" id="show_my_stock_picking">
         <field name="name">Salesperson own Stock Picking</field>
         <field name="model_id" ref="model_stock_picking"/>
+        <field name="domain_force">['|',('purchase_id.user_id', '=', user.id),('sale_id.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('ps_rezoroute.group_gestionnaire'))]"/>
+    </record>
+    <!-- <record model="ir.rule" id="show_my_stock_location">
+        <field name="name">Salesperson own Stock Location</field>
+        <field name="model_id" ref="model_stock_location"/>
         <field name="domain_force">['|',('purchase_id.user_id', '=', user.id),('sale_id.user_id', '=', user.id)]</field>
         <field name="groups" eval="[(4, ref('ps_rezoroute.group_gestionnaire'))]"/>
     </record> -->

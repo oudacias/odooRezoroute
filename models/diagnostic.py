@@ -1,3 +1,4 @@
+from email.policy import default
 from odoo import fields, models, api
 
 class EnginDiagnostic(models.Model):
@@ -6,7 +7,7 @@ class EnginDiagnostic(models.Model):
     
     name = fields.Char(string="Fiche diagnostic")
     is_default = fields.Boolean(string="Par défaut")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
     engin_diagnostic_line = fields.One2many('engin.diagnostic.line','diagnostic_id')
 
 

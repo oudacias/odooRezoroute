@@ -23,8 +23,7 @@
                 
                 <field name="website" position="after">
 
-                    <field name="siret"/>
-                    <field name="ape"/>
+                    <field name="ice" attrs="{'required':[('is_company','=', True)]}"/>
                 
                 </field>
                 <field name="vat" position="after">
@@ -88,6 +87,21 @@
             <field name="view_mode">kanban,tree,form</field>
             <field name="context">{'search_default_customer': 1,'res_partner_search_mode': 'customer', 'default_is_company': True, 'default_customer_rank': 1}</field>
             <field name="domain">[('is_flotte','=',True)]</field>
+        </record>
+
+        <record id="res_partner_view_matrilcule_search" model="ir.ui.view">
+            <field name="name">res.partner.matricule.search.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//filter[@name='inactive']" position="before">
+                    <filter string="Matricule" name="matricule" domain="[('phone','ilike',self)]"/>
+
+                </xpath> -->
+                <xpath expr="//field[@name='name']" position="before">
+                    <field string="Matricule" name="fleet_id" filter_domain="[('fleet_id.license_plate', 'ilike', self)]"/>
+                </xpath>
+            </field>
         </record>
 
         <menuitem id="menu_account_customer2" parent="account.menu_finance_receivables" name="Clients Flottes" action="res_partner_action_customer_flotte" sequence="111"/>

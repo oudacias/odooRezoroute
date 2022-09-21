@@ -75,6 +75,18 @@
                 
             </field>
         </record>
+
+        <record id="engine_type_view" model="ir.actions.act_window">
+            <field name="name">Type de Véhicule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">engine.type</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{}</field>
+         </record>
+
+        <menuitem action="engine_type_view" parent="fleet.fleet_vehicles" name="Type de Véhicule"
+        id="fleet_vehicle_type_menu" sequence="10"/>
+
         <menuitem id="sale_order_menu_or"
             name="Ordre de réparation"
             parent="sale.sale_menu_root"

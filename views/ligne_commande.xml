@@ -15,32 +15,37 @@
                 <xpath expr="//field[@name='order_line']//tree/field[@name='qty_invoiced']" position="attributes">
                      <attribute name="invisible">1</attribute>
                 </xpath>
-                <!-- <xpath expr="//field[@name='order_line']//tree/field[@name='price_unit_public']" position="attributes">
-                     <attribute name="invisible">1</attribute>
-                </xpath> -->
                 <xpath expr="//field[@name='order_line']//tree/field[@name='price_unit']" position="attributes">
                      <attribute name="readonly">1</attribute>
                 </xpath>
 
                 <xpath expr="//field[@name='order_line']//tree/field[@name='product_id']" position="after"> 
-                    <field name="manufacturer_id" readonly="1"/> 
+                    <field name="manufacturer_id" readonly="1" force_save="1"/> 
                 </xpath>
 
                 <xpath expr="//field[@name='order_line']//tree/field[@name='name']" position="after"> 
                     <field name="qty_location" readonly="1"/> 
                 </xpath>
-                <xpath expr="//field[@name='order_line']//tree/field[@name='product_uom_qty']" position="after"> 
-                    <field name="price_unit_public" readonly="1"/> 
-                    <!-- <field name="discount"/>  -->
-                </xpath>
+                
                 <xpath expr="//field[@name='order_line']//tree/field[@name='price_unit']" position="after"> 
                     <field name="price_total" readonly="1"/> 
                 </xpath>
+               
 
                 <xpath expr="//field[@name='note']" position="before">
                     <group>
                         <field name="carrier_id"/>
                     </group>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']//tree/field[@name='tax_id']"  position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree/field[@name='product_uom']"  position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree/field[@name='price_total']"  position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
 
                 <!-- <xpath expr="//field[@name='order_line']//tree/button[@name='unlink']" position="attributes">

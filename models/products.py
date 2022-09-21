@@ -18,7 +18,7 @@ class ProductTemplateExtraa(models.Model):
     image1 = fields.Image(String="Image 1")
     image2 = fields.Image(String="Image 2")
 
-    manufacturer_id = fields.Many2one('engine.manufacturer',string="Constructeur")
+    manufacturer_id = fields.Many2one('engine.manufacturer',string="Marque",domain=[('is_vgl','=',True)])
 
     ps_code_article = fields.Char('Code Article')
     is_reconditionned = fields.Boolean('Reconditionne')
@@ -92,6 +92,11 @@ class ProductTemplateExtraa(models.Model):
     # marge = fields.Float(string="Marge")
     seuil1 = fields.Char(string="Seuil de remise", size=5)
     marge1 = fields.Char(string="Marge", size=5)
+
+    @api.onchange('name')
+    def upper_name(self):
+        if(self.name):
+            self.name = (self.name).upper()
 
     @api.onchange('seuil1')
     def is_float(self):
@@ -219,13 +224,25 @@ class ProductExtra(models.Model):
 
     @api.model
     def create(self, vals):
-        print("@@@@ Group UserError  - create "  +str(self.env.user.has_group('ps_rezoroute.group_gestionnaire')))
         if self.env.user.has_group('ps_rezoroute.group_gestionnaire'):
             raise ValidationError(
                 ('Vous ne pouvez pas créer un nouveau produit'),
             )
         else:
             return super(ProductExtra, self).create(vals)
+
+
+    def write(self, vals):
+        if self.env.user.has_group('ps_rezoroute.group_gestionnaire'):
+            raise ValidationError(
+                ('Vous ne pouvez pas créer un nouveau produit'),
+            )
+        else:
+            return super(ProductExtra, self).write(vals)
+
+    @api.onchange('name')
+    def upper_name(self):
+        self.name = (self.name).upper()
 
 
 

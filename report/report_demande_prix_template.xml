@@ -73,7 +73,7 @@
                             <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
                                 <tr>
                                     <td rowspan="2" style="width:40%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
-                                        <strong>Devis</strong>
+                                        <strong>Demande d'Achat</strong>
                                           <!-- <span t-esc="lang" /> -->
                                     </td>
                                     <td style="white-space:nowrap; padding:5pt; font-size:11pt">
@@ -137,39 +137,21 @@
                     
                          
                         <table class="table table-bordered" style="border: 1px solid black !important;width: 100%;">
-                        <thead style="background-color:#5D89C5">
+                            <thead style="background-color:#5D89C5">
                                 <tr>
-                                  <th>
-                                   Code Article
-                                  </th>
-                                  <th>
-                                   Ref.Fournisseur
-                                  </th>
-                                  <th >
-                                  Designation
-                                  </th>
-                                <th>
-                                    <span   > Quantité </span>
-                                </th>
-                                <th>
-                                    <span   > Un </span>
-                                </th>
+                                    <th> Code Article</th>
+                                    <th>Ref.Fournisseur</th>
+                                    <th >Designation</th>
+                                    <th><span   > Quantité </span></th>
+                                    <th> <span   > Un </span> </th>
                                 
-                                <th >
-                                    <span   > P.U NET HT  </span>
-                                </th>
-                                <th>
-                                    <span   > Montant</span>
-                                </th>
-                                <th >
-                                    <span   > TVA  </span>
-                                </th>
-                                
+                                    <th ><span   > P.U NET HT  </span></th>
+                                    <th><span   > Montant</span></th>
+                                    <th ><span   > TVA  </span></th>
                                 </tr>
                             </thead>
-                                <t t-set="test_variable" t-value="0"/>
-                                    <t t-foreach="o.order_line" t-as="line">
-                                    <tr  >
+                                <t t-foreach="o.order_line" t-as="line">
+                                    <tr>
                                         <td> 
                                             <span t-field="line.product_id.default_code"/>
                                         </td>
@@ -196,10 +178,6 @@
                                             <!-- <span t-field="line.taxes_id.amount"/> -->
                                         </td>
                                         
-                                        <td> 
-                                            <!-- <span t-field="line.amount"/> -->
-                                            <!-- <t t-set="test_variable" t-value="test_variable+line.price_subtotal"/>  -->
-                                        </td>
                                          
                                     </tr>
                                     

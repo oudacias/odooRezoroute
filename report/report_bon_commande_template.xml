@@ -73,7 +73,7 @@
                         <table style="border: 1px solid black;float:right;width:70%; font-family: Tahoma">
                                   <tr>
                                       <td rowspan="2" style="width:40%;vertical-align: middle;background-color:#1f3864;color: white;text-align:center;font-size:14pt;font-family:&quot;Tahoma&quot;,sans-serif;">
-                                          <strong>Commande</strong>
+                                          <strong>Bon de Commande</strong>
                                           <!-- <span t-esc="lang" /> -->
                                       </td>
                                       <td style="white-space:nowrap; padding:5pt; font-size:11pt">

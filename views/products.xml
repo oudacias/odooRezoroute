@@ -12,7 +12,7 @@
                         <div class="d-flex">-->
                             <field class="o_text_overflow" name="category_product"/>
                             <field class="o_text_overflow" name="product_code"/>
-                            <field class="o_text_overflow" name="ps_code_article"/>
+                            <!-- <field class="o_text_overflow" name="ps_code_article"/> -->
                         <!--</div> -->
                         <!-- <label for="manufacturer_id" string="Constructeur"/>
                             <div class="d-flex"> -->
@@ -303,6 +303,8 @@
                 </xpath>
             </field>
         </record>
+       
+        
         <record id="view_stock_product_tree1" model="ir.ui.view">
             <field name="name">product.stock.tree.inherit1</field>
             <field name="model">product.product</field>
@@ -314,10 +316,10 @@
             </field>
         </record>
         <record id="action_view_manufacturer" model="ir.actions.act_window">
-            <field name="name">Product Manufacturer</field>
+            <field name="name">Marque</field>
             <field name="res_model">engine.manufacturer</field>
             <field name="view_mode">tree,form</field>        
         </record>
-        <menuitem id="sub_menu_manufacturer" action="action_view_manufacturer" name="Constructeurs" parent="purchase.menu_purchase_products" sequence="21"/>
+        <menuitem id="sub_menu_manufacturer" action="action_view_manufacturer" name="Marque" parent="purchase.menu_purchase_products" sequence="21"/>
     </data>
 </odoo>

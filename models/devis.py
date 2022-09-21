@@ -28,7 +28,7 @@ class Devis(models.Model):
 
 
     is_repair_order = fields.Boolean(string="Ordre de reparation")
-    user_repair_id = fields.Many2one('res.users',string="Mécanicien")
+    user_repair_id = fields.Many2one('res.users',string="Mécanicien", domain="[('is_mecanic','=',True)]")
     repair_order_note = fields.Text(string="Note de réparation")
     recover_your_used_parts = fields.Boolean(string="Souhaitez-vous recupérer vos pièces usages")
     repair_with_re_used_parts = fields.Boolean(string="Souhaitez-vous une réparation avec des pièces de réemploi")
@@ -220,9 +220,8 @@ class SaleLine(models.Model):
 
     manufacturer_id = fields.Many2one('engine.manufacturer','Marque')
     real_qty_available = fields.Float(string="Qté Dispo")
-    price_unit_public = fields.Float(string="P.U. Public")
 
-    qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
+    qty_location = fields.Float(string="Quantité Disponible")
     facultatif = fields.Boolean(default=True)
     is_forfait = fields.Boolean(default=False)
 
@@ -262,9 +261,7 @@ class SaleLine(models.Model):
 
                 rec.manufacturer_id = product.product_tmpl_id.manufacturer_id.id
                 rec.real_qty_available = product.product_tmpl_id.real_qty_available
-                # rec.price_unit_public = product.product_tmpl_id.lst_price
                 rec.price_unit = product.lst_price
-                rec.price_unit_public = product.standard_price
 
                 rec.qty_location = product.qty_location
                 
@@ -281,6 +278,28 @@ class SaleLine(models.Model):
                 elif(self.product_id.product_tmpl_id.categ_id.seuil):
                     if(self.discount > self.product_id.product_tmpl_id.categ_id.seuil):
                         raise ValidationError('Vous avez dépassé le seuil de la remise   ' )
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        for values in vals_list:
+            stock_quant = self.env["stock.quant"].search([('product_id','=',values['product_id']),('location_id','=',location.location_id.id)])
+            qty = 0
+            for line_qty in stock_quant:
+                qty += line_qty.quantity
+            values.update(qty_location=qty)
+        return super(SaleLine, self).create(vals_list)
+
+
+    def write(self, values):
+        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        if('product_id' in values and 'qty_location'):
+            stock_quant = self.env["stock.quant"].search([('product_id','=',values['product_id']),('location_id','=',location.location_id.id)])
+            qty = 0
+            for line_qty in stock_quant:
+                qty += line_qty.quantity
+            values['qty_location'] = qty
+        return super(SaleLine, self).write(values)
                     
                 
 class DeliveryCarrier(models.Model):
@@ -288,7 +307,7 @@ class DeliveryCarrier(models.Model):
 
     name = fields.Char(string="Methode de livraison")
     image_medium = fields.Image()
-    active = fields.Boolean(string="actif")
+    active = fields.Boolean(string="actif",default=True)
     partner_id = fields.Many2one('res.partner',string="Transporteur")
     product_id = fields.Many2one('product.product',string="Article de livraison")
     sequence = fields.Integer(string="Séquence")

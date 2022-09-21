@@ -91,22 +91,23 @@ class StockPickingExtra(models.Model):
         
         if self.purchase_id:
             self.write({'session_id':self.purchase_id.session_id.id})
-        if self.purchase_id:
-            print("@@@@@@@@ Confirm Pric e   " +  str(list(self.purchase_id.order_line)))
+
+        # if self.purchase_id:
+        #     print("@@@@@@@@ Confirm Pric e   " +  str(list(self.purchase_id.order_line)))
             
 
-            for rec in self.move_ids_without_package:
-                purchase_order = self.env['purchase.order.line'].search([('id','=',rec.purchase_line_id.id)])
-                if(rec.confirm_price != purchase_order.price_unit):
-                    check_price = False
-                    raise ValidationError("Le prix que vous avez saisi pour le produit "+str(rec.product_id.name)+" n'est pas compatible avec la demande de prix." )
+        #     for rec in self.move_ids_without_package:
+        #         purchase_order = self.env['purchase.order.line'].search([('id','=',rec.purchase_line_id.id)])
+        #         if(rec.confirm_price != purchase_order.price_unit):
+        #             check_price = False
+        #             raise ValidationError("Le prix que vous avez saisi pour le produit "+str(rec.product_id.name)+" n'est pas compatible avec la demande de prix." )
             
-            if(check_price == True):
-                return super(StockPickingExtra, self).button_validate()
+        #     if(check_price == True):
+        #         return super(StockPickingExtra, self).button_validate()
 
 
-        else:
-            return super(StockPickingExtra, self).button_validate()
+        # else:
+        return super(StockPickingExtra, self).button_validate()
 
     
        
@@ -140,7 +141,7 @@ class PosData(models.Model):
     reglement_id = fields.One2many('account.payment','session_id')
 
     def _compute_facture_count(self):
-        orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids),('state', '=', 'posted')], ['session_id'], ['session_id'])
+        orders_data = self.env['account.move'].read_group([('session_id', 'in', self.ids),('state', '=', 'posted'), ('move_type', 'in', ['out_invoice','in_invoice'])], ['session_id'], ['session_id'])
         sessions_data = {order_data['session_id'][0]: order_data['session_id_count'] for order_data in orders_data}
         for session in self:
             session.facture_count = sessions_data.get(session.id, 0)
@@ -178,7 +179,7 @@ class PosData(models.Model):
             #     (self.env.ref('point_of_sale.view_pos_pos_form').id, 'form'),
             #     ],
             'type': 'ir.actions.act_window',
-            'domain': [('session_id', 'in', self.ids)],
+            'domain': [('session_id', 'in', self.ids),('move_type', 'in', ['out_invoice','in_invoice'])],
         }
     
     def action_view_stock(self):

@@ -1,3 +1,4 @@
+from email.policy import default
 from odoo import fields, models,api
 
 class Vehicle(models.Model):
@@ -6,7 +7,7 @@ class Vehicle(models.Model):
     siv = fields.Char(string="SIV")
     manufacturer_id = fields.Many2one('engine.manufacturer','Constructeur')
     code_moteur = fields.Many2one('engine.motor','Code moteur')
-    type_id = fields.Many2one('engine.type','Type')
+    type_id = fields.Many2one('engine.type','Type',store=True)
     d_2_1 = fields.Char(string="D2.1")
     e = fields.Char(string="E/VIN")
     note = fields.Text(string="Note Interne")
@@ -78,7 +79,7 @@ class Vehicle(models.Model):
         return {
         'view_mode': 'form',
         'res_model': 'sale.order',
-        'target' : 'new',
+        'target' : 'self',
         'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
         'context' : {
@@ -97,7 +98,7 @@ class Vehicle(models.Model):
         return {
         'view_mode': 'form',
         'res_model': 'sale.order',
-        'target' : 'new',
+        'target' : 'self',
         'views' : [(False, 'form')],
         'type': 'ir.actions.act_window',
         'context' : {
@@ -120,7 +121,7 @@ class EngineMotor(models.Model):
 
     name = fields.Char(string="Name")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
     note = fields.Text()
 
 
@@ -134,7 +135,7 @@ class EngineManufacturer(models.Model):
     is_pkw = fields.Boolean(string="VL")
     is_nkw = fields.Boolean(string="PL")
     is_vgl = fields.Boolean(string="Marque") 
-    active = fields.Boolean(string="Actif")
+    active = fields.Boolean(string="Actif", default=True)
     sequence = fields.Integer(string="Sequence")
     m_code = fields.Char(string="M Code")
     m_code_reconditionned = fields.Char(string="M Code Reconditionne")
@@ -159,7 +160,7 @@ class EngineType(models.Model):
     subtype_txt = fields.Char(string="Sous type (PL)")
     tecdoc_ref = fields.Char(string="Reference TecDoc")
     tecdoc_ref_nkw = fields.Char(string="TecDoc Ref CV")
-    active = fields.Boolean(string="Actif")
+    active = fields.Boolean(string="Actif", default=True)
     date_from = fields.Date(string="De")
     date_to = fields.Date(string="A")
     ccm_tax = fields.Integer(string="CC Tax")
@@ -197,7 +198,7 @@ class EngineMotorType(models.Model):
     name = fields.Char(string="Nom")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
     sort = fields.Integer(string="Sort")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
 
 
 class EnginePropulsion(models.Model):
@@ -206,7 +207,7 @@ class EnginePropulsion(models.Model):
     name = fields.Char(string="Nom")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
     sort = fields.Integer(string="Sort")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
 
 
 class EngineInjector(models.Model):
@@ -216,7 +217,7 @@ class EngineInjector(models.Model):
     note = fields.Text(string="Note Interne")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
     name = fields.Char(string="Nom")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
 
 
 class EngineCarosserie(models.Model):
@@ -225,7 +226,7 @@ class EngineCarosserie(models.Model):
     name = fields.Char(string="Nom")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
     sort = fields.Integer(string="Sort")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
     note = fields.Text(string="Note")
 
 class EngineBrakeSystem(models.Model):
@@ -234,7 +235,7 @@ class EngineBrakeSystem(models.Model):
     name = fields.Char(string="Nom")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
     sort = fields.Integer(string="Sort")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
     note = fields.Text(string="Note")
 
 
@@ -244,7 +245,7 @@ class EngineBrakeType(models.Model):
     name = fields.Char(string="Nom")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
     sort = fields.Integer(string="Sort")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
     note = fields.Text(string="Note")
 
 class EngineCatalyst(models.Model):
@@ -253,7 +254,7 @@ class EngineCatalyst(models.Model):
     name = fields.Char(string="Nom")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
     sort = fields.Integer(string="Sort")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active" ,default=True)
     note = fields.Text(string="Note")
 
 class EngineGear(models.Model):
@@ -262,7 +263,7 @@ class EngineGear(models.Model):
     name = fields.Char(string="Nom")
     tecdoc_ref = fields.Char(string="TecDoc Ref")
     sort = fields.Integer(string="Sort")
-    active = fields.Boolean(string="Active")
+    active = fields.Boolean(string="Active", default=True)
     note = fields.Text(string="Note")
 
 

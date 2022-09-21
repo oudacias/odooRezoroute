@@ -18,3 +18,4 @@ from . import calendar
 from . import diagnostic
 from . import model_forfait
 from . import signature
+from . import users

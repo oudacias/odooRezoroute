@@ -105,7 +105,7 @@ class purchase_custom(models.Model):
 
 class StockMove(models.Model):
     _inherit = 'stock.move'
-    confirm_price = fields.Float(string="Prix")
+    # confirm_price = fields.Float(string="Prix")
     
 
     def _get_new_picking_values(self):
@@ -117,6 +117,34 @@ class StockMove(models.Model):
 
 class purchase_custom_line(models.Model):
     _inherit = 'purchase.order.line'
+    stock_quantity = fields.Float(string="Quantité en stock")
+
+    @api.onchange('product_id')
+    def _get_quantity(self):
+        if(self.product_id.id):
+            location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+            for rec in self:
+                stock_quant = self.env["stock.quant"].search([('product_id','=',rec.product_id.id),('location_id','=',location.location_id.id)])
+                qty = 0
+                for line_qty in stock_quant:
+
+                    qty += line_qty.quantity
+                
+                rec.stock_quantity = qty
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+
+        for values in vals_list:
+            stock_quant = self.env["stock.quant"].search([('product_id','=',values['product_id']),('location_id','=',location.location_id.id)])
+            qty = 0
+            for line_qty in stock_quant:
+
+                qty += line_qty.quantity
+            values['stock_quantity'] = qty
+
+        return super(purchase_custom_line, self).create(vals_list)
 
     @api.model
     def write(self,vals):
@@ -129,14 +157,9 @@ class purchase_custom_line(models.Model):
             picking_id = self.env['stock.picking'].search([('purchase_id','=',self.order_id.id),('state','!=','cancel')])
 
             for rec in picking_id:
-                print("LocationId   @@@@@= " + str(rec.id))
                 rec.action_cancel()
 
             self.order_id.state = 'draft'
-
-                
-
-               
 
         q= super(purchase_custom_line, self).write(vals) 
         return q

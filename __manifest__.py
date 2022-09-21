@@ -72,6 +72,9 @@
         'views/forfait.xml',
         'views/signature.xml',
         'report/mail_invoice.xml',
+        'views/stock.xml',
+        'views/hide_fields.xml',
+        'views/users.xml',
 
         
     ],
