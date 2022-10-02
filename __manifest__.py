@@ -40,6 +40,7 @@
         'data/cronvalidate.xml',
         'report/report_xcaisse.xml',
         'report/report_posreport.xml',
+        'report/retrait_caisse_report.xml',
         
         'report/report_devis_template_or.xml',
         'report/report_devis_template.xml',
@@ -69,12 +70,12 @@
         'views/calendar.xml',
         'views/diagnostic.xml',
         'views/website_diagnostic.xml',
-        'views/forfait.xml',
         'views/signature.xml',
         'report/mail_invoice.xml',
         'views/stock.xml',
         'views/hide_fields.xml',
         'views/users.xml',
+        'views/forfaits2.xml',
 
         
     ],

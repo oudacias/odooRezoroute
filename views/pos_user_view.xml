@@ -20,4 +20,21 @@
                 </xpath>
             </field>
         </record>
+        <record model="ir.ui.view" id="ps_rezoroute.UserPos3">
+            <field name="name">ps_rezoroute POS USER</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
+            <field name="type">kanban</field>
+
+            <field name="arch" type="xml">   
+                <xpath expr="//button[@name='open_existing_session_cb']" position="replace">               
+                    <button t-if="record.current_session_state.raw_value === 'opening_control'" class="btn btn-primary" name="open_existing_session_cb" type="object">Consulter la Session</button>
+                    <br/>
+                    <br/>
+                    <button t-if="record.current_session_state.raw_value === 'opening_control'" class="btn btn-primary" name="check_cash_funds" type="object">Valider la Session</button>
+
+
+                </xpath>
+            </field>
+        </record>
     </odoo>

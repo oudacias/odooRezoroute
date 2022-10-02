@@ -5,11 +5,6 @@ from odoo.exceptions import ValidationError
 class ProductTemplateExtraa(models.Model):
 
     _inherit = 'product.template'
-
-
-    # ----------------temp fields
-
-    category_product = fields.Text(string="Catégorie du produit")
     product_code = fields.Text(string="Code du produit")
 
 
@@ -81,6 +76,8 @@ class ProductTemplateExtraa(models.Model):
     replace = fields.Many2one("product.template", string="Remplace par")
     
     product_pricelist_item = fields.One2many("product.pricelist.item","product_tmpl_id","Pricelist Items")
+    qty_location = fields.Float(string="Quantité Disponible", compute="_get_qty_location")
+
     _sql_constraints = [('ps_code_article_unique', ' unique (ps_code_article)','Ce code article existe deja !')]
 
 
@@ -146,6 +143,20 @@ class ProductTemplateExtraa(models.Model):
 
     #     q= super(ProductTemplateExtraa, self).create(values) 
     #     return q
+
+
+    def _get_qty_location(self):        
+        location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        for rec in self:
+            
+            stock_quant = self.env["stock.quant"].search([('product_tmpl_id','=',rec.id),('location_id','=',location.location_id.id)])
+            qty = 0
+            for line_qty in stock_quant:
+
+                qty += line_qty.quantity
+            
+            rec.qty_location = qty
+
         
 
 
@@ -226,17 +237,22 @@ class ProductExtra(models.Model):
     def create(self, vals):
         if self.env.user.has_group('ps_rezoroute.group_gestionnaire'):
             raise ValidationError(
-                ('Vous ne pouvez pas créer un nouveau produit'),
+                ('Vous ne pouvez pas créer un nouveau produit 1'),
             )
         else:
             return super(ProductExtra, self).create(vals)
 
 
-    def write(self, vals):
+    def write(self, vals):       
         if self.env.user.has_group('ps_rezoroute.group_gestionnaire'):
-            raise ValidationError(
-                ('Vous ne pouvez pas créer un nouveau produit'),
-            )
+            if(self.env.context.get('params')):
+                if('model' in self.env.context.get('params')):
+                    if(self.env.context.get('params') != 'stock.picking'):
+                    
+                        if(self.env.context.get('active_model') ):
+                            raise ValidationError(
+                                ('Vous ne pouvez pas modifier un produit'),
+                            )
         else:
             return super(ProductExtra, self).write(vals)
 

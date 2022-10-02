@@ -119,10 +119,9 @@ class SaleOrderExtra(models.Model):
 
     def sale_order_to_repair_order(self):
         for rec in self.order_line:
-            if(rec.product_id.product_tmpl_id.detailed_type == 'product'):
+            if(rec.product_id.product_tmpl_id.detailed_type == 'product' and rec.product_id.product_tmpl_id.is_pack == False):
                 
-                if(rec.product_id.qty_location <= 0):
-                    print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+                if(rec.product_id.qty_location < rec.product_uom_qty):
                     raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
         for rec in self.order_line:
@@ -149,10 +148,9 @@ class SaleOrderExtra(models.Model):
 
     def action_confirm(self):
         for rec in self.order_line:
-            if(rec.product_id.product_tmpl_id.detailed_type == 'product'):
+            if(rec.product_id.product_tmpl_id.detailed_type == 'product' and rec.product_id.product_tmpl_id.is_pack == False):
                 
-                if(rec.product_id.qty_location <= 0):
-                    print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+                if(rec.product_id.qty_location < rec.product_uom_qty):
                     raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
 
         for rec in self.order_line:
@@ -187,16 +185,82 @@ class SaleOrderExtra(models.Model):
 
         context = self._context.copy()
         context.pop('default_name', None)
-
+        print("@@@ HERER HERER @@@@")
         
         self.with_context(context)._action_confirm()
         if self.env.user.has_group('sale.group_auto_done_setting'):
             self.action_done()
 
+        print("@@@ HERER HERER 2 @@@@")
+        location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+
+        dest_loc = self.env.ref('stock.stock_location_customers').id
+
+
+        # IF FORFAIT
+
+        transfer = ''
+        for line in self.order_line:
+            if line.product_id.is_pack:
+                if(line.forfait_id.id):
+                    new_pack_id = self.env['sale.forfait'].search([('id','=',line.forfait_id.id)]).ids
+                    if(transfer == ''):
+                        transfer = self.env['stock.picking'].create({
+                            'picking_type_id': 2,
+                            'location_id': location_id.location_id.id,
+                            'location_dest_id' : dest_loc,
+                            'forfait_sale' : self.id
+                        })
+
+                    for pack in new_pack_id:
+                        product_line = self.env['sale.forfait.line'].search([('forfait_id','=',pack)])
+                    
+
+                        for record in product_line:
+                            product_id = self.env['product.product'].search([('product_tmpl_id','=',record.product_line.id)])
+                            if(product_id.detailed_type == 'product' and product_id.qty_location <= 0):
+                                print("ProductTemplateExtra ACTIONS: %s" % product_id.qty_location)
+                                raise ValidationError('Quantité non disponible pour le produit ' + str(product_id.name))
+
+                            transfer['move_lines'] = [(0,0, {
+                                'name' : record.product_line.name,
+                                'product_uom_qty' : line.product_uom_qty, 
+                                'product_id' : record.product_line.id, 
+                                "product_uom" : record.product_line.uom_id.id, 
+                                "location_id" : location_id.location_id.id, 
+                                "location_dest_id" : dest_loc
+                            })]
+                    transfer.action_confirm()
+                    transfer.move_lines._set_quantities_to_reservation()
+                    transfer.button_validate()
+
+                else:
+                    if(transfer == ''):
+                        print("@@@ HERER HERER 3 @@@@")
+                        
+                        transfer = self.env['stock.picking'].create({
+                            'picking_type_id': 2,
+                            'location_id': location_id.location_id.id,
+                            'location_dest_id' : dest_loc,
+                            'forfait_sale' : self.id
+                        })
+                        print(transfer)
+                        print("@@@ HERER HERER 4 @@@@")
+                    for record in line.product_id.pack_products_ids:
+                        transfer['move_lines'] = [(0,0, {
+                            'name' : record.product_id.name,
+                            'product_uom_qty' : record.quantity * line.product_uom_qty, 
+                            'product_id' : record.product_id.id, 
+                            "product_uom" : record.product_id.uom_id.id, 
+                            "location_id" : location_id.location_id.id, 
+                            "location_dest_id" : dest_loc
+                        })]
+
+        # END IF FORFAIT
+
         # Change stock location
 
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.id)])
-        location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
         picking_id.write({'location_id':location_id.location_id.id})
         picking_id.write({'engin_id':self.engin_id.id})
 
@@ -216,10 +280,17 @@ class SaleOrderExtra(models.Model):
 
 
 
+
+
+
         print("Product prices   ids " +str(stock_picking))
         stock_picking.move_lines._set_quantities_to_reservation()
         print("@@@@@@@@ Stock PICKING @@@@@@@")
         print(stock_picking)
+
+
+
+
         stock_picking.button_validate()
 
 
@@ -398,15 +469,14 @@ class ConfirmRepairOrder(models.Model):
     next_ct_date = fields.Date(strign="Prochaine C.T.")
 
 
-    user_repair_id = fields.Many2one('res.users',string="Mécanicien")
+    user_repair_id = fields.Many2one('res.users',string="Mécanicien",domain=lambda self: [('id', 'in', self.env['res.users'].search([('pos_location', 'in', self.env['pos.config'].search([('user_id', '=', self.env.uid)],limit=1).ids)]).ids ),('is_mecanic','=',True)])
     repair_order_note = fields.Text(string="Note de réparation")
 
     def confirm_order(self):
 
         for rec in self.sale_order_id.order_line:
-            if(rec.product_id.product_tmpl_id.detailed_type == 'product'):
-                if(rec.product_id.qty_location <= 0):
-                    print("ProductTemplateExtra ACTIONS: %s" % rec.product_id.qty_location)
+            if(rec.product_id.product_tmpl_id.detailed_type == 'product' and rec.product_id.product_tmpl_id.is_pack == False):
+                if(rec.product_id.qty_location < rec.product_uom_qty):
                     raise ValidationError('Quantité non disponible pour le produit ' + str(rec.product_id.name))
                 
         if self.sale_order_id._get_forbidden_state_confirm() & set(self.sale_order_id.mapped('state')):
@@ -427,6 +497,83 @@ class ConfirmRepairOrder(models.Model):
         self.sale_order_id.with_context(context)._action_confirm()
         if self.sale_order_id.env.user.has_group('sale.group_auto_done_setting'):
             self.sale_order_id.action_done()
+
+
+        print("@@@ HERER HERER 2 @@@@")
+        location_id = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+
+        dest_loc = self.env.ref('stock.stock_location_customers').id
+
+
+        # IF FORFAIT
+
+        transfer = ''
+        for line in self.sale_order_id.order_line:
+            print("@@@ HERER HERER 0 @@@@")
+            if line.product_id.is_pack:
+                if(line.forfait_id.id):
+                    print("@@@ 1111111 HERER HERER 0 @@@@")
+                    new_pack_id = self.env['sale.forfait'].search([('id','=',line.forfait_id.id)]).ids
+                    print("@@@ HERER HERER 3 @@@@")
+
+                    if(transfer == ''):
+                        print("@@@ HERER HERER 3 @@@@")
+                        
+                        transfer = self.env['stock.picking'].create({
+                            'picking_type_id': 2,
+                            'location_id': location_id.location_id.id,
+                            'location_dest_id' : dest_loc,
+                        })
+                        print(transfer)
+                        print("@@@ HERER HERER 4 @@@@")
+
+                    for pack in new_pack_id:
+                        product_line = self.env['sale.forfait.line'].search([('forfait_id','=',pack)])
+                    
+
+                        for record in product_line:
+                            product_id = self.env['product.product'].search([('product_tmpl_id','=',record.product_line.id)])
+                            if(product_id.detailed_type == 'product' and product_id.qty_location <= 0):
+                                print("ProductTemplateExtra ACTIONS: %s" % product_id.qty_location)
+                                raise ValidationError('Quantité non disponible pour le produit ' + str(product_id.name))
+
+                            transfer['move_lines'] = [(0,0, {
+                                'name' : record.product_line.name,
+                                'product_uom_qty' : line.product_uom_qty, 
+                                'product_id' : record.product_line.id, 
+                                "product_uom" : record.product_line.uom_id.id, 
+                                "location_id" : location_id.location_id.id, 
+                                "location_dest_id" : dest_loc
+                            })]
+                    transfer.action_confirm()
+                    transfer.move_lines._set_quantities_to_reservation()
+                    transfer.button_validate()
+
+                else:
+                    if(transfer == ''):
+                        print("@@@ HERER HERER 3 @@@@")
+                        
+                        transfer = self.env['stock.picking'].create({
+                            'picking_type_id': 2,
+                            'location_id': location_id.location_id.id,
+                            'location_dest_id' : dest_loc,
+                        })
+                        print(transfer)
+                        print("@@@ HERER HERER 4 @@@@")
+                    for record in line.product_id.pack_products_ids:
+                        transfer['move_lines'] = [(0,0, {
+                            'name' : record.product_id.name,
+                            'product_uom_qty' : record.quantity * line.product_uom_qty, 
+                            'product_id' : record.product_id.id, 
+                            "product_uom" : record.product_id.uom_id.id, 
+                            "location_id" : location_id.location_id.id, 
+                            "location_dest_id" : dest_loc
+                        })]
+
+        # END IF FORFAIT
+
+
+
         # Change stock location
 
         picking_id = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])

@@ -8,6 +8,7 @@ pos_session,pos.session,model_pos_session,group_gestionnaire,1,1,1,1
 product_manufacturer,ps.product.manufacturer,model_ps_product_manufacturer,group_gestionnaire,1,1,1,1
 engine_manufacturer,engine.manufacturer,model_engine_manufacturer,group_gestionnaire,1,1,1,1
 engine_type,engine.type,model_engine_type,group_gestionnaire,1,1,1,1
+res_users_id,res.users,model_res_users,group_gestionnaire,1,1,1,1
 
 
 product_fullimage,ps.product.fullimage,model_ps_product_fullimage,group_gestionnaire,1,1,1,1
@@ -20,9 +21,9 @@ sequence_product_id,sequence.product,model_sequence_product,group_gestionnaire,1
 sequence_engin_diagnostic_line,engin.diagnostic.line,model_engin_diagnostic_line,group_gestionnaire,1,1,1,1
 sequence_engin_diagnostic_wizard,engin.diagnostic.wizard,model_engin_diagnostic_wizard,group_gestionnaire,1,1,1,1
 sequence_engin_diagnostic,engin.diagnostic,model_engin_diagnostic,group_gestionnaire,1,1,1,1
-purchase_forfait_id,purchase.forfait,model_purchase_forfait,group_gestionnaire,1,1,1,1
-purchase_forfait_line_id,product.forfait.line,model_product_forfait_line,group_gestionnaire,1,1,1,1
-forfait_wizard,forfait.wizard,model_forfait_wizard,group_gestionnaire,1,1,1,1
+sale_forfait_line_id,sale.forfait.line,model_sale_forfait_line,group_gestionnaire,1,1,1,1
+pos_cash_out_id,pos.cash.out,model_pos_cash_out,group_gestionnaire,1,1,1,1
+
 
 
 
@@ -47,6 +48,10 @@ fleet_vehicule12,fleet.vehicle.tag,model_fleet_vehicle,group_gestionnaire,1,1,1,
 engine_maintenance_variant,engine.maintenance.variant,model_engine_maintenance_variant,group_gestionnaire,1,1,1,1
 odometer_history_id,odometer.history,model_odometer_history,group_gestionnaire,1,1,1,1
 engin_manufacturer_golda_id,engin.manufacturer.golda,model_engin_manufacturer_golda,group_gestionnaire,1,1,1,1
+select_product_pack_id,select.product.pack,model_select_product_pack,group_gestionnaire,1,1,1,1
+pack_products_id,pack.products,model_pack_products,group_gestionnaire,1,1,1,1
+sale_forfait_id,sale.forfait,model_sale_forfait,group_gestionnaire,1,1,1,1
+
 
 
 
@@ -56,14 +61,18 @@ product_fullimage_group_achat,ps.product.fullimage,model_ps_product_fullimage,gr
 product_manufacturer_group_achat,ps.product.manufacturer,model_ps_product_manufacturer,group_achat,1,1,1,1
 engine_manufacturer_group_achat,engine.manufacturer,model_engine_manufacturer,group_achat,1,1,1,1
 engine_type_group_achat,engine.type,model_engine_type,group_achat,1,1,1,1
-product_forfait_line_id,product.forfait.line,model_product_forfait_line,group_achat,1,1,1,1
 
 sequence_engin_diagnostic_line2,engin.diagnostic.line,model_engin_diagnostic_line,group_achat,1,1,1,1
 sequence_engin_diagnostic_wizard2,engin.diagnostic.wizard,model_engin_diagnostic_wizard,group_achat,1,1,1,1
 sequence_engin_diagnostic2,engin.diagnostic,model_engin_diagnostic,group_achat,1,1,1,1
-purchase_forfait_id2,purchase.forfait,model_purchase_forfait,group_achat,1,1,1,1
-purchase_forfait_line_id2,product.forfait.line,model_product_forfait_line,group_achat,1,1,1,1
-forfait_wizard2,forfait.wizard,model_forfait_wizard,group_achat,1,1,1,1
+select_product_pack_id1,select.product.pack,model_select_product_pack,group_achat,1,1,1,1
+pack_products_id1,pack.products,model_pack_products,group_achat,1,1,1,1
+sale_forfait_line_id1,sale.forfait.line,model_sale_forfait_line,group_achat,1,1,1,1
+pos_cash_out_id1,pos.cash.out,model_pos_cash_out,group_achat,1,1,1,1
+
+
+
+
 
 
 
@@ -81,15 +90,18 @@ sequence_product_id1,sequence.product,model_sequence_product,group_admin,1,1,1,1
 sequence_engin_diagnostic_line1,engin.diagnostic.line,model_engin_diagnostic_line,group_admin,1,1,1,1
 sequence_engin_diagnostic_wizard1,engin.diagnostic.wizard,model_engin_diagnostic_wizard,group_admin,1,1,1,1
 sequence_engin_diagnostic1,engin.diagnostic,model_engin_diagnostic,group_admin,1,1,1,1
-purchase_forfait_id1,purchase.forfait,model_purchase_forfait,group_admin,1,1,1,1
-purchase_forfait_line_id1,product.forfait.line,model_product_forfait_line,group_admin,1,1,1,1
-forfait_wizard1,forfait.wizard,model_forfait_wizard,group_admin,1,1,1,1
+
 product_manufacturer1,ps.product.manufacturer,model_ps_product_manufacturer,group_admin,1,1,1,1
 engine_manufacturer1,engine.manufacturer,model_engine_manufacturer,group_admin,1,1,1,1
 engine_type1,engine.type,model_engine_type,group_admin,1,1,1,1
 
 
 product_fullimage1,ps.product.fullimage,model_ps_product_fullimage,group_admin,1,1,1,1
+select_product_pack_id2,select.product.pack,model_select_product_pack,group_admin,1,1,1,1
+pack_products_id2,pack.products,model_pack_products,group_admin,1,1,1,1
+sale_forfait_line_id2,sale.forfait.line,model_sale_forfait_line,group_admin,1,1,1,1
+pos_cash_out_id2,pos.cash.out,model_pos_cash_out,group_admin,1,1,1,1
+
 
 
 

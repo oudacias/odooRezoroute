@@ -1,0 +1,199 @@
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="product_product_inherit_pack" model="ir.ui.view">
+            <field name="name">product.product.inherit.pack</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="inside">
+                    <div modifiers="{}">
+                        <field name="is_pack" modifiers="{}"/>
+                        <label for="is_pack" modifiers="{}"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_template_inherit_pack" model="ir.ui.view">
+            <field name="name">product.template.inherit.pack</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="inside">
+                    <div modifiers="{}">
+                        <field name="is_pack" modifiers="{}"/>
+                        <label for="is_pack" modifiers="{}"/>
+                    </div>
+                </xpath>
+                <xpath expr="//page[@name='variants']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('is_pack','=',True)]}</attribute>
+                </xpath>
+                <xpath expr="//page[@name='invoicing']" position="after">
+                    <page string="Forfait" name="product_pack" attrs="{'invisible' : [('is_pack','=',False)] }">
+                        <group name="pack_properties">
+                            <group string="Prix Forfait">
+                                <label for="list_price"/>
+                                <div class="o_row">
+                                    <field name="list_price"/>
+                                    
+                                </div>
+                            </group>
+                           
+                        </group>
+                        <group string="Produits du Forfait">
+                            <field name="pack_products_ids" nolabel="1">
+                                <tree editable="botttom">
+                                    <field name="product_id" string="Produits" options='{"no_open":False}' domain="[('is_pack','=',False)]"/>
+                                    <field name="quantity" string="Quantity"/>
+                                    <field name="price"/>
+                                    <field name="product_variant_ids1" string="Autres Produits" readonly="0" widget="many2many_tags"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_pack_action" model="ir.actions.act_window">
+            <field name="name">Forfaits</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="domain">[('is_pack','=',True)]</field>
+            <field name="context">{'default_is_pack' : True}</field>
+        </record>
+
+        <record id="product_pack_filter" model="ir.ui.view">
+            <field name="name">product.template.search.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <filter string="Un forfait ?" name="Is a Pack" domain="[('is_pack','=',True)]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_product_pack_wizard_form" model="ir.ui.view">
+            <field name="name">>Ajouter Forfait</field>
+            <field name="model">select.product.pack</field>
+            <field name="arch" type="xml">
+               <form>
+                    <group>
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                    </group>
+                    <button name="update_products_pack" type="object" string="Modifier la liste des produits"/>
+                    <button name="add_pack_order" string="Ajouter" type="object"/>
+                    <button string="Annuler" class="btn-secondary" special="cancel"/>
+
+                    <!-- <field name="product_id2">
+                        <tree  string="Credits">
+                            <field name="pack_products_ids"/>
+                           
+                        </tree>
+                    </field> -->
+                </form>
+            </field>
+        </record>  
+
+        <record id="product_pack_template_form" model="ir.ui.view">
+            <field name="name">Product Pack</field>
+            <field name="model">product.template</field>
+            <field name="arch" type="xml">
+                <form create="false">
+                    <group>
+                        <field name="pack_products_ids">
+                            <tree editable="botttom" create="false" delete="false">
+                                <field name="product_id" string="Produits" options='{"no_open":True}'
+                                domain="['|',('id','=',id),('id', '=', product_variant_ids1)]"/>
+                                <field name="product_variant_ids1" string="Autres Produits" readonly="1" widget="many2many_tags"/> 
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="add_pack_order" string="Enregistrer Forfait" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ps_rezoroute.line_order_forfait">
+            <field name="name">ps_rezoroute forfait</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">      
+                <xpath expr="//field[@name='order_line']//tree/field[@name='product_id']" position="after">
+                    <field name="forfait_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+         
+
+
+        <record id="action_product_pack_wizard" model="ir.actions.act_window">
+            <field name="name">Ajouter Forfait</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">select.product.pack</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="product_pack_product_form" model="ir.ui.view">
+            <field name="name">Product Pack</field>
+            <field name="model">select.product.pack</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="add_pack_order" string="Ajouter" type="object"/>
+                        <button string="Annuler" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ps_rezoroute.sale_order_forfait_view">
+            <field name="name">ps_rezoroute Sale Order View</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">    
+                <xpath expr="//button[@name='action_view_delivery']" position="after">
+                    <button type="object" name="get_action_view_picking_forfait" class="oe_stat_button" icon="fa-truck" attrs="{'invisible': [('delivery_forfait_count', '=', 0)]}" modifiers="{&quot;invisible&quot;: [[&quot;delivery_forfait_count&quot;, &quot;=&quot;, 0]]}">
+                        <field name="delivery_forfait_count" widget="statinfo" string="Forfait" modifiers="{&quot;readonly&quot;: true}"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+        
+
+        <menuitem id="pack_product_sale"
+                  name="Forfait"
+                  parent="sale.product_menu_catalog"
+                  sequence="3"
+                  action="product_pack_action"/>
+
+        <record id="product_pack_sale_order" model="ir.ui.view">
+            <field name="name">Forfait Devis</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']" position="before">
+                    <button name="%(action_product_pack_wizard)d" type="action" string="Ajouter Forfait" style="margin-bottom : 16px;"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

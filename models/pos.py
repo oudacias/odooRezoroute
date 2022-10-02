@@ -40,6 +40,19 @@ class PosSession(models.Model):
     payment_ids = fields.One2many('payements','pos_session_id')
     total_payment = fields.Float()
 
+    retrait_espece = fields.One2many('pos.cash.out','pos_session')
+
+    retrait_espece_somme = fields.Float(compute = '_get_retrait_somme')
+
+    def _get_retrait_somme(self):
+        self.retrait_espece_somme = 0
+        for rec in self.retrait_espece:
+            self.retrait_espece_somme += rec.amount
+
+    
+
+    
+
     def _get_method_name(self):
         self.method_id = self.payment_id.payment_method_line_id
         for rec in self.payment_id:
@@ -78,6 +91,19 @@ class PosSession(models.Model):
 
         self.write({'state':'closing_control'})
         self.write({'date_validation':date.today()})
+
+
+    def sale_pos_cash_out(self):
+        return {
+            'view_mode': 'form',
+            'res_model': 'pos.cash.out',
+            'target' : 'new',
+            'views' : [(False, 'form')],
+            'type': 'ir.actions.act_window',
+            'context' : {'default_pos_session' : self.id }
+        }
+
+    
         
 
     
@@ -187,6 +213,12 @@ class PosConfig(models.Model):
 
     total_compute = fields.Integer(compute='_total_compute')
 
+    def check_cash_funds(self):
+        self.current_session_id.check_cash_funds()
+
+    def auto_close_pos_session1(self):
+        self.current_session_id.auto_close_pos_session()
+
 
     @api.onchange('user_id')
     def test_pos(self):
@@ -261,12 +293,15 @@ class PosSession(models.Model):
 
 
 
-# class PosSessionPaiement(models.Model):
 
-#     name = 'pos.session.paiement'
+class PosCashOut(models.Model):
+    _name = 'pos.cash.out'
 
-#     method_id = fields.Many2one('account.payment.method')
-#     payment_id = fields.Many2one('account.payment')
+    pos_session = fields.Many2one('pos.session', invisible = True)
+    motif = fields.Char(required = True)
+    amount = fields.Float(string='Montant', required = True)
 
 
+    def cash_out_after(self):
+        print("")
 

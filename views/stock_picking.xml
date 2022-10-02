@@ -6,9 +6,9 @@
             <field name="inherit_id" ref="stock.view_picking_form"/>
 
             <field name="arch" type="xml">  
-                <!-- <xpath expr="//button[@name='311']" position="attributes">
-                    <attribute name="groups">ps_rezoroute.group_siege</attribute>
-                </xpath>  -->
+                <xpath expr="//button[@name='button_validate']" position="attributes">
+                    <attribute name="string">Valider / Pas de reliquat</attribute>
+                </xpath> 
                 <xpath expr="//button[@name='button_scrap']" position="attributes">
                     <attribute name="groups">ps_rezoroute.group_siege</attribute>
                 </xpath> 
@@ -28,7 +28,6 @@
                         <field name="amount_service_ht" string="Services HT" modifiers="{'readonly': true}"/>
                         <field name="amount_ht" string="Total HT" modifiers="{'readonly': true}"/>
 				        <field name="amount_ttc" string="Total TTC" modifiers="{'readonly': true}"/>
-
                 </xpath>
             </field>
         </record>

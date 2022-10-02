@@ -2,6 +2,8 @@ from email.policy import default
 from odoo import fields, models,api
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
+from odoo.tools.float_utils import float_compare, float_is_zero, float_round
+
 
 class AcoountMoveExtra(models.Model):
 
@@ -42,6 +44,9 @@ class StockPickingExtra(models.Model):
     amount_service_ht = fields.Float(compute="_amount_product_ht", string="Services HT")
     amount_ht = fields.Float(compute="_amount_product_ht" , string="Marchandises HT")
     amount_ttc = fields.Float(compute="_amount_product_ht", string="Services HT")
+    forfait_sale = fields.Many2one('sale.order')
+    
+    # state = fields.Selection(selection_add=[('early_payment', 'Early payment: Discount early payment')])
 
     def _amount_product_ht(self):
         self.amount_product_ht = 0
@@ -76,10 +81,12 @@ class StockPickingExtra(models.Model):
 
         session = self.env['pos.session'].search([('state','=','opening_control'),('user_id','=',self.env.uid)],order="id desc", limit =1)
         vals['session_id'] = session.id
+        
          
         q= super(StockPickingExtra, self).create(vals) 
 
         print("Sessions created successfully    for " + str(q.purchase_id.session_id.id))
+        print(vals)
         if q.purchase_id:
             q.session_id = q.purchase_id.session_id.id
         return q
@@ -108,6 +115,39 @@ class StockPickingExtra(models.Model):
 
         # else:
         return super(StockPickingExtra, self).button_validate()
+
+    def _pre_action_done_hook(self):
+        if not self.env.context.get('skip_immediate'):
+            pickings_to_immediate = self._check_immediate()
+            if pickings_to_immediate:
+                return pickings_to_immediate._action_generate_immediate_wizard(show_transfers=self._should_show_transfers())
+
+        if not self.env.context.get('skip_backorder'):
+            pickings_to_backorder = self._check_backorder()
+            if pickings_to_backorder:
+                pickings_to_validate = self.env.context.get('button_validate_picking_ids')
+                if pickings_to_validate:
+                    return self.env['stock.picking']\
+                        .browse(pickings_to_validate)\
+                        .with_context(skip_backorder=True, picking_ids_not_to_backorder=self.ids)\
+                        .button_validate()
+                return True
+                # return pickings_to_backorder._action_generate_backorder_wizard(show_transfers=self._should_show_transfers())
+        return True
+
+class StockBackorderConfirmationExtra(models.TransientModel):
+    _inherit = 'stock.backorder.confirmation'
+
+    def process_cancel_backorder(self):
+        pickings_to_validate = self.env.context.get('button_validate_picking_ids')
+        print("@@@@@@@@@@@ Call `_action_done` 5-3")
+        print(pickings_to_validate)
+        if pickings_to_validate:
+            return self.env['stock.picking']\
+                .browse(pickings_to_validate)\
+                .with_context(skip_backorder=True, picking_ids_not_to_backorder=self.pick_ids.ids)\
+                .button_validate()
+        return True
 
     
        

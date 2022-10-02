@@ -1,3 +1,4 @@
+from email.policy import default
 from nis import cat
 from xmlrpc.client import Boolean
 from odoo import fields, models,api
@@ -26,9 +27,8 @@ class Devis(models.Model):
     inter_company_purchase_order_id = fields.Boolean()
     warehouse_id = fields.Many2one('stock.warehouse', string='Entrepôt', domain="[('company_id', '=', company_id)]")
 
-
     is_repair_order = fields.Boolean(string="Ordre de reparation")
-    user_repair_id = fields.Many2one('res.users',string="Mécanicien", domain="[('is_mecanic','=',True)]")
+    user_repair_id = fields.Many2one('res.users',string="Mécanicien",domain=lambda self: [('id', 'in', self.env['res.users'].search([('pos_location', 'in', self.env['pos.config'].search([('user_id', '=', self.env.uid)],limit=1).ids)]).ids ),('is_mecanic','=',True)])
     repair_order_note = fields.Text(string="Note de réparation")
     recover_your_used_parts = fields.Boolean(string="Souhaitez-vous recupérer vos pièces usages")
     repair_with_re_used_parts = fields.Boolean(string="Souhaitez-vous une réparation avec des pièces de réemploi")
@@ -73,60 +73,8 @@ class Devis(models.Model):
     carrier_id = fields.Many2one('delivery.carrier',string="Méthode de livraison")
     is_confirm = fields.Boolean(compute="_isconfirmed")
     dict_check = fields.Boolean(compute="_oldlines")
+
     
-
-    dict_new_lines = {}
-    dict_diff_lines = {}
-   
-    
-
-    @api.onchange('order_line')
-    def onchange_many_lines(self):
-
-        
-        dict_check_lines = {}
-        dict_virtual_lines = {}
-        dict_old_lines = {}
-        
-        if(self.order_line):
-            for old_line in self._origin.order_line:
-                dict_check_lines["NewId_"+str(old_line.id)] = old_line.facultatif
-
-            for ctx_line in  self.order_line:
-                if('virtual' not in str(ctx_line.id)):
-                    dict_old_lines[str(ctx_line.id)] = ctx_line.facultatif
-            if len(dict_old_lines) == 0:
-                self.dict_diff_lines.clear()
-
-                    
-            for ctx_line in  self.order_line:
-                if('virtual' in str(ctx_line.id)):
-                    dict_virtual_lines[ctx_line.id] = ctx_line.facultatif
-            if len(dict_virtual_lines) == 0:
-                self.dict_new_lines.clear()
-            
-
-            if(len(dict_virtual_lines) > len(self.dict_new_lines)):        
-                for ctx_line in  self.order_line:
-                    if('virtual' in str(ctx_line.id)):
-                        if(ctx_line.id not in self.dict_new_lines.keys()):
-                            self.dict_new_lines[ctx_line.id] = ctx_line.facultatif
-
-            elif(len(dict_virtual_lines) < len(self.dict_new_lines)):
-                
-                if(self.dict_new_lines[list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0]] == True):
-                    self.dict_new_lines.pop(list(set(self.dict_new_lines.keys()).difference(dict_virtual_lines))[0])  
-                else:
-                    raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
-
-            else:
-                diff_list = list(set(dict_check_lines.keys()).difference(dict_old_lines))
-                for d in diff_list:
-                    if d not in self.dict_diff_lines:
-                        self.dict_diff_lines[d] = dict_check_lines[d]
-                if(len(self.dict_diff_lines)>0):
-                    if(list(self.dict_diff_lines.items())[-1][1] == False):
-                        raise ValidationError('Vous ne pouvez pas supprimer cette ligne du forfait')
 
     def write(self,vals):
         if('mobile' in vals):
@@ -187,6 +135,50 @@ class Devis(models.Model):
             self.next_ct_date = self.engin_id.next_ct_date
 
 
+    def request_purchase_items(self):
+        print("@@@@@@@@ QTY @@@@@@@@@@")
+        print(self.order_line.product_uom)
+        products_line = self.env['sale.order.line'].search([('order_id','=',self.id)])
+        record = []
+        for line in products_line:
+            if(line.product_id.qty_location < line.product_uom_qty):
+                if(line.product_id.product_tmpl_id.is_pack == False and line.product_id.product_tmpl_id.detailed_type == 'product'):
+                    default = {
+                        'product_id' : line.product_id.id,
+                        'product_qty' : 1,
+                        'taxes_id' : line.product_id.supplier_taxes_id.ids,
+                        'name' : line.product_id.product_tmpl_id.name,
+                        'stock_quantity' : line.product_id.qty_location,
+                        'price_unit' : line.product_id.list_price
+                    }
+                else:
+                    for rec in line.product_id.product_tmpl_id.pack_products_ids:
+                        if(rec.product_id.qty_location < line.product_uom_qty and rec.product_id.product_tmpl_id.detailed_type == 'product'):
+                            default = {
+                                'product_id' : rec.product_id.id,
+                                'product_qty' : 1,
+                                'taxes_id' : rec.product_id.supplier_taxes_id.ids,
+                                'name' : rec.product_id.product_tmpl_id.name,
+                                'stock_quantity' : rec.product_id.qty_location,
+                                'price_unit' : rec.product_id.list_price
+                            }
+                record.append(default)
+
+        if(len(record) > 0):
+            return {
+                'type' : 'ir.actions.act_window',
+                'view_type' : 'form',
+                'view_mode' : 'form',
+                'res_model' : 'purchase.order',
+                'views' : [(False, 'form')],
+                'target' : 'new',
+                'context' : {
+                    'default_order_line' : record,
+                }
+            }
+        else:
+            raise UserError('Toute les quantités sont disponibles')
+
 
 class CrmCaseCateg(models.Model):
     _name = "crm.case.categ"
@@ -222,14 +214,15 @@ class SaleLine(models.Model):
     real_qty_available = fields.Float(string="Qté Dispo")
 
     qty_location = fields.Float(string="Quantité Disponible")
-    facultatif = fields.Boolean(default=True)
-    is_forfait = fields.Boolean(default=False)
+    
+    
 
     def _get_qty_location(self):
        
         # for rec in self:
             
         location = self.env['pos.config'].search([('user_id','=',self.env.uid)], limit=1)
+        
         for rec in self:
             
             stock_quant = self.env["stock.quant"].search([('product_id','=',rec.id),('location_id','=',location.location_id.id)])
@@ -239,20 +232,7 @@ class SaleLine(models.Model):
                 qty += line_qty.quantity
             
             rec.qty_location = qty
-
-    # def unlink(self):
-    #    for rec in self:
-    #         if(rec.facultatif == False):
-    #             raise UserError('Vous ne pouvez pas supprimer cette ligne du forfait')
-    #         else:
-    #             q= super(SaleLine, self).unlink() 
-    #             return q
-                
-    @api.onchange('id')
-    def additional_info(self):
-        print('Vous ne pouvez pas supprimer cette ligne du forfait')
-
-
+    
     @api.onchange('product_id')
     def additional_info(self):
         if(self.product_id):

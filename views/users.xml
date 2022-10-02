@@ -74,6 +74,7 @@
         <menuitem id="res_users_root_id"
             name="Administration"
             action="ps_rezoroute.Users_view_id"
+            groups="ps_rezoroute.group_achat"
             sequence="500"/>
         <menuitem id="res_users_menu_id1"
             name="Utilisateurs"

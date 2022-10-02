@@ -15,7 +15,7 @@
                     <!-- <button name="action_order_deposit" string="Acompte" type="object" states="draft,sent,repair_order,to_prepare,making,prepared,customer_validated,purchase_finished,waiting_replenishment" context="{'default_partner_id':partner_id, 'default_account_payment_type_id':account_payment_type_id, 'default_amount':amount_residual or amount_total}" modifiers="{'invisible': [['state', 'not in', ['draft', 'sent', 'repair_order', 'to_prepare', 'making', 'prepared', 'customer_validated', 'purchase_finished', 'waiting_replenishment']]]}"/> -->
                     
                    
-
+                    <button name="request_purchase_items" string="Commander Qté indisponible" type="object" attrs="{'invisible': [('invoice_check', '=', True)]}"/>
                     <button name="action_confirm" data-hotkey="v"
                         string="Confirmer" type="object"
                        attrs="{'invisible': [('is_confirm', '=', True)]}"/>
@@ -33,16 +33,12 @@
                    
                        
                 </xpath>
-
                 <xpath expr="//button[@name='action_confirm'][1]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
                 <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-
-
-
                 <xpath expr="//field[@name='validity_date']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
@@ -56,8 +52,6 @@
                 <xpath expr="//button[@name='%(sale.action_view_sale_advance_payment_inv)d'][2]" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
-                
-
                 <xpath expr="//field[@name='payment_term_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
@@ -67,6 +61,9 @@
                 <xpath expr="//field[@name='require_signature']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+
+
+
 
                
                 <xpath expr="//field[@name='partner_id']" position="after">
@@ -96,7 +93,7 @@
                     <!-- <field name="user_repair_id" domain="[('company_id','=',company_id),('is_user_repair', '=', True)]" widget="selection" attrs="{'required' : [('is_repair_order', '=', True)]}" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/> -->
                     <field name="user_repair_id" widget="selection" modifiers="{'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]], 'required': [['is_repair_order', '=', true]]}"/>
                     <field name="repair_order_note" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['to_prepare', 'customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'making', 'prepared', 'sent']]]}"/>
-
+                    <!-- <field name="" /> -->
                     
                     <field name="recover_your_used_parts" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'sent']]]}"/>
                     <field name="repair_with_re_used_parts" attrs="{'invisible': [('is_repair_order', '=', False)]}" modifiers="{'invisible': [['is_repair_order', '=', false]], 'readonly': [['state', 'not in', ['customer_validated', 'repair_order', 'purchase_finished', 'waiting_replenishment', 'draft', 'sent']]]}"/>
@@ -140,36 +137,8 @@
                     <field name="hide_action_invoice" invisible="1" modifiers="{'invisible': true, 'readonly': true}"/>
                     <field name="customer_invoice_type"/>
                 </xpath>
-                <xpath expr="//field[@name='order_line']//tree/field[@name='price_unit']" position="after"> 
-                    <field name="is_forfait" invisible="1"/> 
-                </xpath>
-                <xpath expr="//field[@name='order_line']//tree/field[@name='price_unit']" position="after"> 
-                    <field name="facultatif" invisible="1"/> 
-                </xpath>
-                <xpath expr="//field[@name='order_line']//tree/field[@name='product_id']" position="attributes">
-                    <attribute name="attrs">{
-                                                'readonly': [('product_updatable', '=', True),('is_forfait', '=', True)],
-                                            }
-                    </attribute>
-                </xpath>
-                <xpath expr="//field[@name='order_line']//tree/field[@name='product_uom_qty']" position="attributes">
-                    <attribute name="attrs">{
-                                                'readonly': [('is_forfait', '=', True)],
-                                            }
-                    </attribute>
-                </xpath>
-                <xpath expr="//field[@name='order_line']//tree/field[@name='tax_id']" position="attributes">
-                    <attribute name="attrs">{
-                                                'readonly': [('is_forfait', '=', True)],
-                                            }
-                    </attribute>
-                </xpath>
-                <xpath expr="//field[@name='order_line']//tree/field[@name='discount']" position="attributes">
-                    <attribute name="attrs">{
-                                                'readonly': [('is_forfait', '=', True)],
-                                            }
-                    </attribute>
-                </xpath>
+                
+                
               
 
                 

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+
+       <template id="feuille_xcaisse">
+            <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+
+                <t t-foreach="docs" t-as="o">
+                    <!-- <div class="header" style="top:1450pt"> -->
+                        <!-- <div class="row"> -->
+                            <!-- <td align="center" valign="center">
+                                <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                            </td> -->
+                        <!-- </div>
+                    </div> -->
+                        <div class="page">
+                       
+                            <div class="row" id="hash_header">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td style="width:50%">
+                                            <div class="col-6">
+                                                <br/>
+                                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:45pt;max-width:90%;margin-top:-20pt" alt="Company Logo"/>
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                    <span t-field="o.company_id.partner_id.name"/>
+                                                    <br/>
+                                                    <span t-field="o.company_id.street"/>
+                                                    <br/>
+                                                    <span>Tel :</span><span t-field="o.company_id.phone"/>
+                                                    <br/>
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td style="width:50%">
+                                            <div class="col-6" style="margin-left:300px !important">
+                                                <br/>
+                                                    <span   > X de caisse : </span> <span t-field="o.name"/>
+                                                    <br/>
+                                                    <span   > Responsable : </span> <span t-field="o.user_id.name"/>
+                                                    <br/>
+                                                    <span   > Ouverture : </span> <span t-field="o.start_at"/>
+                                                    <br/>
+                                                    <span   > Fermeture : </span> <span t-field="o.stop_at"/>
+                                                    <br/>
+                                                    <span   > Validation : </span> <span t-field="o.date_validation"/>
+                                                    <br/>
+                                                    <span   > Statut : </span> <span t-field="o.state"/>
+                                                <br/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                            </div>
+                        </div>
+
+                        <table style="width:100%">
+                                <td style="width:45%">
+                                    <table style="height:180px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
+                                        <t t-set="test_variable" t-value="0"/>
+                                        <tbody style="background-color:#F5F5F5">
+                                            
+                                        <tr>
+                                                <td>Fond Caisse (Ouverture)</td>
+                                                <td><b>0,00 MAD</b></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Entrée de caisse</td>
+                                                <td><b>0,00 MAD</b></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Sortie de caisse</td>
+                                                <td><b><span t-field="o.retrait_espece_somme"/></b></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Transaction (Espèce)</td>
+                                                <td></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Fond Caisse (Théorique)</td>
+                                                <td></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Fond Caisse (Fermeture)</td>
+                                                <td></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Total Ecart</td>
+                                                <td></td>
+                                        </tr>
+                                        <tr>
+                                                <td>Fond Caisse (Apr. Remise)</td>
+                                                <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td style="width:10%">
+                                </td>
+                                <td style="width:45%">
+                                    <table style="height:180px;font-family: Tahoma; width:100%; font-size:11pt; border:1pt solid white">
+                                        <t t-set="test_variable" t-value="0"/>
+                                            <tbody style="background-color:#F5F5F5">
+                                                <t t-foreach="o.reglement_id" t-as="reg" style="border:1pt solid white">
+                                                    <!-- <t t-if="reg.journal_id.name == 'Espèces'"> -->
+                                                        <tr>
+                                                
+                                                            <td><span t-field="reg.journal_id.name"/></td>
+                                                            <td><b><span t-field="reg.amount"/></b></td>
+                                                            <t t-set="test_variable" t-value="test_variable+reg.amount"/> 
+                                                        </tr>
+                                                    <!-- </t> -->
+                                                </t>
+                                        
+                                            </tbody>
+                                            <footer>
+                                                <td><b>Total Règlement</b></td>
+                                                <td><b><t t-esc="test_variable"/></b></td>
+                                            </footer>
+                                    </table>
+                                </td>                            
+                        </table>
+                        
+                        
+                    </t>
+                    </t>
+                </t>
+                <footer>
+                    <table>
+                        <tr>
+                            <td><b>Responsable : ...........</b></td>
+                        </tr>
+                    </table>
+                </footer>
+        </template>
+
+        <record id="report_feuille_caisse" model="ir.actions.report">
+            <field name="name">Feuille de Caisse</field>
+
+            <field name="model">pos.session</field>
+
+            <field name="report_type">qweb-pdf</field>
+
+            <field name="report_name">ps_rezoroute.feuille_xcaisse</field>
+
+            <field name="report_file">ps_rezoroute.feuille_xcaisse</field>
+
+            <field name="print_report_name">'Feuille de Caisse - %s' %  (object.id)</field>
+
+            <field name="binding_type">report</field>
+
+            <field name="binding_model_id" ref="model_pos_session"/>
+        </record>
+
+    </odoo>

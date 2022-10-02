@@ -6,66 +6,37 @@
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//div[@class='oe_title']" position="after">
-                    
-                        <group>
-                        <!-- <label for="ps_code_article" string="Code de l'article"/>
-                        <div class="d-flex">-->
-                            <field class="o_text_overflow" name="category_product"/>
-                            <field class="o_text_overflow" name="product_code"/>
-                            <!-- <field class="o_text_overflow" name="ps_code_article"/> -->
-                        <!--</div> -->
-                        <!-- <label for="manufacturer_id" string="Constructeur"/>
-                            <div class="d-flex"> -->
-                                <field class="o_text_overflow" name="manufacturer_id"/>
-                            <!-- </div> -->
-                        <!-- <label for="description" string="Description de l'article"/> -->
-                            <field class="o_text_overflow" name="description"/>
-                        <!-- <label for="default_code" string="Reference de l'article"/>
-                        <div class="d-flex"> -->
-                            <field class="o_text_overflow" name="default_code"/>
-                        <!-- </div> -->
-
-                        <!-- <label for="image1" string="Image 1 de l'article"/> -->
-                        <!-- <div class="d-flex"> -->
-                            <field class="o_text_overflow" name="image1"/>
-                        <!-- </div> -->
-                        
-                        <!-- <label for="image2" string="Image 2 de l'article"/> -->
-                        <!-- <div class="d-flex"> -->
-                            <field class="o_text_overflow oe_inline" name="image2"/>
-                            <!-- <field class="o_text_overflow oe_inline" name="landed_cost_ok"/> -->
-                        <!-- </div> -->
-
-                        <!-- <label for="categ_id" string="Categorie de l'article"/> -->
-                        
-                            <!-- <field name="categ_id"/> -->
-                        </group>
-                   
+                    <group>
+                        <field class="o_text_overflow" name="product_code"/>
+                        <field class="o_text_overflow" name="manufacturer_id"/>
+                        <field class="o_text_overflow" name="description"/>
+                        <field class="o_text_overflow" name="default_code"/>
+                        <field class="o_text_overflow" name="image1"/>
+                        <field class="o_text_overflow oe_inline" name="image2"/>
+                    </group>
                 </xpath>
 
                 <xpath expr="//div[@name='options']" position="after">
-
-                        <span class="d-inline-block">
-                            <field name="is_reconditionned"/>
-                            <label for="is_reconditionned"/>
-                        </span>
-                        <span class="d-inline-block">
-                            <field name="is_sell_first"/>
-                            <label for="is_sell_first"/>
-                        </span>
-                        <span class="d-inline-block">
-                            <field name="is_special_order"/>
-                            <label for="is_special_order"/>
-                        </span>
-                        <span class="d-inline-block">
-                            <field name="is_outdated"/>
-                            <label for="is_outdated"/>
-                        </span>
-                        <span class="d-inline-block">
-                            <field name="is_manage_in_stock"/>
-                            <label for="is_manage_in_stock"/>
-                        </span>
-
+                    <span class="d-inline-block">
+                        <field name="is_reconditionned"/>
+                        <label for="is_reconditionned"/>
+                    </span>
+                    <span class="d-inline-block">
+                        <field name="is_sell_first"/>
+                        <label for="is_sell_first"/>
+                    </span>
+                    <span class="d-inline-block">
+                        <field name="is_special_order"/>
+                        <label for="is_special_order"/>
+                    </span>
+                    <span class="d-inline-block">
+                        <field name="is_outdated"/>
+                        <label for="is_outdated"/>
+                    </span>
+                    <span class="d-inline-block">
+                        <field name="is_manage_in_stock"/>
+                        <label for="is_manage_in_stock"/>
+                    </span>
                 </xpath>
 
                 <xpath expr="//field[@name='categ_id']" position="after">
@@ -76,9 +47,7 @@
 
                 <xpath expr="//field[@name='detailed_type']" position="before">
                     <group>
-                        <!-- <label for="is_group_reference" /> -->
                         <field name="is_group_reference"/>
-                        <!-- <label for="replace" /> -->
                         <field name="replace"/>
                     </group>
                    
@@ -119,19 +88,14 @@
 
                 <xpath expr="//page[@name='ean13']" position="after">
                     <page string="Vehicule" name="vehicule">
-                        <group>
-                        
-                        <!-- <label for ="engine_list"/> -->
-                        <field name = "engine_list" widget="many2many">
-                        <tree>
-                            <field name="constructeur"/>
-                            <field name="modele"/>
-                            <field name="display_name"/>
-                        </tree>
-
-
-                        </field>
-                            
+                        <group>                        
+                            <field name = "engine_list" widget="many2many">
+                                <tree>
+                                    <field name="constructeur"/>
+                                    <field name="modele"/>
+                                    <field name="display_name"/>
+                                </tree>
+                            </field> 
                         </group>
                     </page>
                 </xpath>

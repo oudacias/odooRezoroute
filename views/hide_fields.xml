@@ -4,4 +4,74 @@
         <record model="ir.ui.menu" id="website.menu_website_configuration">
             <field name="active" eval="False"/>
         </record>
+       
+
+        <record model="ir.ui.menu" id="sale.menu_sale_config">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="sale.menu_sale_report">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="point_of_sale.menu_point_config_product">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="point_of_sale.menu_point_rep">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="account.menu_finance">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="utm.menu_link_tracker_root">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="purchase.menu_purchase_config">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record>
+        <record model="ir.ui.menu" id="purchase.menu_purchase_config">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record>
+        <!-- <record model="ir.ui.menu" id="purchase.menu_purchase_report">
+            <field name="groups_id" eval="[(6,0,[ref('ps_rezoroute.group_achat')])]"/>
+        </record> -->
+
+        <record model="ir.ui.view" id="ps_rezoroute.purchase_request_hide">
+            <field name="name">ps_rezoroute purchase request</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">  
+                <xpath expr="//button[@name='action_rfq_send'][1]" position="attributes">
+                    <attribute name="groups">ps_rezoroute.group_achat</attribute>
+                </xpath> 
+                <xpath expr="//button[@name='action_rfq_send'][2]" position="attributes">
+                    <attribute name="groups">ps_rezoroute.group_achat</attribute>
+                </xpath> 
+                <xpath expr="//button[@name='action_rfq_send'][3]" position="attributes">
+                    <attribute name="groups">ps_rezoroute.group_achat</attribute>
+                </xpath> 
+                <xpath expr="//button[@name='print_quotation']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="ps_rezoroute.stock_picking_hide">
+            <field name="name">ps_rezoroute stock picking</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">  
+                <xpath expr="//button[@name='do_print_picking']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_open_label_layout']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='300']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
     </odoo>
